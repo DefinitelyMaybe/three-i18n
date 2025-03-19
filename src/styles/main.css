@@ -18,20 +18,9 @@
   --sl-color-black: #17181c;
 }
 
-.starlight-sidebar-topics-dropdown-button {
+[data-theme="dark"] .starlight-sidebar-topics-dropdown-button,
+[data-theme="dark"] .starlight-sidebar-topics-dropdown-menu {
   background-color: var(--sl-color-black);
-}
-
-.starlight-sidebar-topics-dropdown-menu {
-  background-color: var(--sl-color-black);
-}
-
-[data-theme="light"] .starlight-sidebar-topics-dropdown-button {
-  background-color: var(--sl-color-white);
-}
-
-[data-theme="light"] .starlight-sidebar-topics-dropdown-menu {
-  background-color: var(--sl-color-white);
 }
 
 /* Light mode colors. */
