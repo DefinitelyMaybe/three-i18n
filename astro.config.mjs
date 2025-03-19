@@ -27,9 +27,8 @@ export default defineConfig({
         github: "https://github.com/DefinitelyMaybe/three-i18n",
       },
       customCss: ["./src/styles/main.css"],
-      defaultLocale: "en",
       locales: {
-        en: {
+        root: {
           label: "English",
           lang: "en",
         },
