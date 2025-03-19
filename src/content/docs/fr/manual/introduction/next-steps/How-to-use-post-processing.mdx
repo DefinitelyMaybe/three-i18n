@@ -1,0 +1,85 @@
+---
+title: Utiliser le post-processing
+sidebar:
+  order: 3
+---
+
+Plusieurs applications three.js effectuent un rendu de leurs objets 3D directement dans la scène. Parfois, vous souhaitez appliquer un ou plusieurs
+effects graphiques comme la profondeur de champ, le flou lumineux, du grain, ou différents types d'Anti-aliasing. Le post-processing est une approche très utilisée
+pour implémenter de tels effets. Premièrement, la scène est rendue dans une cible de rendu qui représente un buffer dans la mémoire de la carte vidéo.
+A la prochaine étape un ou plusieurs effets de post-processing appliquent des filtres au buffer de l'image qui est finalement rendue à
+l'écran.
+
+three.js fournit une solution complète de post-processing via [EffectComposer](examples/postprocessing/EffectComposer) pour implémenter un tel workflow.
+
+## Workflow
+
+La première étape est d'importer tous les fichiers nécessaires du dossier exemple. Le guide part du principe que vous utilisez le
+[ npm package](https://www.npmjs.com/package/three) officiel de three.js. Pour notre démo basique, nous avons besoin des fichiers suivants.
+
+```javascript
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { GlitchPass } from "three/addons/postprocessing/GlitchPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+```
+
+Après avoir importé tous les fichiers correctement, nous pouvons créer notre composer en lui passant une instance de [WebGLRenderer](api/renderers/WebGLRenderer).
+
+```javascript
+const composer = new EffectComposer(renderer);
+```
+
+Lors de l'utilisation d'un composer, il est nécessaire de changer la boucle d'animation de l'application. Au lieu d'appeler la méthode de rendu
+[WebGLRenderer](api/renderers/WebGLRenderer), nous devons utiliser appeler [EffectComposer](examples/postprocessing/EffectComposer).
+
+```javascript
+function animate() {
+  requestAnimationFrame(animate);
+
+  composer.render();
+}
+```
+
+Notre composer est maintenant prêt, il est donc possible de configurer la chaîne d'effets de post-processing. Ces effets (passes) sont chargés de la création
+de l'apparence visuelle finale de l'application. Ils sont traités dans l'ordre de leur ajout/insertion. Dans notre exemple, l'instance de `RenderPass` est exécutée en premier, puis l'instance de `GlitchPass` et enfin `OutputPass`. Le dernier effet activé de la chaîne est automatiquement rendu dans la scène. Le setup
+des effets ressemble à ça:
+
+```javascript
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+const glitchPass = new GlitchPass();
+composer.addPass(glitchPass);
+
+const outputPass = new OutputPass();
+composer.addPass(outputPass);
+```
+
+`RenderPass` est normalement placé au début de la chaîne pour fournir la scène rendue en tant qu'entrée pour les prochaines étapes de post-processing. Dans notre cas,
+`GlitchPass` va utiliser les données de l'image pour appliquer un effet de glitch. `OutputPass` est généralement le dernier passage de la chaîne qui effectue la conversion de l'espace colorimétrique sRGB et le mappage tonal optionnel.
+Regardez cet [ exemple live](https://threejs.org/examples/webgl_postprocessing_glitch) pour voir cela en action.
+
+## Effets Intégrés
+
+Vous pouvez utiliser une large palette d'effets de post-processing pré-définis fournis par le moteur. Ils se trouvent dans le dossier
+[ postprocessing](https://github.com/mrdoob/three.js/tree/dev/examples/jsm/postprocessing).
+
+## Effets Personnalisés
+
+Parfois vous voulez écrire un shader de post-processing personnalisé et l'inclure dans les effets (passes) de post-processing. Dans ce scénario,
+vous pouvez utiliser `ShaderPass`. Après avoir importé le fichier et votre shader personnalisé, vous pouvez utiliser le code suivant pour mettre en place l'effet (pass).
+
+```javascript
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { LuminosityShader } from "three/addons/shaders/LuminosityShader.js";
+
+// later in your init routine
+
+const luminosityPass = new ShaderPass(LuminosityShader);
+composer.addPass(luminosityPass);
+```
+
+Ce dépôt fournit un fichier appelé [ CopyShader](https://github.com/mrdoob/three.js/blob/master/examples/jsm/shaders/CopyShader.js) qui est
+une bonne base de code pour créer votre propose shader personnalisé. `CopyShader` copie simplement le contenu de l'image du buffer de l'[EffectComposer](examples/postprocessing/EffectComposer)
+à son buffer d'écriture sans y appliquer aucun effet.

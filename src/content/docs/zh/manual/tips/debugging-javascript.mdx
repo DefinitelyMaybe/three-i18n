@@ -1,0 +1,538 @@
+---
+title: 调试JavaScript
+sidebar:
+  order: 1
+---
+
+总的来说这篇文章的大部分是关于如何调试JavaScript的，而不是直接关于THREE.js的。这似乎很重要，因为很多刚开始学习THREE.js的人同时也刚开始学JavaScript，所以我希望这可以帮助他们更轻松地解决遇到的任何问题。
+
+调试是一个大话题，我可能无法介绍出所有需要了解的内容，但如果您是JavaScript新手，我在这里会尝试给您一些建议。我强烈建议你花点时间来学习它们。它们会对你的学习有很大帮助。
+
+## 了解你的浏览器开发者工具
+
+所有的浏览器都有开发者工具。
+[Chrome](https://developers.google.com/web/tools/chrome-devtools/),
+[Firefox](https://developer.mozilla.org/en-US/docs/Tools),
+[Safari](https://developer.apple.com/safari/tools/),
+[Edge](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide).
+
+在Chrome浏览器中你可以点击`⋮`标志， 选择 More
+Tools->Developer Tools
+来打开开发者工具。快捷键也显示在了上面。
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-chrome.jpg)
+</div>
+
+在Firefox中你可以点击`☰` 标志, 选择 "Web Developer", 接着选择
+"Toggle Tools"
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-firefox.jpg)
+</div>
+
+在Safari中你首先要从Advanced Safari Preferences中打开 Develop menu。
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-enable-safari.jpg)
+</div>
+
+接着在Develop菜单你可以选择"Show/Connect Web Inspector"。
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-safari.jpg)
+</div>
+
+在Chrome中你也可以[使用电脑端的开发者工具来调试运行在安卓手机或者平板的chrome浏览器上的网页](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/).
+同样的在Safari中你可以
+[使用电脑端调试iPhones和iPads的Safari上的网页](https://www.google.com/search?q=safari+remote+debugging+ios).
+
+我对Chrome最为熟悉，因此本指南在提到开发者工具时将以Chrome为例，但大多数浏览器都有类似的功能，因此应该很容易将此处的任何内容应用于所有浏览器。
+
+## 关闭缓存
+
+浏览器试图重用他们已经下载的数据。这对用户来说非常好，因此，如果您再次访问网站，许多用于显示网站的文件将不会被再次下载。
+
+但是这可能不利于web开发。如果您改变了加载的资源，并重新加载了页面，但由于浏览器使用了上次缓存的版本，因此可能会看不到变动。
+
+在开发过程中一个解决方案是关闭缓存。这样，浏览器将始终获取文件的最新版本。
+
+首先在右上角点击设置按钮
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-chrome-settings.jpg)
+</div>
+
+接着选择"Disable Cache (while DevTools is open)".
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-chrome-disable-cache.jpg)
+</div>
+
+## 使用JavaScript控制台
+
+在所有开发者工具中都有 _控制台_。 它显示了警告和错误信息。
+
+<strong>读这些信息!! </strong>
+
+通常应该只有 1 或 2 条信息。
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-no-errors.jpg)
+</div>
+
+如果你看到有其他的消息，请务必 <strong>读它们</strong>。 例如：
+
+<div class="threejs_center">
+  ![image](/resources/images/devtools-errors.jpg)
+</div>
+
+我把 "three" 错拼成了 "threee"
+
+通过`console.log` 方法，你也可以打印你自己信息到控制台，比如
+
+```js
+console.log(
+  someObject.position.x,
+  someObject.position.y,
+  someObject.position.z,
+);
+```
+
+更酷的是，如果你打印了一个object你可以检查它。 例如，如果从[加载gLTF](load-gltf.html)这篇文章中打印了一个根场景object
+
+```js
+{
+const gltfLoader = new GLTFLoader();
+gltfLoader.load('resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf', (gltf) => {
+const root = gltf.scene;
+scene.add(root);
++      console.log(root);
+```
+
+我们接着就可以在JavaScript控制台中展开那个object
+
+<div class="threejs_center">
+![image](/resources/images/devtools-console-object.gif)
+
+</div>
+
+你也可以使用 `console.error` 来输出错误信息，该方法会打印一条红色的信息并附上错误栈
+
+## 在屏幕上显示数据
+
+另一个直观的但是经常被忽视的方式是通过添加`<div>` 或 `<pre>` 标签
+并将要显示的数据放在标签内。
+
+最简单的方法就是写一些HTML元素
+
+```html
+<canvas id="c"></canvas> +
+<div id="debug">
+  +
+  <div>x:<span id="x"></span></div>
+  +
+  <div>y:<span id="y"></span></div>
+  +
+  <div>z:<span id="z"></span></div>
+  +
+</div>
+```
+
+给它们添加些样式让它们显示在canvas元素之上（假设你的canvas元素充满了整个页面）。
+
+```html
+<style>
+  #debug {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-family: monospace;
+  }
+</style>
+```
+
+然后查找元素并设置其内容。
+
+```js
+// at init time
+const xElem = document.querySelector("#x");
+const yElem = document.querySelector("#y");
+const zElem = document.querySelector("#z");
+
+// at render or update time
+xElem.textContent = someObject.position.x.toFixed(3);
+yElem.textContent = someObject.position.y.toFixed(3);
+zElem.textContent = someObject.position.z.toFixed(3);
+```
+
+这在展示实时数据时更有用
+
+<iframe src="/editor?url=/manual/examples/debug-js-html-elements.html"></iframe>
+
+将数据显示在屏幕上的另一种方法是制作一个”清除记录器“。这是我编的一个术语，我参与的很多游戏中都使用了这个方法。其思想是您有一个只显示一帧消息的缓冲区，有显示数据需求的时候，就会调用一些函数向该缓冲区添加每一帧的数据。相对于上一种方法为每个数据都添加一个html元素，这种方法会减少跟多工作量。
+
+举个例子，我们把上面的html代码调整为这样
+
+```html
+<canvas id="c"></canvas>
+<div id="debug">
+  <pre></pre>
+</div>
+```
+
+接着我们只做一个简单的类来管理这些 _“clear back buffer”_。
+
+```js
+class ClearingLogger {
+  constructor(elem) {
+    this.elem = elem;
+    this.lines = [];
+  }
+  log(...args) {
+    this.lines.push([...args].join(" "));
+  }
+  render() {
+    this.elem.textContent = this.lines.join("\n");
+    this.lines = [];
+  }
+}
+```
+
+接着我们做一个简单的例子：每次我们点击鼠标后，就会产生一个出现2秒钟的物体，并朝着一个随机的方向移动。我们将从一篇文章中的一个示例开始 [making
+things
+responsive](responsive.html)
+
+下面是每次点击鼠标都新增一个[`Mesh`](/api/en/objects/Mesh)
+的代码
+
+```js
+const geometry = new THREE.SphereGeometry();
+const material = new THREE.MeshBasicMaterial({ color: "red" });
+
+const things = [];
+
+function rand(min, max) {
+  if (max === undefined) {
+    max = min;
+    min = 0;
+  }
+  return Math.random() * (max - min) + min;
+}
+
+function createThing() {
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+  things.push({
+    mesh,
+    timer: 2,
+    velocity: new THREE.Vector3(rand(-5, 5), rand(-5, 5), rand(-5, 5)),
+  });
+}
+
+canvas.addEventListener("click", createThing);
+```
+
+接着下面的代码描述了如何移动我们创造出来的mesh，记录它们的信息以及当它们的计时器到期的时候删除它们
+
+```js
+const logger = new ClearingLogger(document.querySelector('#debug pre'));
+
+let then = 0;
+function render(now) {
+now *= 0.001;  // convert to seconds
+const deltaTime = now - then;
+then = now;
+
+...
+
+logger.log('fps:', (1 / deltaTime).toFixed(1));
+logger.log('num things:', things.length);
+for (let i = 0; i < things.length;) {
+const thing = things[i];
+const mesh = thing.mesh;
+const pos = mesh.position;
+logger.log(
+'timer:', thing.timer.toFixed(3),
+'pos:', pos.x.toFixed(3), pos.y.toFixed(3), pos.z.toFixed(3));
+thing.timer -= deltaTime;
+if (thing.timer <= 0) {
+// remove this thing. Note we don't advance `i`
+things.splice(i, 1);
+scene.remove(mesh);
+} else {
+mesh.position.addScaledVector(thing.velocity, deltaTime);
+++i;
+}
+}
+
+renderer.render(scene, camera);
+logger.render();
+
+requestAnimationFrame(render);
+}
+```
+
+现在在下面的例子中点击几次鼠标
+
+<iframe src="/editor?url=/manual/examples/debug-js-clearing-logger.html"></iframe>
+
+## 查询参数
+
+另一件需要记住的事情是，网页可以通过查询参数或锚（有时称为搜索和散列）将数据传递到网页中。
+
+```javascript
+https://domain/path/?query#anchor
+```
+
+可以使用这个参数使一些功能开启或关闭或传入参数。
+
+以上一个例子为例，我们可以做到只有向URL中传入`?debug=true`参数的时候，上面的例子才会显示调试数据
+
+首先我们需要一些代码来解析携带查询参数字符串
+
+```js
+/**
+ * Returns the query parameters as a key/value object.
+ * Example: If the query parameters are
+ *
+ *    abc=123&amp;def=456&amp;name=gman
+ *
+ * Then `getQuery()` will return an object like
+ *
+ *    {
+ *      abc: '123',
+ *      def: '456',
+ *      name: 'gman',
+ *    }
+ */
+function getQuery() {
+  return Object.fromEntries(
+    new URLSearchParams(window.location.search).entries(),
+  );
+}
+```
+
+接着我们可能想让显示调试信息的元素在默认情况下不出现
+
+```html
+<canvas id="c"></canvas> +
+<div id="debug" style="display: none;">
+  <pre></pre>
+</div>
+```
+
+接着在代码中我们通过获取特定参数来决定当且仅当`?debug=true`传入的时候才显示我们的调试信息
+
+```js
+const query = getQuery();
+const debug = query.debug === "true";
+const logger = debug
+  ? new ClearingLogger(document.querySelector("#debug pre"))
+  : new DummyLogger();
+if (debug) {
+  document.querySelector("#debug").style.display = "";
+}
+```
+
+同时我们也写了一个什么事情也不做的`DummyLogger`，并在`?debug=true` 没有被传入的时候使用它。
+
+```js
+class DummyLogger {
+  log() {}
+  render() {}
+}
+```
+
+你可以看到在这个URL里
+
+[debug-js-params.html](../examples/debug-js-params.html)
+
+没有调试信息。但是当我们使用这个url的时候：
+
+[debug-js-params.html?debug=true](../examples/debug-js-params.html?debug=true)
+
+就包含了调试信息
+
+多个参数传递的时候需要以'&amp;'分隔。例如`somepage.html?someparam=somevalue&amp;someotherparam=someothervalue`.
+使用这样的参数我们就可以传入各种各样的选项。例如传入`speed=0.01`
+以降低app速度来更好的理解某个过程。或者传入
+`showHelpers=true`
+来决定是否添加一个helper来辅助显示其他课程中提到过的光线、阴影或者相机的视锥
+
+## 学习使用调试器
+
+每个浏览器都有一个调试器，您可以在其中逐行暂停程序并检查所有变量。
+
+教您如何使用调试器对于本文来说是一个太大的主题，但这里有几个链接
+
+<ul>
+  <li>
+    [Get Started with Debugging JavaScript in Chrome
+    DevTools](https://developers.google.com/web/tools/chrome-devtools/javascript/)
+  </li>
+  <li>[Debugging in Chrome](https://javascript.info/debugging-chrome)</li>
+  <li>
+    [Tips and Tricks for Debugging in Chrome Developer
+    Tools](https://hackernoon.com/tips-and-tricks-for-debugging-in-chrome-developer-tools-458ade27c7ab)
+  </li>
+</ul>
+## 在调试器或其他地方检查`NaN`值
+
+`NaN` 不是数字的缩写。当你做了一些不符合数学的事情时，JavaScript会把它指定为一个值。
+
+举一个简单的例子
+
+<div class="threejs_center">
+![image](/resources/images/nan-banana.png)
+
+</div>
+
+通常，当我在制作一些东西时，屏幕上什么也没有出现，我会检查一些值，如果我看到`NaN`
+我会立即知道问题所在
+
+举一个例子，当我第一次在
+[article about loading gLTF files](load-gltf.html) 文章中创建路径的时候，我使用[`SplineCurve`](/api/en/extras/curves/SplineCurve) ——一个专门制作2D曲线的类，做了一条曲线。
+
+接着我使用这条曲线使汽车像这样移动
+
+```js
+curve.getPointAt(zeroToOnePointOnCurve, car.position);
+```
+
+在内部 `curve.getPointAt` 方法将调用传入的第二个参数对象上的 `set` 函数。在例子中第二个变量是`car.position`也就是一个[`Vector3`](/api/en/math/Vector3)类型。 [`Vector3`](/api/en/math/Vector3)的
+`set` 函数需要三个参数, x， y， 和 z 但是 [`SplineCurve`](/api/en/extras/curves/SplineCurve) 是一个2D曲线，因此它仅向`car.position.set`方法传入了x和y值。
+
+结果`car.position.set` 方法将x设置为了x，y设置成了y，z设置成了`undefined`.
+
+在调试器中简单查看一下汽车的`matrixWorld`
+就会发现许多的 `NaN` 值。
+
+<div class="threejs_center">![image](/resources/images/debugging-nan.gif)</div>
+
+看到矩阵中包含`NaN`值就表明一些像
+`position`,
+`rotation`, `scale` 或者其他的会影响矩阵的函数就有坏数据。根据这一点来找bug就会很容易发现问题所在。
+
+除了`NaN` 之外还有`Infinity`，也能表明一些地方有了数学bug
+
+## 快来看看代码!
+
+THREE.js是一个开源的库。别害怕深入库内部查看代码。
+你可以在[github](https://github.com/mrdoob/three.js)里查看它的源代码。
+您还可以通过在调试器中单步执行函数来查看内部。
+
+## 将 `requestAnimationFrame` 放着在渲染函数的底部。
+
+我经常看到如下的代码
+
+```js
+function render() {
+  requestAnimationFrame(render);
+
+  // -- do stuff --
+
+  renderer.render(scene, camera);
+}
+requestAnimationFrame(render);
+```
+
+我建议将`requestAnimationFrame` 的调用放在底部，如下所示
+
+```js
+function render() {
+  // -- do stuff --
+
+  renderer.render(scene, camera);
+
+  requestAnimationFrame(render);
+}
+requestAnimationFrame(render);
+```
+
+最大的原因是，在正常情况下，如果出现错误，代码执行将停止。但将`requestAnimationFrame`
+置于顶部意味着您的代码将继续运行，因为您已经请求了另一帧。在我看来，发现这些错误比忽略它们要好。它们很容易成为某些东西没有按预期出现的原因，但除非代码停止，否则您可能根本不会注意到。
+
+## 检查你使用的单位
+
+这基本上意味着知道何时使用度（degrees）和何时使用弧度（radians）。不幸的是THREE.js并不是在所有地方都使用相同的单位。
+现在我能想到的情况就是摄像机的视野是以degrees为单位的。所有其他角度均以radians为单位。
+
+另一个值得注意的地方是你所使用的长度单位的大小。目前3D应用程序还可以选择他们想要的任何单位大小。
+一个应用程序可能会选择1个单位=1厘米。另一个可能选择1个单位=1英尺。事实上，你可以为某些应用选择任何你想要的单位。
+也就是说，THREE.js假设1个单位=1米。这对于基于物理的渲染(PBR)——使用米来计算照明效果之类的事情很重要。这对于AR和VR也很重要，因为它们需要处理真实世界中的长度，如手机所在的位置或VR控制器所在的位置。
+
+## 在Stack Overflow上制作一个
+
+_最小的、完整的、可验证的_ 示例
+
+如果你决定问一个关于THREE.js的问题，你需要提供一个MCVE，即最小的（Minimal）、完整的（Complete）、可验证的（Verifiable）示例。
+
+<strong>最小的(Minimal)</strong> 是很重要的。 比如说在上一个例子[loading a gLTF
+article](load-gltf.html)中你有一个关于运动轨迹的例子。那个例子有很多部分，比如
+
+<ol>
+  <li>一些HTML</li>
+  <li>一些 CSS</li>
+  <li>光源</li>
+  <li>阴影</li>
+  <li>操作阴影的lil-gui 代码</li>
+  <li>加载.GLTF文件的代码</li>
+  <li>调整canvas大小的代码</li>
+  <li>让汽车沿着路线移动的代码</li>
+</ol>
+
+看起来真的很多。如果你的问题仅仅是关于路线跟随的部分，你可以将大部分HTML代码删除，因为你只需要一个`<canvas>`
+和一个`<script>`标记就可以了。你可以删除CSS和调整大小的代码，也可以删除.GLTF代码，因为你只关心路径。
+你可以使用[`MeshBasicMaterial`](/api/en/materials/MeshBasicMaterial)删除灯光和阴影。你当然也可以删除lil gui代码。代码中纹理创建地平面，如果使用[`GridHelper`](/api/en/helpers/GridHelper).会更容易。
+最后，如果我们的问题是关于在路径上移动物体，我们可以在路径上使用立方体，而不是装载的汽车模型。
+
+这里有一个更简单的例子，考虑了以上所有因素。它从271行缩减到135行。我们甚至可以考虑通过简化路径来进一步缩小它。也许一条有3点或4点的路径和我们有21点的路径一样有效。
+
+<iframe src="/editor?url=/manual/examples/debugging-mcve.html"></iframe>
+
+我保留了 `OrbitController` 因为它是很有用的——别人可以通过移动相机
+搞清楚发生了什么。但是根据实际情况你也可以移除它。
+
+认真写一个MCVE所带来的好处就是我们经常能自己解决问题。删除所有不需要的内容，并尽我们所能制作最小的示例来重现问题的过程往往会使得错误原因的展现。
+
+最重要的是，它尊重了查看你问题代码的其他人的时间。通过做一个简单的例子，你就可以让他们更容易地帮助你。你也将在这个过程中学习。
+
+同样重要的是，当你去到Stack Overflow 提交问题的时候 <strong>将你的代码放在[代码片段](https://stackoverflow.blog/2014/09/16/introducing-runnable-javascript-css-and-html-code-snippets/).</strong>里
+你当然可以使用JSFiddle 或者 Codepen 或者相似的第三方网站去测试你的MCVE，但是一旦你在Stack
+Overflow上面发布问题，你就需要把代码放在<strong>问题本身</strong>中重现你的问题。
+
+还请注意，此站点上的所有实时示例都应作为片段运行。只需将HTML、CSS和JavaScript部分复制到
+[代码段编辑器](https://stackoverflow.blog/2014/09/16/introducing-runnable-javascript-css-and-html-code-snippets/)
+各自的部分。请记住，尽量删除与您的问题无关的部分，并尽量使您的代码达到所需的最小数量。
+
+遵循这些建议你就可能在解决问题上得到帮助
+
+## 使用[`MeshBasicMaterial`](/api/en/materials/MeshBasicMaterial)
+
+由于[`MeshBasicMaterial`](/api/en/materials/MeshBasicMaterial)不使用光照，这样做就不会产生一些物体不显示的问题了。如果你的物体在使用[`MeshBasicMaterial`](/api/en/materials/MeshBasicMaterial)
+的时候显示，但是在使用其他任何材料时候不显示，那么你便知道问题出在材料或者光照上而不是其他地方的代码。
+
+## 检查你相机的 `near` 和 `far` 设置
+
+一个 [`PerspectiveCamera`](/api/en/cameras/PerspectiveCamera) 有 `near` 和
+`far` 设置——在
+[article on cameras](cameras.html)这篇文章中讲过。保证它的值的设置所能观察到的空间范围能够包裹你渲染的物体
+甚至可以<strong>暂时性的</strong>设置为 `near` = 0.001 以及 `far` = 1000000。你可能遇到深度层级分辨率问题但是你至少可以看到你的物体——前提是它在你的相机前。
+
+## 检查相机前的场景
+
+有时候一些东西不会出现因为它们不在相机前。 如果你的相机是不可控制的，尝试添加一个相机控制器比如
+`OrbitController`，这样你就可以看到周围的景象并找到你的场景。
+或者，尝试使用[这篇文章](load-obj.html)中介绍的代码来设置场景的帧。该代码查找场景部分的大小，然后移动摄影机并调整`near`和`far`设置以使其可见。然后可以查看调试器或添加一些 `console.log` 消息以打印场景的大小和中心。
+
+## 在相机前放一些东西
+
+这只是另一种说法，如果所有其他方法都失败了，那么就从一些有效的方法开始，然后慢慢地再添加一些东西。
+如果你得到一个屏幕上没有任何东西，那么试着把一些东西直接放在相机前面。制作一个球体或长方体，给它一个简单的材质，比如 [`MeshBasicMaterial`](/api/en/materials/MeshBasicMaterial) ，
+确保你可以在屏幕上看到它。然后可以一次添加一些东西，然后再测试它。最终，你要么复现出你的bug，要么在途中发现它。
+
+以上这些就是调试JavaScript的一些建议。让我们开始浏览[调试GLSL的一些建议](debugging-glsl.html)吧。

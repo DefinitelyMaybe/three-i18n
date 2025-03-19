@@ -1,0 +1,20 @@
+---
+title: WebGLの互換性の確認
+sidebar:
+  order: 2
+---
+
+問題が少なくなってきたとはいえ、端末やブラウザによってはWebGLに対応していない場合があります。以下の方法で、ブラウザがWebGLをサポートしているかどうかを確認し、サポートされていない場合はユーザーにメッセージを表示することができます。
+WebGL サポート検出モジュールをインポートし、レンダリングを試みる前に以下を実行します。
+
+```javascript
+import WebGL from "three/addons/capabilities/WebGL.js";
+
+if (WebGL.isWebGL2Available()) {
+  // Initiate function or other initializations here
+  animate();
+} else {
+  const warning = WebGL.getWebGL2ErrorMessage();
+  document.getElementById("container").appendChild(warning);
+}
+```

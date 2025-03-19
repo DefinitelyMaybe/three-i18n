@@ -1,0 +1,65 @@
+---
+title: 如何创建VR内容
+sidebar:
+  order: 2
+---
+
+本指南简要介绍了使用three.js来制作的基于Web的VR应用程序的基本组件。
+
+## 工作流程
+
+首先，你需要将[ VRButton.js](https://github.com/mrdoob/three.js/blob/master/examples/jsm/webxr/VRButton.js)
+包含到你的项目中。
+
+```javascript
+import { VRButton } from "three/addons/webxr/VRButton.js";
+```
+
+*VRButton.createButton()*做了两件重要的事情：首先，它创建了一个按钮，指示了VR的兼容性；
+此外，若用户激活了这个按钮，则它将开启一个VR会话。
+你所要做的唯一一件事情，便是把下面的这一行代码加入到你的应用程序里。
+
+```javascript
+document.body.appendChild(VRButton.createButton(renderer));
+```
+
+接下来，你需要告诉你的*WebGLRenderer*实例来启用XR渲染。
+
+```javascript
+renderer.xr.enabled = true;
+```
+
+最后，你需要调整你的动画循环，因为在这里我们不能使用我们所熟知的
+*window.requestAnimationFrame()*函数来更新场景。对于VR项目来说，我们使用的是[setAnimationLoop](api/renderers/WebGLRenderer#setAnimationLoop)。
+
+简短的示例代码如下：
+
+```javascript
+renderer.setAnimationLoop(function () {
+  renderer.render(scene, camera);
+});
+```
+
+## 接下来的步骤
+
+请查看官方示例中与WebVR相关的示例，了解这一工作流程的实际使用、运行情况。
+
+[example:webxr_xr_ballshooter WebXR / XR / ballshooter]
+
+[example:webxr_xr_cubes WebXR / XR / cubes]
+
+[example:webxr_xr_dragging WebXR / XR / dragging]
+
+[example:webxr_xr_paint WebXR / XR / paint]
+
+[example:webxr_xr_sculpt WebXR / XR / sculpt]
+
+[example:webxr_vr_panorama_depth WebXR / VR / panorama_depth]
+
+[example:webxr_vr_panorama WebXR / VR / panorama]
+
+[example:webxr_vr_rollercoaster WebXR / VR / rollercoaster]
+
+[example:webxr_vr_sandbox WebXR / VR / sandbox]
+
+[example:webxr_vr_video WebXR / VR / video]

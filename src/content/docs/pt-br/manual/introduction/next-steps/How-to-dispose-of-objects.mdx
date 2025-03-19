@@ -1,0 +1,86 @@
+---
+title: Como descartar objetos
+sidebar:
+  order: 1
+---
+
+Um aspecto importante para aumentar o desempenho e evitar vazamentos de memória em sua aplicação é o descarte de entidades da biblioteca não utilizadas.
+Sempre que você cria uma instância do tipo _three.js_, você aloca uma certa quantidade de memória. No entanto, o _three.js_ cria para objetos específicos,
+como geometrias ou materiais, entidades relacionadas ao WebGL como buffers ou programas de shader que são necessários para renderização. É importante
+destacar que esses objetos não são liberados automaticamente. Em vez disso, o aplicativo precisa usar uma API especial para liberar esses recursos.
+Este guia fornece uma breve visão geral sobre como essa API é utilizada e quais objetos são relevantes nesse contexto.
+
+## Geometrias (Geometries)
+
+Uma geometria geralmente representa informações de vértices definidas como uma coleção de atributos. _three.js_ cria internamente um objeto do tipo [ WebGLBuffer](https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer)
+para cada atributo. Essas entidades são excluídas apenas se você chamar [BufferGeometry](api/core/BufferGeometry#dispose)(). Se uma geometria se tornar obsoleta em seu aplicativo,
+execute o método para liberar todos os recursos relacionados.
+
+## Materiais (Materials)
+
+Um material define como os objetos são renderizados. _three.js_ usa as informações de uma definição de material para construir um shader para a renderização.
+Os shaders só podem ser excluídos se o respectivo material for descartado. Por motivos de desempenho, o _three.js_ tenta reutilizar
+shaders, se possível. Portanto, um shader só é excluído se todos os materiais relacionados forem descartados. Você pode indicar o descarte de um material
+executando [Material](api/materials/Material#dispose)().
+
+## Texturas (Textures)
+
+O descarte de um material não afeta as texturas. Eles são manuseados separadamente, pois uma única textura pode ser usada por vários materiais ao mesmo tempo.
+Sempre que você cria uma instância de [Texture](api/textures/Texture), o three.js cria internamente uma instância de [ WebGLTexture](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture).
+Semelhante aos buffers, este objeto só pode ser excluído chamando [Texture](api/textures/Texture#dispose)().
+
+Se você usar uma `ImageBitmap` como fonte de dados da textura, você deve chamar [ ImageBitmap.close](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/close)() no nível da aplicação para descartar todos os recursos relacionados à CPU.
+Uma chamada automatizada de `ImageBitmap.close()` em [Texture](api/textures/Texture#dispose)() não é possível, pois o bitmap da imagem se torna inutilizável e o mecanismo não tem como saber se o bitmap da imagem é usado em outro lugar.
+
+## Render Targets
+
+Objetos do tipo [WebGLRenderTarget](api/renderers/WebGLRenderTarget) não apenas alocam uma instância de [ WebGLTexture](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture), mas também
+[ WebGLFramebuffer](https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer)s e [ WebGLRenderbuffer](https://developer.mozilla.org/en-US/docs/Web/API)s
+para realizar render targets personalizados. Esses objetos são desalocados apenas executando [WebGLRenderTarget](api/renderers/WebGLRenderTarget#dispose)().
+
+## Diversos
+
+Existem outras classes da pasta de exemplos como controles ou passes de pós-processamento que fornecem métodos `dispose()` para remover listeners de eventos internos
+ou renderizar targets. Em geral, é recomendado verificar a API ou a documentação de uma classe e procurar o método `dispose()`. Se existir, você deve usá-lo ao limpar as coisas.
+
+## FAQ
+
+### Por que o _three.js_ não pode descartar objetos automaticamente?
+
+Esta pergunta foi feita muitas vezes pela comunidade, por isso é importante esclarecer este assunto. O fato é que o _three.js_ não conhece o tempo de vida ou o escopo
+das entidades criadas pelo usuário, como geometrias ou materiais. Isso é responsabilidade do aplicativo. Por exemplo, mesmo que um material não seja usado atualmente para renderização,
+ele pode ser necessário no próximo quadro. Portanto, se o aplicativo decidir que um determinado objeto pode ser excluído, ele deve notificar a engine chamando o respectivo
+método `dispose()`.
+
+### A remoção de um mesh da cena também descarta sua geometria e material?
+
+Não, você precisa descartar explicitamente a geometria e o material via _dispose()_. Tenha em mente que geometrias e materiais podem ser compartilhados entre objetos 3D como meshes.
+
+### _three.js_ fornece informações sobre a quantidade de objetos em cache?
+
+Sim. É possível avaliar [WebGLRenderer](api/renderers/WebGLRenderer#info), uma propriedade especial do renderizador (renderer) com uma série de informações estatísticas sobre a memória da placa gráfica
+e o processo de renderização. Entre outras coisas, ele informa quantas texturas, geometrias e shaders são armazenados internamente. Se você notar problemas de desempenho
+em seu aplicativo, é uma boa ideia depurar essa propriedade para identificar facilmente um vazamento de memória.
+
+### O que acontece quando você chama `dispose()` em uma textura, mas a imagem ainda não foi carregada?
+
+Os recursos internos para uma textura são alocados apenas se a imagem estiver totalmente carregada. Se você descartar uma textura antes de carregar a imagem,
+nada acontece. Nenhum recurso foi alocado, portanto, também não há necessidade de limpeza.
+
+### O que acontece quando eu chamo `dispose()` e uso o respectivo objeto posteriormente?
+
+Os recursos internos excluídos serão criados novamente pela engine. Portanto, nenhum erro em tempo de execução ocorrerá, mas você poderá notar um impacto negativo no desempenho do quadro atual,
+especialmente quando shaders precisam ser compilados.
+
+### Como devo gerenciar objetos _three.js_ em minha aplicação? Quando eu sei como descartar as coisas?
+
+Em geral, não existe uma recomendação definitiva para isso. Depende muito do caso específico de uso quando será mais apropriado chamar `dispose()`. É importante destacar que
+nem sempre é necessário descartar objetos o tempo todo. Um bom exemplo disso é um jogo que consiste de vários níveis. Um bom momento para descarte de objetos é quando
+ocorre uma mudança de nível. A aplicação pode percorrer a cena antiga e descartar todos os materiais, geometrias e texturas obsoletos. Como mencionado na seção anterior, não
+ocorrerá um erro em tempo de execução se você descartar um objeto que ainda está em uso. A pior coisa que pode acontecer é a queda de desempenho para um único quadro.
+
+## Exemplos que demonstram o uso de dispose()
+
+[example:webgl_test_memory WebGL / test / memory]
+
+[example:webgl_test_memory2 WebGL / test / memory2]

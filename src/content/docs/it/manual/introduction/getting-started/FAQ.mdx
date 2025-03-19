@@ -1,0 +1,63 @@
+---
+title: FAQ
+sidebar:
+  order: 7
+---
+
+## Qual è il formato per i modelli 3D meglio supportato?
+
+<div>
+
+Il formato raccomandato per importare ed esportare modelli 3D è il glTF (GL Transmission Format).
+Poiché è focalizzato sulla distribuzione di risorse in runtime, è compatto da trasmettere e veloce da caricare.
+
+Three.js mette a disposizione loader per molti altri formati popolari come FBX, Collada o OBJ.
+Tuttavia, si dovrebbe, nei propri progetti, sempre cercare di stabilire prima un flusso di lavoro basato su glTF.
+Per maggiori informazioni consultare la guida sul [ caricamento dei modelli 3D](/manual/introduction/Loading-3D-models).
+
+</div>
+
+## Perché negli esempi sono presenti meta tag viewport?
+
+<div>
+
+```javascript
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+```
+
+Questi tag controllano le dimensioni e la scala del viewport per i browser su mobile (dove il contenuto della pagina può essere visualizzato con dimensioni diverse rispetto al viewport).
+
+[ Safari: Usare il Viewport](https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html)
+
+[ MDN: Usare il meta tag viewport](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag)
+
+</div>
+
+## Come si può conservare la scala della scena durante il ridimensionamento?
+
+Vogliamo che tutti gli oggetti indipendentemente dalla loro distanza dalla camera, siano visualizzati con le stesse dimensioni anche se la finestra viene ridimensionata.
+
+L'equazione chiave per risolvere questo problema è data da questa formula per l'altezza visibile ad una data distanza:
+
+```javascript
+visible_height =
+  2 * Math.tan(((Math.PI / 180) * camera.fov) / 2) * distance_from_camera;
+```
+
+Se aumentiamo l'altezza della finestra di una certa percentuale, vogliamo che l'altezza visibile a tutte le distanze aumenti della stessa percentuale.
+
+Questo non può essere fatto cambiando la posizione della camera. È invece necessario modificare il valore del campo visivo (fov) della camera.
+[ Esempio](http://jsfiddle.net/Q4Jpu/).
+
+## Perché una parte del mio oggetto è invisibile?
+
+Questo comportamento può essere causato dal "face culling" (eliminazione delle facce). Le facce hanno un orientamento che decide quale lato è quello giusto.
+E il culling (eliminazione) rimuove il lato posteriore in circostanze normali. Per verificare se il problema è questo cambia la proprietà side del materiale con THREE.DoubleSide.
+
+```javascript
+material.side = THREE.DoubleSid;
+```
+
+## Perché three.js a volte restituisce strani risultati per input non validi?
+
+Per ragioni di performance three.js nella maggior parte dei casi non convalida gli input. È responsabilità della tua applicazione di controllare i dati che vengono passati a three.js.

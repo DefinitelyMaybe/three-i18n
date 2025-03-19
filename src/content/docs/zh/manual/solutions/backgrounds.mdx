@@ -1,0 +1,281 @@
+---
+title: 添加背景或天空盒
+sidebar:
+  order: 2
+---
+
+这里大部分的文章都使用纯色作为背景。
+
+添加静态背景就像添加CSS一样简单，参考来自这篇[THREE.js响应式编程](responsive.html)中的一个例子，我们只需要改变两个地方。
+
+我们需要在Canvas上添加一些CSS，以将其背景设置为图像。
+
+````html
+<style>
+body {
+margin: 0;
+}
+#c {
+width: 100%;
+height: 100%;
+display: block;
++    background: url(resources/images/daikanyama.jpg) no-repeat center center;
++    background-size: cover;
+}
+</style>```
+
+
+然后我们需要告诉 [`WebGLRenderer`](/api/en/renderers/WebGLRenderer) 去使用 `alpha`，这样我们不绘制的地方都是透明的。
+
+
+
+```js
+function main() {
+const canvas = document.querySelector('#c');
+-  const renderer = new THREE.WebGLRenderer({antialias: true, canvas});
++  const renderer = new THREE.WebGLRenderer({
++    antialias: true,
++    canvas,
++    alpha: true,
++  });```
+
+
+然后背景就有了。
+
+
+
+
+
+
+<iframe src="/editor?url=/manual/examples/background-css.html"></iframe>
+
+
+
+
+
+
+如果我们想让背景被 [后处理效果](post-processing.html)影响，我们需要用THREE.js绘制背景。
+
+
+THREE.js 让这变得非常简单。我们可以将场景的背景设置为一种纹理。
+
+
+```js
+const loader = new THREE.TextureLoader();
+const bgTexture = loader.load('resources/images/daikanyama.jpg');
+bgTexture.colorSpace = THREE.SRGBColorSpace;
+scene.background = bgTexture;```
+
+
+效果如下
+
+
+
+
+
+
+<iframe src="/editor?url=/manual/examples/background-scene-background.html"></iframe>
+
+
+
+
+
+
+这产生了一个背景图，但它被拉伸以适应屏幕。
+
+
+我们可以解决这个问题，通过设置纹理属性 `repeat` 和 `offset` 来显示图像的一部分。
+
+
+```js
+function render(time) {
+
+...
+
++  // 设置背景贴图的repeat和offset属性
++  // 来保证图片的比例是正确的
++  // 注意图片有可能还没加载完成
++  const canvasAspect = canvas.clientWidth / canvas.clientHeight;
++  const imageAspect = bgTexture.image ? bgTexture.image.width / bgTexture.image.height : 1;
++  const aspect = imageAspect / canvasAspect;
++
++  bgTexture.offset.x = aspect > 1 ? (1 - 1 / aspect) / 2 : 0;
++  bgTexture.repeat.x = aspect > 1 ? 1 / aspect : 1;
++
++  bgTexture.offset.y = aspect > 1 ? 0 : (1 - aspect) / 2;
++  bgTexture.repeat.y = aspect > 1 ? 1 : aspect;
+
+...
+
+renderer.render(scene, camera);
+
+requestAnimationFrame(render);
+}```
+
+
+现在由 THREE.js 绘制背景。这个上面CSS的版本没有明显的区别，不过如果我们应用[后处理效果](post-processing.html)，背景也会被影响。
+
+
+
+
+
+
+<iframe src="/editor?url=/manual/examples/background-scene-background-fixed-aspect.html"></iframe>
+
+
+<div class="threejs_center">
+
+![image](/resources/images/cubemaps/computer-history-museum/neg-y.jpg)
+
+
+![image](/resources/images/cubemaps/computer-history-museum/pos-z.jpg)
+
+
+![image](/resources/images/cubemaps/computer-history-museum/neg-z.jpg)
+
+</div>
+
+为了使用它们，我们使用[`CubeTextureLoader`](/api/en/loaders/CubeTextureLoader) 加载它们，然后将其用作场景的背景。
+
+
+```js
+{
+const loader = new THREE.CubeTextureLoader();
+const texture = loader.load([
+'resources/images/cubemaps/computer-history-museum/pos-x.jpg',
+'resources/images/cubemaps/computer-history-museum/neg-x.jpg',
+'resources/images/cubemaps/computer-history-museum/pos-y.jpg',
+'resources/images/cubemaps/computer-history-museum/neg-y.jpg',
+'resources/images/cubemaps/computer-history-museum/pos-z.jpg',
+'resources/images/cubemaps/computer-history-museum/neg-z.jpg',
+]);
+scene.background = texture;
+}```
+
+
+在渲染时，我们不需要像上面那样调整纹理：
+
+
+```js
+function render(time) {
+
+...
+
+-  // 设置背景贴图的repeat和offset属性
+-  // 来保证图片的比例是正确的
+-  // 注意图片有可能还没加载完成
+-  const canvasAspect = canvas.clientWidth / canvas.clientHeight;
+-  const imageAspect = bgTexture.image ? bgTexture.image.width / bgTexture.image.height : 1;
+-  const aspect = imageAspect / canvasAspect;
+-
+-  bgTexture.offset.x = aspect > 1 ? (1 - 1 / aspect) / 2 : 0;
+-  bgTexture.repeat.x = aspect > 1 ? 1 / aspect : 1;
+-
+-  bgTexture.offset.y = aspect > 1 ? 0 : (1 - aspect) / 2;
+-  bgTexture.repeat.y = aspect > 1 ? 1 : aspect;
+
+...
+
+renderer.render(scene, camera);
+
+requestAnimationFrame(render);
+}```
+
+
+让我们添加一些控件，以便我们可以旋转相机。
+
+
+```js
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';```
+
+
+```js
+const fov = 75;
+const aspect = 2;  // Canvas默认值
+const near = 0.1;
+-const far = 5;
++const far = 100;
+const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+-camera.position.z = 2;
++camera.position.z = 3;
+
++const controls = new OrbitControls(camera, canvas);
++controls.target.set(0, 0, 0);
++controls.update();```
+
+
+来尝试下，拖动以旋转示例里的相机，观察围绕着我们的立方体贴图。
+
+
+
+
+
+
+<iframe src="/editor?url=/manual/examples/background-cubemap.html"></iframe>
+
+
+
+
+
+
+另一种选择是使用等距矩形贴图(Equirectangular map)， 这是被
+[360 全景相机](https://google.com/search?q=360+camera) 拍摄的一种特殊类型的图片。
+
+
+
+[这是一张图片](https://hdrihaven.com/hdri/?h=tears_of_steel_bridge)，我从
+[这个网站](https://hdrihaven.com)找到的。
+
+
+<div class="threejs_center">
+![image](/resources/images/equirectangularmaps/tears_of_steel_bridge_2k.jpg)
+
+</div>
+
+这并不难，首先，我们将等距矩形图片加载为纹理, 我们可以调用 [`WebGLCubeRenderTarget.fromEquirectangularTexture`](/api/en/renderers/WebGLCubeRenderTarget.fromEquirectangularTexture)
+这将为我们从等距矩形纹理中生成一个立方体贴图，我们传入预期的立方体贴图的大小给 [`WebGLCubeRenderTarget`](/api/en/renderers/WebGLCubeRenderTarget)，
+使用等距矩形图片的高度似乎是一个不错的假设。
+
+
+```js
+{
+-  const loader = new THREE.CubeTextureLoader();
+-  const texture = loader.load([
+-    'resources/images/cubemaps/computer-history-museum/pos-x.jpg',
+-    'resources/images/cubemaps/computer-history-museum/neg-x.jpg',
+-    'resources/images/cubemaps/computer-history-museum/pos-y.jpg',
+-    'resources/images/cubemaps/computer-history-museum/neg-y.jpg',
+-    'resources/images/cubemaps/computer-history-museum/pos-z.jpg',
+-    'resources/images/cubemaps/computer-history-museum/neg-z.jpg',
+-  ]);
+-  scene.background = texture;
++  const loader = new THREE.TextureLoader();
++  const texture = loader.load(
++    'resources/images/equirectangularmaps/tears_of_steel_bridge_2k.jpg',
++    () => {
++      texture.mapping = THREE.EquirectangularReflectionMapping;
++      texture.colorSpace = THREE.SRGBColorSpace;
++      scene.background = texture;
++    });
+}```
+
+
+这就是全部要做的事。
+
+
+
+
+
+
+<iframe src="/editor?url=/manual/examples/background-equirectangularmap.html"></iframe>
+
+
+
+
+
+
+除了在加载时执行此操作，你还可以提前转换等距矩形到立方体贴图。[这是一个可以为你做这件事的网站](https://matheowis.github.io/HDRI-to-CubeMap/)。
+
+
+</div>
+````

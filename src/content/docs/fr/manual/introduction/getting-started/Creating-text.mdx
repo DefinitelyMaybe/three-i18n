@@ -1,0 +1,136 @@
+---
+title: Créer un texte
+sidebar:
+  order: 4
+---
+
+<div>
+
+Parfois vous aurez besoin d'utiliser du texte dans votre application three.js - ici
+sont présentées quelques façons de le faire.
+
+</div>
+
+## 1. DOM + CSS
+
+<div>
+
+Utiliser du HTML est généralement la manière la plus simple et la plus rapide d'ajouter du texte. Ceci est la méthode
+utilisée pour les overlays descriptifs de la plupart des exemples three.js.
+
+Vous pouvez ajouter du contenu à une
+
+```javascript
+<div id="info">Description</div>
+```
+
+et utiliser CSS pour donner une position absolute située au-dessus de tout le reste du contenu grâce au
+z-index plus particulièrement si vous utilisez three.js en plein-écran.
+
+```javascript
+
+#info {
+position: absolute;
+top: 10px;
+width: 100%;
+text-align: center;
+z-index: 100;
+display:block;
+}
+
+```
+
+</div>
+
+## 2. Utiliser [CSS2DRenderer](examples/renderers/CSS2DRenderer) ou [CSS3DRenderer](examples/renderers/CSS3DRenderer)
+
+<div>
+
+Utilisez ces moteurs de rendu pour dessiner des textes de haute-qualité contenus dans l'élément DOM de vos scène three.js.
+Cette approche est similaire à la 1. excepté qu'avec ces moteurs de rendu les éléments peuvent être intégrés plus précisément et dynamiquement à la scène.
+
+</div>
+
+## 3. Associer un texte au canvas et l'utiliser comme [Texture](api/textures/Texture)
+
+<div>
+
+Utilisez cette méthode si vous souhaitez dessiner du texte facilement sur un plane dans votre scène three.js.
+
+</div>
+
+## 4. Créez un modèle dans votre application 3D préférée et exportez le dans three.js
+
+<div>
+
+Utilisez cette méthode si vous préférez travailler avec vos applications 3D puis importer vos modèles dans three.js.
+
+</div>
+
+## 5. Forme de texte procédurale
+
+<div>
+
+Si vous souhaitez travailler en three.js pur ou créer des formes de texte 3D procédurales et dynamiques,
+vous pouvez créer un mesh qui aura pour geometry une instance de THREE.TextGeometry:
+
+```javascript
+new THREE.TextGeometry(text, parameters);
+```
+
+Pour que cela fonctionne, dans tous les cas, votre TextGeometry aura besoin d'une instance de THREE.Font
+avec comme paramètre "font".
+
+Voir [TextGeometry](examples/geometries/TextGeometry) pour avoir plus d'informations sur comment cela peut-être mis en place, une description de chaque
+paramètre accepté, et une liste des fonts JSON qui viennent avec la distribution THREE.js.
+
+### Exemples
+
+[example:webgl_geometry_text WebGL / geometry / text]
+
+[example:webgl_shadowmap WebGL / shadowmap]
+
+Si Typeface ne fonctionne pas, ou que vous souhaitez une font qui n'est pas ici, il y a un tutoriel
+avec un script python pour blender qui vous permet d'exporter du texte dans au format JSON de Three.js:
+[
+
+</div>
+
+## 6. Fonts Bitmap
+
+<div>
+
+BMFonts (bitmap fonts) permet de transformer les lots de glyphs en une seule BufferGeometry. Le rendu BMFont
+supporte les sauts-de-ligne, l'espacement des lettres, le crénage, les fonctions de distance signée avec
+des dérivées, les fonctions de distance signée multi-channel, les fonts multi-texture, et bien plus.
+Voir [link:https://github.com/felixmariotto/three-mesh-ui three-mesh-ui](http://www.jaanga.com/2012/03/blender-to-threejs-create-3d-text-with.html]) ou [ three-bmfont-text](https://github.com/Jam3/three-bmfont-text).
+
+Les fonts de base sont disponibles dans des projets comme
+[ A-Frame Fonts](https://github.com/etiennepinchon/aframe-fonts), ou vous pouvez créer la votre
+depuis n'importe quelle font .TTF, en optimisant les performances en n'incluant que les character requis par le projet.
+
+Quelques outils utiles:
+
+<ul>
+<li>[ msdf-bmfont-web](http://msdf-bmfont.donmccurdy.com/) _(web-based)_</li>
+<li>[ msdf-bmfont-xml](https://github.com/soimy/msdf-bmfont-xml) _(ligne de commande)_</li>
+<li>[ hiero](https://github.com/libgdx/libgdx/wiki/Hiero) _(applications desktop)_</li>
+</ul>
+</div>
+
+## 7. Troika Text
+
+<div>
+
+Le package [ troika-three-text](https://www.npmjs.com/package/troika-three-text) effectue un rendu
+de qualité et anti-aliasé des textes, utilisant une technique similaire à BMFonts, mais fonctionne directement avec n'importe quel fichier de font .TTF
+ou .WOFF pour que vous n'ayez pas à pré-générer une texture glyph hors-ligne. Il ajoute également des fonctionnalités
+comme:
+
+<ul>
+<li>Des effets comme les strokes, les ombres portées, et les courbures</li>
+<li>La capacité d'appliquer n'importe quel matériau three.js, même un ShaderMaterial customisé</li>
+<li>Le support des ligatures de fonts, des scripts pour les lettres jointes, et un layout bi-directionnel de droite-à-gauche</li>
+<li>Une optimisation pour les grandes quantités de textes dynamiques, en réalisant la plupart du travail en dehors du thread principal dans un web worker</li>
+</ul>
+</div>

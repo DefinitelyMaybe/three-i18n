@@ -1,0 +1,210 @@
+---
+title: 色彩管理
+sidebar:
+  order: 6
+---
+
+## 什么是色彩空间？
+
+每个色彩空间都是多个设计决策的集合，这些设计决策一起选择以支持多种颜色，同时满足与精度和显示技术相关的技术限制。创建 3D 资源或将 3D
+资源组装到场景中时，了解这些属性是什么以及一种颜色空间的属性如何与场景中的其他颜色空间相关非常重要。
+
+<figure class="float">
+
+![image](/resources/srgb_gamut.png)
+
+<figcaption>
+参考 CIE 1931 色度图中显示的 sRGB 颜色和白点 (D65)。彩色区域表示 sRGB 色域的 2D 投影，即 3D 体积。资料来源：[维基百科](https://en.wikipedia.org/wiki/SRGB)
+</figcaption>
+</figure>
+
+<ul>
+  <li>
+    **原色：**
+    原色（例如红、绿、蓝）不是绝对的；它们是根据可用显示设备的有限精度和功能的限制从可见光谱中选择的。颜色以原色的比率表示。
+  </li>
+  <li>
+    **白点：** 大多数色彩空间经过精心设计，使得原色 _R = G = B_
+    的同等加权总和看起来没有颜色，或“消色差”。消色差值（如白色或灰色）的外观取决于人类的感知，而人类的感知又很大程度上取决于观察者的背景。色彩空间指定其“白点”来平衡这些需求。sRGB
+    色彩空间定义的白点是 [ D65](https://en.wikipedia.org/wiki/Illuminant_D65)。
+  </li>
+  <li>
+    **传递函数：**
+    选择色域和颜色模型后，我们仍然需要定义数值与颜色空间之间的映射（“传递函数”）。
+    _r = 0.5_ 是否表示物理照明比 _r = 1.0_少 50%
+    ？或者像普通人眼所感知的那样亮度降低
+    50%？这些是不同的东西，这种差异可以用数学函数来表示。 传递函数可以是 _线性_
+    或 _非线性_的，具体取决于色彩空间的目标。sRGB
+    定义非线性传递函数。这些函数有时近似为_伽玛函数_，但术语“伽玛(gamma)”是不明确的，在这种情况下应避免使用。
+  </li>
+</ul>
+
+这三个参数——原色、白点和传递函数——定义了一个色彩空间，每个参数都是为了特定的目标而选择的。定义参数后，一些附加术语会有所帮助：
+
+<ul>
+  <li>
+    **颜色模型：** 用于在所选色域（颜色的坐标系）内以数字方式识别颜色的语法。在
+    Three.js 中，我们主要关注 RGB 颜色模型，具有三个坐标 _r, g, b ∈ [0,1]_
+    ("封闭域") 或 _r, g, b ∈ [0,∞]_ ("开放域")
+    每个代表原色的一部分。其他颜色模型（HSL、Lab、LCH）通常用于艺术控制。
+  </li>
+  <li>
+    **色域：**
+    一旦选择了原色和白点，它们就代表可见光谱内的一个体积（“色域”）。不在该体积内的颜色（“色域外”）不能用闭域
+    [0,1] RGB 值表示。在开放域 [0,∞] 中，色域在技术上是无限的。
+  </li>
+</ul>
+
+考虑两种非常常见的颜色空间： [SRGBColorSpace](PAGE_URL_ERROR) ("sRGB") 和
+[LinearSRGBColorSpace](PAGE_URL_ERROR) ("Linear-sRGB")。两者都使用相同的原色和白点，因此具有相同的色域。两者都使用 RGB 颜色模型。它们仅在传递函数上有所不同 - Linear-sRGB
+相对于物理光强度是线性的。sRGB 使用非线性 sRGB 传输函数，更接近于人眼感知光的方式以及常见显示设备的响应能力。
+
+这种差异很重要。照明计算和其他渲染操作通常必须在线性色彩空间中进行。然而，线性颜色在图像或帧缓冲区中存储的效率较低，并且在人类观察者观看时看起来不正确。因此，输入纹理和最终渲染图像通常将使用非线性 sRGB 颜色空间。
+
+<blockquote>
+
+ℹ️ _**注意：** 虽然一些现代显示器支持更宽的色域（例如 Display-P3），但 Web 平台的图形 API 在很大程度上依赖于 sRGB。如今使用 Three.js 的应用程序通常仅使用 sRGB 和
+Linear-sRGB 颜色空间。_
+
+</blockquote>
+
+## 色彩空间的作用
+
+现代渲染方法所需的线性工作流程通常涉及多个颜色空间，每个颜色空间分配给一个特定的角色。线性和非线性颜色空间适合不同的角色，如下所述。
+
+### 输入色彩空间
+
+提供给 Three.js 的颜色（来自颜色选择器、纹理、3D 模型和其他来源）每种颜色都有一个关联的颜色空间。那些尚未在 Linear-sRGB 工作色彩空间中的纹理必须进行转换，并为纹理指定正确的
+_texture.colorSpace_ 分配。如果在初始化颜色之前启用了 THREE.ColorManagement API，则可以自动进行某些转换（对于 sRGB 中的十六进制和 CSS 颜色）：
+
+```javascript
+THREE.ColorManagement.enabled = true;
+```
+
+<ul>
+  <li>
+    **材质、灯光和着色器：** 材质、灯光和着色器中的颜色将 RGB 分量存储在
+    Linear-sRGB 工作颜色空间中。
+  </li>
+  <li>
+    **顶点颜色：** [BufferAttributes](api/core/BufferAttribute) 将 RGB
+    分量存储在 Linear-sRGB 工作颜色空间中。
+  </li>
+  <li>
+    **颜色纹理：** 包含颜色信息的PNG 或 JPEG [纹理](api/textures/Texture) （如
+    .map 或 .emissiveMap）使用闭域 sRGB 颜色空间，并且必须使用
+    _texture.colorSpace = SRGBColorSpace_进行注释。像 OpenEXR
+    之类的格式（有时用于 .envMap 或 .lightMap）使用由 _texture.colorSpace =
+    LinearSRGBColorSpace_ 指示的 Linear-sRGB 颜色空间，并且可能包含开放域 [0,∞]
+    中的值。
+  </li>
+  <li>
+    **非颜色纹理：** 不存储颜色信息的纹理（如 .normalMap 或
+    .roughnessMap）没有关联的颜色空间，并且通常使用（默认）纹理注释
+    _texture.colorSpace =
+    NoColorSpace_。在极少数情况下，出于技术原因，非颜色数据可以用其他非线性编码来表示。
+  </li>
+</ul>
+
+<blockquote>
+
+⚠️ _**警告：** 许多 3D 模型格式无法正确或一致地定义色彩空间信息。虽然 Three.js 尝试处理大多数情况，但较旧的文件格式很常见问题。为了获得最佳结果，请使用 glTF 2.0
+([GLTFLoader](examples/loaders/GLTFLoader)) 并尽早在在线查看器中测试 3D 模型，以确认资产本身是正确的。_
+
+</blockquote>
+
+### 工作色彩空间
+
+渲染、插值和许多其他操作必须在开放域线性工作色彩空间中执行，其中 RGB 分量与物理照明成正比。在 Three.js 中，工作色彩空间是 Linear-sRGB。
+
+### 输出色彩空间
+
+输出到显示设备、图像或视频可能涉及从开放域 Linear-sRGB 工作色彩空间到另一个色彩空间的转换。此转换可以在主渲染通道 ([WebGLRenderer](api/renderers/WebGLRenderer#outputColorSpace)) 中或在后处理期间执行。
+
+```javascript
+renderer.outputColorSpace = THREE.SRGBColorSpace; // optional with post-processing
+```
+
+<ul>
+  <li>**显示：** 写入 WebGL 画布用于显示的颜色应位于 sRGB 颜色空间中。</li>
+  <li>
+    **图像：** 写入图像的颜色应使用适合格式和用途的颜色空间。写入 PNG 或 JPEG
+    纹理的完全渲染图像通常使用 sRGB 颜色空间。包含发射、光照贴图或其他不限于
+    [0,1] 范围的数据的图像通常会使用开放域 Linear-sRGB
+    颜色空间以及兼容的图像格式（如 OpenEXR）。
+  </li>
+</ul>
+
+<blockquote>
+
+⚠️ _**警告：** 渲染目标可以使用 sRGB 或 Linear-sRGB。sRGB 更好地利用了有限的精度。在封闭域中，8 位通常足以满足 sRGB，而 Linear-sRGB 可能需要 ≥12
+位（半浮点）。如果后面的管道阶段需要 Linear-sRGB 输入，则额外的转换可能会产生较小的性能成本。_
+
+</blockquote>
+
+基于 [ShaderMaterial](api/materials/ShaderMaterial) 和 [RawShaderMaterial](api/materials/RawShaderMaterial) 的自定义材质必须实现自己的输出颜色空间转换。对于 的实例 `ShaderMaterial`，将
+`colorspace_fragment` 着色器块添加到片段着色器的函数 `main()` 应该就足够了。
+
+## 使用 THREE.Color 实例
+
+读取或修改 [Color](api/math/Color) 实例的方法假定数据已位于 Three.js 工作色彩空间 Linear-sRGB 中。RGB 和 HSL 分量是 Color 实例存储的数据的直接表示，并且永远不会隐式转换。可以使用
+_.convertLinearToSRGB()_
+或 _.convertSRGBToLinear()_ 显式转换颜色数据。
+
+```javascript
+// RGB components (no change).
+color.r = color.g = color.b = 0.5;
+console.log(color.r); // → 0.5
+
+// Manual conversion.
+color.r = 0.5;
+color.convertSRGBToLinear();
+console.log(color.r); // → 0.214041140
+```
+
+设置 _ColorManagement.enabled = true_ （推荐） 时，会自动进行某些转换。由于十六进制和 CSS 颜色通常是 sRGB，因此 [Color](api/math/Color) 方法会在 setter
+中自动将这些输入从 sRGB 转换为 Linear-sRGB，或者在从 getter 返回十六进制或 CSS 输出时从 Linear-sRGB 转换为 sRGB。
+
+```javascript
+// Hexadecimal conversion.
+color.setHex(0x808080);
+console.log(color.r); // → 0.214041140
+console.log(color.getHex()); // → 0x808080
+
+// CSS conversion.
+color.setStyle("rgb( 0.5, 0.5, 0.5 )");
+console.log(color.r); // → 0.214041140
+
+// Override conversion with 'colorSpace' argument.
+color.setHex(0x808080, LinearSRGBColorSpace);
+console.log(color.r); // → 0.5
+console.log(color.getHex(LinearSRGBColorSpace)); // → 0x808080
+console.log(color.getHex(SRGBColorSpace)); // → 0xBCBCBC
+```
+
+## 常见错误
+
+当单个颜色或纹理配置错误时，它会显得比预期更暗或更亮。当渲染器的输出色彩空间配置错误时，整个场景可能会显得更暗（例如，缺少到 sRGB 的转换）或更亮（例如，通过后处理双重转换到
+sRGB）。在每种情况下，问题可能并不统一，并且简单地增加/减少照明并不能解决问题。
+
+当 _输入色彩空间_ 和 _输出色彩空间_ 都不正确时， 会出现一个更微妙的问题-
+整体亮度水平可能很好，但在不同的照明下颜色可能会发生意外变化，或者阴影可能会比预期的更加过度且不那么柔和。这两个错误并不能构成正确，重要的是工作颜色空间是线性的（“场景参考”）和输出颜色空间是非线性的（“显示参考”）。
+
+## 进一步阅读
+
+<ul>
+  <li>
+    [GPU Gems
+    3：线性的重要性](https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-24-importance-being-linear)，作者：
+    Larry Gritz 和 Eugene d'Eon
+  </li>
+  <li>
+    [每个程序员都应该了解 gamma
+    的知识](https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/)，作者：
+    John Novak
+  </li>
+  <li>[《数字色彩漫游指南》](https://hg2dc.com/)，作者： Troy Sobotka</li>
+  <li>
+    [色彩管理](https://docs.blender.org/manual/en/latest/render/color_management.html)，来源：Blender
+  </li>
+</ul>

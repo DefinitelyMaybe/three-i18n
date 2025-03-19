@@ -1,0 +1,66 @@
+---
+title: Рисование линий
+sidebar:
+  order: 3
+---
+
+<div>
+
+Допустим, вы хотите нарисовать линию или круг, а не каркас [Mesh](api/objects/Mesh).
+Сначала нам нужно настроить [renderer](api/renderers/WebGLRenderer)(рендеринг), [scene](api/scenes/Scene)(сцену) и камеру (см. страницу Создания сцены).
+
+Вот код, который мы будем использовать:
+
+```javascript
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const camera = new THREE.PerspectiveCamera(
+  45,
+  window.innerWidth / window.innerHeight,
+  1,
+  500,
+);
+camera.position.set(0, 0, 100);
+camera.lookAt(0, 0, 0);
+
+const scene = new THREE.Scene();
+```
+
+Следующее, что мы сделаем, - это определим материал. Для линий мы должны использовать [LineBasicMaterial](api/materials/LineBasicMaterial) или [LineDashedMaterial](api/materials/LineDashedMaterial).
+
+```javascript
+// создаем синий LineBasicMaterial
+const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+```
+
+После материала нам понадобится геометрия с некоторыми вершинами:
+
+```javascript
+const points = [];
+points.push(new THREE.Vector3(-10, 0, 0));
+points.push(new THREE.Vector3(0, 10, 0));
+points.push(new THREE.Vector3(10, 0, 0));
+
+const geometry = new THREE.BufferGeometry().setFromPoints(points);
+```
+
+Обратите внимание, что линии рисуются между каждой последовательной парой вершин, но не между первой и последней (линия не замкнута).
+
+Теперь, когда у нас есть точки для двух линий и материал, мы можем соединить их вместе, чтобы сформировать линию.
+
+```javascript
+const line = new THREE.Line(geometry, material);
+```
+
+Все, что осталось, это добавить его в сцену и вызвать [render](api/renderers/WebGLRenderer#render).
+
+```javascript
+scene.add(line);
+renderer.render(scene, camera);
+```
+
+Теперь вы должны увидеть стрелку, направленную вверх, сделанную из двух синих линий.
+
+</div>

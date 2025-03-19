@@ -1,0 +1,68 @@
+---
+title: كيفية استخدام المعالجة اللاحقة (post-processing)
+sidebar:
+  order: 3
+---
+
+تعرض العديد من تطبيقات three.js كائناتها ثلاثية الأبعاد مباشرة على الشاشة. ومع ذلك ، في بعض الأحيان ، تريد تطبيق واحد أو أكثر من التأثيرات الرسومية مثل Depth-Of-Field أو Bloom أو Film Grain أو أنواع مختلفة من Anti-aliasing. المعالجة اللاحقة هي طريقة مستخدمة على نطاق واسع لتنفيذ مثل هذه التأثيرات. أولاً ، يتم تحويل المشهد إلى هدف عرض يمثل مخزنًا مؤقتًا في ذاكرة بطاقة الفيديو.
+في الخطوة التالية ، تقوم واحدة أو أكثر من ممرات ما بعد المعالجة بتطبيق المرشحات والتأثيرات على المخزن المؤقت للصور قبل أن يتم عرضه في النهاية على الشاشة.
+
+توفر three.js حلاً كاملاً لعملية المعالجة بتوفير [EffectComposer](examples/postprocessing/EffectComposer) الذي يتولى تنفيذ مثل هذه الأعمال.
+
+## سير العمل
+
+الخطوة الأولى في العملية هي استيراد جميع الملفات الضرورية من دليل الأمثلة. يفترض الدليل أنك تستخدم الرقم الرسمي [ npm package](https://www.npmjs.com/package/three) من three.js. في العرض التوضيحي الأساسي في هذا الدليل ، نحتاج إلى الملفات التالية.
+
+```javascript
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { GlitchPass } from "three/addons/postprocessing/GlitchPass.js";
+```
+
+بعد أن يتم استرداد جميع الملفات بنجاح ، يمكنك إنشاء الملحن الخاص بنا بتمرير نموذج من [WebGLRenderer](api/renderers/WebGLRenderer).
+
+```javascript
+const composer = new EffectComposer(renderer);
+```
+
+عند استخدام الملحن ، من الضروري تغيير حلقة الرسوم المتحركة للتطبيق. بدلاً من استدعاء طريقة العرض [WebGLRenderer](api/renderers/WebGLRenderer) ، نستخدم الآن النظير الخاص بها [EffectComposer](examples/postprocessing/EffectComposer).
+
+```javascript
+function animate() {
+  requestAnimationFrame(animate);
+
+  composer.render();
+}
+```
+
+أصبح الملحن جاهزًا الآن ، لذا من الممكن تكوين سلسلة ممرات ما بعد المعالجة. هذه التمريرات مسؤولة عن إنشاء الإخراج المرئي النهائي للتطبيق. تتم معالجتها بترتيب الإضافة / الإدراج. في مثالنا ، تم تنفيذ _RenderPass_ أولاً ثم _GlitchPass_. يتم عرض آخر تمرير تم تمكينه في السلسلة تلقائيًا على الشاشة. يبدو إعداد التصاريح كما يلي:
+
+```javascript
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+const glitchPass = new GlitchPass();
+composer.addPass(glitchPass);
+```
+
+يتم وضع _RenderPass_ بشكل طبيعي في بداية السلسلة من أجل توفير المشهد الذي تم عرضه كمدخل لخطوة ما بعد المعالجة التالية. في حالتنا ، ستستخدم _GlitchPass_ بيانات الصورة هذه لتطبيق تأثير خلل جامح. تحقق من هذا [ live example](https://threejs.org/examples/webgl_postprocessing_glitch) لتراها في العمل.
+
+## تصاريح مدمجة
+
+يمكنك استخدام مجموعة واسعة من تصاريح ما بعد المعالجة التي يوفرها المحرك. يتم الاحتفاظ بها في الدليل [ postprocessing](https://github.com/mrdoob/three.js/tree/dev/examples/jsm/postprocessing).
+
+## تصاريح مخصصة
+
+في بعض الأحيان تريد كتابة تظليل مخصص للمعالجة اللاحقة وإدراجه في سلسلة ممرات ما بعد المعالجة. في هذا السيناريو ، يمكنك استخدام _ShaderPass_. بعد استيراد الملف والتظليل المخصص الخاص بك ، يمكنك استخدام الكود التالي لإعداد المرور.
+
+```javascript
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { LuminosityShader } from "three/addons/shaders/LuminosityShader.js";
+
+// later in your init routine
+
+const luminosityPass = new ShaderPass(LuminosityShader);
+composer.addPass(luminosityPass);
+```
+
+يوفر المستودع ملفًا يسمى [ CopyShader](https://github.com/mrdoob/three.js/blob/master/examples/jsm/shaders/CopyShader.js) وهو رمز بداية جيد للتظليل المخصص الخاص بك. _CopyShader_ فقط ينسخ محتويات الصورة من مخزن قراءة [EffectComposer](examples/postprocessing/EffectComposer) إلى مخزن الكتابة المؤقت الخاص به دون تطبيق أي تأثيرات.

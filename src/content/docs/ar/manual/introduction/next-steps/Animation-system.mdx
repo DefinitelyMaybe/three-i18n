@@ -1,0 +1,74 @@
+---
+title: نظام الحركات
+sidebar:
+  order: 5
+---
+
+## نظرة عامة
+
+يضمن نظام الرسوم المتحركة three.js ، إمكانية تحريك الخصائص المختلفة لنماذجك: عظام [skinned and rigged model](api/objects/SkinnedMesh) ، morph targets ، خصائص مادة مختلفة (ألوان ، عتامة ، منطقية) ، الرؤية والتحولات. يمكن أن تتلاشى الخصائص المتحركة، أو تتلاشى وتتشوه. يمكن تغيير مقاييس الوزن والوقت للرسوم المتحركة المتزامنة المختلفة على نفس الكائن وكذلك على كائنات مختلفة بشكل مستقل. يمكن مزامنة الرسوم المتحركة المختلفة على نفس الشيء وعلى كائنات مختلفة.
+
+لتحقيق كل هذا في نظام واحد متجانس ، نظام الرسوم المتحركة three.js شعد تغييرا هامًا في عام [ 2015](https://github.com/mrdoob/three.js/issues/6881) (احذر من المعلومات القديمة!) ، ولديه الآن بنية مشابهة لـ Unity / Unreal Engine 4. تقدم هذه الصفحة لمحة موجزة عن المكونات الرئيسية للنظام وكيف تعمل معًا.
+
+### مقاطع الحركات
+
+إذا قمت باستيراد كائن ثلاثي الأبعاد متحرك بنجاح (لا يهم ما إذا كان يحتوي على عظام أو أهداف تشكيل أو كليهما) - على سبيل المثال تصديره من Blender مع [ glTF Blender exporter](https://github.com/KhronosGroup/glTF-Blender-IO) وتحميله في مشهد three.js باستخدام 333 - يضمن أن توجد مصفوفة تسمى "الرسوم المتحركة" ، تحتوي على 444 لهذا النموذج (انظر قائمة برامج التحميل المتوفرة أدناه).
+
+يحتفظ كل مقطع _AnimationClip_ عادةً ببيانات نشاط معين للكائن. إذا كانت الشبكة عبارة عن شخصية ، على سبيل المثال ، فقد يكون هناك مقطع Animation واحد للمشي ، وثاني للقفز ، وثالث للتنقل وما إلى ذلك.
+
+### مسارات الإطار الأساسي (Keyframe tracks)
+
+داخل ملف _AnimationClip_ ، يتم تخزين البيانات الخاصة بكل خاصية متحركة في [KeyframeTrack](api/animation/KeyframeTrack). بافتراض أن كائن حرف له هيكل عظمي [skeleton](api/objects/Skeleton) ، يمكن لمسار إطار رئيسي واحد تخزين البيانات لتغييرات موضع عظم الذراع السفلي بمرور الوقت ، وهو أمر مختلف تتبع البيانات الخاصة بتغييرات دوران نفس العظم ، وثلث موضع المسار ، دوران أو تحجيم عظم آخر ، وما إلى ذلك. يجب أن يكون واضحًا ، أن AnimationClip يمكن أن يتكون من الكثير من هذه المسارات.
+
+بافتراض أن النموذج يحتوي على morph targets (على سبيل المثال ، أحد أهداف التشكيل يظهر وجهًا ودودًا والآخر يظهر وجهًا غاضبًا) ، فإن كل مسار يحمل المعلومات المتعلقة بكيفية تغيير الرقم [influence](api/objects/Mesh#morphTargetInfluences) لهدف تشكيل معين أثناء أداء المقطع.
+
+### خالط الحركات (Animation Mixer)
+
+تشكل البيانات المخزنة أساس الرسوم المتحركة فقط - يتم التحكم في التشغيل الفعلي بواسطة [AnimationMixer](api/animation/AnimationMixer). يمكنك تخيل هذا ليس فقط كمشغل للرسوم المتحركة ، ولكن ك كجهاز أو مثل وحدة التحكم في المزج الحقيقي ، والتي يمكنها التحكم في العديد من الرسوم المتحركة في وقت واحد ومزجها ودمجها.
+
+### أحداث الحركات (Animation Actions)
+
+يحتوي _AnimationMixer_ نفسه على عدد قليل جدًا من الخصائص والطرق (العامة) ، لأنه يمكن التحكم فيه بواسطة [AnimationActions](api/animation/AnimationAction). من خلال تكوين _AnimationAction_ يمكنك تحديد وقت تشغيل _AnimationClip_ معين أو إيقافه مؤقتًا أو إيقاف تشغيله أحد الخلاطات ، إذا كان يجب تكرار المقطع وعدد مرات تكرارها ، سواء كان يجب إجراؤه بتلاشي أو مقياس زمني ، وبعض الأشياء الإضافية ، مثل التلاشي أو التزامن.
+
+### تحريك مجموعة من النماذج
+
+إذا كنت تريد أن تطبق على مجموعة من الكائنات حالة حركة مشتركة ، يمكنك استخدام [AnimationObjectGroup](api/animation/AnimationObjectGroup)..
+
+### التنسيقات و عناصر التحميل المدعومة
+
+لاحظ أنه لا تتضمن جميع تنسيقات النماذج الرسوم المتحركة (لا سيما OBJ) ، وأن بعض أدوات تحميل three.js فقط تدعم [AnimationClip](api/animation/AnimationClip) تسلسلًا. العديد منها يدعم هذا النوع من الرسوم المتحركة:
+
+<ul>
+  <li>[THREE.ObjectLoader](api/loaders/ObjectLoader)</li>
+  <li>THREE.BVHLoader</li>
+  <li>THREE.ColladaLoader</li>
+  <li>THREE.FBXLoader</li>
+  <li>[THREE.GLTFLoader](examples/loaders/GLTFLoader)</li>
+</ul>
+
+لاحظ أن 3ds max و Maya لا يمكنهم حاليًا تصدير العديد من الرسوم المتحركة (بمعنى الرسوم المتحركة غير الموجودة في نفس المخطط الزمني) مباشرةً إلى ملف واحد.
+
+## مثال
+
+```javascript
+let mesh;
+
+// Create an AnimationMixer, and get the list of AnimationClip instances
+const mixer = new THREE.AnimationMixer(mesh);
+const clips = mesh.animations;
+
+// Update the mixer on each frame
+function update() {
+  mixer.update(deltaSeconds);
+}
+
+// Play a specific animation
+const clip = THREE.AnimationClip.findByName(clips, "dance");
+const action = mixer.clipAction(clip);
+action.play();
+
+// Play all animations
+clips.forEach(function (clip) {
+  mixer.clipAction(clip).play();
+});
+```

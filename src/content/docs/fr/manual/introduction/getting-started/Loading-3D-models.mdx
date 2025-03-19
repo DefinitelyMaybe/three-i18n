@@ -1,0 +1,154 @@
+---
+title: Importer des modèles 3D
+sidebar:
+  order: 5
+---
+
+Les modèles 3D sont disponibles dans des centaines de formats, chacun ayant des objectifs
+différents, des fonctionnalités assorties, et une complexité variable. Même si
+[
+three.js fournit plusieurs loaders](https://github.com/mrdoob/three.js/tree/dev/examples/jsm/loaders), choisir le bon format et
+workflow vous fera gagner du temps et vous épargnera beaucoup de frustration par la suite. Certains formats sont
+difficiles à appréhender, inefficaces pour les expériences en temps-réel, ou simplement
+pas entièrement supportés pour le moment.
+
+Ce guide vous fournit un workflow recommandé pour la plupart des utilisateurs, et des suggestions
+concernant quoi essayer si les choses ne se déroulent pas comme prévu.
+
+## Avant de commencer
+
+Si vous n'êtes pas familier avec le fait de lancer un serveur local, commencez par
+[ how to run things locally](/manual/introduction/How-to-run-things-locally).
+Plusieurs erreurs communes concernant les modèles 3D peuvent-être évitées en hébergeant les fichiers
+correctement.
+
+## Workflow recommandé
+
+Dans la mesure du possible, nous recommandons l'utilisation de glTF (GL Transmission Format). Les versions
+
+<small>.GLB</small> et <small>.GLTF</small> du format sont bien supportées.
+Étant-donné que glTF se concentre sur la réduction du temps d'exécution du
+chargement des modèles, il est compact et rapide à transmettre. Les
+fonctionnalités inclusent sont les meshes, les matériaux, les textures, les
+skins, les squelettes, les morph targets, les animations, les lumières, et les
+caméras.
+
+Les fichiers glTF appartenant au domaine public sont disponibles sur des sites comme
+[
+Sketchfab](https://sketchfab.com/models?features=downloadable&sort_by=-likeCount&type=models), différents outils incluent l'export de glTF:
+
+<ul>
+  <li>[Blender](https://www.blender.org/) par the Blender Foundation</li>
+  <li>
+    [Substance
+    Painter](https://www.allegorithmic.com/products/substance-painter) par
+    Allegorithmic
+  </li>
+  <li>[Modo](https://www.foundry.com/products/modo) par Foundry</li>
+  <li>[Toolbag](https://www.marmoset.co/toolbag/) par Marmoset</li>
+  <li>[Houdini](https://www.sidefx.com/products/houdini/) par SideFX</li>
+  <li>[Cinema 4D](https://labs.maxon.net/?p=3360) par MAXON</li>
+  <li>
+    [COLLADA2GLTF](https://github.com/KhronosGroup/COLLADA2GLTF) par the Khronos
+    Group
+  </li>
+  <li>
+    [FBX2GLTF](https://github.com/facebookincubator/FBX2glTF) par Facebook
+  </li>
+  <li>
+    [OBJ2GLTF](https://github.com/AnalyticalGraphicsInc/obj2gltf) par Analytical
+    Graphics Inc
+  </li>
+  <li>
+    &hellip;et [beaucoup
+    d'autres](http://github.khronos.org/glTF-Project-Explorer/)
+  </li>
+</ul>
+
+Si votre outil de prédilection n'inclut pas le support des glTF, pensez à demander
+aux auteurs d'inclure l'export des glTF, ou postez sur
+[the glTF roadmap thread](https://github.com/KhronosGroup/glTF/issues/1051).
+
+Quand glTF n'est pas utilisable, des formats populaires comme FBX, OBJ, ou COLLADA
+sont également disponibles et régulièrement maintenus.
+
+## Charger les modèles
+
+Seulement quelques loaders (e.g. [ObjectLoader](api/loaders/ObjectLoader)) sont inclus par défaut dans
+three.js — les autres doivent être ajoutés individuellement à votre application.
+
+```javascript
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+```
+
+Une fois que vous avez importé un loader, vous pouvez ajouter un modèle à votre scène. La syntaxe varie selon
+les loaders — quand vous utilisez un autre format, jetez un oeil à la documentation de ce
+loader. Pour glTF, l'utilisation avec des scripts globaux doit-être:
+
+```javascript
+const loader = new GLTFLoader();
+
+loader.load(
+  "path/to/model.glb",
+  function (gltf) {
+    scene.add(gltf.scene);
+  },
+  undefined,
+  function (error) {
+    console.error(error);
+  },
+);
+```
+
+Voir [GLTFLoader documentation](examples/loaders/GLTFLoader) pour plus de détails.
+
+## Dépannage
+
+Vous avez passé des heures à modeler votre chef-d'oeuvre artisanal, vous le chargez sur
+la page web, et — oh non! 😭 Il est tordu, mal coloré, ou tout simplement porté-disparu.
+Commencez par ces étapes de dépannage:
+
+<ol>
+  <li>
+    Vérifiez la console JavaScript à la recherche d'erreurs, et assurez-vous
+    d'utiliser un callback `onError` à l'appel de `.load()` pour afficher le
+    résultat.
+  </li>
+  <li>
+    Visualisez le modèle dans une autre application. Pour glTF, des visualiseurs
+    de type cliquez-glissez sont disponibles pour
+    [three.js](https://gltf-viewer.donmccurdy.com/) et
+    [babylon.js](https://sandbox.babylonjs.com/). Si le modèle apparaît
+    correctement dans une ou plusieurs autres applications, [signalez une erreur
+    auprès de three.js](https://github.com/mrdoob/three.js/issues/new). Si le
+    modèle ne peut être visualisé dans n'importe quelle application, nous
+    encourageons fortement le signalement d'un bug auprès de l'application avec
+    laquelle vous avez réalisé le modèle 3D.
+  </li>
+  <li>
+    Essayez de diviser ou de multiplier la taille du modèle par un facteur de
+    1000. Plusieurs modèles sont mis à l'échelles différemment, et les gros
+    modèles peuvent ne pas apparaître si la caméra est à l'intérieur du modèle.
+  </li>
+  <li>
+    Essayez d'ajouter et de positionner une source de lumière. Le modèle
+    peut-être caché dans le noir.
+  </li>
+  <li>
+    Cherchez des requêtes concernant des textures erronées dans votre onglet
+    réseau, comme `"C:\\Path\To\Model\texture.jpg"`. Utilisez des chemins
+    relatifs menant à votre modèle à la place, comme `images/texture.jpg` — cela
+    peut nécessiter la modification du fichier du modèle dans un éditeur de
+    texte.
+  </li>
+</ol>
+
+## Demander de l'aide
+
+Si vous avez effectué le processus de dépannage ci-dessus et que votre modèle
+ne fonctionne toujours pas, utiliser la bonne approche pour demander de l'aide vous mènera
+plus rapidement à la solution. Postez une question sur le
+[forum three.js](https://discourse.threejs.org/) et, incluez dès que possible,
+votre modèle (ou un modèle plus simple avec le même problème) dans n'importe quel format
+qui vous est disponible. Incluez suffisamment d'informations pour que quelqu'un puisse reproduire
+ce problème rapidement — idéalement, une démo live.
