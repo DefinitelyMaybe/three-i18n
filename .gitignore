@@ -1,6 +1,3 @@
-packages/three/src
-scripts/
-
 # build output
 dist/
 # generated types
