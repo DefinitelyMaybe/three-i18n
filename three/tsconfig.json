@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Specify the target JavaScript version (ES6 is a common choice)
+    "module": "ESNext", // Specify the module code generation (commonjs for Node.js)
+    "lib": ["DOM", "ESNext"],
+    "strict": false, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enable compatibility with ES modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+    "outDir": "./dist", // Specify the output directory for compiled files
+    "rootDir": "./src", // Specify the root directory of your source files
+    "sourceMap": false, // Generate source maps for debugging
+    "allowJs": true
+  },
+  "include": ["src", "addons"], // Include all files in the src directory
+  "exclude": ["node_modules"] // Exclude the node_modules directory
+}

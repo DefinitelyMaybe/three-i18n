@@ -1,3 +1,6 @@
+# JSDoc folder
+three/**/*.js
+
 # build output
 dist/
 # generated types
