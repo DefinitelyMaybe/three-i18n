@@ -1,0 +1,748 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "WebGLCubeRenderTarget"
+---
+
+Defined in: three/src/renderers/WebGLCubeRenderTarget.js:15
+
+A cube render target used in context of [WebGLRenderer](Three.WebGLRenderer.html).
+
+## Extends
+
+- [`WebGLRenderTarget`](Three.WebGLRenderTarget.html)
+
+## Constructors
+
+### Constructor
+
+> **new WebGLCubeRenderTarget**(`size`?, `options`?): `WebGLCubeRenderTarget`
+
+Defined in: three/src/renderers/WebGLCubeRenderTarget.js:23
+
+Constructs a new cube render target.
+
+#### Parameters
+
+##### size?
+
+`number` = `1`
+
+The size of the render target.
+
+##### options?
+
+The configuration object.
+
+#### Returns
+
+`WebGLCubeRenderTarget`
+
+#### Overrides
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`constructor`](Three.WebGLRenderTarget.html#constructor)
+
+## Properties
+
+### \_depthTexture
+
+> **\_depthTexture**: `any`
+
+Defined in: three/src/core/RenderTarget.js:180
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`_depthTexture`](Three.WebGLRenderTarget.html#_depthtexture)
+
+***
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`_listeners`](Three.WebGLRenderTarget.html#_listeners)
+
+***
+
+### depth
+
+> **depth**: `number`
+
+Defined in: three/src/core/RenderTarget.js:82
+
+The depth of the render target.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`depth`](Three.WebGLRenderTarget.html#depth)
+
+***
+
+### depthBuffer
+
+> **depthBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:154
+
+Whether to allocate a depth buffer or not.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`depthBuffer`](Three.WebGLRenderTarget.html#depthbuffer)
+
+***
+
+### height
+
+> **height**: `number`
+
+Defined in: three/src/core/RenderTarget.js:74
+
+The height of the render target.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`height`](Three.WebGLRenderTarget.html#height)
+
+***
+
+### isRenderTarget
+
+> `readonly` **isRenderTarget**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:58
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`isRenderTarget`](Three.WebGLRenderTarget.html#isrendertarget)
+
+***
+
+### isWebGLCubeRenderTarget
+
+> `readonly` **isWebGLCubeRenderTarget**: `boolean`
+
+Defined in: three/src/renderers/WebGLCubeRenderTarget.js:34
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### isWebGLRenderTarget
+
+> `readonly` **isWebGLRenderTarget**: `boolean`
+
+Defined in: three/src/renderers/WebGLRenderTarget.js:28
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`isWebGLRenderTarget`](Three.WebGLRenderTarget.html#iswebglrendertarget)
+
+***
+
+### resolveDepthBuffer
+
+> **resolveDepthBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:170
+
+Whether to resolve the depth buffer or not.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`resolveDepthBuffer`](Three.WebGLRenderTarget.html#resolvedepthbuffer)
+
+***
+
+### resolveStencilBuffer
+
+> **resolveStencilBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:178
+
+Whether to resolve the stencil buffer or not.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`resolveStencilBuffer`](Three.WebGLRenderTarget.html#resolvestencilbuffer)
+
+***
+
+### samples
+
+> **samples**: `number`
+
+Defined in: three/src/core/RenderTarget.js:190
+
+The number of MSAA samples.
+
+A value of `0` disables MSAA.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`samples`](Three.WebGLRenderTarget.html#samples)
+
+***
+
+### scissor
+
+> **scissor**: [`Vector4`](Three.Vector4.html)
+
+Defined in: three/src/core/RenderTarget.js:91
+
+A rectangular area inside the render target's viewport. Fragments that are
+outside the area will be discarded.
+
+#### Default
+
+```ts
+(0,0,width,height)
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`scissor`](Three.WebGLRenderTarget.html#scissor)
+
+***
+
+### scissorTest
+
+> **scissorTest**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:100
+
+Indicates whether the scissor test should be enabled when rendering into
+this render target or not.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`scissorTest`](Three.WebGLRenderTarget.html#scissortest)
+
+***
+
+### stencilBuffer
+
+> **stencilBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:162
+
+Whether to allocate a stencil buffer or not.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`stencilBuffer`](Three.WebGLRenderTarget.html#stencilbuffer)
+
+***
+
+### textures
+
+> **textures**: [`Texture`](Three.Texture.html)[]
+
+Defined in: three/src/core/RenderTarget.js:137
+
+An array of textures. Each color attachment is represented as a separate texture.
+Has at least a single entry for the default color attachment.
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`textures`](Three.WebGLRenderTarget.html#textures)
+
+***
+
+### viewport
+
+> **viewport**: [`Vector4`](Three.Vector4.html)
+
+Defined in: three/src/core/RenderTarget.js:108
+
+A rectangular area representing the render target's viewport.
+
+#### Default
+
+```ts
+(0,0,width,height)
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`viewport`](Three.WebGLRenderTarget.html#viewport)
+
+***
+
+### width
+
+> **width**: `number`
+
+Defined in: three/src/core/RenderTarget.js:66
+
+The width of the render target.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`width`](Three.WebGLRenderTarget.html#width)
+
+## Accessors
+
+### depthTexture
+
+#### Get Signature
+
+> **get** **depthTexture**(): `DepthTexture`
+
+Defined in: three/src/core/RenderTarget.js:228
+
+Instead of saving the depth in a renderbuffer, a texture
+can be used instead which is useful for further processing
+e.g. in context of post-processing.
+
+##### Default
+
+```ts
+null
+```
+
+##### Returns
+
+`DepthTexture`
+
+#### Set Signature
+
+> **set** **depthTexture**(`current`): `void`
+
+Defined in: three/src/core/RenderTarget.js:211
+
+##### Parameters
+
+###### current
+
+`DepthTexture`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`depthTexture`](Three.WebGLRenderTarget.html#depthtexture)
+
+***
+
+### texture
+
+#### Get Signature
+
+> **get** **texture**(): [`Texture`](Three.Texture.html)
+
+Defined in: three/src/core/RenderTarget.js:199
+
+The texture representing the default color attachment.
+
+##### Returns
+
+[`Texture`](Three.Texture.html)
+
+#### Set Signature
+
+> **set** **texture**(`value`): `void`
+
+Defined in: three/src/core/RenderTarget.js:205
+
+##### Parameters
+
+###### value
+
+[`Texture`](Three.Texture.html)
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`texture`](Three.WebGLRenderTarget.html#texture)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`addEventListener`](Three.WebGLRenderTarget.html#addeventlistener)
+
+***
+
+### clear()
+
+> **clear**(`renderer`, `color`?, `depth`?, `stencil`?): `void`
+
+Defined in: three/src/renderers/WebGLCubeRenderTarget.js:166
+
+Clears this cube render target.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### color?
+
+`boolean` = `true`
+
+Whether the color buffer should be cleared or not.
+
+##### depth?
+
+`boolean` = `true`
+
+Whether the depth buffer should be cleared or not.
+
+##### stencil?
+
+`boolean` = `true`
+
+Whether the stencil buffer should be cleared or not.
+
+#### Returns
+
+`void`
+
+***
+
+### clone()
+
+> **clone**(): [`RenderTarget`](Three.RenderTarget.html)
+
+Defined in: three/src/core/RenderTarget.js:271
+
+Returns a new render target with copied values from this instance.
+
+#### Returns
+
+[`RenderTarget`](Three.RenderTarget.html)
+
+A clone of this instance.
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`clone`](Three.WebGLRenderTarget.html#clone)
+
+***
+
+### copy()
+
+> **copy**(`source`): [`RenderTarget`](Three.RenderTarget.html)
+
+Defined in: three/src/core/RenderTarget.js:285
+
+Copies the settings of the given render target. This is a structural copy so
+no resources are shared between render targets after the copy. That includes
+all MRT textures and the depth texture.
+
+#### Parameters
+
+##### source
+
+[`RenderTarget`](Three.RenderTarget.html)
+
+The render target to copy.
+
+#### Returns
+
+[`RenderTarget`](Three.RenderTarget.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`copy`](Three.WebGLRenderTarget.html#copy)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`dispatchEvent`](Three.WebGLRenderTarget.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/core/RenderTarget.js:331
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever this instance is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Fires
+
+RenderTarget#dispose
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`dispose`](Three.WebGLRenderTarget.html#dispose)
+
+***
+
+### fromEquirectangularTexture()
+
+> **fromEquirectangularTexture**(`renderer`, `texture`): `WebGLCubeRenderTarget`
+
+Defined in: three/src/renderers/WebGLCubeRenderTarget.js:68
+
+Converts the given equirectangular texture to a cube map.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### texture
+
+`Texture`
+
+The equirectangular texture.
+
+#### Returns
+
+`WebGLCubeRenderTarget`
+
+A reference to this cube render target.
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`hasEventListener`](Three.WebGLRenderTarget.html#haseventlistener)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`removeEventListener`](Three.WebGLRenderTarget.html#removeeventlistener)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`, `depth`?): `void`
+
+Defined in: three/src/core/RenderTarget.js:241
+
+Sets the size of this render target.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width.
+
+##### height
+
+`number`
+
+The height.
+
+##### depth?
+
+`number` = `1`
+
+The depth.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`WebGLRenderTarget`](Three.WebGLRenderTarget.html).[`setSize`](Three.WebGLRenderTarget.html#setsize)

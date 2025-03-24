@@ -1,0 +1,1591 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "BufferNode"
+---
+
+Defined in: three/src/nodes/accessors/BufferNode.js:18
+
+A special type of uniform node which represents array-like data
+as uniform buffers. The access usually happens via `element()`
+which returns an instance of [ArrayElementNode](Three.WebGPU.ArrayElementNode.html). For example:
+
+```js
+const bufferNode = buffer( array, 'mat4', count );
+const matrixNode = bufferNode.element( index ); // access a matrix from the buffer
+```
+In general, it is recommended to use the more managed [UniformArrayNode](Three.WebGPU.UniformArrayNode.html)
+since it handles more input types and automatically cares about buffer paddings.
+
+## Extends
+
+- [`UniformNode`](Three.WebGPU.UniformNode.html)
+
+## Extended by
+
+- [`UniformArrayNode`](Three.WebGPU.UniformArrayNode.html)
+- [`StorageBufferNode`](Three.WebGPU.StorageBufferNode.html)
+
+## Constructors
+
+### Constructor
+
+> **new BufferNode**(`value`, `bufferType`, `bufferCount`?): `BufferNode`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:33
+
+Constructs a new buffer node.
+
+#### Parameters
+
+##### value
+
+`number`[]
+
+Array-like buffer data.
+
+##### bufferType
+
+`string`
+
+The data type of the buffer.
+
+##### bufferCount?
+
+`number` = `0`
+
+The count of buffer elements.
+
+#### Returns
+
+`BufferNode`
+
+#### Overrides
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`constructor`](Three.WebGPU.UniformNode.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`_listeners`](Three.WebGPU.UniformNode.html#_listeners)
+
+***
+
+### bufferCount
+
+> **bufferCount**: `number`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:59
+
+The uniform node that holds the value of the reference node.
+
+#### Default
+
+```ts
+0
+```
+
+***
+
+### bufferType
+
+> **bufferType**: `string`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:51
+
+The data type of the buffer.
+
+***
+
+### global
+
+> **global**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:88
+
+Whether this node is global or not. This property is relevant for the internal
+node caching system. All nodes which should be declared just once should
+set this flag to `true` (a typical example is [AttributeNode](Three.WebGPU.AttributeNode.html)).
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`global`](Three.WebGPU.UniformNode.html#global)
+
+***
+
+### groupNode
+
+> **groupNode**: `UniformGroupNode`
+
+Defined in: three/src/nodes/core/UniformNode.js:52
+
+The uniform group of this uniform. By default, uniforms are
+managed per object but they might belong to a shared group
+which is updated per frame or render call.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`groupNode`](Three.WebGPU.UniformNode.html#groupnode)
+
+***
+
+### isBufferNode
+
+> `readonly` **isBufferNode**: `boolean`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:44
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### isInputNode
+
+> `readonly` **isInputNode**: `boolean`
+
+Defined in: three/src/nodes/core/InputNode.js:34
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`isInputNode`](Three.WebGPU.UniformNode.html#isinputnode)
+
+***
+
+### isNode
+
+> `readonly` **isNode**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:97
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`isNode`](Three.WebGPU.UniformNode.html#isnode)
+
+***
+
+### isUniformNode
+
+> `readonly` **isUniformNode**: `boolean`
+
+Defined in: three/src/nodes/core/UniformNode.js:35
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`isUniformNode`](Three.WebGPU.UniformNode.html#isuniformnode)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/nodes/core/UniformNode.js:43
+
+The name or label of the uniform.
+
+#### Default
+
+```ts
+''
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`name`](Three.WebGPU.UniformNode.html#name)
+
+***
+
+### nodeType
+
+> **nodeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:37
+
+The node type. This represents the result type of the node (e.g. `float` or `vec3`).
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`nodeType`](Three.WebGPU.UniformNode.html#nodetype)
+
+***
+
+### precision
+
+> **precision**: `"low"` \| `"medium"` \| `"high"`
+
+Defined in: three/src/nodes/core/InputNode.js:49
+
+The precision of the value in the shader.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`precision`](Three.WebGPU.UniformNode.html#precision)
+
+***
+
+### updateAfterType
+
+> **updateAfterType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:61
+
+The update type of the node's [Node#updateAfter](Three.WebGPU.Node.html#updateafter) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`updateAfterType`](Three.WebGPU.UniformNode.html#updateaftertype)
+
+***
+
+### updateBeforeType
+
+> **updateBeforeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:53
+
+The update type of the node's [Node#updateBefore](Three.WebGPU.Node.html#updatebefore) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`updateBeforeType`](Three.WebGPU.UniformNode.html#updatebeforetype)
+
+***
+
+### updateType
+
+> **updateType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:45
+
+The update type of the node's [Node#update](Three.WebGPU.Node.html#update) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`updateType`](Three.WebGPU.UniformNode.html#updatetype)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/nodes/core/Node.js:69
+
+The UUID of the node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`uuid`](Three.WebGPU.UniformNode.html#uuid)
+
+***
+
+### value
+
+> **value**: `any`
+
+Defined in: three/src/nodes/core/InputNode.js:41
+
+The value of this node. This can be any JS primitive, functions, array buffers or even three.js objects (vector, matrices, colors).
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`value`](Three.WebGPU.UniformNode.html#value)
+
+***
+
+### version
+
+> `readonly` **version**: `number`
+
+Defined in: three/src/nodes/core/Node.js:78
+
+The version of the node. The version automatically is increased when [Node#needsUpdate](Three.WebGPU.Node.html#needsupdate) is set to `true`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`version`](Three.WebGPU.UniformNode.html#version)
+
+## Accessors
+
+### needsUpdate
+
+#### Set Signature
+
+> **set** **needsUpdate**(`value`): `void`
+
+Defined in: three/src/nodes/core/Node.js:130
+
+Set this property to `true` when the node should be regenerated.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`needsUpdate`](Three.WebGPU.UniformNode.html#needsupdate)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** **type**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:146
+
+The type of the class. The value is usually the constructor name.
+
+##### Returns
+
+`string`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`type`](Three.WebGPU.UniformNode.html#type)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** `static` **type**(): `string`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:20
+
+##### Returns
+
+`string`
+
+#### Overrides
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`type`](Three.WebGPU.UniformNode.html#type-1)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`addEventListener`](Three.WebGPU.UniformNode.html#addeventlistener)
+
+***
+
+### analyze()
+
+> **analyze**(`builder`): `void`
+
+Defined in: three/src/nodes/core/Node.js:502
+
+Represents the analyze stage which is the second step of the build process, see [Node#build](Three.WebGPU.Node.html#build) method.
+This stage analyzes the node hierarchy and ensures descendent nodes are built.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`analyze`](Three.WebGPU.UniformNode.html#analyze)
+
+***
+
+### build()
+
+> **build**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:596
+
+This method performs the build of a node. The behavior of this method as well as its return value depend
+on the current build stage (setup, analyze or generate).
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string` = `null`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+When this method is executed in the setup or analyze stage, `null` is returned. In the generate stage, the generated shader string.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`build`](Three.WebGPU.UniformNode.html#build)
+
+***
+
+### customCacheKey()
+
+> **customCacheKey**(): `number`
+
+Defined in: three/src/nodes/core/Node.js:338
+
+Generate a custom cache key for this node.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`customCacheKey`](Three.WebGPU.UniformNode.html#customcachekey)
+
+***
+
+### deserialize()
+
+> **deserialize**(`data`): `void`
+
+Defined in: three/src/nodes/core/InputNode.js:114
+
+Deserializes the node from the given JSON.
+
+#### Parameters
+
+##### data
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`deserialize`](Three.WebGPU.UniformNode.html#deserialize)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`dispatchEvent`](Three.WebGPU.UniformNode.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/nodes/core/Node.js:282
+
+Calling this method dispatches the `dispose` event. This event can be used
+to register event listeners for clean up tasks.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`dispose`](Three.WebGPU.UniformNode.html#dispose)
+
+***
+
+### generate()
+
+> **generate**(`builder`, `output`): `any`
+
+Defined in: three/src/nodes/core/UniformNode.js:128
+
+#### Parameters
+
+##### builder
+
+`any`
+
+##### output
+
+`any`
+
+#### Returns
+
+`any`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`generate`](Three.WebGPU.UniformNode.html#generate)
+
+***
+
+### getCacheKey()
+
+> **getCacheKey**(`force`?): `number`
+
+Defined in: three/src/nodes/core/Node.js:318
+
+Returns the cache key for this node.
+
+#### Parameters
+
+##### force?
+
+`boolean` = `false`
+
+When set to `true`, a recomputation of the cache key is forced.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getCacheKey`](Three.WebGPU.UniformNode.html#getcachekey)
+
+***
+
+### getChildren()
+
+> **getChildren**(): `Generator`\<`any`, `void`, `unknown`\>
+
+Defined in: three/src/nodes/core/Node.js:268
+
+Generator function that can be used to iterate over the child nodes.
+
+#### Returns
+
+`Generator`\<`any`, `void`, `unknown`\>
+
+#### Generator
+
+#### Yields
+
+A child node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getChildren`](Three.WebGPU.UniformNode.html#getchildren)
+
+***
+
+### getElementType()
+
+> **getElementType**(`builder`): `string`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:69
+
+The data type of the buffer elements.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The element type.
+
+#### Overrides
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getElementType`](Three.WebGPU.UniformNode.html#getelementtype)
+
+***
+
+### getGroup()
+
+> **getGroup**(): `UniformGroupNode`
+
+Defined in: three/src/nodes/core/UniformNode.js:89
+
+Returns the [UniformNode#groupNode](Three.WebGPU.UniformNode.html#groupnode).
+
+#### Returns
+
+`UniformGroupNode`
+
+The uniform group.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getGroup`](Three.WebGPU.UniformNode.html#getgroup)
+
+***
+
+### getHash()
+
+> **getHash**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:363
+
+Returns the hash of the node which is used to identify the node. By default it's
+the [Node#uuid](Three.WebGPU.Node.html#uuid) however derived node classes might have to overwrite this method
+depending on their implementation.
+
+#### Returns
+
+`string`
+
+The hash.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getHash`](Three.WebGPU.UniformNode.html#gethash)
+
+***
+
+### getInputType()
+
+> **getInputType**(): `string`
+
+Defined in: three/src/nodes/accessors/BufferNode.js:81
+
+Overwrites the default implementation to return a fixed value `'buffer'`.
+
+#### Returns
+
+`string`
+
+The input type.
+
+#### Overrides
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getInputType`](Three.WebGPU.UniformNode.html#getinputtype)
+
+***
+
+### getMemberType()
+
+> **getMemberType**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:426
+
+Returns the node member type for the given name.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getMemberType`](Three.WebGPU.UniformNode.html#getmembertype)
+
+***
+
+### getNodeType()
+
+> **getNodeType**(): `string`
+
+Defined in: three/src/nodes/core/InputNode.js:53
+
+Returns the node's type.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getNodeType`](Three.WebGPU.UniformNode.html#getnodetype)
+
+***
+
+### getScope()
+
+> **getScope**(): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:349
+
+Returns the references to this node which is by default `this`.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getScope`](Three.WebGPU.UniformNode.html#getscope)
+
+***
+
+### getSelf()
+
+> **getSelf**(): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:227
+
+The `this` reference might point to a Proxy so this method can be used
+to get the reference to the actual node instance.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to the node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getSelf`](Three.WebGPU.UniformNode.html#getself)
+
+***
+
+### getSerializeChildren()
+
+> **getSerializeChildren**(): `any`[]
+
+Defined in: three/src/nodes/core/Node.js:721
+
+Returns the child nodes as a JSON object.
+
+#### Returns
+
+`any`[]
+
+An iterable list of serialized child objects as JSON.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getSerializeChildren`](Three.WebGPU.UniformNode.html#getserializechildren)
+
+***
+
+### getShared()
+
+> **getShared**(`builder`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:461
+
+This method is used during the build process of a node and ensures
+equal nodes are not built multiple times but just once. For example if
+`attribute( 'uv' )` is used multiple times by the user, the build
+process makes sure to process just the first node.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+The shared node if possible. Otherwise `this` is returned.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getShared`](Three.WebGPU.UniformNode.html#getshared)
+
+***
+
+### getUniformHash()
+
+> **getUniformHash**(`builder`): `string`
+
+Defined in: three/src/nodes/core/UniformNode.js:102
+
+By default, this method returns the result of [Node#getHash](Three.WebGPU.Node.html#gethash) but derived
+classes might overwrite this method with a different implementation.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The uniform hash.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getUniformHash`](Three.WebGPU.UniformNode.html#getuniformhash)
+
+***
+
+### getUpdateAfterType()
+
+> **getUpdateAfterType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:396
+
+Returns the update type of [Node#updateAfter](Three.WebGPU.Node.html#updateafter).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getUpdateAfterType`](Three.WebGPU.UniformNode.html#getupdateaftertype)
+
+***
+
+### getUpdateBeforeType()
+
+> **getUpdateBeforeType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:385
+
+Returns the update type of [Node#updateBefore](Three.WebGPU.Node.html#updatebefore).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getUpdateBeforeType`](Three.WebGPU.UniformNode.html#getupdatebeforetype)
+
+***
+
+### getUpdateType()
+
+> **getUpdateType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:374
+
+Returns the update type of [Node#update](Three.WebGPU.Node.html#update).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`getUpdateType`](Three.WebGPU.UniformNode.html#getupdatetype)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`hasEventListener`](Three.WebGPU.UniformNode.html#haseventlistener)
+
+***
+
+### isGlobal()
+
+> **isGlobal**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:256
+
+By default this method returns the value of the [Node#global](Three.WebGPU.Node.html#global) flag. This method
+can be overwritten in derived classes if an analytical way is required to determine the
+global status.
+
+#### Returns
+
+`boolean`
+
+Whether this node is global or not.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`isGlobal`](Three.WebGPU.UniformNode.html#isglobal)
+
+***
+
+### label()
+
+> **label**(`name`): [`UniformNode`](Three.WebGPU.UniformNode.html)
+
+Defined in: three/src/nodes/core/UniformNode.js:62
+
+Sets the [UniformNode#name](Three.WebGPU.UniformNode.html#name) property.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the uniform.
+
+#### Returns
+
+[`UniformNode`](Three.WebGPU.UniformNode.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`label`](Three.WebGPU.UniformNode.html#label)
+
+***
+
+### onFrameUpdate()
+
+> **onFrameUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:175
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `FRAME`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`onFrameUpdate`](Three.WebGPU.UniformNode.html#onframeupdate)
+
+***
+
+### onObjectUpdate()
+
+> **onObjectUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:201
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `OBJECT`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`onObjectUpdate`](Three.WebGPU.UniformNode.html#onobjectupdate)
+
+***
+
+### onReference()
+
+> **onReference**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:213
+
+Convenient method for defining [Node#updateReference](Three.WebGPU.Node.html#updatereference).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`onReference`](Three.WebGPU.UniformNode.html#onreference)
+
+***
+
+### onRenderUpdate()
+
+> **onRenderUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:188
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `RENDER`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`onRenderUpdate`](Three.WebGPU.UniformNode.html#onrenderupdate)
+
+***
+
+### onUpdate()
+
+> **onUpdate**(`callback`, `updateType`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/UniformNode.js:108
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update).
+
+#### Parameters
+
+##### callback
+
+`any`
+
+The update method.
+
+##### updateType
+
+`any`
+
+The update type.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`onUpdate`](Three.WebGPU.UniformNode.html#onupdate)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`removeEventListener`](Three.WebGPU.UniformNode.html#removeeventlistener)
+
+***
+
+### serialize()
+
+> **serialize**(`data`): `void`
+
+Defined in: three/src/nodes/core/InputNode.js:97
+
+Serializes the node to JSON.
+
+#### Parameters
+
+##### data
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`serialize`](Three.WebGPU.UniformNode.html#serialize)
+
+***
+
+### setGroup()
+
+> **setGroup**(`group`): [`UniformNode`](Three.WebGPU.UniformNode.html)
+
+Defined in: three/src/nodes/core/UniformNode.js:76
+
+Sets the [UniformNode#groupNode](Three.WebGPU.UniformNode.html#groupnode) property.
+
+#### Parameters
+
+##### group
+
+`UniformGroupNode`
+
+The uniform group.
+
+#### Returns
+
+[`UniformNode`](Three.WebGPU.UniformNode.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`setGroup`](Three.WebGPU.UniformNode.html#setgroup)
+
+***
+
+### setPrecision()
+
+> **setPrecision**(`precision`): `InputNode`
+
+Defined in: three/src/nodes/core/InputNode.js:89
+
+Sets the precision to the given value. The method can be
+overwritten in derived classes if the final precision must be computed
+analytically.
+
+#### Parameters
+
+##### precision
+
+The precision of the input value in the shader.
+
+`"low"` | `"medium"` | `"high"`
+
+#### Returns
+
+`InputNode`
+
+A reference to this node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`setPrecision`](Three.WebGPU.UniformNode.html#setprecision)
+
+***
+
+### setup()
+
+> **setup**(`builder`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:478
+
+Represents the setup stage which is the first step of the build process, see [Node#build](Three.WebGPU.Node.html#build) method.
+This method is often overwritten in derived modules to prepare the node which is used as the output/result.
+The output node must be returned in the `return` statement.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+The output node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`setup`](Three.WebGPU.UniformNode.html#setup)
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: three/src/nodes/core/Node.js:825
+
+Serializes the node into the three.js JSON Object/Scene format.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional JSON object that already holds serialized data from other scene objects.
+
+#### Returns
+
+`any`
+
+The serialized node.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`toJSON`](Three.WebGPU.UniformNode.html#tojson)
+
+***
+
+### traverse()
+
+> **traverse**(`callback`): `void`
+
+Defined in: three/src/nodes/core/Node.js:300
+
+Can be used to traverse through the node's hierarchy.
+
+#### Parameters
+
+##### callback
+
+`traverseCallback`
+
+A callback that is executed per node.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`traverse`](Three.WebGPU.UniformNode.html#traverse)
+
+***
+
+### update()
+
+> `abstract` **update**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:582
+
+The method can be implemented to update the node's internal state when it is used to render an object.
+The [Node#updateType](Three.WebGPU.Node.html#updatetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`update`](Three.WebGPU.UniformNode.html#update)
+
+***
+
+### updateAfter()
+
+> `abstract` **updateAfter**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:568
+
+The method can be implemented to update the node's internal state after it was used to render an object.
+The [Node#updateAfterType](Three.WebGPU.Node.html#updateaftertype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`updateAfter`](Three.WebGPU.UniformNode.html#updateafter)
+
+***
+
+### updateBefore()
+
+> `abstract` **updateBefore**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:554
+
+The method can be implemented to update the node's internal state before it is used to render an object.
+The [Node#updateBeforeType](Three.WebGPU.Node.html#updatebeforetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`updateBefore`](Three.WebGPU.UniformNode.html#updatebefore)
+
+***
+
+### updateReference()
+
+> **updateReference**(): `any`
+
+Defined in: three/src/nodes/core/Node.js:242
+
+Nodes might refer to other objects like materials. This method allows to dynamically update the reference
+to such objects based on a given state (e.g. the current node frame or builder).
+
+#### Returns
+
+`any`
+
+The updated reference.
+
+#### Inherited from
+
+[`UniformNode`](Three.WebGPU.UniformNode.html).[`updateReference`](Three.WebGPU.UniformNode.html#updatereference)

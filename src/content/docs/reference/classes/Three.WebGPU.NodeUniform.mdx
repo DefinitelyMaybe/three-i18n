@@ -1,0 +1,157 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeUniform"
+---
+
+Defined in: three/src/nodes/core/NodeUniform.js:7
+
+[NodeBuilder](Three.WebGPU.NodeBuilder.html) is going to create instances of this class during the build process
+of nodes. They represent the final shader uniforms that are going to be generated
+by the builder. A dictionary of node uniforms is maintained in [NodeBuilder#uniforms](Three.WebGPU.NodeBuilder.html#uniforms)
+for this purpose.
+
+## Constructors
+
+### Constructor
+
+> **new NodeUniform**(`name`, `type`, `node`): `NodeUniform`
+
+Defined in: three/src/nodes/core/NodeUniform.js:16
+
+Constructs a new node uniform.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the uniform.
+
+##### type
+
+`string`
+
+The type of the uniform.
+
+##### node
+
+`UniformNode`
+
+An reference to the node.
+
+#### Returns
+
+`NodeUniform`
+
+## Properties
+
+### isNodeUniform
+
+> `readonly` **isNodeUniform**: `boolean`
+
+Defined in: three/src/nodes/core/NodeUniform.js:25
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/nodes/core/NodeUniform.js:32
+
+The name of the uniform.
+
+***
+
+### node
+
+> **node**: `UniformNode`
+
+Defined in: three/src/nodes/core/NodeUniform.js:46
+
+An reference to the node.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/nodes/core/NodeUniform.js:39
+
+The type of the uniform.
+
+## Accessors
+
+### groupNode
+
+#### Get Signature
+
+> **get** **groupNode**(): `UniformGroupNode`
+
+Defined in: three/src/nodes/core/NodeUniform.js:83
+
+The uniform node's group.
+
+##### Returns
+
+`UniformGroupNode`
+
+***
+
+### id
+
+#### Get Signature
+
+> **get** **id**(): `number`
+
+Defined in: three/src/nodes/core/NodeUniform.js:72
+
+The id of the uniform node.
+
+##### Returns
+
+`number`
+
+***
+
+### value
+
+#### Get Signature
+
+> **get** **value**(): `any`
+
+Defined in: three/src/nodes/core/NodeUniform.js:55
+
+The value of the uniform node.
+
+##### Returns
+
+`any`
+
+#### Set Signature
+
+> **set** **value**(`val`): `void`
+
+Defined in: three/src/nodes/core/NodeUniform.js:61
+
+##### Parameters
+
+###### val
+
+`any`
+
+##### Returns
+
+`void`

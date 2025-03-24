@@ -1,0 +1,129 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "FogExp2"
+---
+
+Defined in: three/src/scenes/FogExp2.js:13
+
+This class can be used to define an exponential squared fog,
+which gives a clear view near the camera and a faster than exponentially
+densening fog farther from the camera.
+
+```js
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+```
+
+## Constructors
+
+### Constructor
+
+> **new FogExp2**(`color`, `density`?): `FogExp2`
+
+Defined in: three/src/scenes/FogExp2.js:21
+
+Constructs a new fog.
+
+#### Parameters
+
+##### color
+
+The fog's color.
+
+`number` | [`Color`](Three.Color.html)
+
+##### density?
+
+`number` = `0.00025`
+
+Defines how fast the fog will grow dense.
+
+#### Returns
+
+`FogExp2`
+
+## Properties
+
+### color
+
+> **color**: [`Color`](Three.Color.html)
+
+Defined in: three/src/scenes/FogExp2.js:44
+
+The fog's color.
+
+***
+
+### density
+
+> **density**: `number`
+
+Defined in: three/src/scenes/FogExp2.js:52
+
+Defines how fast the fog will grow dense.
+
+#### Default
+
+```ts
+0.00025
+```
+
+***
+
+### isFogExp2
+
+> `readonly` **isFogExp2**: `boolean`
+
+Defined in: three/src/scenes/FogExp2.js:30
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/scenes/FogExp2.js:37
+
+The name of the fog.
+
+## Methods
+
+### clone()
+
+> **clone**(): `FogExp2`
+
+Defined in: three/src/scenes/FogExp2.js:61
+
+Returns a new fog with copied values from this instance.
+
+#### Returns
+
+`FogExp2`
+
+A clone of this instance.
+
+***
+
+### toJSON()
+
+> **toJSON**(): `any`
+
+Defined in: three/src/scenes/FogExp2.js:73
+
+Serializes the fog into JSON.
+
+#### Returns
+
+`any`
+
+A JSON object representing the serialized fog

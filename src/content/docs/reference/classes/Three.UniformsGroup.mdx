@@ -1,0 +1,379 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "UniformsGroup"
+---
+
+Defined in: three/src/core/UniformsGroup.js:15
+
+A class for managing multiple uniforms in a single group. The renderer will process
+such a definition as a single UBO.
+
+Since this class can only be used in context of [ShaderMaterial](Three.ShaderMaterial.html), it is only supported
+in [WebGLRenderer](Three.WebGLRenderer.html).
+
+## Extends
+
+- [`EventDispatcher`](Three.EventDispatcher.html)
+
+## Constructors
+
+### Constructor
+
+> **new UniformsGroup**(): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:20
+
+Constructs a new uniforms group.
+
+#### Returns
+
+`UniformsGroup`
+
+#### Overrides
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`constructor`](Three.EventDispatcher.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`_listeners`](Three.EventDispatcher.html#_listeners)
+
+***
+
+### isUniformsGroup
+
+> `readonly` **isUniformsGroup**: `boolean`
+
+Defined in: three/src/core/UniformsGroup.js:31
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/core/UniformsGroup.js:47
+
+The name of the uniforms group.
+
+***
+
+### uniforms
+
+> **uniforms**: `Uniform`[]
+
+Defined in: three/src/core/UniformsGroup.js:62
+
+An array holding the uniforms.
+
+***
+
+### usage
+
+> **usage**: `any`
+
+Defined in: three/src/core/UniformsGroup.js:55
+
+The buffer usage.
+
+#### Default
+
+```ts
+StaticDrawUsage
+```
+
+## Methods
+
+### add()
+
+> **add**(`uniform`): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:72
+
+Adds the given uniform to this uniforms group.
+
+#### Parameters
+
+##### uniform
+
+`Uniform`
+
+The uniform to add.
+
+#### Returns
+
+`UniformsGroup`
+
+A reference to this uniforms group.
+
+***
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`addEventListener`](Three.EventDispatcher.html#addeventlistener)
+
+***
+
+### clone()
+
+> **clone**(): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:172
+
+Returns a new uniforms group with copied values from this instance.
+
+#### Returns
+
+`UniformsGroup`
+
+A clone of this instance.
+
+***
+
+### copy()
+
+> **copy**(`source`): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:142
+
+Copies the values of the given uniforms group to this instance.
+
+#### Parameters
+
+##### source
+
+`UniformsGroup`
+
+The uniforms group to copy.
+
+#### Returns
+
+`UniformsGroup`
+
+A reference to this uniforms group.
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`dispatchEvent`](Three.EventDispatcher.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/core/UniformsGroup.js:130
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever this instance is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Fires
+
+Texture#dispose
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`hasEventListener`](Three.EventDispatcher.html#haseventlistener)
+
+***
+
+### remove()
+
+> **remove**(`uniform`): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:86
+
+Removes the given uniform from this uniforms group.
+
+#### Parameters
+
+##### uniform
+
+`Uniform`
+
+The uniform to remove.
+
+#### Returns
+
+`UniformsGroup`
+
+A reference to this uniforms group.
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`removeEventListener`](Three.EventDispatcher.html#removeeventlistener)
+
+***
+
+### setName()
+
+> **setName**(`name`): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:102
+
+Sets the name of this uniforms group.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name to set.
+
+#### Returns
+
+`UniformsGroup`
+
+A reference to this uniforms group.
+
+***
+
+### setUsage()
+
+> **setUsage**(`value`): `UniformsGroup`
+
+Defined in: three/src/core/UniformsGroup.js:116
+
+Sets the usage of this uniforms group.
+
+#### Parameters
+
+##### value
+
+`any`
+
+The usage to set.
+
+#### Returns
+
+`UniformsGroup`
+
+A reference to this uniforms group.

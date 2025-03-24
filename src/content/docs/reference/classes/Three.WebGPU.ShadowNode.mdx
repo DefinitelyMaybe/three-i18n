@@ -1,0 +1,1682 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "ShadowNode"
+---
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:317
+
+Represents the default shadow implementation for lighting nodes.
+
+## Extends
+
+- [`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html)
+
+## Constructors
+
+### Constructor
+
+> **new ShadowNode**(`light`, `shadow`?): `ShadowNode`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:331
+
+Constructs a new shadow node.
+
+#### Parameters
+
+##### light
+
+`Light`
+
+The shadow casting light.
+
+##### shadow?
+
+`LightShadow` = `null`
+
+An optional light shadow.
+
+#### Returns
+
+`ShadowNode`
+
+#### Overrides
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`constructor`](Three.WebGPU.ShadowBaseNode.html#constructor)
+
+## Properties
+
+### \_cameraFrameId
+
+> **\_cameraFrameId**: `WeakMap`\<`WeakKey`, `any`\>
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:398
+
+***
+
+### \_depthVersionCached
+
+> **\_depthVersionCached**: `any`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:657
+
+***
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`_listeners`](Three.WebGPU.ShadowBaseNode.html#_listeners)
+
+***
+
+### global
+
+> **global**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:88
+
+Whether this node is global or not. This property is relevant for the internal
+node caching system. All nodes which should be declared just once should
+set this flag to `true` (a typical example is [AttributeNode](Three.WebGPU.AttributeNode.html)).
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`global`](Three.WebGPU.ShadowBaseNode.html#global)
+
+***
+
+### isNode
+
+> `readonly` **isNode**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:97
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`isNode`](Three.WebGPU.ShadowBaseNode.html#isnode)
+
+***
+
+### isShadowBaseNode
+
+> `readonly` **isShadowBaseNode**: `boolean`
+
+Defined in: three/src/nodes/lighting/ShadowBaseNode.js:54
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`isShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html#isshadowbasenode)
+
+***
+
+### isShadowNode
+
+> `readonly` **isShadowNode**: `boolean`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:407
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### light
+
+> **light**: `Light`
+
+Defined in: three/src/nodes/lighting/ShadowBaseNode.js:37
+
+The shadow casting light.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`light`](Three.WebGPU.ShadowBaseNode.html#light)
+
+***
+
+### nodeType
+
+> **nodeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:37
+
+The node type. This represents the result type of the node (e.g. `float` or `vec3`).
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`nodeType`](Three.WebGPU.ShadowBaseNode.html#nodetype)
+
+***
+
+### shadow
+
+> **shadow**: `LightShadow`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:342
+
+The light shadow which defines the properties light's
+shadow.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### shadowMap
+
+> **shadowMap**: `RenderTarget`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:350
+
+A reference to the shadow map which is a render target.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### updateAfterType
+
+> **updateAfterType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:61
+
+The update type of the node's [Node#updateAfter](Three.WebGPU.Node.html#updateafter) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`updateAfterType`](Three.WebGPU.ShadowBaseNode.html#updateaftertype)
+
+***
+
+### updateBeforeType
+
+> **updateBeforeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:53
+
+The update type of the node's [Node#updateBefore](Three.WebGPU.Node.html#updatebefore) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`updateBeforeType`](Three.WebGPU.ShadowBaseNode.html#updatebeforetype)
+
+***
+
+### updateType
+
+> **updateType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:45
+
+The update type of the node's [Node#update](Three.WebGPU.Node.html#update) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`updateType`](Three.WebGPU.ShadowBaseNode.html#updatetype)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/nodes/core/Node.js:69
+
+The UUID of the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`uuid`](Three.WebGPU.ShadowBaseNode.html#uuid)
+
+***
+
+### version
+
+> `readonly` **version**: `number`
+
+Defined in: three/src/nodes/core/Node.js:78
+
+The version of the node. The version automatically is increased when [Node#needsUpdate](Three.WebGPU.Node.html#needsupdate) is set to `true`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`version`](Three.WebGPU.ShadowBaseNode.html#version)
+
+***
+
+### vsmMaterialHorizontal
+
+> **vsmMaterialHorizontal**: [`NodeMaterial`](Three.WebGPU.NodeMaterial.html)
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:386
+
+Only relevant for VSM shadows. Node material which
+is used to render the second VSM pass.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### vsmMaterialVertical
+
+> **vsmMaterialVertical**: [`NodeMaterial`](Three.WebGPU.NodeMaterial.html)
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:377
+
+Only relevant for VSM shadows. Node material which
+is used to render the first VSM pass.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### vsmShadowMapHorizontal
+
+> **vsmShadowMapHorizontal**: `RenderTarget`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:368
+
+Only relevant for VSM shadows. Render target for the
+second VSM render pass.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### vsmShadowMapVertical
+
+> **vsmShadowMapVertical**: `RenderTarget`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:359
+
+Only relevant for VSM shadows. Render target for the
+first VSM render pass.
+
+#### Default
+
+```ts
+null
+```
+
+## Accessors
+
+### needsUpdate
+
+#### Set Signature
+
+> **set** **needsUpdate**(`value`): `void`
+
+Defined in: three/src/nodes/core/Node.js:130
+
+Set this property to `true` when the node should be regenerated.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`needsUpdate`](Three.WebGPU.ShadowBaseNode.html#needsupdate)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** **type**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:146
+
+The type of the class. The value is usually the constructor name.
+
+##### Returns
+
+`string`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`type`](Three.WebGPU.ShadowBaseNode.html#type)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** `static` **type**(): `string`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:319
+
+##### Returns
+
+`string`
+
+#### Overrides
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`type`](Three.WebGPU.ShadowBaseNode.html#type-1)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`addEventListener`](Three.WebGPU.ShadowBaseNode.html#addeventlistener)
+
+***
+
+### analyze()
+
+> **analyze**(`builder`): `void`
+
+Defined in: three/src/nodes/core/Node.js:502
+
+Represents the analyze stage which is the second step of the build process, see [Node#build](Three.WebGPU.Node.html#build) method.
+This stage analyzes the node hierarchy and ensures descendent nodes are built.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`analyze`](Three.WebGPU.ShadowBaseNode.html#analyze)
+
+***
+
+### build()
+
+> **build**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:596
+
+This method performs the build of a node. The behavior of this method as well as its return value depend
+on the current build stage (setup, analyze or generate).
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string` = `null`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+When this method is executed in the setup or analyze stage, `null` is returned. In the generate stage, the generated shader string.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`build`](Three.WebGPU.ShadowBaseNode.html#build)
+
+***
+
+### customCacheKey()
+
+> **customCacheKey**(): `number`
+
+Defined in: three/src/nodes/core/Node.js:338
+
+Generate a custom cache key for this node.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`customCacheKey`](Three.WebGPU.ShadowBaseNode.html#customcachekey)
+
+***
+
+### deserialize()
+
+> **deserialize**(`json`): `void`
+
+Defined in: three/src/nodes/core/Node.js:771
+
+Deserializes the node from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`deserialize`](Three.WebGPU.ShadowBaseNode.html#deserialize)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`dispatchEvent`](Three.WebGPU.ShadowBaseNode.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:733
+
+Frees the internal resources of this shadow node.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`dispose`](Three.WebGPU.ShadowBaseNode.html#dispose)
+
+***
+
+### generate()
+
+> **generate**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:534
+
+Represents the generate stage which is the third step of the build process, see [Node#build](Three.WebGPU.Node.html#build) method.
+This state builds the output node and returns the resulting shader string.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+The generated shader string.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`generate`](Three.WebGPU.ShadowBaseNode.html#generate)
+
+***
+
+### getCacheKey()
+
+> **getCacheKey**(`force`?): `number`
+
+Defined in: three/src/nodes/core/Node.js:318
+
+Returns the cache key for this node.
+
+#### Parameters
+
+##### force?
+
+`boolean` = `false`
+
+When set to `true`, a recomputation of the cache key is forced.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getCacheKey`](Three.WebGPU.ShadowBaseNode.html#getcachekey)
+
+***
+
+### getChildren()
+
+> **getChildren**(): `Generator`\<`any`, `void`, `unknown`\>
+
+Defined in: three/src/nodes/core/Node.js:268
+
+Generator function that can be used to iterate over the child nodes.
+
+#### Returns
+
+`Generator`\<`any`, `void`, `unknown`\>
+
+#### Generator
+
+#### Yields
+
+A child node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getChildren`](Three.WebGPU.ShadowBaseNode.html#getchildren)
+
+***
+
+### getElementType()
+
+> **getElementType**(`builder`): `string`
+
+Defined in: three/src/nodes/core/Node.js:410
+
+Certain types are composed of multiple elements. For example a `vec3`
+is composed of three `float` values. This method returns the type of
+these elements.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getElementType`](Three.WebGPU.ShadowBaseNode.html#getelementtype)
+
+***
+
+### getHash()
+
+> **getHash**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:363
+
+Returns the hash of the node which is used to identify the node. By default it's
+the [Node#uuid](Three.WebGPU.Node.html#uuid) however derived node classes might have to overwrite this method
+depending on their implementation.
+
+#### Returns
+
+`string`
+
+The hash.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getHash`](Three.WebGPU.ShadowBaseNode.html#gethash)
+
+***
+
+### getMemberType()
+
+> **getMemberType**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:426
+
+Returns the node member type for the given name.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getMemberType`](Three.WebGPU.ShadowBaseNode.html#getmembertype)
+
+***
+
+### getNodeType()
+
+> **getNodeType**(`builder`): `string`
+
+Defined in: three/src/nodes/core/Node.js:438
+
+Returns the node's type.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getNodeType`](Three.WebGPU.ShadowBaseNode.html#getnodetype)
+
+***
+
+### getScope()
+
+> **getScope**(): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:349
+
+Returns the references to this node which is by default `this`.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getScope`](Three.WebGPU.ShadowBaseNode.html#getscope)
+
+***
+
+### getSelf()
+
+> **getSelf**(): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:227
+
+The `this` reference might point to a Proxy so this method can be used
+to get the reference to the actual node instance.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to the node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getSelf`](Three.WebGPU.ShadowBaseNode.html#getself)
+
+***
+
+### getSerializeChildren()
+
+> **getSerializeChildren**(): `any`[]
+
+Defined in: three/src/nodes/core/Node.js:721
+
+Returns the child nodes as a JSON object.
+
+#### Returns
+
+`any`[]
+
+An iterable list of serialized child objects as JSON.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getSerializeChildren`](Three.WebGPU.ShadowBaseNode.html#getserializechildren)
+
+***
+
+### getShadowFilterFn()
+
+> **getShadowFilterFn**(`type`): `Function`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:496
+
+Returns the shadow filtering function for the given shadow type.
+
+#### Parameters
+
+##### type
+
+`number`
+
+The shadow type.
+
+#### Returns
+
+`Function`
+
+The filtering function.
+
+***
+
+### getShared()
+
+> **getShared**(`builder`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:461
+
+This method is used during the build process of a node and ensures
+equal nodes are not built multiple times but just once. For example if
+`attribute( 'uv' )` is used multiple times by the user, the build
+process makes sure to process just the first node.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+The shared node if possible. Otherwise `this` is returned.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getShared`](Three.WebGPU.ShadowBaseNode.html#getshared)
+
+***
+
+### getUpdateAfterType()
+
+> **getUpdateAfterType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:396
+
+Returns the update type of [Node#updateAfter](Three.WebGPU.Node.html#updateafter).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getUpdateAfterType`](Three.WebGPU.ShadowBaseNode.html#getupdateaftertype)
+
+***
+
+### getUpdateBeforeType()
+
+> **getUpdateBeforeType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:385
+
+Returns the update type of [Node#updateBefore](Three.WebGPU.Node.html#updatebefore).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getUpdateBeforeType`](Three.WebGPU.ShadowBaseNode.html#getupdatebeforetype)
+
+***
+
+### getUpdateType()
+
+> **getUpdateType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:374
+
+Returns the update type of [Node#update](Three.WebGPU.Node.html#update).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`getUpdateType`](Three.WebGPU.ShadowBaseNode.html#getupdatetype)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`hasEventListener`](Three.WebGPU.ShadowBaseNode.html#haseventlistener)
+
+***
+
+### isGlobal()
+
+> **isGlobal**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:256
+
+By default this method returns the value of the [Node#global](Three.WebGPU.Node.html#global) flag. This method
+can be overwritten in derived classes if an analytical way is required to determine the
+global status.
+
+#### Returns
+
+`boolean`
+
+Whether this node is global or not.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`isGlobal`](Three.WebGPU.ShadowBaseNode.html#isglobal)
+
+***
+
+### onFrameUpdate()
+
+> **onFrameUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:175
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `FRAME`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`onFrameUpdate`](Three.WebGPU.ShadowBaseNode.html#onframeupdate)
+
+***
+
+### onObjectUpdate()
+
+> **onObjectUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:201
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `OBJECT`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`onObjectUpdate`](Three.WebGPU.ShadowBaseNode.html#onobjectupdate)
+
+***
+
+### onReference()
+
+> **onReference**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:213
+
+Convenient method for defining [Node#updateReference](Three.WebGPU.Node.html#updatereference).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`onReference`](Three.WebGPU.ShadowBaseNode.html#onreference)
+
+***
+
+### onRenderUpdate()
+
+> **onRenderUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:188
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `RENDER`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`onRenderUpdate`](Three.WebGPU.ShadowBaseNode.html#onrenderupdate)
+
+***
+
+### onUpdate()
+
+> **onUpdate**(`callback`, `updateType`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:159
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+##### updateType
+
+`string`
+
+The update type.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`onUpdate`](Three.WebGPU.ShadowBaseNode.html#onupdate)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`removeEventListener`](Three.WebGPU.ShadowBaseNode.html#removeeventlistener)
+
+***
+
+### renderShadow()
+
+> **renderShadow**(`frame`): `void`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:631
+
+Renders the shadow. The logic of this function could be included
+into [ShadowNode#updateShadow](#updateshadow) however more specialized shadow
+nodes might require a custom shadow map rendering. By having a
+dedicated method, it's easier to overwrite the default behavior.
+
+#### Parameters
+
+##### frame
+
+`NodeFrame`
+
+A reference to the current node frame.
+
+#### Returns
+
+`void`
+
+***
+
+### serialize()
+
+> **serialize**(`json`): `void`
+
+Defined in: three/src/nodes/core/Node.js:732
+
+Serializes the node to JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The output JSON object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`serialize`](Three.WebGPU.ShadowBaseNode.html#serialize)
+
+***
+
+### setup()
+
+> **setup**(`builder`): `ShaderCallNodeInternal`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:589
+
+The implementation performs the setup of the output node. An output is only
+produces if shadow mapping is globally enabled in the renderer.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+A reference to the current node builder.
+
+#### Returns
+
+`ShaderCallNodeInternal`
+
+The output node.
+
+#### Overrides
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`setup`](Three.WebGPU.ShadowBaseNode.html#setup)
+
+***
+
+### setupShadow()
+
+> **setupShadow**(`builder`): `any`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:508
+
+Setups the shadow output node.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+A reference to the current node builder.
+
+#### Returns
+
+`any`
+
+The shadow output node.
+
+***
+
+### setupShadowCoord()
+
+> **setupShadowCoord**(`builder`, `shadowPosition`): `any`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:443
+
+Setups the shadow coordinates.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+A reference to the current node builder.
+
+##### shadowPosition
+
+`any`
+
+A node representing the shadow position.
+
+#### Returns
+
+`any`
+
+The shadow coordinates.
+
+***
+
+### setupShadowFilter()
+
+> **setupShadowFilter**(`builder`, `inputs`): `any`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:422
+
+Setups the shadow filtering.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+A reference to the current node builder.
+
+##### inputs
+
+A configuration object that defines the shadow filtering.
+
+###### depthTexture
+
+[`DepthTexture`](Three.DepthTexture.html)
+
+A reference to the shadow map's texture data.
+
+###### filterFn
+
+`Function`
+
+This function defines the filtering type of the shadow map e.g. PCF.
+
+###### shadow
+
+`LightShadow`
+
+The light shadow.
+
+###### shadowCoord
+
+`any`
+
+Shadow coordinates which are used to sample from the shadow map.
+
+#### Returns
+
+`any`
+
+The result node of the shadow filtering.
+
+***
+
+### setupShadowPosition()
+
+> **setupShadowPosition**(`object`): `void`
+
+Defined in: three/src/nodes/lighting/ShadowBaseNode.js:63
+
+Setups the shadow position node which is by default the predefined TSL node object `shadowPositionWorld`.
+
+#### Parameters
+
+##### object
+
+`NodeBuilder`
+
+A configuration object that must at least hold a material reference.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`setupShadowPosition`](Three.WebGPU.ShadowBaseNode.html#setupshadowposition)
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: three/src/nodes/core/Node.js:825
+
+Serializes the node into the three.js JSON Object/Scene format.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional JSON object that already holds serialized data from other scene objects.
+
+#### Returns
+
+`any`
+
+The serialized node.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`toJSON`](Three.WebGPU.ShadowBaseNode.html#tojson)
+
+***
+
+### traverse()
+
+> **traverse**(`callback`): `void`
+
+Defined in: three/src/nodes/core/Node.js:300
+
+Can be used to traverse through the node's hierarchy.
+
+#### Parameters
+
+##### callback
+
+`traverseCallback`
+
+A callback that is executed per node.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`traverse`](Three.WebGPU.ShadowBaseNode.html#traverse)
+
+***
+
+### update()
+
+> `abstract` **update**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:582
+
+The method can be implemented to update the node's internal state when it is used to render an object.
+The [Node#updateType](Three.WebGPU.Node.html#updatetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`update`](Three.WebGPU.ShadowBaseNode.html#update)
+
+***
+
+### updateAfter()
+
+> `abstract` **updateAfter**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:568
+
+The method can be implemented to update the node's internal state after it was used to render an object.
+The [Node#updateAfterType](Three.WebGPU.Node.html#updateaftertype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`updateAfter`](Three.WebGPU.ShadowBaseNode.html#updateafter)
+
+***
+
+### updateBefore()
+
+> **updateBefore**(`frame`): `void`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:767
+
+The implementation performs the update of the shadow map if necessary.
+
+#### Parameters
+
+##### frame
+
+`NodeFrame`
+
+A reference to the current node frame.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`updateBefore`](Three.WebGPU.ShadowBaseNode.html#updatebefore)
+
+***
+
+### updateReference()
+
+> **updateReference**(): `any`
+
+Defined in: three/src/nodes/core/Node.js:242
+
+Nodes might refer to other objects like materials. This method allows to dynamically update the reference
+to such objects based on a given state (e.g. the current node frame or builder).
+
+#### Returns
+
+`any`
+
+The updated reference.
+
+#### Inherited from
+
+[`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html).[`updateReference`](Three.WebGPU.ShadowBaseNode.html#updatereference)
+
+***
+
+### updateShadow()
+
+> **updateShadow**(`frame`): `void`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:649
+
+Updates the shadow.
+
+#### Parameters
+
+##### frame
+
+`NodeFrame`
+
+A reference to the current node frame.
+
+#### Returns
+
+`void`
+
+***
+
+### vsmPass()
+
+> **vsmPass**(`renderer`): `void`
+
+Defined in: three/src/nodes/lighting/ShadowNode.js:713
+
+For VSM additional render passes are required.
+
+#### Parameters
+
+##### renderer
+
+`Renderer`
+
+A reference to the current renderer.
+
+#### Returns
+
+`void`

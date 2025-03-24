@@ -1,0 +1,1279 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Shape"
+---
+
+Defined in: three/src/extras/core/Shape.js:35
+
+Defines an arbitrary 2d shape plane using paths with optional holes. It
+can be used with [ExtrudeGeometry](Three.ExtrudeGeometry.html), [ShapeGeometry](Three.ShapeGeometry.html), to get
+points, or to get triangulated faces.
+
+```js
+const heartShape = new THREE.Shape();
+
+heartShape.moveTo( 25, 25 );
+heartShape.bezierCurveTo( 25, 25, 20, 0, 0, 0 );
+heartShape.bezierCurveTo( - 30, 0, - 30, 35, - 30, 35 );
+heartShape.bezierCurveTo( - 30, 55, - 10, 77, 25, 95 );
+heartShape.bezierCurveTo( 60, 77, 80, 55, 80, 35 );
+heartShape.bezierCurveTo( 80, 35, 80, 0, 50, 0 );
+heartShape.bezierCurveTo( 35, 0, 25, 25, 25, 25 );
+
+const extrudeSettings = {
+	depth: 8,
+	bevelEnabled: true,
+	bevelSegments: 2,
+	steps: 2,
+	bevelSize: 1,
+	bevelThickness: 1
+};
+
+const geometry = new THREE.ExtrudeGeometry( heartShape, extrudeSettings );
+const mesh = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial() );
+```
+
+## Extends
+
+- [`Path`](Three.Path.html)
+
+## Constructors
+
+### Constructor
+
+> **new Shape**(`points`?): `Shape`
+
+Defined in: three/src/extras/core/Shape.js:42
+
+Constructs a new shape.
+
+#### Parameters
+
+##### points?
+
+`Vector2`[]
+
+An array of 2D points defining the shape.
+
+#### Returns
+
+`Shape`
+
+#### Overrides
+
+[`Path`](Three.Path.html).[`constructor`](Three.Path.html#constructor)
+
+## Properties
+
+### arcLengthDivisions
+
+> **arcLengthDivisions**: `number`
+
+Defined in: three/src/extras/core/Curve.js:37
+
+This value determines the amount of divisions when calculating the
+cumulative segment lengths of a curve via [Curve#getLengths](Three.Curve.html#getlengths). To ensure
+precision when using methods like [Curve#getSpacedPoints](Three.Curve.html#getspacedpoints), it is
+recommended to increase the value of this property if the curve is very large.
+
+#### Default
+
+```ts
+200
+```
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`arcLengthDivisions`](Three.Path.html#arclengthdivisions)
+
+***
+
+### autoClose
+
+> **autoClose**: `boolean`
+
+Defined in: three/src/extras/core/CurvePath.js:36
+
+Whether the path should automatically be closed
+by a line curve.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`autoClose`](Three.Path.html#autoclose)
+
+***
+
+### cacheLengths
+
+> **cacheLengths**: `number`[]
+
+Defined in: three/src/extras/core/CurvePath.js:138
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`cacheLengths`](Three.Path.html#cachelengths)
+
+***
+
+### currentPoint
+
+> **currentPoint**: [`Vector2`](Three.Vector2.html)
+
+Defined in: three/src/extras/core/Path.js:49
+
+The current offset of the path. Any new curve added will start here.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`currentPoint`](Three.Path.html#currentpoint)
+
+***
+
+### curves
+
+> **curves**: [`Curve`](Three.Curve.html)[]
+
+Defined in: three/src/extras/core/CurvePath.js:27
+
+An array of curves defining the
+path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`curves`](Three.Path.html#curves)
+
+***
+
+### holes
+
+> `readonly` **holes**: [`Path`](Three.Path.html)[]
+
+Defined in: three/src/extras/core/Shape.js:63
+
+Defines the holes in the shape. Hole definitions must use the
+opposite winding order (CW/CCW) than the outer shape.
+
+***
+
+### needsUpdate
+
+> **needsUpdate**: `boolean`
+
+Defined in: three/src/extras/core/Curve.js:45
+
+Must be set to `true` if the curve parameters have changed.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`needsUpdate`](Three.Path.html#needsupdate)
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/extras/core/Shape.js:54
+
+The type property is used for detecting the object type
+in context of serialization/deserialization.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`type`](Three.Path.html#type)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/extras/core/Shape.js:52
+
+The UUID of the shape.
+
+## Methods
+
+### absarc()
+
+> **absarc**(`aX`, `aY`, `aRadius`, `aStartAngle`, `aEndAngle`, `aClockwise`?): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:224
+
+Adds an absolutely positioned arc as an instance of [EllipseCurve](Three.EllipseCurve.html) to the path.
+
+#### Parameters
+
+##### aX
+
+`number`
+
+The x coordinate of the center of the arc.
+
+##### aY
+
+`number`
+
+The y coordinate of the center of the arc.
+
+##### aRadius
+
+`number`
+
+The radius of the arc.
+
+##### aStartAngle
+
+`number`
+
+The start angle in radians.
+
+##### aEndAngle
+
+`number`
+
+The end angle in radians.
+
+##### aClockwise?
+
+`boolean`
+
+Whether to sweep the arc clockwise or not.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`absarc`](Three.Path.html#absarc)
+
+***
+
+### absellipse()
+
+> **absellipse**(`aX`, `aY`, `xRadius`, `yRadius`, `aStartAngle`, `aEndAngle`, `aClockwise`?, `aRotation`?): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:270
+
+Adds an absolutely positioned ellipse as an instance of [EllipseCurve](Three.EllipseCurve.html) to the path.
+
+#### Parameters
+
+##### aX
+
+`number`
+
+The x coordinate of the absolute center of the ellipse.
+
+##### aY
+
+`number`
+
+The y coordinate of the absolute center of the ellipse.
+
+##### xRadius
+
+`number`
+
+The radius of the ellipse in the x axis.
+
+##### yRadius
+
+`number`
+
+The radius of the ellipse in the y axis.
+
+##### aStartAngle
+
+`number`
+
+The start angle in radians.
+
+##### aEndAngle
+
+`number`
+
+The end angle in radians.
+
+##### aClockwise?
+
+`boolean`
+
+Whether to sweep the ellipse clockwise or not.
+
+##### aRotation?
+
+`number`
+
+The rotation angle of the ellipse in radians, counterclockwise from the positive X axis.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`absellipse`](Three.Path.html#absellipse)
+
+***
+
+### add()
+
+> **add**(`curve`): `void`
+
+Defined in: three/src/extras/core/CurvePath.js:45
+
+Adds a curve to this curve path.
+
+#### Parameters
+
+##### curve
+
+[`Curve`](Three.Curve.html)
+
+The curve to add.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`add`](Three.Path.html#add)
+
+***
+
+### arc()
+
+> **arc**(`aX`, `aY`, `aRadius`, `aStartAngle`, `aEndAngle`, `aClockwise`?): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:201
+
+Adds an arc as an instance of [EllipseCurve](Three.EllipseCurve.html) to the path, positioned relative
+to the current point.
+
+#### Parameters
+
+##### aX
+
+`number`
+
+The x coordinate of the center of the arc offsetted from the previous curve.
+
+##### aY
+
+`number`
+
+The y coordinate of the center of the arc offsetted from the previous curve.
+
+##### aRadius
+
+`number`
+
+The radius of the arc.
+
+##### aStartAngle
+
+`number`
+
+The start angle in radians.
+
+##### aEndAngle
+
+`number`
+
+The end angle in radians.
+
+##### aClockwise?
+
+`boolean`
+
+Whether to sweep the arc clockwise or not.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`arc`](Three.Path.html#arc)
+
+***
+
+### bezierCurveTo()
+
+> **bezierCurveTo**(`aCP1x`, `aCP1y`, `aCP2x`, `aCP2y`, `aX`, `aY`): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:152
+
+Adds an instance of [CubicBezierCurve](Three.CubicBezierCurve.html) to the path by connecting
+the current point with the given one.
+
+#### Parameters
+
+##### aCP1x
+
+`number`
+
+The x coordinate of the first control point.
+
+##### aCP1y
+
+`number`
+
+The y coordinate of the first control point.
+
+##### aCP2x
+
+`number`
+
+The x coordinate of the second control point.
+
+##### aCP2y
+
+`number`
+
+The y coordinate of the second control point.
+
+##### aX
+
+`number`
+
+The x coordinate of the end point.
+
+##### aY
+
+`number`
+
+The y coordinate of the end point.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`bezierCurveTo`](Three.Path.html#beziercurveto)
+
+***
+
+### clone()
+
+> **clone**(): [`Curve`](Three.Curve.html)
+
+Defined in: three/src/extras/core/Curve.js:456
+
+Returns a new curve with copied values from this instance.
+
+#### Returns
+
+[`Curve`](Three.Curve.html)
+
+A clone of this instance.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`clone`](Three.Path.html#clone)
+
+***
+
+### closePath()
+
+> **closePath**(): [`CurvePath`](Three.CurvePath.html)
+
+Defined in: three/src/extras/core/CurvePath.js:56
+
+Adds a line curve to close the path.
+
+#### Returns
+
+[`CurvePath`](Three.CurvePath.html)
+
+A reference to this curve path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`closePath`](Three.Path.html#closepath)
+
+***
+
+### computeFrenetFrames()
+
+> **computeFrenetFrames**(`segments`, `closed`?): `object`
+
+Defined in: three/src/extras/core/Curve.js:337
+
+Generates the Frenet Frames. Requires a curve definition in 3D space. Used
+in geometries like [TubeGeometry](Three.TubeGeometry.html) or [ExtrudeGeometry](Three.ExtrudeGeometry.html).
+
+#### Parameters
+
+##### segments
+
+`number`
+
+The number of segments.
+
+##### closed?
+
+`boolean` = `false`
+
+Whether the curve is closed or not.
+
+#### Returns
+
+`object`
+
+The Frenet Frames.
+
+##### binormals
+
+> **binormals**: [`Vector3`](Three.Vector3.html)[]
+
+##### normals
+
+> **normals**: [`Vector3`](Three.Vector3.html)[]
+
+##### tangents
+
+> **tangents**: [`Vector3`](Three.Vector3.html)[]
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`computeFrenetFrames`](Three.Path.html#computefrenetframes)
+
+***
+
+### copy()
+
+> **copy**(`source`): `Shape`
+
+Defined in: three/src/extras/core/Shape.js:108
+
+Copies the values of the given curve to this instance.
+
+#### Parameters
+
+##### source
+
+`any`
+
+The curve to copy.
+
+#### Returns
+
+`Shape`
+
+A reference to this curve.
+
+#### Overrides
+
+[`Path`](Three.Path.html).[`copy`](Three.Path.html#copy)
+
+***
+
+### ellipse()
+
+> **ellipse**(`aX`, `aY`, `xRadius`, `yRadius`, `aStartAngle`, `aEndAngle`, `aClockwise`?, `aRotation`?): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:246
+
+Adds an ellipse as an instance of [EllipseCurve](Three.EllipseCurve.html) to the path, positioned relative
+to the current point
+
+#### Parameters
+
+##### aX
+
+`number`
+
+The x coordinate of the center of the ellipse offsetted from the previous curve.
+
+##### aY
+
+`number`
+
+The y coordinate of the center of the ellipse offsetted from the previous curve.
+
+##### xRadius
+
+`number`
+
+The radius of the ellipse in the x axis.
+
+##### yRadius
+
+`number`
+
+The radius of the ellipse in the y axis.
+
+##### aStartAngle
+
+`number`
+
+The start angle in radians.
+
+##### aEndAngle
+
+`number`
+
+The end angle in radians.
+
+##### aClockwise?
+
+`boolean`
+
+Whether to sweep the ellipse clockwise or not.
+
+##### aRotation?
+
+`number`
+
+The rotation angle of the ellipse in radians, counterclockwise from the positive X axis.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`ellipse`](Three.Path.html#ellipse)
+
+***
+
+### extractPoints()
+
+> **extractPoints**(`divisions`): `object`
+
+Defined in: three/src/extras/core/Shape.js:97
+
+Returns an object that holds contour data for the shape and its holes as
+arrays of 2D points.
+
+#### Parameters
+
+##### divisions
+
+`number`
+
+The fineness of the result.
+
+#### Returns
+
+`object`
+
+An object with contour data.
+
+##### holes
+
+> **holes**: `Vector2`[][]
+
+##### shape
+
+> **shape**: `Vector2`[]
+
+***
+
+### fromJSON()
+
+> **fromJSON**(`json`): `Shape`
+
+Defined in: three/src/extras/core/Shape.js:144
+
+Deserializes the curve from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON holding the serialized curve.
+
+#### Returns
+
+`Shape`
+
+A reference to this curve.
+
+#### Overrides
+
+[`Path`](Three.Path.html).[`fromJSON`](Three.Path.html#fromjson)
+
+***
+
+### getCurveLengths()
+
+> **getCurveLengths**(): `number`[]
+
+Defined in: three/src/extras/core/CurvePath.js:148
+
+Returns list of cumulative curve lengths of the defined curves.
+
+#### Returns
+
+`number`[]
+
+The curve lengths.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getCurveLengths`](Three.Path.html#getcurvelengths)
+
+***
+
+### getLength()
+
+> **getLength**(): `number`
+
+Defined in: three/src/extras/core/CurvePath.js:122
+
+Returns the total arc length of the curve.
+
+#### Returns
+
+`number`
+
+The length of the curve.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getLength`](Three.Path.html#getlength)
+
+***
+
+### getLengths()
+
+> **getLengths**(`divisions`?): `number`[]
+
+Defined in: three/src/extras/core/Curve.js:152
+
+Returns an array of cumulative segment lengths of the curve.
+
+#### Parameters
+
+##### divisions?
+
+`number` = `...`
+
+The number of divisions.
+
+#### Returns
+
+`number`[]
+
+An array holding the cumulative segment lengths.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getLengths`](Three.Path.html#getlengths)
+
+***
+
+### getPoint()
+
+> **getPoint**(`t`, `optionalTarget`?): `any`
+
+Defined in: three/src/extras/core/CurvePath.js:81
+
+This method returns a vector in 2D or 3D space (depending on the curve definitions)
+for the given interpolation factor.
+
+#### Parameters
+
+##### t
+
+`number`
+
+A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+
+##### optionalTarget?
+
+`any`
+
+The optional target vector the result is written to.
+
+#### Returns
+
+`any`
+
+The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getPoint`](Three.Path.html#getpoint)
+
+***
+
+### getPointAt()
+
+> **getPointAt**(`u`, `optionalTarget`?): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:82
+
+This method returns a vector in 2D or 3D space (depending on the curve definition)
+for the given interpolation factor. Unlike [Curve#getPoint](Three.Curve.html#getpoint), this method honors the length
+of the curve which equidistant samples.
+
+#### Parameters
+
+##### u
+
+`number`
+
+A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+
+##### optionalTarget?
+
+The optional target vector the result is written to.
+
+[`Vector2`](Three.Vector2.html) | [`Vector3`](Three.Vector3.html)
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getPointAt`](Three.Path.html#getpointat)
+
+***
+
+### getPoints()
+
+> **getPoints**(`divisions`): ([`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html))[]
+
+Defined in: three/src/extras/core/CurvePath.js:199
+
+This method samples the curve via [Curve#getPoint](Three.Curve.html#getpoint) and returns an array of points representing
+the curve shape.
+
+#### Parameters
+
+##### divisions
+
+`number` = `12`
+
+The number of divisions.
+
+#### Returns
+
+([`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html))[]
+
+An array holding the sampled curve values. The number of points is `divisions + 1`.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getPoints`](Three.Path.html#getpoints)
+
+***
+
+### getPointsHoles()
+
+> **getPointsHoles**(`divisions`): `Vector2`[][]
+
+Defined in: three/src/extras/core/Shape.js:74
+
+Returns an array representing each contour of the holes
+as a list of 2D points.
+
+#### Parameters
+
+##### divisions
+
+`number`
+
+The fineness of the result.
+
+#### Returns
+
+`Vector2`[][]
+
+The holes as a series of 2D points.
+
+***
+
+### getSpacedPoints()
+
+> **getSpacedPoints**(`divisions`): `any`[]
+
+Defined in: three/src/extras/core/CurvePath.js:179
+
+This method samples the curve via [Curve#getPointAt](Three.Curve.html#getpointat) and returns an array of points representing
+the curve shape. Unlike [Curve#getPoints](Three.Curve.html#getpoints), this method returns equi-spaced points across the entire
+curve.
+
+#### Parameters
+
+##### divisions
+
+`number` = `40`
+
+The number of divisions.
+
+#### Returns
+
+`any`[]
+
+An array holding the sampled curve values. The number of points is `divisions + 1`.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getSpacedPoints`](Three.Path.html#getspacedpoints)
+
+***
+
+### getTangent()
+
+> **getTangent**(`t`, `optionalTarget`?): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:292
+
+Returns a unit vector tangent for the given interpolation factor.
+If the derived curve does not implement its tangent derivation,
+two points a small delta apart will be used to find its gradient
+which seems to give a reasonable approximation.
+
+#### Parameters
+
+##### t
+
+`number`
+
+The interpolation factor.
+
+##### optionalTarget?
+
+The optional target vector the result is written to.
+
+[`Vector2`](Three.Vector2.html) | [`Vector3`](Three.Vector3.html)
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The tangent vector.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getTangent`](Three.Path.html#gettangent)
+
+***
+
+### getTangentAt()
+
+> **getTangentAt**(`u`, `optionalTarget`?): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:322
+
+Same as [Curve#getTangent](Three.Curve.html#gettangent) but with equidistant samples.
+
+#### Parameters
+
+##### u
+
+`number`
+
+The interpolation factor.
+
+##### optionalTarget?
+
+The optional target vector the result is written to.
+
+[`Vector2`](Three.Vector2.html) | [`Vector3`](Three.Vector3.html)
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The tangent vector.
+
+#### See
+
+[Curve#getPointAt](Three.Curve.html#getpointat)
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getTangentAt`](Three.Path.html#gettangentat)
+
+***
+
+### getUtoTmapping()
+
+> **getUtoTmapping**(`u`, `distance`): `number`
+
+Defined in: three/src/extras/core/Curve.js:207
+
+Given an interpolation factor in the range `[0,1]`, this method returns an updated
+interpolation factor in the same range that can be ued to sample equidistant points
+from a curve.
+
+#### Parameters
+
+##### u
+
+`number`
+
+The interpolation factor.
+
+##### distance
+
+`number` = `null`
+
+An optional distance on the curve.
+
+#### Returns
+
+`number`
+
+The updated interpolation factor.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`getUtoTmapping`](Three.Path.html#getutotmapping)
+
+***
+
+### lineTo()
+
+> **lineTo**(`x`, `y`): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:103
+
+Adds an instance of [LineCurve](Three.LineCurve.html) to the path by connecting
+the current point with the given one.
+
+#### Parameters
+
+##### x
+
+`number`
+
+The x coordinate of the end point.
+
+##### y
+
+`number`
+
+The y coordinate of the end point.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`lineTo`](Three.Path.html#lineto)
+
+***
+
+### moveTo()
+
+> **moveTo**(`x`, `y`): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:87
+
+Moves [Path#currentPoint](Three.Path.html#currentpoint) to the given point.
+
+#### Parameters
+
+##### x
+
+`number`
+
+The x coordinate.
+
+##### y
+
+`number`
+
+The y coordinate.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`moveTo`](Three.Path.html#moveto)
+
+***
+
+### quadraticCurveTo()
+
+> **quadraticCurveTo**(`aCPx`, `aCPy`, `aX`, `aY`): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:124
+
+Adds an instance of [QuadraticBezierCurve](Three.QuadraticBezierCurve.html) to the path by connecting
+the current point with the given one.
+
+#### Parameters
+
+##### aCPx
+
+`number`
+
+The x coordinate of the control point.
+
+##### aCPy
+
+`number`
+
+The y coordinate of the control point.
+
+##### aX
+
+`number`
+
+The x coordinate of the end point.
+
+##### aY
+
+`number`
+
+The y coordinate of the end point.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`quadraticCurveTo`](Three.Path.html#quadraticcurveto)
+
+***
+
+### setFromPoints()
+
+> **setFromPoints**(`points`): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:66
+
+Creates a path from the given list of points. The points are added
+to the path as instances of [LineCurve](Three.LineCurve.html).
+
+#### Parameters
+
+##### points
+
+[`Vector2`](Three.Vector2.html)[]
+
+An array of 2D points.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`setFromPoints`](Three.Path.html#setfrompoints)
+
+***
+
+### splineThru()
+
+> **splineThru**(`pts`): [`Path`](Three.Path.html)
+
+Defined in: three/src/extras/core/Path.js:176
+
+Adds an instance of [SplineCurve](Three.SplineCurve.html) to the path by connecting
+the current point with the given list of points.
+
+#### Parameters
+
+##### pts
+
+[`Vector2`](Three.Vector2.html)[]
+
+An array of points in 2D space.
+
+#### Returns
+
+[`Path`](Three.Path.html)
+
+A reference to this path.
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`splineThru`](Three.Path.html#splinethru)
+
+***
+
+### toJSON()
+
+> **toJSON**(): `any`
+
+Defined in: three/src/extras/core/Shape.js:126
+
+Serializes the curve into JSON.
+
+#### Returns
+
+`any`
+
+A JSON object representing the serialized curve.
+
+#### See
+
+[ObjectLoader#parse](Three.ObjectLoader.html#parse)
+
+#### Overrides
+
+[`Path`](Three.Path.html).[`toJSON`](Three.Path.html#tojson)
+
+***
+
+### updateArcLengths()
+
+> **updateArcLengths**(): `void`
+
+Defined in: three/src/extras/core/CurvePath.js:133
+
+Update the cumulative segment distance cache. The method must be called
+every time curve parameters are changed. If an updated curve is part of a
+composed curve like [CurvePath](Three.CurvePath.html), this method must be called on the
+composed curve, too.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Path`](Three.Path.html).[`updateArcLengths`](Three.Path.html#updatearclengths)

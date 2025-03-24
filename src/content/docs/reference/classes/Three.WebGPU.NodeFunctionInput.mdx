@@ -1,0 +1,132 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeFunctionInput"
+---
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:4
+
+Describes the input of a NodeFunction.
+
+## Constructors
+
+### Constructor
+
+> **new NodeFunctionInput**(`type`, `name`, `count`?, `qualifier`?, `isConst`?): `NodeFunctionInput`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:15
+
+Constructs a new node function input.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The input type.
+
+##### name
+
+`string`
+
+The input name.
+
+##### count?
+
+`number` = `null`
+
+If the input is an Array, count will be the length.
+
+##### qualifier?
+
+The parameter qualifier (only relevant for GLSL).
+
+`"in"` | `"out"` | `"inout"`
+
+##### isConst?
+
+`boolean` = `false`
+
+Whether the input uses a const qualifier or not (only relevant for GLSL).
+
+#### Returns
+
+`NodeFunctionInput`
+
+## Properties
+
+### count
+
+> **count**: `number`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:37
+
+If the input is an Array, count will be the length.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### isConst
+
+> **isConst**: `boolean`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:53
+
+Whether the input uses a const qualifier or not (only relevant for GLSL).
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:29
+
+The input name.
+
+***
+
+### qualifier
+
+> **qualifier**: `"in"` \| `"out"` \| `"inout"`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:45
+
+The parameter qualifier (only relevant for GLSL).
+
+#### Default
+
+```ts
+''
+```
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:22
+
+The input type.
+
+***
+
+### isNodeFunctionInput
+
+> `static` **isNodeFunctionInput**: `boolean`
+
+Defined in: three/src/nodes/core/NodeFunctionInput.js:59

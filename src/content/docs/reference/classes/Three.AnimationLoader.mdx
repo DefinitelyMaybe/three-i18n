@@ -1,0 +1,427 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "AnimationLoader"
+---
+
+Defined in: three/src/loaders/AnimationLoader.js:16
+
+Class for loading animation clips in the JSON format. The files are internally
+loaded via [FileLoader](Three.FileLoader.html).
+
+```js
+const loader = new THREE.AnimationLoader();
+const animations = await loader.loadAsync( 'animations/animation.js' );
+```
+
+## Extends
+
+- [`Loader`](Three.Loader.html)
+
+## Constructors
+
+### Constructor
+
+> **new AnimationLoader**(`manager`?): `AnimationLoader`
+
+Defined in: three/src/loaders/AnimationLoader.js:23
+
+Constructs a new animation loader.
+
+#### Parameters
+
+##### manager?
+
+`LoadingManager`
+
+The loading manager.
+
+#### Returns
+
+`AnimationLoader`
+
+#### Overrides
+
+[`Loader`](Three.Loader.html).[`constructor`](Three.Loader.html#constructor)
+
+## Properties
+
+### crossOrigin
+
+> **crossOrigin**: `string`
+
+Defined in: three/src/loaders/Loader.js:32
+
+The crossOrigin string to implement CORS for loading the url from a
+different domain that allows CORS.
+
+#### Default
+
+```ts
+'anonymous'
+```
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`crossOrigin`](Three.Loader.html#crossorigin)
+
+***
+
+### manager
+
+> **manager**: `LoadingManager`
+
+Defined in: three/src/loaders/Loader.js:23
+
+The loading manager.
+
+#### Default
+
+```ts
+DefaultLoadingManager
+```
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`manager`](Three.Loader.html#manager)
+
+***
+
+### path
+
+> **path**: `string`
+
+Defined in: three/src/loaders/Loader.js:47
+
+The base path from which the asset will be loaded.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`path`](Three.Loader.html#path)
+
+***
+
+### requestHeader
+
+> **requestHeader**: `object`
+
+Defined in: three/src/loaders/Loader.js:62
+
+The [request header][https://developer.mozilla.org/en-US/docs/Glossary/Request\_header](https://developer.mozilla.org/en-US/docs/Glossary/Request_header)
+used in HTTP request.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`requestHeader`](Three.Loader.html#requestheader)
+
+***
+
+### resourcePath
+
+> **resourcePath**: `string`
+
+Defined in: three/src/loaders/Loader.js:54
+
+The base path from which additional resources like textures will be loaded.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`resourcePath`](Three.Loader.html#resourcepath)
+
+***
+
+### withCredentials
+
+> **withCredentials**: `boolean`
+
+Defined in: three/src/loaders/Loader.js:40
+
+Whether the XMLHttpRequest uses credentials.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`withCredentials`](Three.Loader.html#withcredentials)
+
+***
+
+### DEFAULT\_MATERIAL\_NAME
+
+> `static` **DEFAULT\_MATERIAL\_NAME**: `string`
+
+Defined in: three/src/loaders/Loader.js:200
+
+The default material name that is used by loaders
+when creating materials for loaded 3D objects.
+
+Note: Not all loaders might honor this setting.
+
+#### Static
+
+#### Default
+
+```ts
+'__DEFAULT'
+```
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`DEFAULT_MATERIAL_NAME`](Three.Loader.html#default_material_name)
+
+## Methods
+
+### load()
+
+> **load**(`url`, `onLoad`, `onProgress`, `onError`): `void`
+
+Defined in: three/src/loaders/AnimationLoader.js:38
+
+Starts loading from the given URL and pass the loaded animations as an array
+holding instances of [AnimationClip](Three.AnimationClip.html) to the `onLoad()` callback.
+
+#### Parameters
+
+##### url
+
+`string`
+
+The path/URL of the file to be loaded. This can also be a data URI.
+
+##### onLoad
+
+(`arg0`) => `any`
+
+Executed when the loading process has been finished.
+
+##### onProgress
+
+`onProgressCallback`
+
+Executed while the loading is in progress.
+
+##### onError
+
+`onErrorCallback`
+
+Executed when errors occur.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Loader`](Three.Loader.html).[`load`](Three.Loader.html#load)
+
+***
+
+### loadAsync()
+
+> **loadAsync**(`url`, `onProgress`?): `Promise`\<`any`\>
+
+Defined in: three/src/loaders/Loader.js:84
+
+A async version of [Loader#load](Three.Loader.html#load).
+
+#### Parameters
+
+##### url
+
+`string`
+
+The path/URL of the file to be loaded.
+
+##### onProgress?
+
+`onProgressCallback`
+
+Executed while the loading is in progress.
+
+#### Returns
+
+`Promise`\<`any`\>
+
+A Promise that resolves when the asset has been loaded.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`loadAsync`](Three.Loader.html#loadasync)
+
+***
+
+### parse()
+
+> **parse**(`json`): [`AnimationClip`](Three.AnimationClip.html)[]
+
+Defined in: three/src/loaders/AnimationLoader.js:78
+
+Parses the given JSON object and returns an array of animation clips.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The serialized animation clips.
+
+#### Returns
+
+[`AnimationClip`](Three.AnimationClip.html)[]
+
+The parsed animation clips.
+
+#### Overrides
+
+[`Loader`](Three.Loader.html).[`parse`](Three.Loader.html#parse)
+
+***
+
+### setCrossOrigin()
+
+> **setCrossOrigin**(`crossOrigin`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:111
+
+Sets the `crossOrigin` String to implement CORS for loading the URL
+from a different domain that allows CORS.
+
+#### Parameters
+
+##### crossOrigin
+
+`string`
+
+The `crossOrigin` value.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`setCrossOrigin`](Three.Loader.html#setcrossorigin)
+
+***
+
+### setPath()
+
+> **setPath**(`path`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:140
+
+Sets the base path for the asset.
+
+#### Parameters
+
+##### path
+
+`string`
+
+The base path.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`setPath`](Three.Loader.html#setpath)
+
+***
+
+### setRequestHeader()
+
+> **setRequestHeader**(`requestHeader`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:167
+
+Sets the given request header.
+
+#### Parameters
+
+##### requestHeader
+
+`any`
+
+A [request header][https://developer.mozilla.org/en-US/docs/Glossary/Request\_header](https://developer.mozilla.org/en-US/docs/Glossary/Request_header)
+for configuring the HTTP request.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`setRequestHeader`](Three.Loader.html#setrequestheader)
+
+***
+
+### setResourcePath()
+
+> **setResourcePath**(`resourcePath`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:153
+
+Sets the base path for dependent resources like textures.
+
+#### Parameters
+
+##### resourcePath
+
+`string`
+
+The resource path.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`setResourcePath`](Three.Loader.html#setresourcepath)
+
+***
+
+### setWithCredentials()
+
+> **setWithCredentials**(`value`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:127
+
+Whether the XMLHttpRequest uses credentials such as cookies, authorization
+headers or TLS client certificates, see [XMLHttpRequest.withCredentials][https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials).
+
+Note: This setting has no effect if you are loading files locally or from the same domain.
+
+#### Parameters
+
+##### value
+
+`boolean`
+
+The `withCredentials` value.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Loader`](Three.Loader.html).[`setWithCredentials`](Three.Loader.html#setwithcredentials)

@@ -1,0 +1,83 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeCode"
+---
+
+Defined in: three/src/nodes/core/NodeCode.js:7
+
+[NodeBuilder](Three.WebGPU.NodeBuilder.html) is going to create instances of this class during the build process
+of nodes. They represent user-defined, native shader code portions that are going to be
+injected by the builder. A dictionary of node codes is maintained in [NodeBuilder#codes](Three.WebGPU.NodeBuilder.html#codes)
+for this purpose.
+
+## Constructors
+
+### Constructor
+
+> **new NodeCode**(`name`, `type`, `code`?): `NodeCode`
+
+Defined in: three/src/nodes/core/NodeCode.js:16
+
+Constructs a new code node.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the code.
+
+##### type
+
+`string`
+
+The node type.
+
+##### code?
+
+`string` = `''`
+
+The native shader code.
+
+#### Returns
+
+`NodeCode`
+
+## Properties
+
+### code
+
+> **code**: `string`
+
+Defined in: three/src/nodes/core/NodeCode.js:38
+
+The native shader code.
+
+#### Default
+
+```ts
+''
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/nodes/core/NodeCode.js:23
+
+The name of the code.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/nodes/core/NodeCode.js:30
+
+The node type.

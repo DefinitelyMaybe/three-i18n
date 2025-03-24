@@ -1,0 +1,1153 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Node"
+---
+
+Defined in: three/src/nodes/core/Node.js:14
+
+Base class for all nodes.
+
+## Extends
+
+- [`EventDispatcher`](Three.EventDispatcher.html)
+
+## Extended by
+
+- [`AttributeNode`](Three.WebGPU.AttributeNode.html)
+- [`BypassNode`](Three.WebGPU.BypassNode.html)
+- [`CacheNode`](Three.WebGPU.CacheNode.html)
+- [`ContextNode`](Three.WebGPU.ContextNode.html)
+- [`IndexNode`](Three.WebGPU.IndexNode.html)
+- [`VarNode`](Three.WebGPU.VarNode.html)
+- [`PropertyNode`](Three.WebGPU.PropertyNode.html)
+- [`StackNode`](Three.WebGPU.StackNode.html)
+- [`TempNode`](Three.WebGPU.TempNode.html)
+- [`UniformGroupNode`](Three.WebGPU.UniformGroupNode.html)
+- [`VaryingNode`](Three.WebGPU.VaryingNode.html)
+- [`StructNode`](Three.WebGPU.StructNode.html)
+- [`StructTypeNode`](Three.WebGPU.StructTypeNode.html)
+- [`OutputStructNode`](Three.WebGPU.OutputStructNode.html)
+- [`ArrayElementNode`](Three.WebGPU.ArrayElementNode.html)
+- [`ConvertNode`](Three.WebGPU.ConvertNode.html)
+- [`FunctionOverloadingNode`](Three.WebGPU.FunctionOverloadingNode.html)
+- [`LoopNode`](Three.WebGPU.LoopNode.html)
+- [`RemapNode`](Three.WebGPU.RemapNode.html)
+- [`SplitNode`](Three.WebGPU.SplitNode.html)
+- [`SpriteSheetUVNode`](Three.WebGPU.SpriteSheetUVNode.html)
+- [`TriplanarTexturesNode`](Three.WebGPU.TriplanarTexturesNode.html)
+- [`MemberNode`](Three.WebGPU.MemberNode.html)
+- [`InstanceNode`](Three.WebGPU.InstanceNode.html)
+- [`BatchNode`](Three.WebGPU.BatchNode.html)
+- [`MaterialNode`](Three.WebGPU.MaterialNode.html)
+- [`MorphNode`](Three.WebGPU.MorphNode.html)
+- [`Object3DNode`](Three.WebGPU.Object3DNode.html)
+- [`PointUVNode`](Three.WebGPU.PointUVNode.html)
+- [`ReferenceNode`](Three.WebGPU.ReferenceNode.html)
+- [`SkinningNode`](Three.WebGPU.SkinningNode.html)
+- [`SceneNode`](Three.WebGPU.SceneNode.html)
+- [`TextureSizeNode`](Three.WebGPU.TextureSizeNode.html)
+- [`FrontFacingNode`](Three.WebGPU.FrontFacingNode.html)
+- [`ScreenNode`](Three.WebGPU.ScreenNode.html)
+- [`ViewportDepthNode`](Three.WebGPU.ViewportDepthNode.html)
+- [`ExpressionNode`](Three.WebGPU.ExpressionNode.html)
+- [`CodeNode`](Three.WebGPU.CodeNode.html)
+- [`ScriptableNode`](Three.WebGPU.ScriptableNode.html)
+- [`ScriptableValueNode`](Three.WebGPU.ScriptableValueNode.html)
+- [`RangeNode`](Three.WebGPU.RangeNode.html)
+- [`ComputeNode`](Three.WebGPU.ComputeNode.html)
+- [`LightsNode`](Three.WebGPU.LightsNode.html)
+- [`LightingNode`](Three.WebGPU.LightingNode.html)
+- [`ShadowBaseNode`](Three.WebGPU.ShadowBaseNode.html)
+
+## Constructors
+
+### Constructor
+
+> **new Node**(`nodeType`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:27
+
+Constructs a new node.
+
+#### Parameters
+
+##### nodeType
+
+`string` = `null`
+
+The node type.
+
+#### Returns
+
+`Node`
+
+#### Overrides
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`constructor`](Three.EventDispatcher.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`_listeners`](Three.EventDispatcher.html#_listeners)
+
+***
+
+### global
+
+> **global**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:88
+
+Whether this node is global or not. This property is relevant for the internal
+node caching system. All nodes which should be declared just once should
+set this flag to `true` (a typical example is [AttributeNode](Three.WebGPU.AttributeNode.html)).
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### isNode
+
+> `readonly` **isNode**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:97
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### nodeType
+
+> **nodeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:37
+
+The node type. This represents the result type of the node (e.g. `float` or `vec3`).
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### updateAfterType
+
+> **updateAfterType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:61
+
+The update type of the node's [Node#updateAfter](#updateafter) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+***
+
+### updateBeforeType
+
+> **updateBeforeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:53
+
+The update type of the node's [Node#updateBefore](#updatebefore) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+***
+
+### updateType
+
+> **updateType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:45
+
+The update type of the node's [Node#update](#update) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/nodes/core/Node.js:69
+
+The UUID of the node.
+
+***
+
+### version
+
+> `readonly` **version**: `number`
+
+Defined in: three/src/nodes/core/Node.js:78
+
+The version of the node. The version automatically is increased when [Node#needsUpdate](#needsupdate) is set to `true`.
+
+#### Default
+
+```ts
+0
+```
+
+## Accessors
+
+### needsUpdate
+
+#### Set Signature
+
+> **set** **needsUpdate**(`value`): `void`
+
+Defined in: three/src/nodes/core/Node.js:130
+
+Set this property to `true` when the node should be regenerated.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** **type**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:146
+
+The type of the class. The value is usually the constructor name.
+
+##### Returns
+
+`string`
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** `static` **type**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:16
+
+##### Returns
+
+`string`
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`addEventListener`](Three.EventDispatcher.html#addeventlistener)
+
+***
+
+### analyze()
+
+> **analyze**(`builder`): `void`
+
+Defined in: three/src/nodes/core/Node.js:502
+
+Represents the analyze stage which is the second step of the build process, see [Node#build](#build) method.
+This stage analyzes the node hierarchy and ensures descendent nodes are built.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+***
+
+### build()
+
+> **build**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:596
+
+This method performs the build of a node. The behavior of this method as well as its return value depend
+on the current build stage (setup, analyze or generate).
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string` = `null`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+When this method is executed in the setup or analyze stage, `null` is returned. In the generate stage, the generated shader string.
+
+***
+
+### customCacheKey()
+
+> **customCacheKey**(): `number`
+
+Defined in: three/src/nodes/core/Node.js:338
+
+Generate a custom cache key for this node.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+***
+
+### deserialize()
+
+> **deserialize**(`json`): `void`
+
+Defined in: three/src/nodes/core/Node.js:771
+
+Deserializes the node from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON object.
+
+#### Returns
+
+`void`
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`dispatchEvent`](Three.EventDispatcher.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/nodes/core/Node.js:282
+
+Calling this method dispatches the `dispose` event. This event can be used
+to register event listeners for clean up tasks.
+
+#### Returns
+
+`void`
+
+***
+
+### generate()
+
+> **generate**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:534
+
+Represents the generate stage which is the third step of the build process, see [Node#build](#build) method.
+This state builds the output node and returns the resulting shader string.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+The generated shader string.
+
+***
+
+### getCacheKey()
+
+> **getCacheKey**(`force`?): `number`
+
+Defined in: three/src/nodes/core/Node.js:318
+
+Returns the cache key for this node.
+
+#### Parameters
+
+##### force?
+
+`boolean` = `false`
+
+When set to `true`, a recomputation of the cache key is forced.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+***
+
+### getChildren()
+
+> **getChildren**(): `Generator`\<`any`, `void`, `unknown`\>
+
+Defined in: three/src/nodes/core/Node.js:268
+
+Generator function that can be used to iterate over the child nodes.
+
+#### Returns
+
+`Generator`\<`any`, `void`, `unknown`\>
+
+#### Generator
+
+#### Yields
+
+A child node.
+
+***
+
+### getElementType()
+
+> **getElementType**(`builder`): `string`
+
+Defined in: three/src/nodes/core/Node.js:410
+
+Certain types are composed of multiple elements. For example a `vec3`
+is composed of three `float` values. This method returns the type of
+these elements.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+***
+
+### getHash()
+
+> **getHash**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:363
+
+Returns the hash of the node which is used to identify the node. By default it's
+the [Node#uuid](#uuid) however derived node classes might have to overwrite this method
+depending on their implementation.
+
+#### Returns
+
+`string`
+
+The hash.
+
+***
+
+### getMemberType()
+
+> **getMemberType**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:426
+
+Returns the node member type for the given name.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+***
+
+### getNodeType()
+
+> **getNodeType**(`builder`): `string`
+
+Defined in: three/src/nodes/core/Node.js:438
+
+Returns the node's type.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+***
+
+### getScope()
+
+> **getScope**(): `Node`
+
+Defined in: three/src/nodes/core/Node.js:349
+
+Returns the references to this node which is by default `this`.
+
+#### Returns
+
+`Node`
+
+A reference to this node.
+
+***
+
+### getSelf()
+
+> **getSelf**(): `Node`
+
+Defined in: three/src/nodes/core/Node.js:227
+
+The `this` reference might point to a Proxy so this method can be used
+to get the reference to the actual node instance.
+
+#### Returns
+
+`Node`
+
+A reference to the node.
+
+***
+
+### getSerializeChildren()
+
+> **getSerializeChildren**(): `any`[]
+
+Defined in: three/src/nodes/core/Node.js:721
+
+Returns the child nodes as a JSON object.
+
+#### Returns
+
+`any`[]
+
+An iterable list of serialized child objects as JSON.
+
+***
+
+### getShared()
+
+> **getShared**(`builder`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:461
+
+This method is used during the build process of a node and ensures
+equal nodes are not built multiple times but just once. For example if
+`attribute( 'uv' )` is used multiple times by the user, the build
+process makes sure to process just the first node.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`Node`
+
+The shared node if possible. Otherwise `this` is returned.
+
+***
+
+### getUpdateAfterType()
+
+> **getUpdateAfterType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:396
+
+Returns the update type of [Node#updateAfter](#updateafter).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+***
+
+### getUpdateBeforeType()
+
+> **getUpdateBeforeType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:385
+
+Returns the update type of [Node#updateBefore](#updatebefore).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+***
+
+### getUpdateType()
+
+> **getUpdateType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:374
+
+Returns the update type of [Node#update](#update).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`hasEventListener`](Three.EventDispatcher.html#haseventlistener)
+
+***
+
+### isGlobal()
+
+> **isGlobal**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:256
+
+By default this method returns the value of the [Node#global](#global) flag. This method
+can be overwritten in derived classes if an analytical way is required to determine the
+global status.
+
+#### Returns
+
+`boolean`
+
+Whether this node is global or not.
+
+***
+
+### onFrameUpdate()
+
+> **onFrameUpdate**(`callback`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:175
+
+Convenient method for defining [Node#update](#update). Similar to [Node#onUpdate](#onupdate), but
+this method automatically sets the update type to `FRAME`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+`Node`
+
+A reference to this node.
+
+***
+
+### onObjectUpdate()
+
+> **onObjectUpdate**(`callback`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:201
+
+Convenient method for defining [Node#update](#update). Similar to [Node#onUpdate](#onupdate), but
+this method automatically sets the update type to `OBJECT`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+`Node`
+
+A reference to this node.
+
+***
+
+### onReference()
+
+> **onReference**(`callback`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:213
+
+Convenient method for defining [Node#updateReference](#updatereference).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+`Node`
+
+A reference to this node.
+
+***
+
+### onRenderUpdate()
+
+> **onRenderUpdate**(`callback`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:188
+
+Convenient method for defining [Node#update](#update). Similar to [Node#onUpdate](#onupdate), but
+this method automatically sets the update type to `RENDER`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+`Node`
+
+A reference to this node.
+
+***
+
+### onUpdate()
+
+> **onUpdate**(`callback`, `updateType`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:159
+
+Convenient method for defining [Node#update](#update).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+##### updateType
+
+`string`
+
+The update type.
+
+#### Returns
+
+`Node`
+
+A reference to this node.
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`removeEventListener`](Three.EventDispatcher.html#removeeventlistener)
+
+***
+
+### serialize()
+
+> **serialize**(`json`): `void`
+
+Defined in: three/src/nodes/core/Node.js:732
+
+Serializes the node to JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The output JSON object.
+
+#### Returns
+
+`void`
+
+***
+
+### setup()
+
+> **setup**(`builder`): `Node`
+
+Defined in: three/src/nodes/core/Node.js:478
+
+Represents the setup stage which is the first step of the build process, see [Node#build](#build) method.
+This method is often overwritten in derived modules to prepare the node which is used as the output/result.
+The output node must be returned in the `return` statement.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`Node`
+
+The output node.
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: three/src/nodes/core/Node.js:825
+
+Serializes the node into the three.js JSON Object/Scene format.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional JSON object that already holds serialized data from other scene objects.
+
+#### Returns
+
+`any`
+
+The serialized node.
+
+***
+
+### traverse()
+
+> **traverse**(`callback`): `void`
+
+Defined in: three/src/nodes/core/Node.js:300
+
+Can be used to traverse through the node's hierarchy.
+
+#### Parameters
+
+##### callback
+
+`traverseCallback`
+
+A callback that is executed per node.
+
+#### Returns
+
+`void`
+
+***
+
+### update()
+
+> `abstract` **update**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:582
+
+The method can be implemented to update the node's internal state when it is used to render an object.
+The [Node#updateType](#updatetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+***
+
+### updateAfter()
+
+> `abstract` **updateAfter**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:568
+
+The method can be implemented to update the node's internal state after it was used to render an object.
+The [Node#updateAfterType](#updateaftertype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+***
+
+### updateBefore()
+
+> `abstract` **updateBefore**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:554
+
+The method can be implemented to update the node's internal state before it is used to render an object.
+The [Node#updateBeforeType](#updatebeforetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+***
+
+### updateReference()
+
+> **updateReference**(): `any`
+
+Defined in: three/src/nodes/core/Node.js:242
+
+Nodes might refer to other objects like materials. This method allows to dynamically update the reference
+to such objects based on a given state (e.g. the current node frame or builder).
+
+#### Returns
+
+`any`
+
+The updated reference.

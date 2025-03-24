@@ -1,0 +1,577 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "RenderTarget"
+---
+
+Defined in: three/src/core/RenderTarget.js:15
+
+A render target is a buffer where the video card draws pixels for a scene
+that is being rendered in the background. It is used in different effects,
+such as applying postprocessing to a rendered image before displaying it
+on the screen.
+
+## Extends
+
+- [`EventDispatcher`](Three.EventDispatcher.html)
+
+## Extended by
+
+- [`WebGLRenderTarget`](Three.WebGLRenderTarget.html)
+- [`RenderTarget3D`](Three.RenderTarget3D.html)
+- [`RenderTargetArray`](Three.RenderTargetArray.html)
+
+## Constructors
+
+### Constructor
+
+> **new RenderTarget**(`width`?, `height`?, `options`?): `RenderTarget`
+
+Defined in: three/src/core/RenderTarget.js:47
+
+Constructs a new render target.
+
+#### Parameters
+
+##### width?
+
+`number` = `1`
+
+The width of the render target.
+
+##### height?
+
+`number` = `1`
+
+The height of the render target.
+
+##### options?
+
+The configuration object.
+
+#### Returns
+
+`RenderTarget`
+
+#### Overrides
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`constructor`](Three.EventDispatcher.html#constructor)
+
+## Properties
+
+### \_depthTexture
+
+> **\_depthTexture**: `any`
+
+Defined in: three/src/core/RenderTarget.js:180
+
+***
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`_listeners`](Three.EventDispatcher.html#_listeners)
+
+***
+
+### depth
+
+> **depth**: `number`
+
+Defined in: three/src/core/RenderTarget.js:82
+
+The depth of the render target.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### depthBuffer
+
+> **depthBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:154
+
+Whether to allocate a depth buffer or not.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### height
+
+> **height**: `number`
+
+Defined in: three/src/core/RenderTarget.js:74
+
+The height of the render target.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### isRenderTarget
+
+> `readonly` **isRenderTarget**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:58
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### resolveDepthBuffer
+
+> **resolveDepthBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:170
+
+Whether to resolve the depth buffer or not.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### resolveStencilBuffer
+
+> **resolveStencilBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:178
+
+Whether to resolve the stencil buffer or not.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### samples
+
+> **samples**: `number`
+
+Defined in: three/src/core/RenderTarget.js:190
+
+The number of MSAA samples.
+
+A value of `0` disables MSAA.
+
+#### Default
+
+```ts
+0
+```
+
+***
+
+### scissor
+
+> **scissor**: [`Vector4`](Three.Vector4.html)
+
+Defined in: three/src/core/RenderTarget.js:91
+
+A rectangular area inside the render target's viewport. Fragments that are
+outside the area will be discarded.
+
+#### Default
+
+```ts
+(0,0,width,height)
+```
+
+***
+
+### scissorTest
+
+> **scissorTest**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:100
+
+Indicates whether the scissor test should be enabled when rendering into
+this render target or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### stencilBuffer
+
+> **stencilBuffer**: `boolean`
+
+Defined in: three/src/core/RenderTarget.js:162
+
+Whether to allocate a stencil buffer or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### textures
+
+> **textures**: [`Texture`](Three.Texture.html)[]
+
+Defined in: three/src/core/RenderTarget.js:137
+
+An array of textures. Each color attachment is represented as a separate texture.
+Has at least a single entry for the default color attachment.
+
+***
+
+### viewport
+
+> **viewport**: [`Vector4`](Three.Vector4.html)
+
+Defined in: three/src/core/RenderTarget.js:108
+
+A rectangular area representing the render target's viewport.
+
+#### Default
+
+```ts
+(0,0,width,height)
+```
+
+***
+
+### width
+
+> **width**: `number`
+
+Defined in: three/src/core/RenderTarget.js:66
+
+The width of the render target.
+
+#### Default
+
+```ts
+1
+```
+
+## Accessors
+
+### depthTexture
+
+#### Get Signature
+
+> **get** **depthTexture**(): `DepthTexture`
+
+Defined in: three/src/core/RenderTarget.js:228
+
+Instead of saving the depth in a renderbuffer, a texture
+can be used instead which is useful for further processing
+e.g. in context of post-processing.
+
+##### Default
+
+```ts
+null
+```
+
+##### Returns
+
+`DepthTexture`
+
+#### Set Signature
+
+> **set** **depthTexture**(`current`): `void`
+
+Defined in: three/src/core/RenderTarget.js:211
+
+##### Parameters
+
+###### current
+
+`DepthTexture`
+
+##### Returns
+
+`void`
+
+***
+
+### texture
+
+#### Get Signature
+
+> **get** **texture**(): [`Texture`](Three.Texture.html)
+
+Defined in: three/src/core/RenderTarget.js:199
+
+The texture representing the default color attachment.
+
+##### Returns
+
+[`Texture`](Three.Texture.html)
+
+#### Set Signature
+
+> **set** **texture**(`value`): `void`
+
+Defined in: three/src/core/RenderTarget.js:205
+
+##### Parameters
+
+###### value
+
+[`Texture`](Three.Texture.html)
+
+##### Returns
+
+`void`
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`addEventListener`](Three.EventDispatcher.html#addeventlistener)
+
+***
+
+### clone()
+
+> **clone**(): `RenderTarget`
+
+Defined in: three/src/core/RenderTarget.js:271
+
+Returns a new render target with copied values from this instance.
+
+#### Returns
+
+`RenderTarget`
+
+A clone of this instance.
+
+***
+
+### copy()
+
+> **copy**(`source`): `RenderTarget`
+
+Defined in: three/src/core/RenderTarget.js:285
+
+Copies the settings of the given render target. This is a structural copy so
+no resources are shared between render targets after the copy. That includes
+all MRT textures and the depth texture.
+
+#### Parameters
+
+##### source
+
+`RenderTarget`
+
+The render target to copy.
+
+#### Returns
+
+`RenderTarget`
+
+A reference to this instance.
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`dispatchEvent`](Three.EventDispatcher.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/core/RenderTarget.js:331
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever this instance is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Fires
+
+RenderTarget#dispose
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`hasEventListener`](Three.EventDispatcher.html#haseventlistener)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`EventDispatcher`](Three.EventDispatcher.html).[`removeEventListener`](Three.EventDispatcher.html#removeeventlistener)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`, `depth`?): `void`
+
+Defined in: three/src/core/RenderTarget.js:241
+
+Sets the size of this render target.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width.
+
+##### height
+
+`number`
+
+The height.
+
+##### depth?
+
+`number` = `1`
+
+The depth.
+
+#### Returns
+
+`void`

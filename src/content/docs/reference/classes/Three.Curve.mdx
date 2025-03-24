@@ -1,0 +1,467 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Curve"
+---
+
+Defined in: three/src/extras/core/Curve.js:12
+
+An abstract base class for creating an analytic curve object that contains methods
+for interpolation.
+
+## Extended by
+
+- [`CurvePath`](Three.CurvePath.html)
+- [`CatmullRomCurve3`](Three.CatmullRomCurve3.html)
+- [`CubicBezierCurve`](Three.CubicBezierCurve.html)
+- [`CubicBezierCurve3`](Three.CubicBezierCurve3.html)
+- [`EllipseCurve`](Three.EllipseCurve.html)
+- [`LineCurve`](Three.LineCurve.html)
+- [`LineCurve3`](Three.LineCurve3.html)
+- [`QuadraticBezierCurve`](Three.QuadraticBezierCurve.html)
+- [`QuadraticBezierCurve3`](Three.QuadraticBezierCurve3.html)
+- [`SplineCurve`](Three.SplineCurve.html)
+
+## Constructors
+
+### Constructor
+
+> **new Curve**(): `Curve`
+
+Defined in: three/src/extras/core/Curve.js:17
+
+Constructs a new curve.
+
+#### Returns
+
+`Curve`
+
+## Properties
+
+### arcLengthDivisions
+
+> **arcLengthDivisions**: `number`
+
+Defined in: three/src/extras/core/Curve.js:37
+
+This value determines the amount of divisions when calculating the
+cumulative segment lengths of a curve via [Curve#getLengths](#getlengths). To ensure
+precision when using methods like [Curve#getSpacedPoints](#getspacedpoints), it is
+recommended to increase the value of this property if the curve is very large.
+
+#### Default
+
+```ts
+200
+```
+
+***
+
+### needsUpdate
+
+> **needsUpdate**: `boolean`
+
+Defined in: three/src/extras/core/Curve.js:45
+
+Must be set to `true` if the curve parameters have changed.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### type
+
+> `readonly` **type**: `string`
+
+Defined in: three/src/extras/core/Curve.js:26
+
+The type property is used for detecting the object type
+in context of serialization/deserialization.
+
+## Methods
+
+### clone()
+
+> **clone**(): `Curve`
+
+Defined in: three/src/extras/core/Curve.js:456
+
+Returns a new curve with copied values from this instance.
+
+#### Returns
+
+`Curve`
+
+A clone of this instance.
+
+***
+
+### computeFrenetFrames()
+
+> **computeFrenetFrames**(`segments`, `closed`?): `object`
+
+Defined in: three/src/extras/core/Curve.js:337
+
+Generates the Frenet Frames. Requires a curve definition in 3D space. Used
+in geometries like [TubeGeometry](Three.TubeGeometry.html) or [ExtrudeGeometry](Three.ExtrudeGeometry.html).
+
+#### Parameters
+
+##### segments
+
+`number`
+
+The number of segments.
+
+##### closed?
+
+`boolean` = `false`
+
+Whether the curve is closed or not.
+
+#### Returns
+
+`object`
+
+The Frenet Frames.
+
+##### binormals
+
+> **binormals**: [`Vector3`](Three.Vector3.html)[]
+
+##### normals
+
+> **normals**: [`Vector3`](Three.Vector3.html)[]
+
+##### tangents
+
+> **tangents**: [`Vector3`](Three.Vector3.html)[]
+
+***
+
+### copy()
+
+> **copy**(`source`): `Curve`
+
+Defined in: three/src/extras/core/Curve.js:468
+
+Copies the values of the given curve to this instance.
+
+#### Parameters
+
+##### source
+
+`Curve`
+
+The curve to copy.
+
+#### Returns
+
+`Curve`
+
+A reference to this curve.
+
+***
+
+### fromJSON()
+
+> **fromJSON**(`json`): `Curve`
+
+Defined in: three/src/extras/core/Curve.js:505
+
+Deserializes the curve from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON holding the serialized curve.
+
+#### Returns
+
+`Curve`
+
+A reference to this curve.
+
+***
+
+### getLength()
+
+> **getLength**(): `number`
+
+Defined in: three/src/extras/core/Curve.js:139
+
+Returns the total arc length of the curve.
+
+#### Returns
+
+`number`
+
+The length of the curve.
+
+***
+
+### getLengths()
+
+> **getLengths**(`divisions`?): `number`[]
+
+Defined in: three/src/extras/core/Curve.js:152
+
+Returns an array of cumulative segment lengths of the curve.
+
+#### Parameters
+
+##### divisions?
+
+`number` = `...`
+
+The number of divisions.
+
+#### Returns
+
+`number`[]
+
+An array holding the cumulative segment lengths.
+
+***
+
+### getPoint()
+
+> `abstract` **getPoint**(): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:67
+
+This method returns a vector in 2D or 3D space (depending on the curve definition)
+for the given interpolation factor.
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+
+***
+
+### getPointAt()
+
+> **getPointAt**(`u`, `optionalTarget`?): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:82
+
+This method returns a vector in 2D or 3D space (depending on the curve definition)
+for the given interpolation factor. Unlike [Curve#getPoint](#getpoint), this method honors the length
+of the curve which equidistant samples.
+
+#### Parameters
+
+##### u
+
+`number`
+
+A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+
+##### optionalTarget?
+
+The optional target vector the result is written to.
+
+[`Vector2`](Three.Vector2.html) | [`Vector3`](Three.Vector3.html)
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+
+***
+
+### getPoints()
+
+> **getPoints**(`divisions`?): ([`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html))[]
+
+Defined in: three/src/extras/core/Curve.js:96
+
+This method samples the curve via [Curve#getPoint](#getpoint) and returns an array of points representing
+the curve shape.
+
+#### Parameters
+
+##### divisions?
+
+`number` = `5`
+
+The number of divisions.
+
+#### Returns
+
+([`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html))[]
+
+An array holding the sampled curve values. The number of points is `divisions + 1`.
+
+***
+
+### getSpacedPoints()
+
+> **getSpacedPoints**(`divisions`?): ([`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html))[]
+
+Defined in: three/src/extras/core/Curve.js:120
+
+This method samples the curve via [Curve#getPointAt](#getpointat) and returns an array of points representing
+the curve shape. Unlike [Curve#getPoints](#getpoints), this method returns equi-spaced points across the entire
+curve.
+
+#### Parameters
+
+##### divisions?
+
+`number` = `5`
+
+The number of divisions.
+
+#### Returns
+
+([`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html))[]
+
+An array holding the sampled curve values. The number of points is `divisions + 1`.
+
+***
+
+### getTangent()
+
+> **getTangent**(`t`, `optionalTarget`?): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:292
+
+Returns a unit vector tangent for the given interpolation factor.
+If the derived curve does not implement its tangent derivation,
+two points a small delta apart will be used to find its gradient
+which seems to give a reasonable approximation.
+
+#### Parameters
+
+##### t
+
+`number`
+
+The interpolation factor.
+
+##### optionalTarget?
+
+The optional target vector the result is written to.
+
+[`Vector2`](Three.Vector2.html) | [`Vector3`](Three.Vector3.html)
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The tangent vector.
+
+***
+
+### getTangentAt()
+
+> **getTangentAt**(`u`, `optionalTarget`?): [`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/extras/core/Curve.js:322
+
+Same as [Curve#getTangent](#gettangent) but with equidistant samples.
+
+#### Parameters
+
+##### u
+
+`number`
+
+The interpolation factor.
+
+##### optionalTarget?
+
+The optional target vector the result is written to.
+
+[`Vector2`](Three.Vector2.html) | [`Vector3`](Three.Vector3.html)
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html) \| [`Vector3`](Three.Vector3.html)
+
+The tangent vector.
+
+#### See
+
+[Curve#getPointAt](#getpointat)
+
+***
+
+### getUtoTmapping()
+
+> **getUtoTmapping**(`u`, `distance`): `number`
+
+Defined in: three/src/extras/core/Curve.js:207
+
+Given an interpolation factor in the range `[0,1]`, this method returns an updated
+interpolation factor in the same range that can be ued to sample equidistant points
+from a curve.
+
+#### Parameters
+
+##### u
+
+`number`
+
+The interpolation factor.
+
+##### distance
+
+`number` = `null`
+
+An optional distance on the curve.
+
+#### Returns
+
+`number`
+
+The updated interpolation factor.
+
+***
+
+### toJSON()
+
+> **toJSON**(): `any`
+
+Defined in: three/src/extras/core/Curve.js:482
+
+Serializes the curve into JSON.
+
+#### Returns
+
+`any`
+
+A JSON object representing the serialized curve.
+
+#### See
+
+[ObjectLoader#parse](Three.ObjectLoader.html#parse)
+
+***
+
+### updateArcLengths()
+
+> **updateArcLengths**(): `void`
+
+Defined in: three/src/extras/core/Curve.js:191
+
+Update the cumulative segment distance cache. The method must be called
+every time curve parameters are changed. If an updated curve is part of a
+composed curve like [CurvePath](Three.CurvePath.html), this method must be called on the
+composed curve, too.
+
+#### Returns
+
+`void`

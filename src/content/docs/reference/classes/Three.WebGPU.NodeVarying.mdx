@@ -1,0 +1,158 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeVarying"
+---
+
+Defined in: three/src/nodes/core/NodeVarying.js:11
+
+[NodeBuilder](Three.WebGPU.NodeBuilder.html) is going to create instances of this class during the build process
+of nodes. They represent the final shader varyings that are going to be generated
+by the builder. An array of node varyings is maintained in [NodeBuilder#varyings](Three.WebGPU.NodeBuilder.html#varyings) for
+this purpose.
+
+## Extends
+
+- [`NodeVar`](Three.WebGPU.NodeVar.html)
+
+## Constructors
+
+### Constructor
+
+> **new NodeVarying**(`name`, `type`): `NodeVarying`
+
+Defined in: three/src/nodes/core/NodeVarying.js:19
+
+Constructs a new node varying.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the varying.
+
+##### type
+
+`string`
+
+The type of the varying.
+
+#### Returns
+
+`NodeVarying`
+
+#### Overrides
+
+[`NodeVar`](Three.WebGPU.NodeVar.html).[`constructor`](Three.WebGPU.NodeVar.html#constructor)
+
+## Properties
+
+### count
+
+> **count**: `number`
+
+Defined in: three/src/nodes/core/NodeVar.js:54
+
+The size.
+
+#### Inherited from
+
+[`NodeVar`](Three.WebGPU.NodeVar.html).[`count`](Three.WebGPU.NodeVar.html#count)
+
+***
+
+### isNodeVar
+
+> `readonly` **isNodeVar**: `boolean`
+
+Defined in: three/src/nodes/core/NodeVar.js:26
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`NodeVar`](Three.WebGPU.NodeVar.html).[`isNodeVar`](Three.WebGPU.NodeVar.html#isnodevar)
+
+***
+
+### isNodeVarying
+
+> `readonly` **isNodeVarying**: `boolean`
+
+Defined in: three/src/nodes/core/NodeVarying.js:39
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/nodes/core/NodeVar.js:33
+
+The name of the variable.
+
+#### Inherited from
+
+[`NodeVar`](Three.WebGPU.NodeVar.html).[`name`](Three.WebGPU.NodeVar.html#name)
+
+***
+
+### needsInterpolation
+
+> **needsInterpolation**: `boolean`
+
+Defined in: three/src/nodes/core/NodeVarying.js:30
+
+Whether this varying requires interpolation or not. This property can be used
+to check if the varying can be optimized for a variable.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### readOnly
+
+> **readOnly**: `boolean`
+
+Defined in: three/src/nodes/core/NodeVar.js:47
+
+The read-only flag.
+
+#### Inherited from
+
+[`NodeVar`](Three.WebGPU.NodeVar.html).[`readOnly`](Three.WebGPU.NodeVar.html#readonly)
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/nodes/core/NodeVar.js:40
+
+The type of the variable.
+
+#### Inherited from
+
+[`NodeVar`](Three.WebGPU.NodeVar.html).[`type`](Three.WebGPU.NodeVar.html#type)

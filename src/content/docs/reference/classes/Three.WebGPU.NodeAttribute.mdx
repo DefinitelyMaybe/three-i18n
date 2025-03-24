@@ -1,0 +1,99 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeAttribute"
+---
+
+Defined in: three/src/nodes/core/NodeAttribute.js:7
+
+[NodeBuilder](Three.WebGPU.NodeBuilder.html) is going to create instances of this class during the build process
+of nodes. They represent the final shader attributes that are going to be generated
+by the builder. Arrays of node attributes is maintained in [NodeBuilder#attributes](Three.WebGPU.NodeBuilder.html#attributes)
+and [NodeBuilder#bufferAttributes](Three.WebGPU.NodeBuilder.html#bufferattributes) for this purpose.
+
+## Constructors
+
+### Constructor
+
+> **new NodeAttribute**(`name`, `type`, `node`): `NodeAttribute`
+
+Defined in: three/src/nodes/core/NodeAttribute.js:16
+
+Constructs a new node attribute.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the attribute.
+
+##### type
+
+`string`
+
+The type of the attribute.
+
+##### node
+
+`Node` = `null`
+
+An optional reference to the node.
+
+#### Returns
+
+`NodeAttribute`
+
+## Properties
+
+### isNodeAttribute
+
+> `readonly` **isNodeAttribute**: `boolean`
+
+Defined in: three/src/nodes/core/NodeAttribute.js:25
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/nodes/core/NodeAttribute.js:32
+
+The name of the attribute.
+
+***
+
+### node
+
+> **node**: `Node`
+
+Defined in: three/src/nodes/core/NodeAttribute.js:47
+
+An optional reference to the node.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/nodes/core/NodeAttribute.js:39
+
+The type of the attribute.

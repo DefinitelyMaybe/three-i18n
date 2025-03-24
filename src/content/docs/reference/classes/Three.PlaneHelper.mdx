@@ -1,0 +1,2170 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "PlaneHelper"
+---
+
+Defined in: three/src/helpers/PlaneHelper.js:19
+
+A helper object to visualize an instance of [Plane](Three.Plane.html).
+
+```js
+const plane = new THREE.Plane( new THREE.Vector3( 1, 1, 0.2 ), 3 );
+const helper = new THREE.PlaneHelper( plane, 1, 0xffff00 );
+scene.add( helper );
+```
+
+## Extends
+
+- [`Line`](Three.Line.html)
+
+## Constructors
+
+### Constructor
+
+> **new PlaneHelper**(`plane`, `size`?, `hex`?): `PlaneHelper`
+
+Defined in: three/src/helpers/PlaneHelper.js:28
+
+Constructs a new plane helper.
+
+#### Parameters
+
+##### plane
+
+`Plane`
+
+The plane to be visualized.
+
+##### size?
+
+`number` = `1`
+
+The side length of plane helper.
+
+##### hex?
+
+`any` = `0xffff00`
+
+The helper's color.
+
+#### Returns
+
+`PlaneHelper`
+
+#### Overrides
+
+[`Line`](Three.Line.html).[`constructor`](Three.Line.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`_listeners`](Three.Line.html#_listeners)
+
+***
+
+### animations
+
+> **animations**: `AnimationClip`[]
+
+Defined in: three/src/core/Object3D.js:331
+
+An array holding the animation clips of the 3D object.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`animations`](Three.Line.html#animations)
+
+***
+
+### castShadow
+
+> **castShadow**: `boolean`
+
+Defined in: three/src/core/Object3D.js:296
+
+When set to `true`, the 3D object gets rendered into shadow maps.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`castShadow`](Three.Line.html#castshadow)
+
+***
+
+### children
+
+> **children**: [`Object3D`](Three.Object3D.html)[]
+
+Defined in: three/src/core/Object3D.js:127
+
+An array holding the child 3D objects of this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`children`](Three.Line.html#children)
+
+***
+
+### customDepthMaterial
+
+> **customDepthMaterial**: `any`
+
+Defined in: three/src/core/Object3D.js:344
+
+Custom depth material to be used when rendering to the depth map. Can only be used
+in context of meshes. When shadow-casting with a [DirectionalLight](Three.DirectionalLight.html) or [SpotLight](Three.SpotLight.html),
+if you are modifying vertex positions in the vertex shader you must specify a custom depth
+material for proper shadows.
+
+Only relevant in context of [WebGLRenderer](Three.WebGLRenderer.html).
+
+#### Default
+
+```ts
+undefined
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`customDepthMaterial`](Three.Line.html#customdepthmaterial)
+
+***
+
+### customDistanceMaterial
+
+> **customDistanceMaterial**: `any`
+
+Defined in: three/src/core/Object3D.js:354
+
+Same as [Object3D#customDepthMaterial](Three.Object3D.html#customdepthmaterial), but used with [PointLight](Three.PointLight.html).
+
+Only relevant in context of [WebGLRenderer](Three.WebGLRenderer.html).
+
+#### Default
+
+```ts
+undefined
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`customDistanceMaterial`](Three.Line.html#customdistancematerial)
+
+***
+
+### frustumCulled
+
+> **frustumCulled**: `boolean`
+
+Defined in: three/src/core/Object3D.js:312
+
+When set to `true`, the 3D object is honored by view frustum culling.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`frustumCulled`](Three.Line.html#frustumculled)
+
+***
+
+### geometry
+
+> **geometry**: [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/objects/Line.js:68
+
+The line geometry.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`geometry`](Three.Line.html#geometry)
+
+***
+
+### isLine
+
+> `readonly` **isLine**: `boolean`
+
+Defined in: three/src/objects/Line.js:59
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`isLine`](Three.Line.html#isline)
+
+***
+
+### isObject3D
+
+> `readonly` **isObject3D**: `boolean`
+
+Defined in: three/src/core/Object3D.js:79
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`isObject3D`](Three.Line.html#isobject3d)
+
+***
+
+### layers
+
+> **layers**: [`Layers`](Three.Layers.html)
+
+Defined in: three/src/core/Object3D.js:280
+
+The layer membership of the 3D object. The 3D object is only visible if it has
+at least one layer in common with the camera in use. This property can also be
+used to filter out unwanted objects in ray-intersection tests when using [Raycaster](Three.Raycaster.html).
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`layers`](Three.Line.html#layers)
+
+***
+
+### material
+
+> **material**: `any`
+
+Defined in: three/src/objects/Line.js:76
+
+The line material.
+
+#### Default
+
+```ts
+LineBasicMaterial
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`material`](Three.Line.html#material)
+
+***
+
+### matrix
+
+> **matrix**: [`Matrix4`](Three.Matrix4.html)
+
+Defined in: three/src/core/Object3D.js:232
+
+Represents the object's transformation matrix in local space.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`matrix`](Three.Line.html#matrix)
+
+***
+
+### matrixAutoUpdate
+
+> **matrixAutoUpdate**: `boolean`
+
+Defined in: three/src/core/Object3D.js:251
+
+When set to `true`, the engine automatically computes the local matrix from position,
+rotation and scale every frame.
+
+The default values for all 3D objects is defined by `Object3D.DEFAULT_MATRIX_AUTO_UPDATE`.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`matrixAutoUpdate`](Three.Line.html#matrixautoupdate)
+
+***
+
+### matrixWorld
+
+> **matrixWorld**: [`Matrix4`](Three.Matrix4.html)
+
+Defined in: three/src/core/Object3D.js:240
+
+Represents the object's transformation matrix in world space.
+If the 3D object has no parent, then it's identical to the local transformation matrix
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`matrixWorld`](Three.Line.html#matrixworld)
+
+***
+
+### matrixWorldAutoUpdate
+
+> **matrixWorldAutoUpdate**: `boolean`
+
+Defined in: three/src/core/Object3D.js:262
+
+When set to `true`, the engine automatically computes the world matrix from the current local
+matrix and the object's transformation hierarchy.
+
+The default values for all 3D objects is defined by `Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE`.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`matrixWorldAutoUpdate`](Three.Line.html#matrixworldautoupdate)
+
+***
+
+### matrixWorldNeedsUpdate
+
+> **matrixWorldNeedsUpdate**: `boolean`
+
+Defined in: three/src/core/Object3D.js:271
+
+When set to `true`, it calculates the world matrix in that frame and resets this property
+to `false`.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`matrixWorldNeedsUpdate`](Three.Line.html#matrixworldneedsupdate)
+
+***
+
+### morphTargetDictionary
+
+> **morphTargetDictionary**: `any`
+
+Defined in: three/src/objects/Line.js:86
+
+A dictionary representing the morph targets in the geometry. The key is the
+morph targets name, the value its attribute index. This member is `undefined`
+by default and only set when morph targets are detected in the geometry.
+
+#### Default
+
+```ts
+undefined
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`morphTargetDictionary`](Three.Line.html#morphtargetdictionary)
+
+***
+
+### morphTargetInfluences
+
+> **morphTargetInfluences**: `number`[]
+
+Defined in: three/src/objects/Line.js:96
+
+An array of weights typically in the range `[0,1]` that specify how much of the morph
+is applied. This member is `undefined` by default and only set when morph targets are
+detected in the geometry.
+
+#### Default
+
+```ts
+undefined
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`morphTargetInfluences`](Three.Line.html#morphtargetinfluences)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/core/Object3D.js:103
+
+The name of the 3D object.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`name`](Three.Line.html#name)
+
+***
+
+### parent
+
+> **parent**: [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:120
+
+A reference to the parent object.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`parent`](Three.Line.html#parent)
+
+***
+
+### plane
+
+> **plane**: `Plane`
+
+Defined in: three/src/helpers/PlaneHelper.js:47
+
+The plane being visualized.
+
+***
+
+### receiveShadow
+
+> **receiveShadow**: `boolean`
+
+Defined in: three/src/core/Object3D.js:304
+
+When set to `true`, the 3D object is affected by shadows in the scene.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`receiveShadow`](Three.Line.html#receiveshadow)
+
+***
+
+### renderOrder
+
+> **renderOrder**: `number`
+
+Defined in: three/src/core/Object3D.js:324
+
+This value allows the default rendering order of scene graph objects to be
+overridden although opaque and transparent objects remain sorted independently.
+When this property is set for an instance of [Group](Three.Group.html),all descendants
+objects will be sorted and rendered together. Sorting is from lowest to highest
+render order.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`renderOrder`](Three.Line.html#renderorder)
+
+***
+
+### size
+
+> **size**: `number`
+
+Defined in: three/src/helpers/PlaneHelper.js:55
+
+The side length of plane helper.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/helpers/PlaneHelper.js:40
+
+The type property is used for detecting the object type
+in context of serialization/deserialization.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`type`](Three.Line.html#type)
+
+***
+
+### up
+
+> **up**: [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:137
+
+Defines the `up` direction of the 3D object which influences
+the orientation via methods like [Object3D#lookAt](Three.Object3D.html#lookat).
+
+The default values for all 3D objects is defined by `Object3D.DEFAULT_UP`.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`up`](Three.Line.html#up)
+
+***
+
+### userData
+
+> **userData**: `any`
+
+Defined in: three/src/core/Object3D.js:362
+
+An object that can be used to store custom data about the 3D object. It
+should not hold references to functions as these will not be cloned.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`userData`](Three.Line.html#userdata)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/core/Object3D.js:96
+
+The UUID of the 3D object.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`uuid`](Three.Line.html#uuid)
+
+***
+
+### visible
+
+> **visible**: `boolean`
+
+Defined in: three/src/core/Object3D.js:288
+
+When set to `true`, the 3D object gets rendered.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`visible`](Three.Line.html#visible)
+
+***
+
+### DEFAULT\_MATRIX\_AUTO\_UPDATE
+
+> `static` **DEFAULT\_MATRIX\_AUTO\_UPDATE**: `boolean`
+
+Defined in: three/src/core/Object3D.js:1605
+
+The default setting for [Object3D#matrixAutoUpdate](Three.Object3D.html#matrixautoupdate) for
+newly created 3D objects.
+
+#### Static
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`DEFAULT_MATRIX_AUTO_UPDATE`](Three.Line.html#default_matrix_auto_update)
+
+***
+
+### DEFAULT\_MATRIX\_WORLD\_AUTO\_UPDATE
+
+> `static` **DEFAULT\_MATRIX\_WORLD\_AUTO\_UPDATE**: `boolean`
+
+Defined in: three/src/core/Object3D.js:1615
+
+The default setting for [Object3D#matrixWorldAutoUpdate](Three.Object3D.html#matrixworldautoupdate) for
+newly created 3D objects.
+
+#### Static
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`DEFAULT_MATRIX_WORLD_AUTO_UPDATE`](Three.Line.html#default_matrix_world_auto_update)
+
+***
+
+### DEFAULT\_UP
+
+> `static` **DEFAULT\_UP**: [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:1595
+
+The default up direction for objects, also used as the default
+position for [DirectionalLight](Three.DirectionalLight.html) and [HemisphereLight](Three.HemisphereLight.html).
+
+#### Static
+
+#### Default
+
+```ts
+(0,1,0)
+```
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`DEFAULT_UP`](Three.Line.html#default_up)
+
+## Methods
+
+### add()
+
+> **add**(`object`, ...`args`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:720
+
+Adds the given 3D object as a child to this 3D object. An arbitrary number of
+objects may be added. Any current parent on an object passed in here will be
+removed, since an object can have at most one parent.
+
+#### Parameters
+
+##### object
+
+[`Object3D`](Three.Object3D.html)
+
+The 3D object to add.
+
+##### args
+
+...`any`
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Fires
+
+Object3D#added
+
+#### Fires
+
+Object3D#childadded
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`add`](Three.Line.html#add)
+
+***
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`addEventListener`](Three.Line.html#addeventlistener)
+
+***
+
+### applyMatrix4()
+
+> **applyMatrix4**(`matrix`): `void`
+
+Defined in: three/src/core/Object3D.js:422
+
+Applies the given transformation matrix to the object and updates the object's position,
+rotation and scale.
+
+#### Parameters
+
+##### matrix
+
+[`Matrix4`](Three.Matrix4.html)
+
+The transformation matrix.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`applyMatrix4`](Three.Line.html#applymatrix4)
+
+***
+
+### applyQuaternion()
+
+> **applyQuaternion**(`q`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:438
+
+Applies a rotation represented by given the quaternion to the 3D object.
+
+#### Parameters
+
+##### q
+
+[`Quaternion`](Three.Quaternion.html)
+
+The quaternion.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`applyQuaternion`](Three.Line.html#applyquaternion)
+
+***
+
+### attach()
+
+> **attach**(`object`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:848
+
+Adds the given 3D object as a child of this 3D object, while maintaining the object's world
+transform. This method does not support scene graphs having non-uniformly-scaled nodes(s).
+
+#### Parameters
+
+##### object
+
+[`Object3D`](Three.Object3D.html)
+
+The 3D object to attach.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Fires
+
+Object3D#added
+
+#### Fires
+
+Object3D#childadded
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`attach`](Three.Line.html#attach)
+
+***
+
+### clear()
+
+> **clear**(): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:833
+
+Removes all child objects.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Fires
+
+Object3D#removed
+
+#### Fires
+
+Object3D#childremoved
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`clear`](Three.Line.html#clear)
+
+***
+
+### clone()
+
+> **clone**(`recursive`?): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:1525
+
+Returns a new 3D object with copied values from this instance.
+
+#### Parameters
+
+##### recursive?
+
+`boolean`
+
+When set to `true`, descendants of the 3D object are also cloned.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A clone of this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`clone`](Three.Line.html#clone)
+
+***
+
+### computeLineDistances()
+
+> **computeLineDistances**(): [`Line`](Three.Line.html)
+
+Defined in: three/src/objects/Line.js:120
+
+Computes an array of distance values which are necessary for rendering dashed lines.
+For each vertex in the geometry, the method calculates the cumulative length from the
+current point to the very beginning of the line.
+
+#### Returns
+
+[`Line`](Three.Line.html)
+
+A reference to this line.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`computeLineDistances`](Three.Line.html#computelinedistances)
+
+***
+
+### copy()
+
+> **copy**(`source`, `recursive`): `PlaneHelper`
+
+Defined in: three/src/objects/Line.js:102
+
+Copies the values of the given 3D object to this instance.
+
+#### Parameters
+
+##### source
+
+`any`
+
+The 3D object to copy.
+
+##### recursive
+
+`any`
+
+When set to `true`, descendants of the 3D object are cloned.
+
+#### Returns
+
+`PlaneHelper`
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`copy`](Three.Line.html#copy)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`dispatchEvent`](Three.Line.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/helpers/PlaneHelper.js:85
+
+Updates the helper to match the position and direction of the
+light being visualized.
+
+#### Returns
+
+`void`
+
+***
+
+### getObjectById()
+
+> **getObjectById**(`id`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:891
+
+Searches through the 3D object and its children, starting with the 3D object
+itself, and returns the first with a matching ID.
+
+#### Parameters
+
+##### id
+
+`number`
+
+The id.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+The found 3D object. Returns `undefined` if no 3D object has been found.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getObjectById`](Three.Line.html#getobjectbyid)
+
+***
+
+### getObjectByName()
+
+> **getObjectByName**(`name`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:904
+
+Searches through the 3D object and its children, starting with the 3D object
+itself, and returns the first with a matching name.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+The found 3D object. Returns `undefined` if no 3D object has been found.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getObjectByName`](Three.Line.html#getobjectbyname)
+
+***
+
+### getObjectByProperty()
+
+> **getObjectByProperty**(`name`, `value`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:918
+
+Searches through the 3D object and its children, starting with the 3D object
+itself, and returns the first with a matching property value.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the property.
+
+##### value
+
+`any`
+
+The value.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+The found 3D object. Returns `undefined` if no 3D object has been found.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getObjectByProperty`](Three.Line.html#getobjectbyproperty)
+
+***
+
+### getObjectsByProperty()
+
+> **getObjectsByProperty**(`name`, `value`, `result`): [`Object3D`](Three.Object3D.html)[]
+
+Defined in: three/src/core/Object3D.js:948
+
+Searches through the 3D object and its children, starting with the 3D object
+itself, and returns all 3D objects with a matching property value.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the property.
+
+##### value
+
+`any`
+
+The value.
+
+##### result
+
+[`Object3D`](Three.Object3D.html)[] = `[]`
+
+The method stores the result in this array.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)[]
+
+The found 3D objects.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getObjectsByProperty`](Three.Line.html#getobjectsbyproperty)
+
+***
+
+### getWorldDirection()
+
+> **getWorldDirection**(`target`): [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:1016
+
+Returns a vector representing the ("look") direction of the 3D object in world space.
+
+#### Parameters
+
+##### target
+
+[`Vector3`](Three.Vector3.html)
+
+The target vector the result is stored to.
+
+#### Returns
+
+[`Vector3`](Three.Vector3.html)
+
+The 3D object's direction in world space.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getWorldDirection`](Three.Line.html#getworlddirection)
+
+***
+
+### getWorldPosition()
+
+> **getWorldPosition**(`target`): [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:970
+
+Returns a vector representing the position of the 3D object in world space.
+
+#### Parameters
+
+##### target
+
+[`Vector3`](Three.Vector3.html)
+
+The target vector the result is stored to.
+
+#### Returns
+
+[`Vector3`](Three.Vector3.html)
+
+The 3D object's position in world space.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getWorldPosition`](Three.Line.html#getworldposition)
+
+***
+
+### getWorldQuaternion()
+
+> **getWorldQuaternion**(`target`): [`Quaternion`](Three.Quaternion.html)
+
+Defined in: three/src/core/Object3D.js:984
+
+Returns a Quaternion representing the position of the 3D object in world space.
+
+#### Parameters
+
+##### target
+
+[`Quaternion`](Three.Quaternion.html)
+
+The target Quaternion the result is stored to.
+
+#### Returns
+
+[`Quaternion`](Three.Quaternion.html)
+
+The 3D object's rotation in world space.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getWorldQuaternion`](Three.Line.html#getworldquaternion)
+
+***
+
+### getWorldScale()
+
+> **getWorldScale**(`target`): [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:1000
+
+Returns a vector representing the scale of the 3D object in world space.
+
+#### Parameters
+
+##### target
+
+[`Vector3`](Three.Vector3.html)
+
+The target vector the result is stored to.
+
+#### Returns
+
+[`Vector3`](Three.Vector3.html)
+
+The 3D object's scale in world space.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`getWorldScale`](Three.Line.html#getworldscale)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`hasEventListener`](Three.Line.html#haseventlistener)
+
+***
+
+### localToWorld()
+
+> **localToWorld**(`vector`): [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:637
+
+Converts the given vector from this 3D object's local space to world space.
+
+#### Parameters
+
+##### vector
+
+[`Vector3`](Three.Vector3.html)
+
+The vector to convert.
+
+#### Returns
+
+[`Vector3`](Three.Vector3.html)
+
+The converted vector.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`localToWorld`](Three.Line.html#localtoworld)
+
+***
+
+### lookAt()
+
+> **lookAt**(`x`, `y`?, `z`?): `void`
+
+Defined in: three/src/core/Object3D.js:668
+
+Rotates the object to face a point in world space.
+
+This method does not support objects having non-uniformly-scaled parent(s).
+
+#### Parameters
+
+##### x
+
+The x coordinate in world space. Alternatively, a vector representing a position in world space
+
+`number` | [`Vector3`](Three.Vector3.html)
+
+##### y?
+
+`number`
+
+The y coordinate in world space.
+
+##### z?
+
+`number`
+
+The z coordinate in world space.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`lookAt`](Three.Line.html#lookat)
+
+***
+
+### onAfterRender()
+
+> **onAfterRender**(): `void`
+
+Defined in: three/src/core/Object3D.js:414
+
+A callback that is executed immediately after a 3D object is rendered.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`onAfterRender`](Three.Line.html#onafterrender)
+
+***
+
+### onAfterShadow()
+
+> **onAfterShadow**(): `void`
+
+Defined in: three/src/core/Object3D.js:390
+
+A callback that is executed immediately after a 3D object is rendered to a shadow map.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`onAfterShadow`](Three.Line.html#onaftershadow)
+
+***
+
+### onBeforeRender()
+
+> **onBeforeRender**(): `void`
+
+Defined in: three/src/core/Object3D.js:402
+
+A callback that is executed immediately before a 3D object is rendered.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`onBeforeRender`](Three.Line.html#onbeforerender)
+
+***
+
+### onBeforeShadow()
+
+> **onBeforeShadow**(): `void`
+
+Defined in: three/src/core/Object3D.js:377
+
+A callback that is executed immediately before a 3D object is rendered to a shadow map.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`onBeforeShadow`](Three.Line.html#onbeforeshadow)
+
+***
+
+### raycast()
+
+> **raycast**(`raycaster`, `intersects`): `void`
+
+Defined in: three/src/objects/Line.js:159
+
+Computes intersection points between a casted ray and this line.
+
+#### Parameters
+
+##### raycaster
+
+`Raycaster`
+
+The raycaster.
+
+##### intersects
+
+`any`[]
+
+The target array that holds the intersection points.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`raycast`](Three.Line.html#raycast)
+
+***
+
+### remove()
+
+> **remove**(`object`, ...`args`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:772
+
+Removes the given 3D object as child from this 3D object.
+An arbitrary number of objects may be removed.
+
+#### Parameters
+
+##### object
+
+[`Object3D`](Three.Object3D.html)
+
+The 3D object to remove.
+
+##### args
+
+...`any`
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Fires
+
+Object3D#removed
+
+#### Fires
+
+Object3D#childremoved
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`remove`](Three.Line.html#remove)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`removeEventListener`](Three.Line.html#removeeventlistener)
+
+***
+
+### removeFromParent()
+
+> **removeFromParent**(): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:812
+
+Removes this 3D object from its current parent.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Fires
+
+Object3D#removed
+
+#### Fires
+
+Object3D#childremoved
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`removeFromParent`](Three.Line.html#removefromparent)
+
+***
+
+### rotateOnAxis()
+
+> **rotateOnAxis**(`axis`, `angle`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:505
+
+Rotates the 3D object along an axis in local space.
+
+#### Parameters
+
+##### axis
+
+[`Vector3`](Three.Vector3.html)
+
+The (normalized) axis vector.
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`rotateOnAxis`](Three.Line.html#rotateonaxis)
+
+***
+
+### rotateOnWorldAxis()
+
+> **rotateOnWorldAxis**(`axis`, `angle`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:525
+
+Rotates the 3D object along an axis in world space.
+
+#### Parameters
+
+##### axis
+
+[`Vector3`](Three.Vector3.html)
+
+The (normalized) axis vector.
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`rotateOnWorldAxis`](Three.Line.html#rotateonworldaxis)
+
+***
+
+### rotateX()
+
+> **rotateX**(`angle`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:545
+
+Rotates the 3D object around its X axis in local space.
+
+#### Parameters
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`rotateX`](Three.Line.html#rotatex)
+
+***
+
+### rotateY()
+
+> **rotateY**(`angle`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:557
+
+Rotates the 3D object around its Y axis in local space.
+
+#### Parameters
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`rotateY`](Three.Line.html#rotatey)
+
+***
+
+### rotateZ()
+
+> **rotateZ**(`angle`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:569
+
+Rotates the 3D object around its Z axis in local space.
+
+#### Parameters
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`rotateZ`](Three.Line.html#rotatez)
+
+***
+
+### setRotationFromAxisAngle()
+
+> **setRotationFromAxisAngle**(`axis`, `angle`): `void`
+
+Defined in: three/src/core/Object3D.js:452
+
+Sets the given rotation represented as an axis/angle couple to the 3D object.
+
+#### Parameters
+
+##### axis
+
+[`Vector3`](Three.Vector3.html)
+
+The (normalized) axis vector.
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`setRotationFromAxisAngle`](Three.Line.html#setrotationfromaxisangle)
+
+***
+
+### setRotationFromEuler()
+
+> **setRotationFromEuler**(`euler`): `void`
+
+Defined in: three/src/core/Object3D.js:465
+
+Sets the given rotation represented as Euler angles to the 3D object.
+
+#### Parameters
+
+##### euler
+
+[`Euler`](Three.Euler.html)
+
+The Euler angles.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`setRotationFromEuler`](Three.Line.html#setrotationfromeuler)
+
+***
+
+### setRotationFromMatrix()
+
+> **setRotationFromMatrix**(`m`): `void`
+
+Defined in: three/src/core/Object3D.js:477
+
+Sets the given rotation represented as rotation matrix to the 3D object.
+
+#### Parameters
+
+##### m
+
+[`Matrix4`](Three.Matrix4.html)
+
+Although a 4x4 matrix is expected, the upper 3x3 portion must be
+a pure rotation matrix (i.e, unscaled).
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`setRotationFromMatrix`](Three.Line.html#setrotationfrommatrix)
+
+***
+
+### setRotationFromQuaternion()
+
+> **setRotationFromQuaternion**(`q`): `void`
+
+Defined in: three/src/core/Object3D.js:490
+
+Sets the given rotation represented as a Quaternion to the 3D object.
+
+#### Parameters
+
+##### q
+
+[`Quaternion`](Three.Quaternion.html)
+
+The Quaternion
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`setRotationFromQuaternion`](Three.Line.html#setrotationfromquaternion)
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: three/src/core/Object3D.js:1224
+
+Serializes the 3D object into JSON.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional value holding meta information about the serialization.
+
+#### Returns
+
+`any`
+
+A JSON object representing the serialized 3D object.
+
+#### See
+
+[ObjectLoader#parse](Three.ObjectLoader.html#parse)
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`toJSON`](Three.Line.html#tojson)
+
+***
+
+### translateOnAxis()
+
+> **translateOnAxis**(`axis`, `distance`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:582
+
+Translate the 3D object by a distance along the given axis in local space.
+
+#### Parameters
+
+##### axis
+
+[`Vector3`](Three.Vector3.html)
+
+The (normalized) axis vector.
+
+##### distance
+
+`number`
+
+The distance in world units.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`translateOnAxis`](Three.Line.html#translateonaxis)
+
+***
+
+### translateX()
+
+> **translateX**(`distance`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:601
+
+Translate the 3D object by a distance along its X-axis in local space.
+
+#### Parameters
+
+##### distance
+
+`number`
+
+The distance in world units.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`translateX`](Three.Line.html#translatex)
+
+***
+
+### translateY()
+
+> **translateY**(`distance`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:613
+
+Translate the 3D object by a distance along its Y-axis in local space.
+
+#### Parameters
+
+##### distance
+
+`number`
+
+The distance in world units.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`translateY`](Three.Line.html#translatey)
+
+***
+
+### translateZ()
+
+> **translateZ**(`distance`): [`Object3D`](Three.Object3D.html)
+
+Defined in: three/src/core/Object3D.js:625
+
+Translate the 3D object by a distance along its Z-axis in local space.
+
+#### Parameters
+
+##### distance
+
+`number`
+
+The distance in world units.
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`translateZ`](Three.Line.html#translatez)
+
+***
+
+### traverse()
+
+> **traverse**(`callback`): `void`
+
+Defined in: three/src/core/Object3D.js:1044
+
+Executes the callback on this 3D object and all descendants.
+
+Note: Modifying the scene graph inside the callback is discouraged.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+A callback function that allows to process the current 3D object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`traverse`](Three.Line.html#traverse)
+
+***
+
+### traverseAncestors()
+
+> **traverseAncestors**(`callback`): `void`
+
+Defined in: three/src/core/Object3D.js:1089
+
+Like [Object3D#traverse](Three.Object3D.html#traverse), but the callback will only be executed for all ancestors.
+
+Note: Modifying the scene graph inside the callback is discouraged.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+A callback function that allows to process the current 3D object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`traverseAncestors`](Three.Line.html#traverseancestors)
+
+***
+
+### traverseVisible()
+
+> **traverseVisible**(`callback`): `void`
+
+Defined in: three/src/core/Object3D.js:1066
+
+Like [Object3D#traverse](Three.Object3D.html#traverse), but the callback will only be executed for visible 3D objects.
+Descendants of invisible 3D objects are not traversed.
+
+Note: Modifying the scene graph inside the callback is discouraged.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+A callback function that allows to process the current 3D object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`traverseVisible`](Three.Line.html#traversevisible)
+
+***
+
+### updateMatrix()
+
+> **updateMatrix**(): `void`
+
+Defined in: three/src/core/Object3D.js:1107
+
+Updates the transformation matrix in local space by computing it from the current
+position, rotation and scale values.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`updateMatrix`](Three.Line.html#updatematrix)
+
+***
+
+### updateMatrixWorld()
+
+> **updateMatrixWorld**(`force`): `void`
+
+Defined in: three/src/helpers/PlaneHelper.js:67
+
+Updates the transformation matrix in world space of this 3D objects and its descendants.
+
+To ensure correct results, this method also recomputes the 3D object's transformation matrix in
+local space. The computation of the local and world matrix can be controlled with the
+[Object3D#matrixAutoUpdate](Three.Object3D.html#matrixautoupdate) and [Object3D#matrixWorldAutoUpdate](Three.Object3D.html#matrixworldautoupdate) flags which are both
+`true` by default.  Set these flags to `false` if you need more control over the update matrix process.
+
+#### Parameters
+
+##### force
+
+`any`
+
+When set to `true`, a recomputation of world matrices is forced even
+when [Object3D#matrixWorldAutoUpdate](Three.Object3D.html#matrixworldautoupdate) is set to `false`.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Line`](Three.Line.html).[`updateMatrixWorld`](Three.Line.html#updatematrixworld)
+
+***
+
+### updateMorphTargets()
+
+> **updateMorphTargets**(): `void`
+
+Defined in: three/src/objects/Line.js:262
+
+Sets the values of [Line#morphTargetDictionary](Three.Line.html#morphtargetdictionary) and [Line#morphTargetInfluences](Three.Line.html#morphtargetinfluences)
+to make sure existing morph targets can influence this 3D object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`updateMorphTargets`](Three.Line.html#updatemorphtargets)
+
+***
+
+### updateWorldMatrix()
+
+> **updateWorldMatrix**(`updateParents`?, `updateChildren`?): `void`
+
+Defined in: three/src/core/Object3D.js:1173
+
+An alternative version of [Object3D#updateMatrixWorld](Three.Object3D.html#updatematrixworld) with more control over the
+update of ancestor and descendant nodes.
+
+#### Parameters
+
+##### updateParents?
+
+`boolean`
+
+Whether ancestor nodes should be updated or not.
+
+##### updateChildren?
+
+`boolean`
+
+Whether descendant nodes should be updated or not.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`updateWorldMatrix`](Three.Line.html#updateworldmatrix)
+
+***
+
+### worldToLocal()
+
+> **worldToLocal**(`vector`): [`Vector3`](Three.Vector3.html)
+
+Defined in: three/src/core/Object3D.js:651
+
+Converts the given vector from this 3D object's word space to local space.
+
+#### Parameters
+
+##### vector
+
+[`Vector3`](Three.Vector3.html)
+
+The vector to convert.
+
+#### Returns
+
+[`Vector3`](Three.Vector3.html)
+
+The converted vector.
+
+#### Inherited from
+
+[`Line`](Three.Line.html).[`worldToLocal`](Three.Line.html#worldtolocal)

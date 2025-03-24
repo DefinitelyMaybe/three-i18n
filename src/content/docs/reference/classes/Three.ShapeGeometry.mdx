@@ -1,0 +1,1328 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "ShapeGeometry"
+---
+
+Defined in: three/src/geometries/ShapeGeometry.js:23
+
+Creates an one-sided polygonal geometry from one or more path shapes.
+
+```js
+const arcShape = new THREE.Shape()
+	.moveTo( 5, 1 )
+	.absarc( 1, 1, 4, 0, Math.PI * 2, false );
+
+const geometry = new THREE.ShapeGeometry( arcShape );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
+const mesh = new THREE.Mesh( geometry, material ) ;
+scene.add( mesh );
+```
+
+## Extends
+
+- [`BufferGeometry`](Three.BufferGeometry.html)
+
+## Constructors
+
+### Constructor
+
+> **new ShapeGeometry**(`shapes`?, `curveSegments`?): `ShapeGeometry`
+
+Defined in: three/src/geometries/ShapeGeometry.js:31
+
+Constructs a new shape geometry.
+
+#### Parameters
+
+##### shapes?
+
+A shape or an array of shapes.
+
+[`Shape`](Three.Shape.html) | [`Shape`](Three.Shape.html)[]
+
+##### curveSegments?
+
+`number` = `12`
+
+Number of segments per shape.
+
+#### Returns
+
+`ShapeGeometry`
+
+#### Overrides
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`constructor`](Three.BufferGeometry.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`_listeners`](Three.BufferGeometry.html#_listeners)
+
+***
+
+### attributes
+
+> **attributes**: `object`
+
+Defined in: three/src/core/BufferGeometry.js:121
+
+This dictionary has as id the name of the attribute to be set and as value
+the buffer attribute to set it to. Rather than accessing this property directly,
+use `setAttribute()` and `getAttribute()` to access attributes of this geometry.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`attributes`](Three.BufferGeometry.html#attributes)
+
+***
+
+### boundingBox
+
+> **boundingBox**: [`Box3`](Three.Box3.html)
+
+Defined in: three/src/core/BufferGeometry.js:162
+
+Bounding box for the geometry which can be calculated with `computeBoundingBox()`.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`boundingBox`](Three.BufferGeometry.html#boundingbox)
+
+***
+
+### boundingSphere
+
+> **boundingSphere**: [`Sphere`](Three.Sphere.html)
+
+Defined in: three/src/core/BufferGeometry.js:170
+
+Bounding sphere for the geometry which can be calculated with `computeBoundingSphere()`.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`boundingSphere`](Three.BufferGeometry.html#boundingsphere)
+
+***
+
+### drawRange
+
+> **drawRange**: `object`
+
+Defined in: three/src/core/BufferGeometry.js:178
+
+Determines the part of the geometry to render. This should not be set directly,
+instead use `setDrawRange()`.
+
+#### count
+
+> **count**: `number`
+
+#### start
+
+> **start**: `number`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`drawRange`](Three.BufferGeometry.html#drawrange)
+
+***
+
+### groups
+
+> **groups**: `any`[]
+
+Defined in: three/src/core/BufferGeometry.js:154
+
+Split the geometry into groups, each of which will be rendered in a
+separate draw call. This allows an array of materials to be used with the geometry.
+
+Use `addGroup()` and `clearGroups()` to edit groups, rather than modifying this array directly.
+
+Every vertex and index must belong to exactly one group — groups must not share vertices or
+indices, and must not leave vertices or indices unused.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`groups`](Three.BufferGeometry.html#groups)
+
+***
+
+### index
+
+> **index**: [`BufferAttribute`](Three.BufferAttribute.html)
+
+Defined in: three/src/core/BufferGeometry.js:101
+
+Allows for vertices to be re-used across multiple triangles; this is
+called using "indexed triangles". Each triangle is associated with the
+indices of three vertices. This attribute therefore stores the index of
+each vertex for each triangular face. If this attribute is not set, the
+renderer assumes that each three contiguous positions represent a single triangle.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`index`](Three.BufferGeometry.html#index)
+
+***
+
+### indirect
+
+> **indirect**: [`BufferAttribute`](Three.BufferAttribute.html)
+
+Defined in: three/src/core/BufferGeometry.js:112
+
+A (storage) buffer attribute which was generated with a compute shader and
+now defines indirect draw calls.
+
+Can only be used with WebGPURenderer and a WebGPU backend.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`indirect`](Three.BufferGeometry.html#indirect)
+
+***
+
+### isBufferGeometry
+
+> `readonly` **isBufferGeometry**: `boolean`
+
+Defined in: three/src/core/BufferGeometry.js:64
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`isBufferGeometry`](Three.BufferGeometry.html#isbuffergeometry)
+
+***
+
+### morphAttributes
+
+> **morphAttributes**: `any`
+
+Defined in: three/src/core/BufferGeometry.js:131
+
+This dictionary holds the morph targets of the geometry.
+
+Note: Once the geometry has been rendered, the morph attribute data cannot
+be changed. You will have to call `dispose()?, and create a new geometry instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`morphAttributes`](Three.BufferGeometry.html#morphattributes)
+
+***
+
+### morphTargetsRelative
+
+> **morphTargetsRelative**: `boolean`
+
+Defined in: three/src/core/BufferGeometry.js:141
+
+Used to control the morph target behavior; when set to `true`, the morph
+target data is treated as relative offsets, rather than as absolute
+positions/normals.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`morphTargetsRelative`](Three.BufferGeometry.html#morphtargetsrelative)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/core/BufferGeometry.js:88
+
+The name of the geometry.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`name`](Three.BufferGeometry.html#name)
+
+***
+
+### parameters
+
+> **parameters**: `any`
+
+Defined in: three/src/geometries/ShapeGeometry.js:44
+
+Holds the constructor parameters that have been
+used to generate the geometry. Any modification
+after instantiation does not change the geometry.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/src/geometries/ShapeGeometry.js:35
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`type`](Three.BufferGeometry.html#type)
+
+***
+
+### userData
+
+> **userData**: `any`
+
+Defined in: three/src/core/BufferGeometry.js:186
+
+An object that can be used to store custom data about the geometry.
+It should not hold references to functions as these will not be cloned.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`userData`](Three.BufferGeometry.html#userdata)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/core/BufferGeometry.js:81
+
+The UUID of the geometry.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`uuid`](Three.BufferGeometry.html#uuid)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`addEventListener`](Three.BufferGeometry.html#addeventlistener)
+
+***
+
+### addGroup()
+
+> **addGroup**(`start`, `count`, `materialIndex`?): `void`
+
+Defined in: three/src/core/BufferGeometry.js:310
+
+Adds a group to this geometry.
+
+#### Parameters
+
+##### start
+
+`number`
+
+The first element in this draw call. That is the first
+vertex for non-indexed geometry, otherwise the first triangle index.
+
+##### count
+
+`number`
+
+Specifies how many vertices (or indices) are part of this group.
+
+##### materialIndex?
+
+`number` = `0`
+
+The material array index to use.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`addGroup`](Three.BufferGeometry.html#addgroup)
+
+***
+
+### applyMatrix4()
+
+> **applyMatrix4**(`matrix`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:351
+
+Applies the given 4x4 transformation matrix to the geometry.
+
+#### Parameters
+
+##### matrix
+
+[`Matrix4`](Three.Matrix4.html)
+
+The matrix to apply.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`applyMatrix4`](Three.BufferGeometry.html#applymatrix4)
+
+***
+
+### applyQuaternion()
+
+> **applyQuaternion**(`q`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:407
+
+Applies the rotation represented by the Quaternion to the geometry.
+
+#### Parameters
+
+##### q
+
+`Quaternion`
+
+The Quaternion to apply.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`applyQuaternion`](Three.BufferGeometry.html#applyquaternion)
+
+***
+
+### center()
+
+> **center**(): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:546
+
+Center the geometry based on its bounding box.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`center`](Three.BufferGeometry.html#center)
+
+***
+
+### clearGroups()
+
+> **clearGroups**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:325
+
+Clears all groups.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`clearGroups`](Three.BufferGeometry.html#cleargroups)
+
+***
+
+### clone()
+
+> **clone**(): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:1318
+
+Returns a new geometry with copied values from this instance.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A clone of this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`clone`](Three.BufferGeometry.html#clone)
+
+***
+
+### computeBoundingBox()
+
+> **computeBoundingBox**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:616
+
+Computes the bounding box of the geometry, and updates the `boundingBox` member.
+The bounding box is not computed by the engine; it must be computed by your app.
+You may need to recompute the bounding box if the geometry vertices are modified.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`computeBoundingBox`](Three.BufferGeometry.html#computeboundingbox)
+
+***
+
+### computeBoundingSphere()
+
+> **computeBoundingSphere**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:691
+
+Computes the bounding sphere of the geometry, and updates the `boundingSphere` member.
+The engine automatically computes the bounding sphere when it is needed, e.g., for ray casting or view frustum culling.
+You may need to recompute the bounding sphere if the geometry vertices are modified.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`computeBoundingSphere`](Three.BufferGeometry.html#computeboundingsphere)
+
+***
+
+### computeTangents()
+
+> **computeTangents**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:810
+
+Calculates and adds a tangent attribute to this geometry.
+
+The computation is only supported for indexed geometries and if position, normal, and uv attributes
+are defined. When using a tangent space normal map, prefer the MikkTSpace algorithm provided by
+BufferGeometryUtils#computeMikkTSpaceTangents instead.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`computeTangents`](Three.BufferGeometry.html#computetangents)
+
+***
+
+### computeVertexNormals()
+
+> **computeVertexNormals**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:975
+
+Computes vertex normals for the given vertex data. For indexed geometries, the method sets
+each vertex normal to be the average of the face normals of the faces that share that vertex.
+For non-indexed geometries, vertices are not shared, and the method sets each vertex normal
+to be the same as the face normal.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`computeVertexNormals`](Three.BufferGeometry.html#computevertexnormals)
+
+***
+
+### copy()
+
+> **copy**(`source`): `ShapeGeometry`
+
+Defined in: three/src/geometries/ShapeGeometry.js:162
+
+Copies the values of the given geometry to this instance.
+
+#### Parameters
+
+##### source
+
+`any`
+
+The geometry to copy.
+
+#### Returns
+
+`ShapeGeometry`
+
+A reference to this instance.
+
+#### Overrides
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`copy`](Three.BufferGeometry.html#copy)
+
+***
+
+### deleteAttribute()
+
+> **deleteAttribute**(`name`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:282
+
+Deletes the attribute for the given name.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The attribute name to delete.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`deleteAttribute`](Three.BufferGeometry.html#deleteattribute)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`dispatchEvent`](Three.BufferGeometry.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:1441
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever this instance is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Fires
+
+BufferGeometry#dispose
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`dispose`](Three.BufferGeometry.html#dispose)
+
+***
+
+### getAttribute()
+
+> **getAttribute**(`name`): `any`
+
+Defined in: three/src/core/BufferGeometry.js:255
+
+Returns the buffer attribute for the given name.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The attribute name.
+
+#### Returns
+
+`any`
+
+The buffer attribute.
+Returns `undefined` if not attribute has been found.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`getAttribute`](Three.BufferGeometry.html#getattribute)
+
+***
+
+### getIndex()
+
+> **getIndex**(): [`BufferAttribute`](Three.BufferAttribute.html)
+
+Defined in: three/src/core/BufferGeometry.js:195
+
+Returns the index of this geometry.
+
+#### Returns
+
+[`BufferAttribute`](Three.BufferAttribute.html)
+
+The index. Returns `null` if no index is defined.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`getIndex`](Three.BufferGeometry.html#getindex)
+
+***
+
+### getIndirect()
+
+> **getIndirect**(): [`BufferAttribute`](Three.BufferAttribute.html)
+
+Defined in: three/src/core/BufferGeometry.js:242
+
+Returns the indirect attribute of this geometry.
+
+#### Returns
+
+[`BufferAttribute`](Three.BufferAttribute.html)
+
+The indirect attribute. Returns `null` if no indirect attribute is defined.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`getIndirect`](Three.BufferGeometry.html#getindirect)
+
+***
+
+### hasAttribute()
+
+> **hasAttribute**(`name`): `boolean`
+
+Defined in: three/src/core/BufferGeometry.js:296
+
+Returns `true` if this geometry has an attribute for the given name.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The attribute name.
+
+#### Returns
+
+`boolean`
+
+Whether this geometry has an attribute for the given name or not.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`hasAttribute`](Three.BufferGeometry.html#hasattribute)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`hasEventListener`](Three.BufferGeometry.html#haseventlistener)
+
+***
+
+### lookAt()
+
+> **lookAt**(`vector`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:529
+
+Rotates the geometry to face a point in 3D space. This is typically done as a one time
+operation, and not during a loop. Use [Object3D#lookAt](Three.Object3D.html#lookat) for typical
+real-time mesh rotation.
+
+#### Parameters
+
+##### vector
+
+[`Vector3`](Three.Vector3.html)
+
+The target point.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`lookAt`](Three.BufferGeometry.html#lookat)
+
+***
+
+### normalizeNormals()
+
+> **normalizeNormals**(): `void`
+
+Defined in: three/src/core/BufferGeometry.js:1071
+
+Ensures every normal vector in a geometry will have a magnitude of `1`. This will
+correct lighting on the geometry surfaces.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`normalizeNormals`](Three.BufferGeometry.html#normalizenormals)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`removeEventListener`](Three.BufferGeometry.html#removeeventlistener)
+
+***
+
+### rotateX()
+
+> **rotateX**(`angle`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:425
+
+Rotates the geometry about the X axis. This is typically done as a one time
+operation, and not during a loop. Use Object3D#rotation for typical
+real-time mesh rotation.
+
+#### Parameters
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`rotateX`](Three.BufferGeometry.html#rotatex)
+
+***
+
+### rotateY()
+
+> **rotateY**(`angle`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:445
+
+Rotates the geometry about the Y axis. This is typically done as a one time
+operation, and not during a loop. Use Object3D#rotation for typical
+real-time mesh rotation.
+
+#### Parameters
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`rotateY`](Three.BufferGeometry.html#rotatey)
+
+***
+
+### rotateZ()
+
+> **rotateZ**(`angle`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:465
+
+Rotates the geometry about the Z axis. This is typically done as a one time
+operation, and not during a loop. Use Object3D#rotation for typical
+real-time mesh rotation.
+
+#### Parameters
+
+##### angle
+
+`number`
+
+The angle in radians.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`rotateZ`](Three.BufferGeometry.html#rotatez)
+
+***
+
+### scale()
+
+> **scale**(`x`, `y`, `z`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:509
+
+Scales the geometry. This is typically done as a one time
+operation, and not during a loop. Use Object3D#scale for typical
+real-time mesh rotation.
+
+#### Parameters
+
+##### x
+
+`number`
+
+The x scale.
+
+##### y
+
+`number`
+
+The y scale.
+
+##### z
+
+`number`
+
+The z scale.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`scale`](Three.BufferGeometry.html#scale)
+
+***
+
+### setAttribute()
+
+> **setAttribute**(`name`, `attribute`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:268
+
+Sets the given attribute for the given name.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The attribute name.
+
+##### attribute
+
+`any`
+
+The attribute to set.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`setAttribute`](Three.BufferGeometry.html#setattribute)
+
+***
+
+### setDrawRange()
+
+> **setDrawRange**(`start`, `count`): `void`
+
+Defined in: three/src/core/BufferGeometry.js:338
+
+Sets the draw range for this geometry.
+
+#### Parameters
+
+##### start
+
+`number`
+
+The first vertex for non-indexed geometry, otherwise the first triangle index.
+
+##### count
+
+`number`
+
+For non-indexed BufferGeometry, `count` is the number of vertices to render.
+For indexed BufferGeometry, `count` is the number of indices to render.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`setDrawRange`](Three.BufferGeometry.html#setdrawrange)
+
+***
+
+### setFromPoints()
+
+> **setFromPoints**(`points`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:569
+
+Defines a geometry by creating a `position` attribute based on the given array of points. The array
+can hold 2D or 3D vectors. When using two-dimensional data, the `z` coordinate for all vertices is
+set to `0`.
+
+If the method is used with an existing `position` attribute, the vertex data are overwritten with the
+data from the array. The length of the array must match the vertex count.
+
+#### Parameters
+
+##### points
+
+The points.
+
+[`Vector3`](Three.Vector3.html)[] | [`Vector2`](Three.Vector2.html)[]
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`setFromPoints`](Three.BufferGeometry.html#setfrompoints)
+
+***
+
+### setIndex()
+
+> **setIndex**(`index`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:207
+
+Sets the given index to this geometry.
+
+#### Parameters
+
+##### index
+
+The index to set.
+
+`number`[] | [`BufferAttribute`](Three.BufferAttribute.html)
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`setIndex`](Three.BufferGeometry.html#setindex)
+
+***
+
+### setIndirect()
+
+> **setIndirect**(`indirect`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:229
+
+Sets the given indirect attribute to this geometry.
+
+#### Parameters
+
+##### indirect
+
+[`BufferAttribute`](Three.BufferAttribute.html)
+
+The attribute holding indirect draw calls.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`setIndirect`](Three.BufferGeometry.html#setindirect)
+
+***
+
+### toJSON()
+
+> **toJSON**(): `any`
+
+Defined in: three/src/geometries/ShapeGeometry.js:172
+
+Serializes the geometry into JSON.
+
+#### Returns
+
+`any`
+
+A JSON object representing the serialized geometry.
+
+#### Overrides
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`toJSON`](Three.BufferGeometry.html#tojson)
+
+***
+
+### toNonIndexed()
+
+> **toNonIndexed**(): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:1093
+
+Return a new non-index version of this indexed geometry. If the geometry
+is already non-indexed, the method is a NOOP.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+The non-indexed version of this indexed geometry.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`toNonIndexed`](Three.BufferGeometry.html#tononindexed)
+
+***
+
+### translate()
+
+> **translate**(`x`, `y`, `z`): [`BufferGeometry`](Three.BufferGeometry.html)
+
+Defined in: three/src/core/BufferGeometry.js:487
+
+Translates the geometry. This is typically done as a one time
+operation, and not during a loop. Use Object3D#position for typical
+real-time mesh rotation.
+
+#### Parameters
+
+##### x
+
+`number`
+
+The x offset.
+
+##### y
+
+`number`
+
+The y offset.
+
+##### z
+
+`number`
+
+The z offset.
+
+#### Returns
+
+[`BufferGeometry`](Three.BufferGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`BufferGeometry`](Three.BufferGeometry.html).[`translate`](Three.BufferGeometry.html#translate)
+
+***
+
+### fromJSON()
+
+> `static` **fromJSON**(`data`, `shapes`): `ShapeGeometry`
+
+Defined in: three/src/geometries/ShapeGeometry.js:190
+
+Factory method for creating an instance of this class from the given
+JSON object.
+
+#### Parameters
+
+##### data
+
+`any`
+
+A JSON object representing the serialized geometry.
+
+##### shapes
+
+[`Shape`](Three.Shape.html)[]
+
+An array of shapes.
+
+#### Returns
+
+`ShapeGeometry`
+
+A new instance.

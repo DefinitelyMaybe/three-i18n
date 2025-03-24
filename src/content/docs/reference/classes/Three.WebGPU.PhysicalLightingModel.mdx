@@ -1,0 +1,502 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "PhysicalLightingModel"
+---
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:350
+
+Represents the lighting model for a PBR material.
+
+## Extends
+
+- [`LightingModel`](Three.WebGPU.LightingModel.html)
+
+## Constructors
+
+### Constructor
+
+> **new PhysicalLightingModel**(`clearcoat`?, `sheen`?, `iridescence`?, `anisotropy`?, `transmission`?, `dispersion`?): `PhysicalLightingModel`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:362
+
+Constructs a new physical lighting model.
+
+#### Parameters
+
+##### clearcoat?
+
+`boolean` = `false`
+
+Whether clearcoat is supported or not.
+
+##### sheen?
+
+`boolean` = `false`
+
+Whether sheen is supported or not.
+
+##### iridescence?
+
+`boolean` = `false`
+
+Whether iridescence is supported or not.
+
+##### anisotropy?
+
+`boolean` = `false`
+
+Whether anisotropy is supported or not.
+
+##### transmission?
+
+`boolean` = `false`
+
+Whether transmission is supported or not.
+
+##### dispersion?
+
+`boolean` = `false`
+
+Whether dispersion is supported or not.
+
+#### Returns
+
+`PhysicalLightingModel`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`constructor`](Three.WebGPU.LightingModel.html#constructor)
+
+## Properties
+
+### anisotropy
+
+> **anisotropy**: `boolean`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:396
+
+Whether anisotropy is supported or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### clearcoat
+
+> **clearcoat**: `boolean`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:372
+
+Whether clearcoat is supported or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### clearcoatRadiance
+
+> **clearcoatRadiance**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:420
+
+The clear coat radiance.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### clearcoatSpecularDirect
+
+> **clearcoatSpecularDirect**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:428
+
+The clear coat specular direct.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### clearcoatSpecularIndirect
+
+> **clearcoatSpecularIndirect**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:436
+
+The clear coat specular indirect.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### dispersion
+
+> **dispersion**: `boolean`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:412
+
+Whether dispersion is supported or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### iridescence
+
+> **iridescence**: `boolean`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:388
+
+Whether iridescence is supported or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### iridescenceF0
+
+> **iridescenceF0**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:468
+
+The iridescence F0.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### iridescenceFresnel
+
+> **iridescenceFresnel**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:460
+
+The iridescence Fresnel.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### sheen
+
+> **sheen**: `boolean`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:380
+
+Whether sheen is supported or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### sheenSpecularDirect
+
+> **sheenSpecularDirect**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:444
+
+The sheen specular direct.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### sheenSpecularIndirect
+
+> **sheenSpecularIndirect**: `Node`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:452
+
+The sheen specular indirect.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### transmission
+
+> **transmission**: `boolean`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:404
+
+Whether transmission is supported or not.
+
+#### Default
+
+```ts
+false
+```
+
+## Methods
+
+### ambientOcclusion()
+
+> **ambientOcclusion**(`builder`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:730
+
+Implements the ambient occlusion term.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`ambientOcclusion`](Three.WebGPU.LightingModel.html#ambientocclusion)
+
+***
+
+### computeMultiscattering()
+
+> **computeMultiscattering**(`singleScatter`, `multiScatter`, `specularF90`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:551
+
+#### Parameters
+
+##### singleScatter
+
+`any`
+
+##### multiScatter
+
+`any`
+
+##### specularF90
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### direct()
+
+> **direct**(`__namedParameters`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:578
+
+Implements the direct light.
+
+#### Parameters
+
+##### \_\_namedParameters
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`direct`](Three.WebGPU.LightingModel.html#direct)
+
+***
+
+### directRectArea()
+
+> **directRectArea**(`__namedParameters`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:611
+
+This method is intended for implementing the direct light term for
+rect area light nodes.
+
+#### Parameters
+
+##### \_\_namedParameters
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`directRectArea`](Three.WebGPU.LightingModel.html#directrectarea)
+
+***
+
+### finish()
+
+> **finish**(`builder`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:763
+
+Used for final lighting accumulations depending on the requested features.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`finish`](Three.WebGPU.LightingModel.html#finish)
+
+***
+
+### indirect()
+
+> **indirect**(`builder`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:648
+
+Implements the indirect lighting.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`indirect`](Three.WebGPU.LightingModel.html#indirect)
+
+***
+
+### indirectDiffuse()
+
+> **indirectDiffuse**(`builder`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:661
+
+Implements the indirect diffuse term.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+***
+
+### indirectSpecular()
+
+> **indirectSpecular**(`builder`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:674
+
+Implements the indirect specular term.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+***
+
+### start()
+
+> **start**(`builder`): `void`
+
+Defined in: three/src/nodes/functions/PhysicalLightingModel.js:478
+
+Depending on what features are requested, the method prepares certain node variables
+which are later used for lighting computations.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`LightingModel`](Three.WebGPU.LightingModel.html).[`start`](Three.WebGPU.LightingModel.html#start)

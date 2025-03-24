@@ -1,0 +1,837 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeObjectLoader"
+---
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:12
+
+A special type of object loader for loading 3D objects using
+node materials.
+
+## Extends
+
+- [`ObjectLoader`](Three.ObjectLoader.html)
+
+## Constructors
+
+### Constructor
+
+> **new NodeObjectLoader**(`manager`?): `NodeObjectLoader`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:18
+
+Constructs a new node object loader.
+
+#### Parameters
+
+##### manager?
+
+`LoadingManager`
+
+A reference to a loading manager.
+
+#### Returns
+
+`NodeObjectLoader`
+
+#### Overrides
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`constructor`](Three.ObjectLoader.html#constructor)
+
+## Properties
+
+### crossOrigin
+
+> **crossOrigin**: `string`
+
+Defined in: three/src/loaders/Loader.js:32
+
+The crossOrigin string to implement CORS for loading the url from a
+different domain that allows CORS.
+
+#### Default
+
+```ts
+'anonymous'
+```
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`crossOrigin`](Three.ObjectLoader.html#crossorigin)
+
+***
+
+### manager
+
+> **manager**: `LoadingManager`
+
+Defined in: three/src/loaders/Loader.js:23
+
+The loading manager.
+
+#### Default
+
+```ts
+DefaultLoadingManager
+```
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`manager`](Three.ObjectLoader.html#manager)
+
+***
+
+### nodeMaterials
+
+> **nodeMaterials**: `object`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:33
+
+Represents a dictionary of node material types.
+
+***
+
+### nodes
+
+> **nodes**: `object`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:26
+
+Represents a dictionary of node types.
+
+***
+
+### path
+
+> **path**: `string`
+
+Defined in: three/src/loaders/Loader.js:47
+
+The base path from which the asset will be loaded.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`path`](Three.ObjectLoader.html#path)
+
+***
+
+### requestHeader
+
+> **requestHeader**: `object`
+
+Defined in: three/src/loaders/Loader.js:62
+
+The [request header][https://developer.mozilla.org/en-US/docs/Glossary/Request\_header](https://developer.mozilla.org/en-US/docs/Glossary/Request_header)
+used in HTTP request.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`requestHeader`](Three.ObjectLoader.html#requestheader)
+
+***
+
+### resourcePath
+
+> **resourcePath**: `string`
+
+Defined in: three/src/loaders/Loader.js:54
+
+The base path from which additional resources like textures will be loaded.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`resourcePath`](Three.ObjectLoader.html#resourcepath)
+
+***
+
+### withCredentials
+
+> **withCredentials**: `boolean`
+
+Defined in: three/src/loaders/Loader.js:40
+
+Whether the XMLHttpRequest uses credentials.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`withCredentials`](Three.ObjectLoader.html#withcredentials)
+
+***
+
+### DEFAULT\_MATERIAL\_NAME
+
+> `static` **DEFAULT\_MATERIAL\_NAME**: `string`
+
+Defined in: three/src/loaders/Loader.js:200
+
+The default material name that is used by loaders
+when creating materials for loaded 3D objects.
+
+Note: Not all loaders might honor this setting.
+
+#### Static
+
+#### Default
+
+```ts
+'__DEFAULT'
+```
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`DEFAULT_MATERIAL_NAME`](Three.ObjectLoader.html#default_material_name)
+
+## Methods
+
+### bindLightTargets()
+
+> **bindLightTargets**(`object`): `void`
+
+Defined in: three/src/loaders/ObjectLoader.js:1184
+
+#### Parameters
+
+##### object
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`bindLightTargets`](Three.ObjectLoader.html#bindlighttargets)
+
+***
+
+### bindSkeletons()
+
+> **bindSkeletons**(`object`, `skeletons`): `void`
+
+Defined in: three/src/loaders/ObjectLoader.js:1158
+
+#### Parameters
+
+##### object
+
+`any`
+
+##### skeletons
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`bindSkeletons`](Three.ObjectLoader.html#bindskeletons)
+
+***
+
+### load()
+
+> **load**(`url`, `onLoad`, `onProgress`, `onError`): `void`
+
+Defined in: three/src/loaders/ObjectLoader.js:103
+
+Starts loading from the given URL and pass the loaded 3D object to the `onLoad()` callback.
+
+#### Parameters
+
+##### url
+
+`string`
+
+The path/URL of the file to be loaded. This can also be a data URI.
+
+##### onLoad
+
+(`arg0`) => `any`
+
+Executed when the loading process has been finished.
+
+##### onProgress
+
+`onProgressCallback`
+
+Executed while the loading is in progress.
+
+##### onError
+
+`onErrorCallback`
+
+Executed when errors occur.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`load`](Three.ObjectLoader.html#load)
+
+***
+
+### loadAsync()
+
+> **loadAsync**(`url`, `onProgress`): `Promise`\<[`Object3D`](Three.Object3D.html)\>
+
+Defined in: three/src/loaders/ObjectLoader.js:157
+
+Async version of [ObjectLoader#load](Three.ObjectLoader.html#load).
+
+#### Parameters
+
+##### url
+
+`string`
+
+The path/URL of the file to be loaded. This can also be a data URI.
+
+##### onProgress
+
+`onProgressCallback`
+
+Executed while the loading is in progress.
+
+#### Returns
+
+`Promise`\<[`Object3D`](Three.Object3D.html)\>
+
+A Promise that resolves with the loaded 3D object.
+
+#### Async
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`loadAsync`](Three.ObjectLoader.html#loadasync)
+
+***
+
+### parse()
+
+> **parse**(`json`, `onLoad`): `Object3D`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:73
+
+Parses the node objects from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON definition
+
+##### onLoad
+
+`Function`
+
+The onLoad callback function.
+
+#### Returns
+
+`Object3D`
+
+. The parsed 3D object.
+
+#### Overrides
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parse`](Three.ObjectLoader.html#parse)
+
+***
+
+### parseAnimations()
+
+> **parseAnimations**(`json`): `object`
+
+Defined in: three/src/loaders/ObjectLoader.js:399
+
+#### Parameters
+
+##### json
+
+`any`
+
+#### Returns
+
+`object`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseAnimations`](Three.ObjectLoader.html#parseanimations)
+
+***
+
+### parseAsync()
+
+> **parseAsync**(`json`): `Promise`\<[`Object3D`](Three.Object3D.html)\>
+
+Defined in: three/src/loaders/ObjectLoader.js:245
+
+Async version of [ObjectLoader#parse](Three.ObjectLoader.html#parse).
+
+#### Parameters
+
+##### json
+
+`any`
+
+The serialized 3D object.
+
+#### Returns
+
+`Promise`\<[`Object3D`](Three.Object3D.html)\>
+
+A Promise that resolves with the parsed 3D object.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseAsync`](Three.ObjectLoader.html#parseasync)
+
+***
+
+### parseGeometries()
+
+> **parseGeometries**(`json`, `shapes`): `object`
+
+Defined in: three/src/loaders/ObjectLoader.js:319
+
+#### Parameters
+
+##### json
+
+`any`
+
+##### shapes
+
+`any`
+
+#### Returns
+
+`object`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseGeometries`](Three.ObjectLoader.html#parsegeometries)
+
+***
+
+### parseImages()
+
+> **parseImages**(`json`, `onLoad`): `object`
+
+Defined in: three/src/loaders/ObjectLoader.js:421
+
+#### Parameters
+
+##### json
+
+`any`
+
+##### onLoad
+
+`any`
+
+#### Returns
+
+`object`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseImages`](Three.ObjectLoader.html#parseimages)
+
+***
+
+### parseImagesAsync()
+
+> **parseImagesAsync**(`json`): `Promise`\<\{\}\>
+
+Defined in: three/src/loaders/ObjectLoader.js:537
+
+#### Parameters
+
+##### json
+
+`any`
+
+#### Returns
+
+`Promise`\<\{\}\>
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseImagesAsync`](Three.ObjectLoader.html#parseimagesasync)
+
+***
+
+### parseMaterials()
+
+> **parseMaterials**(`json`, `textures`): `object`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:109
+
+Parses the node objects from the given JSON and textures.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON definition
+
+##### textures
+
+The texture library.
+
+#### Returns
+
+`object`
+
+. The parsed materials.
+
+#### Overrides
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseMaterials`](Three.ObjectLoader.html#parsematerials)
+
+***
+
+### parseNodes()
+
+> **parseNodes**(`json`, `textures`): `object`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:90
+
+Parses the node objects from the given JSON and textures.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON definition
+
+##### textures
+
+The texture library.
+
+#### Returns
+
+`object`
+
+. The parsed nodes.
+
+***
+
+### parseObject()
+
+> **parseObject**(`data`, `geometries`, `materials`, `textures`, `animations`): [`Object3D`](Three.Object3D.html) \| [`Mesh`](Three.Mesh.html) \| [`PerspectiveCamera`](Three.PerspectiveCamera.html) \| [`Scene`](Three.Scene.html) \| [`Sprite`](Three.Sprite.html) \| [`LOD`](Three.LOD.html) \| [`SkinnedMesh`](Three.SkinnedMesh.html) \| [`InstancedMesh`](Three.InstancedMesh.html) \| [`BatchedMesh`](Three.BatchedMesh.html) \| [`Line`](Three.Line.html) \| [`Points`](Three.Points.html) \| [`HemisphereLight`](Three.HemisphereLight.html) \| [`SpotLight`](Three.SpotLight.html) \| [`PointLight`](Three.PointLight.html) \| [`OrthographicCamera`](Three.OrthographicCamera.html) \| [`DirectionalLight`](Three.DirectionalLight.html) \| [`AmbientLight`](Three.AmbientLight.html) \| [`RectAreaLight`](Three.RectAreaLight.html) \| [`LightProbe`](Three.LightProbe.html)
+
+Defined in: three/src/loaders/ObjectLoader.js:741
+
+#### Parameters
+
+##### data
+
+`any`
+
+##### geometries
+
+`any`
+
+##### materials
+
+`any`
+
+##### textures
+
+`any`
+
+##### animations
+
+`any`
+
+#### Returns
+
+[`Object3D`](Three.Object3D.html) \| [`Mesh`](Three.Mesh.html) \| [`PerspectiveCamera`](Three.PerspectiveCamera.html) \| [`Scene`](Three.Scene.html) \| [`Sprite`](Three.Sprite.html) \| [`LOD`](Three.LOD.html) \| [`SkinnedMesh`](Three.SkinnedMesh.html) \| [`InstancedMesh`](Three.InstancedMesh.html) \| [`BatchedMesh`](Three.BatchedMesh.html) \| [`Line`](Three.Line.html) \| [`Points`](Three.Points.html) \| [`HemisphereLight`](Three.HemisphereLight.html) \| [`SpotLight`](Three.SpotLight.html) \| [`PointLight`](Three.PointLight.html) \| [`OrthographicCamera`](Three.OrthographicCamera.html) \| [`DirectionalLight`](Three.DirectionalLight.html) \| [`AmbientLight`](Three.AmbientLight.html) \| [`RectAreaLight`](Three.RectAreaLight.html) \| [`LightProbe`](Three.LightProbe.html)
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseObject`](Three.ObjectLoader.html#parseobject)
+
+***
+
+### parseShapes()
+
+> **parseShapes**(`json`): `object`
+
+Defined in: three/src/loaders/ObjectLoader.js:268
+
+#### Parameters
+
+##### json
+
+`any`
+
+#### Returns
+
+`object`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseShapes`](Three.ObjectLoader.html#parseshapes)
+
+***
+
+### parseSkeletons()
+
+> **parseSkeletons**(`json`, `object`): `object`
+
+Defined in: three/src/loaders/ObjectLoader.js:288
+
+#### Parameters
+
+##### json
+
+`any`
+
+##### object
+
+`any`
+
+#### Returns
+
+`object`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseSkeletons`](Three.ObjectLoader.html#parseskeletons)
+
+***
+
+### parseTextures()
+
+> **parseTextures**(`json`, `images`): `object`
+
+Defined in: three/src/loaders/ObjectLoader.js:633
+
+#### Parameters
+
+##### json
+
+`any`
+
+##### images
+
+`any`
+
+#### Returns
+
+`object`
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`parseTextures`](Three.ObjectLoader.html#parsetextures)
+
+***
+
+### setCrossOrigin()
+
+> **setCrossOrigin**(`crossOrigin`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:111
+
+Sets the `crossOrigin` String to implement CORS for loading the URL
+from a different domain that allows CORS.
+
+#### Parameters
+
+##### crossOrigin
+
+`string`
+
+The `crossOrigin` value.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`setCrossOrigin`](Three.ObjectLoader.html#setcrossorigin)
+
+***
+
+### setNodeMaterials()
+
+> **setNodeMaterials**(`value`): `NodeObjectLoader`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:61
+
+Defines the dictionary of node material types.
+
+#### Parameters
+
+##### value
+
+The node material library defined as `<classname,class>`.
+
+#### Returns
+
+`NodeObjectLoader`
+
+A reference to this loader.
+
+***
+
+### setNodes()
+
+> **setNodes**(`value`): `NodeObjectLoader`
+
+Defined in: three/src/loaders/nodes/NodeObjectLoader.js:50
+
+Defines the dictionary of node types.
+
+#### Parameters
+
+##### value
+
+The node library defined as `<classname,class>`.
+
+#### Returns
+
+`NodeObjectLoader`
+
+A reference to this loader.
+
+***
+
+### setPath()
+
+> **setPath**(`path`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:140
+
+Sets the base path for the asset.
+
+#### Parameters
+
+##### path
+
+`string`
+
+The base path.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`setPath`](Three.ObjectLoader.html#setpath)
+
+***
+
+### setRequestHeader()
+
+> **setRequestHeader**(`requestHeader`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:167
+
+Sets the given request header.
+
+#### Parameters
+
+##### requestHeader
+
+`any`
+
+A [request header][https://developer.mozilla.org/en-US/docs/Glossary/Request\_header](https://developer.mozilla.org/en-US/docs/Glossary/Request_header)
+for configuring the HTTP request.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`setRequestHeader`](Three.ObjectLoader.html#setrequestheader)
+
+***
+
+### setResourcePath()
+
+> **setResourcePath**(`resourcePath`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:153
+
+Sets the base path for dependent resources like textures.
+
+#### Parameters
+
+##### resourcePath
+
+`string`
+
+The resource path.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`setResourcePath`](Three.ObjectLoader.html#setresourcepath)
+
+***
+
+### setWithCredentials()
+
+> **setWithCredentials**(`value`): [`Loader`](Three.Loader.html)
+
+Defined in: three/src/loaders/Loader.js:127
+
+Whether the XMLHttpRequest uses credentials such as cookies, authorization
+headers or TLS client certificates, see [XMLHttpRequest.withCredentials][https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials).
+
+Note: This setting has no effect if you are loading files locally or from the same domain.
+
+#### Parameters
+
+##### value
+
+`boolean`
+
+The `withCredentials` value.
+
+#### Returns
+
+[`Loader`](Three.Loader.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`ObjectLoader`](Three.ObjectLoader.html).[`setWithCredentials`](Three.ObjectLoader.html#setwithcredentials)

@@ -1,0 +1,1287 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "CompressedArrayTexture"
+---
+
+Defined in: three/src/textures/CompressedArrayTexture.js:11
+
+Creates a texture 2D array based on data in compressed form.
+
+These texture are usually loaded with [CompressedTextureLoader](Three.CompressedTextureLoader.html).
+
+## Extends
+
+- [`CompressedTexture`](Three.CompressedTexture.html)
+
+## Constructors
+
+### Constructor
+
+> **new CompressedArrayTexture**(`mipmaps`, `width`, `height`, `depth`, `format`?, `type`?): `CompressedArrayTexture`
+
+Defined in: three/src/textures/CompressedArrayTexture.js:24
+
+Constructs a new compressed array texture.
+
+#### Parameters
+
+##### mipmaps
+
+`any`[]
+
+This array holds for all mipmaps (including the bases mip)
+the data and dimensions.
+
+##### width
+
+`number`
+
+The width of the texture.
+
+##### height
+
+`number`
+
+The height of the texture.
+
+##### depth
+
+`number`
+
+The depth of the texture.
+
+##### format?
+
+`number`
+
+The min filter value.
+
+##### type?
+
+`number`
+
+The min filter value.
+
+#### Returns
+
+`CompressedArrayTexture`
+
+#### Overrides
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`constructor`](Three.CompressedTexture.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`_listeners`](Three.CompressedTexture.html#_listeners)
+
+***
+
+### anisotropy
+
+> **anisotropy**: `number`
+
+Defined in: three/src/textures/Texture.js:159
+
+The number of samples taken along the axis through the pixel that has the
+highest density of texels. By default, this value is `1`. A higher value
+gives a less blurry result than a basic mipmap, at the cost of more
+texture samples being used.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`anisotropy`](Three.CompressedTexture.html#anisotropy)
+
+***
+
+### center
+
+> **center**: [`Vector2`](Three.Vector2.html)
+
+Defined in: three/src/textures/Texture.js:215
+
+The point around which rotation occurs. A value of `(0.5, 0.5)` corresponds
+to the center of the texture. Default is `(0, 0)`, the lower left.
+
+#### Default
+
+```ts
+(0,0)
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`center`](Three.CompressedTexture.html#center)
+
+***
+
+### channel
+
+> **channel**: `number`
+
+Defined in: three/src/textures/Texture.js:114
+
+Lets you select the uv attribute to map the texture to. `0` for `uv`,
+`1` for `uv1`, `2` for `uv2` and `3` for `uv3`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`channel`](Three.CompressedTexture.html#channel)
+
+***
+
+### colorSpace
+
+> **colorSpace**: `string`
+
+Defined in: three/src/textures/Texture.js:295
+
+Textures containing color data should be annotated with `SRGBColorSpace` or `LinearSRGBColorSpace`.
+
+#### Default
+
+```ts
+NoColorSpace
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`colorSpace`](Three.CompressedTexture.html#colorspace)
+
+***
+
+### flipY
+
+> **flipY**: `boolean`
+
+Defined in: three/src/textures/Texture.js:277
+
+If set to `true`, the texture is flipped along the vertical axis when
+uploaded to the GPU.
+
+Note that this property has no effect when using `ImageBitmap`. You need to
+configure the flip on bitmap creation instead.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`flipY`](Three.CompressedTexture.html#flipy)
+
+***
+
+### format
+
+> **format**: `number`
+
+Defined in: three/src/textures/Texture.js:167
+
+The format of the texture.
+
+#### Default
+
+```ts
+RGBAFormat
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`format`](Three.CompressedTexture.html#format)
+
+***
+
+### generateMipmaps
+
+> **generateMipmaps**: `boolean`
+
+Defined in: three/src/textures/Texture.js:253
+
+Whether to generate mipmaps (if possible) for a texture.
+
+Set this to `false` if you are creating mipmaps manually.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`generateMipmaps`](Three.CompressedTexture.html#generatemipmaps)
+
+***
+
+### internalFormat
+
+> **internalFormat**: `string`
+
+Defined in: three/src/textures/Texture.js:178
+
+The default internal format is derived from [Texture#format](Three.Texture.html#format) and [Texture#type](Three.Texture.html#type) and
+defines how the texture data is going to be stored on the GPU.
+
+This property allows to overwrite the default format.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`internalFormat`](Three.CompressedTexture.html#internalformat)
+
+***
+
+### isCompressedArrayTexture
+
+> `readonly` **isCompressedArrayTexture**: `boolean`
+
+Defined in: three/src/textures/CompressedArrayTexture.js:35
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### isCompressedTexture
+
+> `readonly` **isCompressedTexture**: `boolean`
+
+Defined in: three/src/textures/CompressedTexture.js:40
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`isCompressedTexture`](Three.CompressedTexture.html#iscompressedtexture)
+
+***
+
+### isRenderTargetTexture
+
+> `readonly` **isRenderTargetTexture**: `boolean`
+
+Defined in: three/src/textures/Texture.js:338
+
+Indicates whether a texture belongs to a render target or not.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`isRenderTargetTexture`](Three.CompressedTexture.html#isrendertargettexture)
+
+***
+
+### isTexture
+
+> `readonly` **isTexture**: `boolean`
+
+Defined in: three/src/textures/Texture.js:55
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`isTexture`](Three.CompressedTexture.html#istexture)
+
+***
+
+### layerUpdates
+
+> **layerUpdates**: `Set`\<`number`\>
+
+Defined in: three/src/textures/CompressedArrayTexture.js:59
+
+A set of all layers which need to be updated in the texture.
+
+***
+
+### magFilter
+
+> **magFilter**: `any`
+
+Defined in: three/src/textures/Texture.js:140
+
+How the texture is sampled when a texel covers more than one pixel.
+
+#### Default
+
+```ts
+LinearFilter
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`magFilter`](Three.CompressedTexture.html#magfilter)
+
+***
+
+### mapping
+
+> **mapping**: `any`
+
+Defined in: three/src/textures/Texture.js:105
+
+How the texture is applied to the object. The value `UVMapping`
+is the default, where texture or uv coordinates are used to apply the map.
+
+#### Default
+
+```ts
+UVMapping
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`mapping`](Three.CompressedTexture.html#mapping)
+
+***
+
+### matrix
+
+> **matrix**: [`Matrix3`](Three.Matrix3.html)
+
+Defined in: three/src/textures/Texture.js:243
+
+The uv-transformation matrix of the texture.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`matrix`](Three.CompressedTexture.html#matrix)
+
+***
+
+### matrixAutoUpdate
+
+> **matrixAutoUpdate**: `boolean`
+
+Defined in: three/src/textures/Texture.js:236
+
+Whether to update the texture's uv-transformation [Texture#matrix](Three.Texture.html#matrix)
+from the properties [Texture#offset](Three.Texture.html#offset), [Texture#repeat](Three.Texture.html#repeat),
+[Texture#rotation](Three.Texture.html#rotation), and [Texture#center](Three.Texture.html#center).
+
+Set this to `false` if you are specifying the uv-transform matrix directly.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`matrixAutoUpdate`](Three.CompressedTexture.html#matrixautoupdate)
+
+***
+
+### minFilter
+
+> **minFilter**: `any`
+
+Defined in: three/src/textures/Texture.js:148
+
+How the texture is sampled when a texel covers less than one pixel.
+
+#### Default
+
+```ts
+LinearMipmapLinearFilter
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`minFilter`](Three.CompressedTexture.html#minfilter)
+
+***
+
+### mipmaps
+
+> **mipmaps**: `any`[]
+
+Defined in: three/src/textures/Texture.js:96
+
+An array holding user-defined mipmaps.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`mipmaps`](Three.CompressedTexture.html#mipmaps)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/textures/Texture.js:79
+
+The name of the material.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`name`](Three.CompressedTexture.html#name)
+
+***
+
+### offset
+
+> **offset**: [`Vector2`](Three.Vector2.html)
+
+Defined in: three/src/textures/Texture.js:195
+
+How much a single repetition of the texture is offset from the beginning,
+in each direction U and V. Typical range is `0.0` to `1.0`.
+
+#### Default
+
+```ts
+(0,0)
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`offset`](Three.CompressedTexture.html#offset)
+
+***
+
+### onUpdate
+
+> **onUpdate**: `Function`
+
+Defined in: three/src/textures/Texture.js:321
+
+A callback function, called when the texture is updated (e.g., when
+[Texture#needsUpdate](Three.Texture.html#needsupdate) has been set to true and then the texture is used).
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`onUpdate`](Three.CompressedTexture.html#onupdate)
+
+***
+
+### pmremVersion
+
+> `readonly` **pmremVersion**: `number`
+
+Defined in: three/src/textures/Texture.js:348
+
+Indicates whether this texture should be processed by `PMREMGenerator` or not
+(only relevant for render target textures).
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`pmremVersion`](Three.CompressedTexture.html#pmremversion)
+
+***
+
+### premultiplyAlpha
+
+> **premultiplyAlpha**: `boolean`
+
+Defined in: three/src/textures/Texture.js:265
+
+If set to `true`, the alpha channel, if present, is multiplied into the
+color channels when the texture is uploaded to the GPU.
+
+Note that this property has no effect when using `ImageBitmap`. You need to
+configure premultiply alpha on bitmap creation instead.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`premultiplyAlpha`](Three.CompressedTexture.html#premultiplyalpha)
+
+***
+
+### renderTarget
+
+> **renderTarget**: `any`
+
+Defined in: three/src/textures/Texture.js:329
+
+An optional back reference to the textures render target.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`renderTarget`](Three.CompressedTexture.html#rendertarget)
+
+***
+
+### repeat
+
+> **repeat**: [`Vector2`](Three.Vector2.html)
+
+Defined in: three/src/textures/Texture.js:206
+
+How many times the texture is repeated across the surface, in each
+direction U and V. If repeat is set greater than `1` in either direction,
+the corresponding wrap parameter should also be set to `RepeatWrapping`
+or `MirroredRepeatWrapping` to achieve the desired tiling effect.
+
+#### Default
+
+```ts
+(1,1)
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`repeat`](Three.CompressedTexture.html#repeat)
+
+***
+
+### rotation
+
+> **rotation**: `number`
+
+Defined in: three/src/textures/Texture.js:224
+
+How much the texture is rotated around the center point, in radians.
+Positive values are counter-clockwise.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`rotation`](Three.CompressedTexture.html#rotation)
+
+***
+
+### source
+
+> **source**: [`Source`](Three.Source.html)
+
+Defined in: three/src/textures/Texture.js:89
+
+The data definition of a texture. A reference to the data source can be
+shared across textures. This is often useful in context of spritesheets
+where multiple textures render the same data but with different texture
+transformations.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`source`](Three.CompressedTexture.html#source)
+
+***
+
+### type
+
+> **type**: `number`
+
+Defined in: three/src/textures/Texture.js:186
+
+The data type of the texture.
+
+#### Default
+
+```ts
+UnsignedByteType
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`type`](Three.CompressedTexture.html#type)
+
+***
+
+### unpackAlignment
+
+> **unpackAlignment**: `number`
+
+Defined in: three/src/textures/Texture.js:287
+
+Specifies the alignment requirements for the start of each pixel row in memory.
+The allowable values are `1` (byte-alignment), `2` (rows aligned to even-numbered bytes),
+`4` (word-alignment), and `8` (rows start on double-word boundaries).
+
+#### Default
+
+```ts
+4
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`unpackAlignment`](Three.CompressedTexture.html#unpackalignment)
+
+***
+
+### userData
+
+> **userData**: `any`
+
+Defined in: three/src/textures/Texture.js:303
+
+An object that can be used to store custom data about the texture. It
+should not hold references to functions as these will not be cloned.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`userData`](Three.CompressedTexture.html#userdata)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/textures/Texture.js:72
+
+The UUID of the material.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`uuid`](Three.CompressedTexture.html#uuid)
+
+***
+
+### version
+
+> `readonly` **version**: `number`
+
+Defined in: three/src/textures/Texture.js:312
+
+This starts at `0` and counts how many times [Texture#needsUpdate](Three.Texture.html#needsupdate) is set to `true`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`version`](Three.CompressedTexture.html#version)
+
+***
+
+### wrapR
+
+> **wrapR**: `any`
+
+Defined in: three/src/textures/CompressedArrayTexture.js:52
+
+This defines how the texture is wrapped in the depth and corresponds to
+*W* in UVW mapping.
+
+#### Default
+
+```ts
+ClampToEdgeWrapping
+```
+
+***
+
+### wrapS
+
+> **wrapS**: `number`
+
+Defined in: three/src/textures/Texture.js:123
+
+This defines how the texture is wrapped horizontally and corresponds to
+*U* in UV mapping.
+
+#### Default
+
+```ts
+ClampToEdgeWrapping
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`wrapS`](Three.CompressedTexture.html#wraps)
+
+***
+
+### wrapT
+
+> **wrapT**: `number`
+
+Defined in: three/src/textures/Texture.js:132
+
+This defines how the texture is wrapped horizontally and corresponds to
+*V* in UV mapping.
+
+#### Default
+
+```ts
+ClampToEdgeWrapping
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`wrapT`](Three.CompressedTexture.html#wrapt)
+
+***
+
+### DEFAULT\_ANISOTROPY
+
+> `static` **DEFAULT\_ANISOTROPY**: `number`
+
+Defined in: three/src/textures/Texture.js:681
+
+The default anisotropy value for all textures.
+
+#### Static
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`DEFAULT_ANISOTROPY`](Three.CompressedTexture.html#default_anisotropy)
+
+***
+
+### DEFAULT\_IMAGE()
+
+> `static` **DEFAULT\_IMAGE**: (`width`?, `height`?) => `HTMLImageElement`
+
+Defined in: three/src/textures/Texture.js:663
+
+The default image for all textures.
+
+#### Parameters
+
+##### width?
+
+`number`
+
+##### height?
+
+`number`
+
+#### Returns
+
+`HTMLImageElement`
+
+#### Static
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`DEFAULT_IMAGE`](Three.CompressedTexture.html#default_image)
+
+***
+
+### DEFAULT\_MAPPING
+
+> `static` **DEFAULT\_MAPPING**: `number`
+
+Defined in: three/src/textures/Texture.js:672
+
+The default mapping for all textures.
+
+#### Static
+
+#### Default
+
+```ts
+UVMapping
+```
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`DEFAULT_MAPPING`](Three.CompressedTexture.html#default_mapping)
+
+## Accessors
+
+### image
+
+#### Get Signature
+
+> **get** **image**(): `any`
+
+Defined in: three/src/textures/Texture.js:357
+
+The image object holding the texture data.
+
+##### Returns
+
+`any`
+
+#### Set Signature
+
+> **set** **image**(`value`): `void`
+
+Defined in: three/src/textures/Texture.js:363
+
+##### Parameters
+
+###### value
+
+`any` = `null`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`image`](Three.CompressedTexture.html#image)
+
+***
+
+### needsPMREMUpdate
+
+#### Set Signature
+
+> **set** **needsPMREMUpdate**(`value`): `void`
+
+Defined in: three/src/textures/Texture.js:644
+
+Setting this property to `true` indicates the engine the PMREM
+must be regenerated.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`needsPMREMUpdate`](Three.CompressedTexture.html#needspmremupdate)
+
+***
+
+### needsUpdate
+
+#### Set Signature
+
+> **set** **needsUpdate**(`value`): `void`
+
+Defined in: three/src/textures/Texture.js:625
+
+Setting this property to `true` indicates the engine the texture
+must be updated in the next render. This triggers a texture upload
+to the GPU and ensures correct texture parameter configuration.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`needsUpdate`](Three.CompressedTexture.html#needsupdate)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`addEventListener`](Three.CompressedTexture.html#addeventlistener)
+
+***
+
+### addLayerUpdate()
+
+> **addLayerUpdate**(`layerIndex`): `void`
+
+Defined in: three/src/textures/CompressedArrayTexture.js:72
+
+Describes that a specific layer of the texture needs to be updated.
+Normally when [Texture#needsUpdate](Three.Texture.html#needsupdate) is set to `true`, the
+entire compressed texture array is sent to the GPU. Marking specific
+layers will only transmit subsets of all mipmaps associated with a
+specific depth in the array which is often much more performant.
+
+#### Parameters
+
+##### layerIndex
+
+`number`
+
+The layer index that should be updated.
+
+#### Returns
+
+`void`
+
+***
+
+### clearLayerUpdates()
+
+> **clearLayerUpdates**(): `void`
+
+Defined in: three/src/textures/CompressedArrayTexture.js:81
+
+Resets the layer updates registry.
+
+#### Returns
+
+`void`
+
+***
+
+### clone()
+
+> **clone**(): [`Texture`](Three.Texture.html)
+
+Defined in: three/src/textures/Texture.js:384
+
+Returns a new texture with copied values from this instance.
+
+#### Returns
+
+[`Texture`](Three.Texture.html)
+
+A clone of this instance.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`clone`](Three.CompressedTexture.html#clone)
+
+***
+
+### copy()
+
+> **copy**(`source`): [`Texture`](Three.Texture.html)
+
+Defined in: three/src/textures/Texture.js:396
+
+Copies the values of the given texture to this instance.
+
+#### Parameters
+
+##### source
+
+[`Texture`](Three.Texture.html)
+
+The texture to copy.
+
+#### Returns
+
+[`Texture`](Three.Texture.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`copy`](Three.CompressedTexture.html#copy)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`dispatchEvent`](Three.CompressedTexture.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/textures/Texture.js:518
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever this instance is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Fires
+
+Texture#dispose
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`dispose`](Three.CompressedTexture.html#dispose)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`hasEventListener`](Three.CompressedTexture.html#haseventlistener)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`removeEventListener`](Three.CompressedTexture.html#removeeventlistener)
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: three/src/textures/Texture.js:450
+
+Serializes the texture into JSON.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional value holding meta information about the serialization.
+
+#### Returns
+
+`any`
+
+A JSON object representing the serialized texture.
+
+#### See
+
+[ObjectLoader#parse](Three.ObjectLoader.html#parse)
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`toJSON`](Three.CompressedTexture.html#tojson)
+
+***
+
+### transformUv()
+
+> **transformUv**(`uv`): [`Vector2`](Three.Vector2.html)
+
+Defined in: three/src/textures/Texture.js:536
+
+Transforms the given uv vector with the textures uv transformation matrix.
+
+#### Parameters
+
+##### uv
+
+[`Vector2`](Three.Vector2.html)
+
+The uv vector.
+
+#### Returns
+
+[`Vector2`](Three.Vector2.html)
+
+The transformed uv vector.
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`transformUv`](Three.CompressedTexture.html#transformuv)
+
+***
+
+### updateMatrix()
+
+> **updateMatrix**(): `void`
+
+Defined in: three/src/textures/Texture.js:373
+
+Updates the texture transformation matrix from the from the properties [Texture#offset](Three.Texture.html#offset),
+[Texture#repeat](Three.Texture.html#repeat), [Texture#rotation](Three.Texture.html#rotation), and [Texture#center](Three.Texture.html#center).
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`CompressedTexture`](Three.CompressedTexture.html).[`updateMatrix`](Three.CompressedTexture.html#updatematrix)

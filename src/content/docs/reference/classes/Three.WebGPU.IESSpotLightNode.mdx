@@ -1,0 +1,1646 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "IESSpotLightNode"
+---
+
+Defined in: three/src/nodes/lighting/IESSpotLightNode.js:10
+
+An IES version of the default spot light node.
+
+## Extends
+
+- [`SpotLightNode`](Three.WebGPU.SpotLightNode.html)
+
+## Constructors
+
+### Constructor
+
+> **new IESSpotLightNode**(`light`?): `IESSpotLightNode`
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:27
+
+Constructs a new spot light node.
+
+#### Parameters
+
+##### light?
+
+`SpotLight` = `null`
+
+The spot light source.
+
+#### Returns
+
+`IESSpotLightNode`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`constructor`](Three.WebGPU.SpotLightNode.html#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: three/src/core/EventDispatcher.js:33
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`_listeners`](Three.WebGPU.SpotLightNode.html#_listeners)
+
+***
+
+### baseColorNode
+
+> **baseColorNode**: `Node`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:64
+
+This property is used to retain a reference to the original value of [AnalyticLightNode#colorNode](Three.WebGPU.AnalyticLightNode.html#colornode).
+The final color node is represented by a different node when using shadows.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`baseColorNode`](Three.WebGPU.SpotLightNode.html#basecolornode)
+
+***
+
+### color
+
+> **color**: [`Color`](Three.Color.html)
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:47
+
+The light's color value.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`color`](Three.WebGPU.SpotLightNode.html#color)
+
+***
+
+### colorNode
+
+> **colorNode**: `Node`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:55
+
+The light's color node. Points to `colorNode` of the light source, if set. Otherwise
+it creates a uniform node based on [AnalyticLightNode#color](Three.WebGPU.AnalyticLightNode.html#color).
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`colorNode`](Three.WebGPU.SpotLightNode.html#colornode)
+
+***
+
+### coneCosNode
+
+> **coneCosNode**: `UniformNode`\<`float`\>
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:36
+
+Uniform node representing the cone cosine.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`coneCosNode`](Three.WebGPU.SpotLightNode.html#conecosnode)
+
+***
+
+### cutoffDistanceNode
+
+> **cutoffDistanceNode**: `UniformNode`\<`float`\>
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:50
+
+Uniform node representing the cutoff distance.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`cutoffDistanceNode`](Three.WebGPU.SpotLightNode.html#cutoffdistancenode)
+
+***
+
+### decayExponentNode
+
+> **decayExponentNode**: `UniformNode`\<`float`\>
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:57
+
+Uniform node representing the decay exponent.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`decayExponentNode`](Three.WebGPU.SpotLightNode.html#decayexponentnode)
+
+***
+
+### global
+
+> **global**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:88
+
+Whether this node is global or not. This property is relevant for the internal
+node caching system. All nodes which should be declared just once should
+set this flag to `true` (a typical example is [AttributeNode](Three.WebGPU.AttributeNode.html)).
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`global`](Three.WebGPU.SpotLightNode.html#global)
+
+***
+
+### isAnalyticLightNode
+
+> `readonly` **isAnalyticLightNode**: `boolean`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:89
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`isAnalyticLightNode`](Three.WebGPU.SpotLightNode.html#isanalyticlightnode)
+
+***
+
+### isLightingNode
+
+> `readonly` **isLightingNode**: `boolean`
+
+Defined in: three/src/nodes/lighting/LightingNode.js:30
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`isLightingNode`](Three.WebGPU.SpotLightNode.html#islightingnode)
+
+***
+
+### isNode
+
+> `readonly` **isNode**: `boolean`
+
+Defined in: three/src/nodes/core/Node.js:97
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`isNode`](Three.WebGPU.SpotLightNode.html#isnode)
+
+***
+
+### light
+
+> **light**: `Light`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:40
+
+The light source.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`light`](Three.WebGPU.SpotLightNode.html#light)
+
+***
+
+### nodeType
+
+> **nodeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:37
+
+The node type. This represents the result type of the node (e.g. `float` or `vec3`).
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`nodeType`](Three.WebGPU.SpotLightNode.html#nodetype)
+
+***
+
+### penumbraCosNode
+
+> **penumbraCosNode**: `UniformNode`\<`float`\>
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:43
+
+Uniform node representing the penumbra cosine.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`penumbraCosNode`](Three.WebGPU.SpotLightNode.html#penumbracosnode)
+
+***
+
+### shadowColorNode
+
+> **shadowColorNode**: `Node`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:80
+
+Represents the light's shadow color.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`shadowColorNode`](Three.WebGPU.SpotLightNode.html#shadowcolornode)
+
+***
+
+### shadowNode
+
+> **shadowNode**: `ShadowNode`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:72
+
+Represents the light's shadow.
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`shadowNode`](Three.WebGPU.SpotLightNode.html#shadownode)
+
+***
+
+### updateAfterType
+
+> **updateAfterType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:61
+
+The update type of the node's [Node#updateAfter](Three.WebGPU.Node.html#updateafter) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`updateAfterType`](Three.WebGPU.SpotLightNode.html#updateaftertype)
+
+***
+
+### updateBeforeType
+
+> **updateBeforeType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:53
+
+The update type of the node's [Node#updateBefore](Three.WebGPU.Node.html#updatebefore) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`updateBeforeType`](Three.WebGPU.SpotLightNode.html#updatebeforetype)
+
+***
+
+### updateType
+
+> **updateType**: `string`
+
+Defined in: three/src/nodes/core/Node.js:45
+
+The update type of the node's [Node#update](Three.WebGPU.Node.html#update) method. Possible values are listed in [NodeUpdateType](../variables/Three.WebGPU.NodeUpdateType.html).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`updateType`](Three.WebGPU.SpotLightNode.html#updatetype)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: three/src/nodes/core/Node.js:69
+
+The UUID of the node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`uuid`](Three.WebGPU.SpotLightNode.html#uuid)
+
+***
+
+### version
+
+> `readonly` **version**: `number`
+
+Defined in: three/src/nodes/core/Node.js:78
+
+The version of the node. The version automatically is increased when [Node#needsUpdate](Three.WebGPU.Node.html#needsupdate) is set to `true`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`version`](Three.WebGPU.SpotLightNode.html#version)
+
+## Accessors
+
+### needsUpdate
+
+#### Set Signature
+
+> **set** **needsUpdate**(`value`): `void`
+
+Defined in: three/src/nodes/core/Node.js:130
+
+Set this property to `true` when the node should be regenerated.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`needsUpdate`](Three.WebGPU.SpotLightNode.html#needsupdate)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** **type**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:146
+
+The type of the class. The value is usually the constructor name.
+
+##### Returns
+
+`string`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`type`](Three.WebGPU.SpotLightNode.html#type)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** `static` **type**(): `string`
+
+Defined in: three/src/nodes/lighting/IESSpotLightNode.js:12
+
+##### Returns
+
+`string`
+
+#### Overrides
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`type`](Three.WebGPU.SpotLightNode.html#type-1)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:31
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`addEventListener`](Three.WebGPU.SpotLightNode.html#addeventlistener)
+
+***
+
+### analyze()
+
+> **analyze**(`builder`): `void`
+
+Defined in: three/src/nodes/core/Node.js:502
+
+Represents the analyze stage which is the second step of the build process, see [Node#build](Three.WebGPU.Node.html#build) method.
+This stage analyzes the node hierarchy and ensures descendent nodes are built.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`analyze`](Three.WebGPU.SpotLightNode.html#analyze)
+
+***
+
+### build()
+
+> **build**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:596
+
+This method performs the build of a node. The behavior of this method as well as its return value depend
+on the current build stage (setup, analyze or generate).
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string` = `null`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+When this method is executed in the setup or analyze stage, `null` is returned. In the generate stage, the generated shader string.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`build`](Three.WebGPU.SpotLightNode.html#build)
+
+***
+
+### customCacheKey()
+
+> **customCacheKey**(): `number`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:108
+
+Overwrites the default [Node#customCacheKey](Three.WebGPU.Node.html#customcachekey) implementation by including the
+`light.id` and `light.castShadow` into the cache key.
+
+#### Returns
+
+`number`
+
+The custom cache key.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`customCacheKey`](Three.WebGPU.SpotLightNode.html#customcachekey)
+
+***
+
+### deserialize()
+
+> **deserialize**(`json`): `void`
+
+Defined in: three/src/nodes/core/Node.js:771
+
+Deserializes the node from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`deserialize`](Three.WebGPU.SpotLightNode.html#deserialize)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:101
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`dispatchEvent`](Three.WebGPU.SpotLightNode.html#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/src/nodes/core/Node.js:282
+
+Calling this method dispatches the `dispose` event. This event can be used
+to register event listeners for clean up tasks.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`dispose`](Three.WebGPU.SpotLightNode.html#dispose)
+
+***
+
+### generate()
+
+> **generate**(`builder`, `output`): `string`
+
+Defined in: three/src/nodes/core/Node.js:534
+
+Represents the generate stage which is the third step of the build process, see [Node#build](Three.WebGPU.Node.html#build) method.
+This state builds the output node and returns the resulting shader string.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+The generated shader string.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`generate`](Three.WebGPU.SpotLightNode.html#generate)
+
+***
+
+### getCacheKey()
+
+> **getCacheKey**(`force`?): `number`
+
+Defined in: three/src/nodes/core/Node.js:318
+
+Returns the cache key for this node.
+
+#### Parameters
+
+##### force?
+
+`boolean` = `false`
+
+When set to `true`, a recomputation of the cache key is forced.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getCacheKey`](Three.WebGPU.SpotLightNode.html#getcachekey)
+
+***
+
+### getChildren()
+
+> **getChildren**(): `Generator`\<`any`, `void`, `unknown`\>
+
+Defined in: three/src/nodes/core/Node.js:268
+
+Generator function that can be used to iterate over the child nodes.
+
+#### Returns
+
+`Generator`\<`any`, `void`, `unknown`\>
+
+#### Generator
+
+#### Yields
+
+A child node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getChildren`](Three.WebGPU.SpotLightNode.html#getchildren)
+
+***
+
+### getElementType()
+
+> **getElementType**(`builder`): `string`
+
+Defined in: three/src/nodes/core/Node.js:410
+
+Certain types are composed of multiple elements. For example a `vec3`
+is composed of three `float` values. This method returns the type of
+these elements.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getElementType`](Three.WebGPU.SpotLightNode.html#getelementtype)
+
+***
+
+### getHash()
+
+> **getHash**(): `any`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:114
+
+Returns the hash of the node which is used to identify the node. By default it's
+the [Node#uuid](Three.WebGPU.Node.html#uuid) however derived node classes might have to overwrite this method
+depending on their implementation.
+
+#### Returns
+
+`any`
+
+The hash.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getHash`](Three.WebGPU.SpotLightNode.html#gethash)
+
+***
+
+### getLightVector()
+
+> **getLightVector**(`builder`): `any`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:120
+
+#### Parameters
+
+##### builder
+
+`any`
+
+#### Returns
+
+`any`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getLightVector`](Three.WebGPU.SpotLightNode.html#getlightvector)
+
+***
+
+### getMemberType()
+
+> **getMemberType**(): `string`
+
+Defined in: three/src/nodes/core/Node.js:426
+
+Returns the node member type for the given name.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getMemberType`](Three.WebGPU.SpotLightNode.html#getmembertype)
+
+***
+
+### getNodeType()
+
+> **getNodeType**(`builder`): `string`
+
+Defined in: three/src/nodes/core/Node.js:438
+
+Returns the node's type.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getNodeType`](Three.WebGPU.SpotLightNode.html#getnodetype)
+
+***
+
+### getScope()
+
+> **getScope**(): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:349
+
+Returns the references to this node which is by default `this`.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getScope`](Three.WebGPU.SpotLightNode.html#getscope)
+
+***
+
+### getSelf()
+
+> **getSelf**(): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:227
+
+The `this` reference might point to a Proxy so this method can be used
+to get the reference to the actual node instance.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to the node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getSelf`](Three.WebGPU.SpotLightNode.html#getself)
+
+***
+
+### getSerializeChildren()
+
+> **getSerializeChildren**(): `any`[]
+
+Defined in: three/src/nodes/core/Node.js:721
+
+Returns the child nodes as a JSON object.
+
+#### Returns
+
+`any`[]
+
+An iterable list of serialized child objects as JSON.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getSerializeChildren`](Three.WebGPU.SpotLightNode.html#getserializechildren)
+
+***
+
+### getShared()
+
+> **getShared**(`builder`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:461
+
+This method is used during the build process of a node and ensures
+equal nodes are not built multiple times but just once. For example if
+`attribute( 'uv' )` is used multiple times by the user, the build
+process makes sure to process just the first node.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+The shared node if possible. Otherwise `this` is returned.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getShared`](Three.WebGPU.SpotLightNode.html#getshared)
+
+***
+
+### getSpotAttenuation()
+
+> **getSpotAttenuation**(`angleCosine`): `any`
+
+Defined in: three/src/nodes/lighting/IESSpotLightNode.js:24
+
+Overwrites the default implementation to compute an IES conform spot attenuation.
+
+#### Parameters
+
+##### angleCosine
+
+`any`
+
+The angle to compute the spot attenuation for.
+
+#### Returns
+
+`any`
+
+The spot attenuation.
+
+#### Overrides
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getSpotAttenuation`](Three.WebGPU.SpotLightNode.html#getspotattenuation)
+
+***
+
+### getUpdateAfterType()
+
+> **getUpdateAfterType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:396
+
+Returns the update type of [Node#updateAfter](Three.WebGPU.Node.html#updateafter).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getUpdateAfterType`](Three.WebGPU.SpotLightNode.html#getupdateaftertype)
+
+***
+
+### getUpdateBeforeType()
+
+> **getUpdateBeforeType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:385
+
+Returns the update type of [Node#updateBefore](Three.WebGPU.Node.html#updatebefore).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getUpdateBeforeType`](Three.WebGPU.SpotLightNode.html#getupdatebeforetype)
+
+***
+
+### getUpdateType()
+
+> **getUpdateType**(): `object`
+
+Defined in: three/src/nodes/core/Node.js:374
+
+Returns the update type of [Node#update](Three.WebGPU.Node.html#update).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`getUpdateType`](Three.WebGPU.SpotLightNode.html#getupdatetype)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: three/src/core/EventDispatcher.js:58
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`hasEventListener`](Three.WebGPU.SpotLightNode.html#haseventlistener)
+
+***
+
+### isGlobal()
+
+> **isGlobal**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:256
+
+By default this method returns the value of the [Node#global](Three.WebGPU.Node.html#global) flag. This method
+can be overwritten in derived classes if an analytical way is required to determine the
+global status.
+
+#### Returns
+
+`boolean`
+
+Whether this node is global or not.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`isGlobal`](Three.WebGPU.SpotLightNode.html#isglobal)
+
+***
+
+### onFrameUpdate()
+
+> **onFrameUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:175
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `FRAME`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`onFrameUpdate`](Three.WebGPU.SpotLightNode.html#onframeupdate)
+
+***
+
+### onObjectUpdate()
+
+> **onObjectUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:201
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `OBJECT`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`onObjectUpdate`](Three.WebGPU.SpotLightNode.html#onobjectupdate)
+
+***
+
+### onReference()
+
+> **onReference**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:213
+
+Convenient method for defining [Node#updateReference](Three.WebGPU.Node.html#updatereference).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`onReference`](Three.WebGPU.SpotLightNode.html#onreference)
+
+***
+
+### onRenderUpdate()
+
+> **onRenderUpdate**(`callback`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:188
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update). Similar to [Node#onUpdate](Three.WebGPU.Node.html#onupdate), but
+this method automatically sets the update type to `RENDER`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`onRenderUpdate`](Three.WebGPU.SpotLightNode.html#onrenderupdate)
+
+***
+
+### onUpdate()
+
+> **onUpdate**(`callback`, `updateType`): [`Node`](Three.WebGPU.Node.html)
+
+Defined in: three/src/nodes/core/Node.js:159
+
+Convenient method for defining [Node#update](Three.WebGPU.Node.html#update).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+##### updateType
+
+`string`
+
+The update type.
+
+#### Returns
+
+[`Node`](Three.WebGPU.Node.html)
+
+A reference to this node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`onUpdate`](Three.WebGPU.SpotLightNode.html#onupdate)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: three/src/core/EventDispatcher.js:74
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`removeEventListener`](Three.WebGPU.SpotLightNode.html#removeeventlistener)
+
+***
+
+### serialize()
+
+> **serialize**(`json`): `void`
+
+Defined in: three/src/nodes/core/Node.js:732
+
+Serializes the node to JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The output JSON object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`serialize`](Three.WebGPU.SpotLightNode.html#serialize)
+
+***
+
+### setup()
+
+> **setup**(`builder`): `void`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:208
+
+Unlike most other nodes, lighting nodes do not return a output node in [Node#setup](Three.WebGPU.Node.html#setup).
+The main purpose of lighting nodes is to configure the current [LightingModel](Three.WebGPU.LightingModel.html) and/or
+invocate the respective interface methods.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`setup`](Three.WebGPU.SpotLightNode.html#setup)
+
+***
+
+### setupDirect()
+
+> `abstract` **setupDirect**(`builder`): `object`
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:94
+
+Sets up the direct lighting for the analytic light node.
+
+#### Parameters
+
+##### builder
+
+`any`
+
+The builder object used for setting up the light.
+
+#### Returns
+
+`object`
+
+The direct light data (color and direction).
+
+##### lightColor
+
+> **lightColor**: `any`
+
+##### lightDirection
+
+> **lightDirection**: `any`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`setupDirect`](Three.WebGPU.SpotLightNode.html#setupdirect)
+
+***
+
+### setupDirectRectArea()
+
+> `abstract` **setupDirectRectArea**(): `any`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:142
+
+Sets up the direct rect area lighting for the analytic light node.
+
+#### Returns
+
+`any`
+
+The direct rect area light data.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`setupDirectRectArea`](Three.WebGPU.SpotLightNode.html#setupdirectrectarea)
+
+***
+
+### setupShadow()
+
+> **setupShadow**(`builder`): `void`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:163
+
+Setups the shadow for this light. This method is only executed if the light
+cast shadows and the current build object receives shadows. It incorporates
+shadows into the lighting computation.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`setupShadow`](Three.WebGPU.SpotLightNode.html#setupshadow)
+
+***
+
+### setupShadowNode()
+
+> **setupShadowNode**(): `ShadowNode`
+
+Defined in: three/src/nodes/lighting/AnalyticLightNode.js:150
+
+Setups the shadow node for this light. The method exists so concrete light classes
+can setup different types of shadow nodes.
+
+#### Returns
+
+`ShadowNode`
+
+The created shadow node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`setupShadowNode`](Three.WebGPU.SpotLightNode.html#setupshadownode)
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: three/src/nodes/core/Node.js:825
+
+Serializes the node into the three.js JSON Object/Scene format.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional JSON object that already holds serialized data from other scene objects.
+
+#### Returns
+
+`any`
+
+The serialized node.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`toJSON`](Three.WebGPU.SpotLightNode.html#tojson)
+
+***
+
+### traverse()
+
+> **traverse**(`callback`): `void`
+
+Defined in: three/src/nodes/core/Node.js:300
+
+Can be used to traverse through the node's hierarchy.
+
+#### Parameters
+
+##### callback
+
+`traverseCallback`
+
+A callback that is executed per node.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`traverse`](Three.WebGPU.SpotLightNode.html#traverse)
+
+***
+
+### update()
+
+> **update**(`frame`): `void`
+
+Defined in: three/src/nodes/lighting/SpotLightNode.js:66
+
+Overwritten to updated spot light specific uniforms.
+
+#### Parameters
+
+##### frame
+
+`NodeFrame`
+
+A reference to the current node frame.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`update`](Three.WebGPU.SpotLightNode.html#update)
+
+***
+
+### updateAfter()
+
+> `abstract` **updateAfter**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:568
+
+The method can be implemented to update the node's internal state after it was used to render an object.
+The [Node#updateAfterType](Three.WebGPU.Node.html#updateaftertype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`updateAfter`](Three.WebGPU.SpotLightNode.html#updateafter)
+
+***
+
+### updateBefore()
+
+> `abstract` **updateBefore**(): `boolean`
+
+Defined in: three/src/nodes/core/Node.js:554
+
+The method can be implemented to update the node's internal state before it is used to render an object.
+The [Node#updateBeforeType](Three.WebGPU.Node.html#updatebeforetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`updateBefore`](Three.WebGPU.SpotLightNode.html#updatebefore)
+
+***
+
+### updateReference()
+
+> **updateReference**(): `any`
+
+Defined in: three/src/nodes/core/Node.js:242
+
+Nodes might refer to other objects like materials. This method allows to dynamically update the reference
+to such objects based on a given state (e.g. the current node frame or builder).
+
+#### Returns
+
+`any`
+
+The updated reference.
+
+#### Inherited from
+
+[`SpotLightNode`](Three.WebGPU.SpotLightNode.html).[`updateReference`](Three.WebGPU.SpotLightNode.html#updatereference)

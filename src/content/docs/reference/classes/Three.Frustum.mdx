@@ -1,0 +1,322 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Frustum"
+---
+
+Defined in: three/src/math/Frustum.js:16
+
+Frustums are used to determine what is inside the camera's field of view.
+They help speed up the rendering process - objects which lie outside a camera's
+frustum can safely be excluded from rendering.
+
+This class is mainly intended for use internally by a renderer.
+
+## Constructors
+
+### Constructor
+
+> **new Frustum**(`p0`?, `p1`?, `p2`?, `p3`?, `p4`?, `p5`?): `Frustum`
+
+Defined in: three/src/math/Frustum.js:28
+
+Constructs a new frustum.
+
+#### Parameters
+
+##### p0?
+
+[`Plane`](Three.Plane.html) = `...`
+
+The first plane that encloses the frustum.
+
+##### p1?
+
+[`Plane`](Three.Plane.html) = `...`
+
+The second plane that encloses the frustum.
+
+##### p2?
+
+[`Plane`](Three.Plane.html) = `...`
+
+The third plane that encloses the frustum.
+
+##### p3?
+
+[`Plane`](Three.Plane.html) = `...`
+
+The fourth plane that encloses the frustum.
+
+##### p4?
+
+[`Plane`](Three.Plane.html) = `...`
+
+The fifth plane that encloses the frustum.
+
+##### p5?
+
+[`Plane`](Three.Plane.html) = `...`
+
+The sixth plane that encloses the frustum.
+
+#### Returns
+
+`Frustum`
+
+## Properties
+
+### planes
+
+> **planes**: [`Plane`](Three.Plane.html)[]
+
+Defined in: three/src/math/Frustum.js:35
+
+This array holds the planes that enclose the frustum.
+
+## Methods
+
+### clone()
+
+> **clone**(): `Frustum`
+
+Defined in: three/src/math/Frustum.js:260
+
+Returns a new frustum with copied values from this instance.
+
+#### Returns
+
+`Frustum`
+
+A clone of this instance.
+
+***
+
+### containsPoint()
+
+> **containsPoint**(`point`): `boolean`
+
+Defined in: three/src/math/Frustum.js:237
+
+Returns `true` if the given point lies within the frustum.
+
+#### Parameters
+
+##### point
+
+[`Vector3`](Three.Vector3.html)
+
+The point to test.
+
+#### Returns
+
+`boolean`
+
+Whether the point lies within this frustum or not.
+
+***
+
+### copy()
+
+> **copy**(`frustum`): `Frustum`
+
+Defined in: three/src/math/Frustum.js:71
+
+Copies the values of the given frustum to this instance.
+
+#### Parameters
+
+##### frustum
+
+`Frustum`
+
+The frustum to copy.
+
+#### Returns
+
+`Frustum`
+
+A reference to this frustum.
+
+***
+
+### intersectsBox()
+
+> **intersectsBox**(`box`): `boolean`
+
+Defined in: three/src/math/Frustum.js:205
+
+Returns `true` if the given bounding box is intersecting this frustum.
+
+#### Parameters
+
+##### box
+
+`Box3`
+
+The bounding box to test.
+
+#### Returns
+
+`boolean`
+
+Whether the bounding box is intersecting this frustum or not.
+
+***
+
+### intersectsObject()
+
+> **intersectsObject**(`object`): `boolean`
+
+Defined in: three/src/math/Frustum.js:133
+
+Returns `true` if the 3D object's bounding sphere is intersecting this frustum.
+
+Note that the 3D object must have a geometry so that the bounding sphere can be calculated.
+
+#### Parameters
+
+##### object
+
+`Object3D`
+
+The 3D object to test.
+
+#### Returns
+
+`boolean`
+
+Whether the 3D object's bounding sphere is intersecting this frustum or not.
+
+***
+
+### intersectsSphere()
+
+> **intersectsSphere**(`sphere`): `boolean`
+
+Defined in: three/src/math/Frustum.js:177
+
+Returns `true` if the given bounding sphere is intersecting this frustum.
+
+#### Parameters
+
+##### sphere
+
+[`Sphere`](Three.Sphere.html)
+
+The bounding sphere to test.
+
+#### Returns
+
+`boolean`
+
+Whether the bounding sphere is intersecting this frustum or not.
+
+***
+
+### intersectsSprite()
+
+> **intersectsSprite**(`sprite`): `boolean`
+
+Defined in: three/src/math/Frustum.js:161
+
+Returns `true` if the given sprite is intersecting this frustum.
+
+#### Parameters
+
+##### sprite
+
+`Sprite`
+
+The sprite to test.
+
+#### Returns
+
+`boolean`
+
+Whether the sprite is intersecting this frustum or not.
+
+***
+
+### set()
+
+> **set**(`p0`?, `p1`?, `p2`?, `p3`?, `p4`?, `p5`?): `Frustum`
+
+Defined in: three/src/math/Frustum.js:50
+
+Sets the frustum planes by copying the given planes.
+
+#### Parameters
+
+##### p0?
+
+[`Plane`](Three.Plane.html)
+
+The first plane that encloses the frustum.
+
+##### p1?
+
+[`Plane`](Three.Plane.html)
+
+The second plane that encloses the frustum.
+
+##### p2?
+
+[`Plane`](Three.Plane.html)
+
+The third plane that encloses the frustum.
+
+##### p3?
+
+[`Plane`](Three.Plane.html)
+
+The fourth plane that encloses the frustum.
+
+##### p4?
+
+[`Plane`](Three.Plane.html)
+
+The fifth plane that encloses the frustum.
+
+##### p5?
+
+[`Plane`](Three.Plane.html)
+
+The sixth plane that encloses the frustum.
+
+#### Returns
+
+`Frustum`
+
+A reference to this frustum.
+
+***
+
+### setFromProjectionMatrix()
+
+> **setFromProjectionMatrix**(`m`, `coordinateSystem`): `Frustum`
+
+Defined in: three/src/math/Frustum.js:92
+
+Sets the frustum planes from the given projection matrix.
+
+#### Parameters
+
+##### m
+
+`Matrix4`
+
+The projection matrix.
+
+##### coordinateSystem
+
+`number` = `WebGLCoordinateSystem`
+
+The coordinate system.
+
+#### Returns
+
+`Frustum`
+
+A reference to this frustum.

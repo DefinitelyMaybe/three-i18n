@@ -1,0 +1,121 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "NodeCache"
+---
+
+Defined in: three/src/nodes/core/NodeCache.js:7
+
+This utility class is used in [NodeBuilder](Three.WebGPU.NodeBuilder.html) as an internal
+cache data structure for node data.
+
+## Constructors
+
+### Constructor
+
+> **new NodeCache**(`parent`): `NodeCache`
+
+Defined in: three/src/nodes/core/NodeCache.js:14
+
+Constructs a new node cache.
+
+#### Parameters
+
+##### parent
+
+`NodeCache` = `null`
+
+A reference to a parent cache.
+
+#### Returns
+
+`NodeCache`
+
+## Properties
+
+### id
+
+> `readonly` **id**: `number`
+
+Defined in: three/src/nodes/core/NodeCache.js:22
+
+The id of the cache.
+
+***
+
+### nodesData
+
+> **nodesData**: `WeakMap`\<`Node`, `any`\>
+
+Defined in: three/src/nodes/core/NodeCache.js:29
+
+A weak map for managing node data.
+
+***
+
+### parent
+
+> **parent**: `NodeCache`
+
+Defined in: three/src/nodes/core/NodeCache.js:37
+
+Reference to a parent node cache.
+
+#### Default
+
+```ts
+null
+```
+
+## Methods
+
+### getData()
+
+> **getData**(`node`): `any`
+
+Defined in: three/src/nodes/core/NodeCache.js:47
+
+Returns the data for the given node.
+
+#### Parameters
+
+##### node
+
+`Node`
+
+The node.
+
+#### Returns
+
+`any`
+
+The data for the node.
+
+***
+
+### setData()
+
+> **setData**(`node`, `data`): `void`
+
+Defined in: three/src/nodes/core/NodeCache.js:67
+
+Sets the data for a given node.
+
+#### Parameters
+
+##### node
+
+`Node`
+
+The node.
+
+##### data
+
+`any`
+
+The data that should be cached.
+
+#### Returns
+
+`void`

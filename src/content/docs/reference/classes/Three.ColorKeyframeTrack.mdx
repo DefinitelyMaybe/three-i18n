@@ -1,0 +1,579 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "ColorKeyframeTrack"
+---
+
+Defined in: three/src/animation/tracks/ColorKeyframeTrack.js:8
+
+A track for color keyframe values.
+
+## Extends
+
+- [`KeyframeTrack`](Three.KeyframeTrack.html)
+
+## Constructors
+
+### Constructor
+
+> **new ColorKeyframeTrack**(`name`, `times`, `values`, `interpolation`?): `ColorKeyframeTrack`
+
+Defined in: three/src/animation/tracks/ColorKeyframeTrack.js:18
+
+Constructs a new color keyframe track.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The keyframe track's name.
+
+##### times
+
+`number`[]
+
+A list of keyframe times.
+
+##### values
+
+`number`[]
+
+A list of keyframe values.
+
+##### interpolation?
+
+`any`
+
+The interpolation type.
+
+#### Returns
+
+`ColorKeyframeTrack`
+
+#### Overrides
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`constructor`](Three.KeyframeTrack.html#constructor)
+
+## Properties
+
+### createInterpolant
+
+> **createInterpolant**: (`result`?) => [`LinearInterpolant`](Three.LinearInterpolant.html) \| (`result`?) => [`CubicInterpolant`](Three.CubicInterpolant.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:199
+
+#### Type declaration
+
+(`result`?) => [`LinearInterpolant`](Three.LinearInterpolant.html)
+
+Factory method for creating a new linear interpolant.
+
+#### Parameters
+
+##### result?
+
+`TypedArray`
+
+The result buffer.
+
+#### Returns
+
+[`LinearInterpolant`](Three.LinearInterpolant.html)
+
+The new interpolant.
+
+#### Static
+
+(`result`?) => [`CubicInterpolant`](Three.CubicInterpolant.html)
+
+Factory method for creating a new smooth interpolant.
+
+#### Parameters
+
+##### result?
+
+`TypedArray`
+
+The result buffer.
+
+#### Returns
+
+[`CubicInterpolant`](Three.CubicInterpolant.html)
+
+The new interpolant.
+
+#### Static
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`createInterpolant`](Three.KeyframeTrack.html#createinterpolant)
+
+***
+
+### DefaultInterpolation
+
+> **DefaultInterpolation**: `number`
+
+Defined in: three/src/animation/KeyframeTrack.js:594
+
+The default interpolation type of this keyframe track.
+
+#### Default
+
+```ts
+InterpolateLinear
+```
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`DefaultInterpolation`](Three.KeyframeTrack.html#defaultinterpolation)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: three/src/animation/KeyframeTrack.js:38
+
+The track's name can refer to morph targets or bones or
+possibly other values within an animated object. See PropertyBinding#parseTrackName
+for the forms of strings that can be parsed for property binding.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`name`](Three.KeyframeTrack.html#name)
+
+***
+
+### TimeBufferType
+
+> **TimeBufferType**: `any`
+
+Defined in: three/src/animation/KeyframeTrack.js:578
+
+The time buffer type of this keyframe track.
+
+#### Default
+
+```ts
+Float32Array.constructor
+```
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`TimeBufferType`](Three.KeyframeTrack.html#timebuffertype)
+
+***
+
+### times
+
+> **times**: `Float32Array`\<`ArrayBufferLike`\>
+
+Defined in: three/src/animation/KeyframeTrack.js:45
+
+The keyframe times.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`times`](Three.KeyframeTrack.html#times)
+
+***
+
+### ValueBufferType
+
+> **ValueBufferType**: `any`
+
+Defined in: three/src/animation/KeyframeTrack.js:586
+
+The value buffer type of this keyframe track.
+
+#### Default
+
+```ts
+Float32Array.constructor
+```
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`ValueBufferType`](Three.KeyframeTrack.html#valuebuffertype)
+
+***
+
+### values
+
+> **values**: `Float32Array`\<`ArrayBufferLike`\>
+
+Defined in: three/src/animation/KeyframeTrack.js:52
+
+The keyframe values.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`values`](Three.KeyframeTrack.html#values)
+
+***
+
+### ValueTypeName
+
+> **ValueTypeName**: `string`
+
+Defined in: three/src/animation/tracks/ColorKeyframeTrack.js:32
+
+The value type name.
+
+#### Default
+
+```ts
+'color'
+```
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`ValueTypeName`](Three.KeyframeTrack.html#valuetypename)
+
+## Methods
+
+### clone()
+
+> **clone**(): [`KeyframeTrack`](Three.KeyframeTrack.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:547
+
+Returns a new keyframe track with copied values from this instance.
+
+#### Returns
+
+[`KeyframeTrack`](Three.KeyframeTrack.html)
+
+A clone of this instance.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`clone`](Three.KeyframeTrack.html#clone)
+
+***
+
+### getInterpolation()
+
+> **getInterpolation**(): `number`
+
+Defined in: three/src/animation/KeyframeTrack.js:210
+
+Returns the current interpolation type.
+
+#### Returns
+
+`number`
+
+The interpolation type.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`getInterpolation`](Three.KeyframeTrack.html#getinterpolation)
+
+***
+
+### getValueSize()
+
+> **getValueSize**(): `number`
+
+Defined in: three/src/animation/KeyframeTrack.js:235
+
+Returns the value size.
+
+#### Returns
+
+`number`
+
+The value size.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`getValueSize`](Three.KeyframeTrack.html#getvaluesize)
+
+***
+
+### InterpolantFactoryMethodDiscrete()
+
+> **InterpolantFactoryMethodDiscrete**(`result`?): [`DiscreteInterpolant`](Three.DiscreteInterpolant.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:110
+
+Factory method for creating a new discrete interpolant.
+
+#### Parameters
+
+##### result?
+
+`TypedArray`
+
+The result buffer.
+
+#### Returns
+
+[`DiscreteInterpolant`](Three.DiscreteInterpolant.html)
+
+The new interpolant.
+
+#### Static
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`InterpolantFactoryMethodDiscrete`](Three.KeyframeTrack.html#interpolantfactorymethoddiscrete)
+
+***
+
+### InterpolantFactoryMethodLinear()
+
+> **InterpolantFactoryMethodLinear**(`result`?): [`LinearInterpolant`](Three.LinearInterpolant.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:123
+
+Factory method for creating a new linear interpolant.
+
+#### Parameters
+
+##### result?
+
+`TypedArray`
+
+The result buffer.
+
+#### Returns
+
+[`LinearInterpolant`](Three.LinearInterpolant.html)
+
+The new interpolant.
+
+#### Static
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`InterpolantFactoryMethodLinear`](Three.KeyframeTrack.html#interpolantfactorymethodlinear)
+
+***
+
+### InterpolantFactoryMethodSmooth()
+
+> **InterpolantFactoryMethodSmooth**(`result`?): [`CubicInterpolant`](Three.CubicInterpolant.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:136
+
+Factory method for creating a new smooth interpolant.
+
+#### Parameters
+
+##### result?
+
+`TypedArray`
+
+The result buffer.
+
+#### Returns
+
+[`CubicInterpolant`](Three.CubicInterpolant.html)
+
+The new interpolant.
+
+#### Static
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`InterpolantFactoryMethodSmooth`](Three.KeyframeTrack.html#interpolantfactorymethodsmooth)
+
+***
+
+### optimize()
+
+> **optimize**(): `AnimationClip`
+
+Defined in: three/src/animation/KeyframeTrack.js:429
+
+Optimizes this keyframe track by removing equivalent sequential keys (which are
+common in morph target sequences).
+
+#### Returns
+
+`AnimationClip`
+
+A reference to this animation clip.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`optimize`](Three.KeyframeTrack.html#optimize)
+
+***
+
+### scale()
+
+> **scale**(`timeScale`): [`KeyframeTrack`](Three.KeyframeTrack.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:271
+
+Scale all keyframe times by a factor (useful for frame - seconds conversions).
+
+#### Parameters
+
+##### timeScale
+
+`number`
+
+The time scale.
+
+#### Returns
+
+[`KeyframeTrack`](Three.KeyframeTrack.html)
+
+A reference to this keyframe track.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`scale`](Three.KeyframeTrack.html#scale)
+
+***
+
+### setInterpolation()
+
+> **setInterpolation**(`interpolation`): [`KeyframeTrack`](Three.KeyframeTrack.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:148
+
+Defines the interpolation factor method for this keyframe track.
+
+#### Parameters
+
+##### interpolation
+
+`number`
+
+The interpolation type.
+
+#### Returns
+
+[`KeyframeTrack`](Three.KeyframeTrack.html)
+
+A reference to this keyframe track.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`setInterpolation`](Three.KeyframeTrack.html#setinterpolation)
+
+***
+
+### shift()
+
+> **shift**(`timeOffset`): [`KeyframeTrack`](Three.KeyframeTrack.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:247
+
+Moves all keyframes either forward or backward in time.
+
+#### Parameters
+
+##### timeOffset
+
+`number`
+
+The offset to move the time values.
+
+#### Returns
+
+[`KeyframeTrack`](Three.KeyframeTrack.html)
+
+A reference to this keyframe track.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`shift`](Three.KeyframeTrack.html#shift)
+
+***
+
+### trim()
+
+> **trim**(`startTime`, `endTime`): [`KeyframeTrack`](Three.KeyframeTrack.html)
+
+Defined in: three/src/animation/KeyframeTrack.js:299
+
+Removes keyframes before and after animation without changing any values within the defined time range.
+
+Note: The method does not shift around keys to the start of the track time, because for interpolated
+keys this will change their values
+
+#### Parameters
+
+##### startTime
+
+`number`
+
+The start time.
+
+##### endTime
+
+`number`
+
+The end time.
+
+#### Returns
+
+[`KeyframeTrack`](Three.KeyframeTrack.html)
+
+A reference to this keyframe track.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`trim`](Three.KeyframeTrack.html#trim)
+
+***
+
+### validate()
+
+> **validate**(): `boolean`
+
+Defined in: three/src/animation/KeyframeTrack.js:347
+
+Performs minimal validation on the keyframe track. Returns `true` if the values
+are valid.
+
+#### Returns
+
+`boolean`
+
+Whether the keyframes are valid or not.
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`validate`](Three.KeyframeTrack.html#validate)
+
+***
+
+### toJSON()
+
+> `static` **toJSON**(`track`): `any`
+
+Defined in: three/src/animation/KeyframeTrack.js:65
+
+Converts the keyframe track to JSON.
+
+#### Parameters
+
+##### track
+
+[`KeyframeTrack`](Three.KeyframeTrack.html)
+
+The keyframe track to serialize.
+
+#### Returns
+
+`any`
+
+The serialized keyframe track as JSON.
+
+#### Static
+
+#### Inherited from
+
+[`KeyframeTrack`](Three.KeyframeTrack.html).[`toJSON`](Three.KeyframeTrack.html#tojson)
