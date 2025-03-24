@@ -1,0 +1,775 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "OutlinePass"
+---
+
+Defined in: three/addons/postprocessing/OutlinePass.js:30
+
+A pass for rendering outlines around selected objects.
+
+```js
+const resolution = new THREE.Vector2( window.innerWidth, window.innerHeight );
+const outlinePass = new OutlinePass( resolution, scene, camera );
+composer.addPass( outlinePass );
+```
+
+## Extends
+
+- [`Pass`](Pass.html)
+
+## Constructors
+
+### Constructor
+
+> **new OutlinePass**(`resolution`?, `scene`?, `camera`?, `selectedObjects`?): `OutlinePass`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:41
+
+Constructs a new outline pass.
+
+#### Parameters
+
+##### resolution?
+
+`Vector2`
+
+The effect's resolution.
+
+##### scene?
+
+`Scene`
+
+The scene to render.
+
+##### camera?
+
+`Camera`
+
+The camera.
+
+##### selectedObjects?
+
+`Object3D`[]
+
+The selected 3D objects that should receive an outline.
+
+#### Returns
+
+`OutlinePass`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`constructor`](Pass.html#constructor)
+
+## Properties
+
+### \_fsQuad
+
+> **\_fsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/OutlinePass.js:225
+
+***
+
+### \_oldClearColor
+
+> **\_oldClearColor**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:222
+
+***
+
+### \_selectionCache
+
+> **\_selectionCache**: `Set`\<`any`\>
+
+Defined in: three/addons/postprocessing/OutlinePass.js:142
+
+***
+
+### \_visibilityCache
+
+> **\_visibilityCache**: `Map`\<`any`, `any`\>
+
+Defined in: three/addons/postprocessing/OutlinePass.js:141
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`clear`](Pass.html#clear)
+
+***
+
+### copyUniforms
+
+> **copyUniforms**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:208
+
+***
+
+### depthMaterial
+
+> **depthMaterial**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:159
+
+***
+
+### downSampleRatio
+
+> **downSampleRatio**: `number`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:131
+
+The downsample ratio. The effect can be rendered in a much
+lower resolution than the beauty pass.
+
+#### Default
+
+```ts
+2
+```
+
+***
+
+### edgeDetectionMaterial
+
+> **edgeDetectionMaterial**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:183
+
+***
+
+### edgeGlow
+
+> **edgeGlow**: `number`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:88
+
+Can be used for an animated glow/pulse effect.
+
+#### Default
+
+```ts
+0
+```
+
+***
+
+### edgeStrength
+
+> **edgeStrength**: `number`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:122
+
+The edge strength.
+
+#### Default
+
+```ts
+3
+```
+
+***
+
+### edgeThickness
+
+> **edgeThickness**: `number`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:114
+
+The edge thickness.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:219
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`enabled`](Pass.html#enabled)
+
+***
+
+### hiddenEdgeColor
+
+> **hiddenEdgeColor**: `Color`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:80
+
+The hidden edge color.
+
+#### Default
+
+```ts
+(0.1,0.04,0.02)
+```
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`isPass`](Pass.html#ispass)
+
+***
+
+### materialCopy
+
+> **materialCopy**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:210
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:220
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`needsSwap`](Pass.html#needsswap)
+
+***
+
+### oldClearAlpha
+
+> **oldClearAlpha**: `number`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:223
+
+***
+
+### overlayMaterial
+
+> **overlayMaterial**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:202
+
+***
+
+### patternTexture
+
+> **patternTexture**: `Texture`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:106
+
+Can be used to highlight selected 3D objects. Requires to set
+[OutlinePass#usePatternTexture](#usepatterntexture) to `true`.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### prepareMaskMaterial
+
+> **prepareMaskMaterial**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:164
+
+***
+
+### pulsePeriod
+
+> **pulsePeriod**: `number`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:139
+
+The pulse period.
+
+#### Default
+
+```ts
+0
+```
+
+***
+
+### renderCamera
+
+> **renderCamera**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:57
+
+The camera.
+
+***
+
+### renderScene
+
+> **renderScene**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:50
+
+The scene to render.
+
+***
+
+### renderTargetBlurBuffer1
+
+> **renderTargetBlurBuffer1**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:176
+
+***
+
+### renderTargetBlurBuffer2
+
+> **renderTargetBlurBuffer2**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:179
+
+***
+
+### renderTargetDepthBuffer
+
+> **renderTargetDepthBuffer**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:168
+
+***
+
+### renderTargetEdgeBuffer1
+
+> **renderTargetEdgeBuffer1**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:184
+
+***
+
+### renderTargetEdgeBuffer2
+
+> **renderTargetEdgeBuffer2**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:187
+
+***
+
+### renderTargetMaskBuffer
+
+> **renderTargetMaskBuffer**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:155
+
+***
+
+### renderTargetMaskDownSampleBuffer
+
+> **renderTargetMaskDownSampleBuffer**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:172
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`renderToScreen`](Pass.html#rendertoscreen)
+
+***
+
+### resolution
+
+> **resolution**: `Vector2`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:150
+
+The effect's resolution.
+
+#### Default
+
+```ts
+(256,256)
+```
+
+***
+
+### selectedObjects
+
+> **selectedObjects**: `Object3D`[]
+
+Defined in: three/addons/postprocessing/OutlinePass.js:64
+
+The selected 3D objects that should receive an outline.
+
+***
+
+### separableBlurMaterial1
+
+> **separableBlurMaterial1**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:194
+
+***
+
+### separableBlurMaterial2
+
+> **separableBlurMaterial2**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:197
+
+***
+
+### tempPulseColor1
+
+> **tempPulseColor1**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:227
+
+***
+
+### tempPulseColor2
+
+> **tempPulseColor2**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:228
+
+***
+
+### textureMatrix
+
+> **textureMatrix**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:229
+
+***
+
+### usePatternTexture
+
+> **usePatternTexture**: `boolean`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:97
+
+Whether to use a pattern texture for to highlight selected
+3D objects or not.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### visibleEdgeColor
+
+> **visibleEdgeColor**: `Color`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:72
+
+The visible edge color.
+
+#### Default
+
+```ts
+(1,1,1)
+```
+
+***
+
+### BlurDirectionX
+
+> `static` **BlurDirectionX**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:770
+
+***
+
+### BlurDirectionY
+
+> `static` **BlurDirectionY**: `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:771
+
+## Methods
+
+### \_changeVisibilityOfNonSelectedObjects()
+
+> **\_changeVisibilityOfNonSelectedObjects**(`bVisible`): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:489
+
+#### Parameters
+
+##### bVisible
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### \_changeVisibilityOfSelectedObjects()
+
+> **\_changeVisibilityOfSelectedObjects**(`bVisible`): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:468
+
+#### Parameters
+
+##### bVisible
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### \_getEdgeDetectionMaterial()
+
+> **\_getEdgeDetectionMaterial**(): `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:611
+
+#### Returns
+
+`any`
+
+***
+
+### \_getOverlayMaterial()
+
+> **\_getOverlayMaterial**(): `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:715
+
+#### Returns
+
+`any`
+
+***
+
+### \_getPrepareMaskMaterial()
+
+> **\_getPrepareMaskMaterial**(): `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:549
+
+#### Returns
+
+`any`
+
+***
+
+### \_getSeparableBlurMaterial()
+
+> **\_getSeparableBlurMaterial**(`maxRadius`): `any`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:658
+
+#### Parameters
+
+##### maxRadius
+
+`any`
+
+#### Returns
+
+`any`
+
+***
+
+### \_updateSelectionCache()
+
+> **\_updateSelectionCache**(): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:447
+
+#### Returns
+
+`void`
+
+***
+
+### \_updateTextureMatrix()
+
+> **\_updateTextureMatrix**(): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:538
+
+#### Returns
+
+`void`
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:245
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`dispose`](Pass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`, `deltaTime`, `maskActive`): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:306
+
+Performs the Outline pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+##### deltaTime
+
+`number`
+
+The delta time in seconds.
+
+##### maskActive
+
+`boolean`
+
+Whether masking is active or not.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`render`](Pass.html#render)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`): `void`
+
+Defined in: three/addons/postprocessing/OutlinePass.js:273
+
+Sets the size of the pass.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width to set.
+
+##### height
+
+`number`
+
+The width to set.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`setSize`](Pass.html#setsize)

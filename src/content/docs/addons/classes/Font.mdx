@@ -1,0 +1,97 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Font"
+---
+
+Defined in: three/addons/loaders/FontLoader.js:76
+
+Class representing a font.
+
+## Constructors
+
+### Constructor
+
+> **new Font**(`data`): `Font`
+
+Defined in: three/addons/loaders/FontLoader.js:83
+
+Constructs a new font.
+
+#### Parameters
+
+##### data
+
+`any`
+
+The font data as JSON.
+
+#### Returns
+
+`Font`
+
+## Properties
+
+### data
+
+> **data**: `any`
+
+Defined in: three/addons/loaders/FontLoader.js:101
+
+The font data as JSON.
+
+***
+
+### isFont
+
+> `readonly` **isFont**: `boolean`
+
+Defined in: three/addons/loaders/FontLoader.js:92
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/addons/loaders/FontLoader.js:94
+
+## Methods
+
+### generateShapes()
+
+> **generateShapes**(`text`, `size`?): `Shape`[]
+
+Defined in: three/addons/loaders/FontLoader.js:113
+
+Generates geometry shapes from the given text and size. The result of this method
+should be used with ShapeGeometry to generate the actual geometry data.
+
+#### Parameters
+
+##### text
+
+`string`
+
+The text.
+
+##### size?
+
+`number` = `100`
+
+The text size.
+
+#### Returns
+
+`Shape`[]
+
+An array of shapes representing the text.

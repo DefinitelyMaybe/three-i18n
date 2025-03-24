@@ -1,0 +1,342 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "SMAAPass"
+---
+
+Defined in: three/addons/postprocessing/SMAAPass.js:24
+
+A pass for applying SMAA. Unlike FXAAPass, `SMAAPass` operates in
+`linar-srgb` so this pass must be executed before [OutputPass](OutputPass.html).
+
+```js
+const smaaPass = new SMAAPass();
+composer.addPass( smaaPass );
+```
+
+## Extends
+
+- [`Pass`](Pass.html)
+
+## Constructors
+
+### Constructor
+
+> **new SMAAPass**(): `SMAAPass`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:29
+
+Constructs a new SMAA pass.
+
+#### Returns
+
+`SMAAPass`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`constructor`](Pass.html#constructor)
+
+## Properties
+
+### \_areaTexture
+
+> **\_areaTexture**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:59
+
+***
+
+### \_edgesRT
+
+> **\_edgesRT**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:35
+
+***
+
+### \_fsQuad
+
+> **\_fsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/SMAAPass.js:120
+
+***
+
+### \_materialBlend
+
+> **\_materialBlend**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:114
+
+***
+
+### \_materialEdges
+
+> **\_materialEdges**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:87
+
+***
+
+### \_materialWeights
+
+> **\_materialWeights**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:102
+
+***
+
+### \_searchTexture
+
+> **\_searchTexture**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:75
+
+***
+
+### \_uniformsBlend
+
+> **\_uniformsBlend**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:111
+
+***
+
+### \_uniformsEdges
+
+> **\_uniformsEdges**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:85
+
+***
+
+### \_uniformsWeights
+
+> **\_uniformsWeights**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:96
+
+***
+
+### \_weightsRT
+
+> **\_weightsRT**: `any`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:41
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`clear`](Pass.html#clear)
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:37
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`enabled`](Pass.html#enabled)
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`isPass`](Pass.html#ispass)
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:45
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`needsSwap`](Pass.html#needsswap)
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`renderToScreen`](Pass.html#rendertoscreen)
+
+## Methods
+
+### \_getAreaTexture()
+
+> **\_getAreaTexture**(): `string`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:215
+
+#### Returns
+
+`string`
+
+***
+
+### \_getSearchTexture()
+
+> **\_getSearchTexture**(): `string`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:221
+
+#### Returns
+
+`string`
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:197
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`dispose`](Pass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`): `void`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:135
+
+Performs the SMAA pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`render`](Pass.html#render)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`): `void`
+
+Defined in: three/addons/postprocessing/SMAAPass.js:182
+
+Sets the size of the pass.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width to set.
+
+##### height
+
+`number`
+
+The width to set.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`setSize`](Pass.html#setsize)

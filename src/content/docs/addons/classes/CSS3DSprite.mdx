@@ -1,0 +1,139 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "CSS3DSprite"
+---
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:90
+
+A specialized version of [CSS3DObject](CSS3DObject.html) that represents
+DOM elements as sprites.
+
+## Extends
+
+- [`CSS3DObject`](CSS3DObject.html)
+
+## Constructors
+
+### Constructor
+
+> **new CSS3DSprite**(`element`?): `CSS3DSprite`
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:97
+
+Constructs a new CSS3D sprite object.
+
+#### Parameters
+
+##### element?
+
+`DOMElement`
+
+The DOM element.
+
+#### Returns
+
+`CSS3DSprite`
+
+#### Overrides
+
+[`CSS3DObject`](CSS3DObject.html).[`constructor`](CSS3DObject.html#constructor)
+
+## Properties
+
+### element
+
+> `readonly` **element**: `DOMElement`
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:46
+
+The DOM element which defines the appearance of this 3D object.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CSS3DObject`](CSS3DObject.html).[`element`](CSS3DObject.html#element)
+
+***
+
+### isCSS3DObject
+
+> `readonly` **isCSS3DObject**: `boolean`
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:37
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`CSS3DObject`](CSS3DObject.html).[`isCSS3DObject`](CSS3DObject.html#iscss3dobject)
+
+***
+
+### isCSS3DSprite
+
+> `readonly` **isCSS3DSprite**: `boolean`
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:108
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### rotation2D
+
+> **rotation2D**: `number`
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:116
+
+The sprite's rotation in radians.
+
+#### Default
+
+```ts
+0
+```
+
+## Methods
+
+### copy()
+
+> **copy**(`source`, `recursive`): `CSS3DSprite`
+
+Defined in: three/addons/renderers/CSS3DRenderer.js:120
+
+#### Parameters
+
+##### source
+
+`any`
+
+##### recursive
+
+`any`
+
+#### Returns
+
+`CSS3DSprite`
+
+#### Overrides
+
+[`CSS3DObject`](CSS3DObject.html).[`copy`](CSS3DObject.html#copy)

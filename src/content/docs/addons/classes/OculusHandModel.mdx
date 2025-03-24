@@ -1,0 +1,253 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "OculusHandModel"
+---
+
+Defined in: three/addons/webxr/OculusHandModel.js:12
+
+Represents an Oculus hand model.
+
+## Extends
+
+- `unknown`
+
+## Constructors
+
+### Constructor
+
+> **new OculusHandModel**(`controller`, `loader`?, `onLoad`?): `OculusHandModel`
+
+Defined in: three/addons/webxr/OculusHandModel.js:21
+
+Constructs a new Oculus hand model.
+
+#### Parameters
+
+##### controller
+
+`Group`
+
+The hand controller.
+
+##### loader?
+
+`Loader` = `null`
+
+A loader that is used to load hand models.
+
+##### onLoad?
+
+`Function` = `null`
+
+A callback that is executed when a hand model has been loaded.
+
+#### Returns
+
+`OculusHandModel`
+
+#### Overrides
+
+`Object3D.constructor`
+
+## Properties
+
+### controller
+
+> **controller**: `Group`
+
+Defined in: three/addons/webxr/OculusHandModel.js:30
+
+The hand controller.
+
+***
+
+### envMap
+
+> **envMap**: `Texture`
+
+Defined in: three/addons/webxr/OculusHandModel.js:46
+
+The model's environment map.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### loader
+
+> **loader**: `Loader`
+
+Defined in: three/addons/webxr/OculusHandModel.js:54
+
+A loader that is used to load hand models.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### mesh
+
+> **mesh**: `Mesh`
+
+Defined in: three/addons/webxr/OculusHandModel.js:78
+
+The model mesh.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### motionController
+
+> **motionController**: `MotionController`
+
+Defined in: three/addons/webxr/OculusHandModel.js:38
+
+The motion controller.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### onLoad
+
+> **onLoad**: `Function`
+
+Defined in: three/addons/webxr/OculusHandModel.js:62
+
+A callback that is executed when a hand model has been loaded.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### path
+
+> **path**: `string`
+
+Defined in: three/addons/webxr/OculusHandModel.js:70
+
+The path to the model repository.
+
+#### Default
+
+```ts
+null
+```
+
+***
+
+### xrInputSource
+
+> **xrInputSource**: `any`
+
+Defined in: three/addons/webxr/OculusHandModel.js:86
+
+## Methods
+
+### checkButton()
+
+> **checkButton**(`button`): `void`
+
+Defined in: three/addons/webxr/OculusHandModel.js:171
+
+Executed actions depending on the interaction state with
+the given button.
+
+#### Parameters
+
+##### button
+
+`any`
+
+The button.
+
+#### Returns
+
+`void`
+
+***
+
+### getPointerPosition()
+
+> **getPointerPosition**(): `any`
+
+Defined in: three/addons/webxr/OculusHandModel.js:126
+
+Returns the pointer position which is the position of the index finger tip.
+
+#### Returns
+
+`any`
+
+The pointer position. Returns `null` if not index finger tip joint was found.
+
+***
+
+### intersectBoxObject()
+
+> **intersectBoxObject**(`boxObject`): `boolean`
+
+Defined in: three/addons/webxr/OculusHandModel.js:148
+
+Returns `true` if the current pointer position (the index finger tip) intersections
+with the given box object.
+
+#### Parameters
+
+##### boxObject
+
+`Mesh`
+
+The box object.
+
+#### Returns
+
+`boolean`
+
+Whether an intersection was found or not.
+
+***
+
+### updateMatrixWorld()
+
+> **updateMatrixWorld**(`force`?): `void`
+
+Defined in: three/addons/webxr/OculusHandModel.js:109
+
+Overwritten with a custom implementation. Makes sure the motion controller updates the mesh.
+
+#### Parameters
+
+##### force?
+
+`boolean`
+
+When set to `true`, a recomputation of world matrices is forced even
+when Object3D#matrixWorldAutoUpdate is set to `false`.
+
+#### Returns
+
+`void`

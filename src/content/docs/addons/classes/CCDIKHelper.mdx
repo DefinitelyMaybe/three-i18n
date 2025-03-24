@@ -1,0 +1,175 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "CCDIKHelper"
+---
+
+Defined in: three/addons/animation/CCDIKSolver.js:326
+
+Helper for visualizing IK bones.
+
+## Extends
+
+- `unknown`
+
+## Constructors
+
+### Constructor
+
+> **new CCDIKHelper**(`mesh`, `iks`, `sphereSize`?): `CCDIKHelper`
+
+Defined in: three/addons/animation/CCDIKSolver.js:333
+
+#### Parameters
+
+##### mesh
+
+`SkinnedMesh`
+
+The skinned mesh.
+ *
+
+##### iks
+
+`any`[] = `[]`
+
+The IK objects.
+ *
+
+##### sphereSize?
+
+`number` = `0.25`
+
+The sphere size.
+
+#### Returns
+
+`CCDIKHelper`
+
+#### Overrides
+
+`Object3D.constructor`
+
+## Properties
+
+### effectorSphereMaterial
+
+> **effectorSphereMaterial**: `MeshBasicMaterial`
+
+Defined in: three/addons/animation/CCDIKSolver.js:378
+
+The material for the effector spheres.
+
+***
+
+### iks
+
+> **iks**: [`CCDIKSolver`](CCDIKSolver.html)[]
+
+Defined in: three/addons/animation/CCDIKSolver.js:349
+
+The IK objects.
+
+***
+
+### lineMaterial
+
+> **lineMaterial**: `LineBasicMaterial`
+
+Defined in: three/addons/animation/CCDIKSolver.js:402
+
+A global line material.
+
+***
+
+### linkSphereMaterial
+
+> **linkSphereMaterial**: `MeshBasicMaterial`
+
+Defined in: three/addons/animation/CCDIKSolver.js:390
+
+The material for the link spheres.
+
+***
+
+### matrixAutoUpdate
+
+> **matrixAutoUpdate**: `boolean`
+
+Defined in: three/addons/animation/CCDIKSolver.js:352
+
+***
+
+### root
+
+> **root**: `SkinnedMesh`
+
+Defined in: three/addons/animation/CCDIKSolver.js:342
+
+The skinned mesh this helper refers to.
+
+***
+
+### sphereGeometry
+
+> **sphereGeometry**: `SkinnedMesh`
+
+Defined in: three/addons/animation/CCDIKSolver.js:359
+
+The helpers sphere geometry.
+
+***
+
+### targetSphereMaterial
+
+> **targetSphereMaterial**: `MeshBasicMaterial`
+
+Defined in: three/addons/animation/CCDIKSolver.js:366
+
+The material for the target spheres.
+
+## Methods
+
+### \_init()
+
+> **\_init**(): `void`
+
+Defined in: three/addons/animation/CCDIKSolver.js:503
+
+#### Returns
+
+`void`
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/animation/CCDIKSolver.js:480
+
+Frees the GPU-related resources allocated by this instance.
+Call this method whenever this instance is no longer used in your app.
+
+#### Returns
+
+`void`
+
+***
+
+### updateMatrixWorld()
+
+> **updateMatrixWorld**(`force`): `void`
+
+Defined in: three/addons/animation/CCDIKSolver.js:413
+
+#### Parameters
+
+##### force
+
+`any`
+
+#### Returns
+
+`void`

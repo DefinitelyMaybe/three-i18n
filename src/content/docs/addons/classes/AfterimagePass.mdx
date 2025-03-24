@@ -1,0 +1,303 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "AfterimagePass"
+---
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:23
+
+Pass for a basic after image effect.
+
+```js
+const afterimagePass = new AfterimagePass( 0.9 );
+composer.addPass( afterimagePass );
+```
+
+## Extends
+
+- [`Pass`](Pass.html)
+
+## Constructors
+
+### Constructor
+
+> **new AfterimagePass**(`damp`?): `AfterimagePass`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:30
+
+Constructs a new after image pass.
+
+#### Parameters
+
+##### damp?
+
+`number` = `0.96`
+
+The damping intensity. A higher value means a stronger after image effect.
+
+#### Returns
+
+`AfterimagePass`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`constructor`](Pass.html#constructor)
+
+## Properties
+
+### \_compFsQuad
+
+> **\_compFsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:86
+
+***
+
+### \_copyFsQuad
+
+> **\_copyFsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:87
+
+***
+
+### \_textureComp
+
+> **\_textureComp**: `any`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:76
+
+***
+
+### \_textureOld
+
+> **\_textureOld**: `any`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:81
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`clear`](Pass.html#clear)
+
+***
+
+### compFsMaterial
+
+> **compFsMaterial**: `ShaderMaterial`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:52
+
+The composition material.
+
+***
+
+### copyFsMaterial
+
+> **copyFsMaterial**: `ShaderMaterial`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:65
+
+The copy material.
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:37
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`enabled`](Pass.html#enabled)
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`isPass`](Pass.html#ispass)
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:45
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`needsSwap`](Pass.html#needsswap)
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`renderToScreen`](Pass.html#rendertoscreen)
+
+***
+
+### uniforms
+
+> **uniforms**: `any`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:43
+
+The pass uniforms. Use this object if you want to update the
+`damp` value at runtime.
+```js
+pass.uniforms.damp.value = 0.9;
+```
+
+## Methods
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:152
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`dispose`](Pass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`): `void`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:102
+
+Performs the after image pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`render`](Pass.html#render)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`): `void`
+
+Defined in: three/addons/postprocessing/AfterimagePass.js:141
+
+Sets the size of the pass.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width to set.
+
+##### height
+
+`number`
+
+The width to set.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`setSize`](Pass.html#setsize)

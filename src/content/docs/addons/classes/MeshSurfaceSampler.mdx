@@ -1,0 +1,318 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "MeshSurfaceSampler"
+---
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:44
+
+Utility class for sampling weighted random points on the surface of a mesh.
+
+Building the sampler is a one-time O(n) operation. Once built, any number of
+random samples may be selected in O(logn) time. Memory usage is O(n).
+
+References:
+- [http://www.joesfer.com/?p=84](http://www.joesfer.com/?p=84)
+- [https://stackoverflow.com/a/4322940/1314762](https://stackoverflow.com/a/4322940/1314762)
+
+```js
+const sampler = new MeshSurfaceSampler( surfaceMesh )
+	.setWeightAttribute( 'color' )
+	.build();
+
+const mesh = new THREE.InstancedMesh( sampleGeometry, sampleMaterial, 100 );
+
+const position = new THREE.Vector3();
+const matrix = new THREE.Matrix4();
+
+// Sample randomly from the surface, creating an instance of the sample geometry at each sample point.
+
+for ( let i = 0; i < 100; i ++ ) {
+
+	sampler.sample( position );
+	matrix.makeTranslation( position.x, position.y, position.z );
+	mesh.setMatrixAt( i, matrix );
+
+}
+
+scene.add( mesh );
+```
+
+## Constructors
+
+### Constructor
+
+> **new MeshSurfaceSampler**(`mesh`): `MeshSurfaceSampler`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:51
+
+Constructs a mesh surface sampler.
+
+#### Parameters
+
+##### mesh
+
+`Mesh`
+
+Surface mesh from which to sample.
+
+#### Returns
+
+`MeshSurfaceSampler`
+
+## Properties
+
+### colorAttribute
+
+> **colorAttribute**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:59
+
+***
+
+### distribution
+
+> **distribution**: `Float32Array`\<`ArrayBuffer`\>
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:63
+
+***
+
+### geometry
+
+> **geometry**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:53
+
+***
+
+### indexAttribute
+
+> **indexAttribute**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:56
+
+***
+
+### normalAttribute
+
+> **normalAttribute**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:58
+
+***
+
+### positionAttribute
+
+> **positionAttribute**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:57
+
+***
+
+### randomFunction()
+
+> **randomFunction**: () => `number`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:54
+
+Returns a pseudorandom number between 0 and 1.
+
+#### Returns
+
+`number`
+
+***
+
+### uvAttribute
+
+> **uvAttribute**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:60
+
+***
+
+### weightAttribute
+
+> **weightAttribute**: `any`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:61
+
+## Methods
+
+### \_binarySearch()
+
+> **\_binarySearch**(`x`): `number`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:194
+
+#### Parameters
+
+##### x
+
+`any`
+
+#### Returns
+
+`number`
+
+***
+
+### \_sampleFace()
+
+> **\_sampleFace**(`faceIndex`, `targetPosition`, `targetNormal`, `targetColor`, `targetUV`): `MeshSurfaceSampler`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:228
+
+#### Parameters
+
+##### faceIndex
+
+`any`
+
+##### targetPosition
+
+`any`
+
+##### targetNormal
+
+`any`
+
+##### targetColor
+
+`any`
+
+##### targetUV
+
+`any`
+
+#### Returns
+
+`MeshSurfaceSampler`
+
+***
+
+### \_sampleFaceIndex()
+
+> **\_sampleFaceIndex**(): `number`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:187
+
+#### Returns
+
+`number`
+
+***
+
+### build()
+
+> **build**(): `MeshSurfaceSampler`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:92
+
+Processes the input geometry and prepares to return samples. Any configuration of the
+geometry or sampler must occur before this method is called. Time complexity is O(n)
+for a surface with n faces.
+
+#### Returns
+
+`MeshSurfaceSampler`
+
+A reference to this sampler.
+
+***
+
+### sample()
+
+> **sample**(`targetPosition`, `targetNormal`, `targetColor`, `targetUV`): `MeshSurfaceSampler`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:178
+
+Selects a random point on the surface of the input geometry, returning the
+position and optionally the normal vector, color and UV Coordinate at that point.
+Time complexity is O(log n) for a surface with n faces.
+
+#### Parameters
+
+##### targetPosition
+
+`Vector3`
+
+The target object holding the sampled position.
+
+##### targetNormal
+
+`Vector3`
+
+The target object holding the sampled normal.
+
+##### targetColor
+
+`Color`
+
+The target object holding the sampled color.
+
+##### targetUV
+
+`Vector2`
+
+The target object holding the sampled uv coordinates.
+
+#### Returns
+
+`MeshSurfaceSampler`
+
+A reference to this sampler.
+
+***
+
+### setRandomGenerator()
+
+> **setRandomGenerator**(`randomFunction`): `MeshSurfaceSampler`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:160
+
+Allows to set a custom random number generator. Default is `Math.random()`.
+
+#### Parameters
+
+##### randomFunction
+
+`Function`
+
+A random number generator.
+
+#### Returns
+
+`MeshSurfaceSampler`
+
+A reference to this sampler.
+
+***
+
+### setWeightAttribute()
+
+> **setWeightAttribute**(`name`): `MeshSurfaceSampler`
+
+Defined in: three/addons/math/MeshSurfaceSampler.js:77
+
+Specifies a vertex attribute to be used as a weight when sampling from the surface.
+Faces with higher weights are more likely to be sampled, and those with weights of
+zero will not be sampled at all. For vector attributes, only .x is used in sampling.
+
+If no weight attribute is selected, sampling is randomly distributed by area.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The attribute name.
+
+#### Returns
+
+`MeshSurfaceSampler`
+
+A reference to this sampler.

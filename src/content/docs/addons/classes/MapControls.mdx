@@ -1,0 +1,2157 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "MapControls"
+---
+
+Defined in: three/addons/controls/MapControls.js:16
+
+This class is intended for transforming a camera over a map from bird's eye perspective.
+The class shares its implementation with [OrbitControls](OrbitControls.html) but uses a specific preset
+for mouse/touch interaction and disables screen space panning by default.
+
+- Orbit: Right mouse, or left mouse + ctrl/meta/shiftKey / touch: two-finger rotate.
+- Zoom: Middle mouse, or mousewheel / touch: two-finger spread or squish.
+- Pan: Left mouse, or arrow keys / touch: one-finger move.
+
+## Extends
+
+- [`OrbitControls`](OrbitControls.html)
+
+## Constructors
+
+### Constructor
+
+> **new MapControls**(`object`, `domElement`): `MapControls`
+
+Defined in: three/addons/controls/MapControls.js:18
+
+#### Parameters
+
+##### object
+
+`any`
+
+##### domElement
+
+`any`
+
+#### Returns
+
+`MapControls`
+
+#### Overrides
+
+[`OrbitControls`](OrbitControls.html).[`constructor`](OrbitControls.html#constructor)
+
+## Properties
+
+### \_controlActive
+
+> **\_controlActive**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:432
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_controlActive`](OrbitControls.html#_controlactive)
+
+***
+
+### \_dollyDelta
+
+> **\_dollyDelta**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:423
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_dollyDelta`](OrbitControls.html#_dollydelta)
+
+***
+
+### \_dollyDirection
+
+> **\_dollyDirection**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:425
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_dollyDirection`](OrbitControls.html#_dollydirection)
+
+***
+
+### \_dollyEnd
+
+> **\_dollyEnd**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:422
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_dollyEnd`](OrbitControls.html#_dollyend)
+
+***
+
+### \_dollyStart
+
+> **\_dollyStart**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:421
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_dollyStart`](OrbitControls.html#_dollystart)
+
+***
+
+### \_domElementKeyEvents
+
+> **\_domElementKeyEvents**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:394
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_domElementKeyEvents`](OrbitControls.html#_domelementkeyevents)
+
+***
+
+### \_interceptControlDown
+
+> **\_interceptControlDown**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:449
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_interceptControlDown`](OrbitControls.html#_interceptcontroldown)
+
+***
+
+### \_interceptControlUp
+
+> **\_interceptControlUp**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:450
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_interceptControlUp`](OrbitControls.html#_interceptcontrolup)
+
+***
+
+### \_lastPosition
+
+> **\_lastPosition**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:398
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_lastPosition`](OrbitControls.html#_lastposition)
+
+***
+
+### \_lastQuaternion
+
+> **\_lastQuaternion**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:399
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_lastQuaternion`](OrbitControls.html#_lastquaternion)
+
+***
+
+### \_lastTargetPosition
+
+> **\_lastTargetPosition**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:400
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_lastTargetPosition`](OrbitControls.html#_lasttargetposition)
+
+***
+
+### \_mouse
+
+> **\_mouse**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:426
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_mouse`](OrbitControls.html#_mouse)
+
+***
+
+### \_onContextMenu
+
+> **\_onContextMenu**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:439
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onContextMenu`](OrbitControls.html#_oncontextmenu)
+
+***
+
+### \_onKeyDown
+
+> **\_onKeyDown**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:441
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onKeyDown`](OrbitControls.html#_onkeydown)
+
+***
+
+### \_onMouseDown
+
+> **\_onMouseDown**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:446
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onMouseDown`](OrbitControls.html#_onmousedown)
+
+***
+
+### \_onMouseMove
+
+> **\_onMouseMove**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:447
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onMouseMove`](OrbitControls.html#_onmousemove)
+
+***
+
+### \_onMouseWheel
+
+> **\_onMouseWheel**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:440
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onMouseWheel`](OrbitControls.html#_onmousewheel)
+
+***
+
+### \_onPointerDown
+
+> **\_onPointerDown**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:437
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onPointerDown`](OrbitControls.html#_onpointerdown)
+
+***
+
+### \_onPointerMove
+
+> **\_onPointerMove**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:436
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onPointerMove`](OrbitControls.html#_onpointermove)
+
+***
+
+### \_onPointerUp
+
+> **\_onPointerUp**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:438
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onPointerUp`](OrbitControls.html#_onpointerup)
+
+***
+
+### \_onTouchMove
+
+> **\_onTouchMove**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:444
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onTouchMove`](OrbitControls.html#_ontouchmove)
+
+***
+
+### \_onTouchStart
+
+> **\_onTouchStart**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:443
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_onTouchStart`](OrbitControls.html#_ontouchstart)
+
+***
+
+### \_panDelta
+
+> **\_panDelta**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:419
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_panDelta`](OrbitControls.html#_pandelta)
+
+***
+
+### \_panEnd
+
+> **\_panEnd**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:418
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_panEnd`](OrbitControls.html#_panend)
+
+***
+
+### \_panOffset
+
+> **\_panOffset**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:411
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_panOffset`](OrbitControls.html#_panoffset)
+
+***
+
+### \_panStart
+
+> **\_panStart**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:417
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_panStart`](OrbitControls.html#_panstart)
+
+***
+
+### \_performCursorZoom
+
+> **\_performCursorZoom**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:427
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_performCursorZoom`](OrbitControls.html#_performcursorzoom)
+
+***
+
+### \_pointerPositions
+
+> **\_pointerPositions**: `object`
+
+Defined in: three/addons/controls/OrbitControls.js:430
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_pointerPositions`](OrbitControls.html#_pointerpositions)
+
+***
+
+### \_pointers
+
+> **\_pointers**: `any`[]
+
+Defined in: three/addons/controls/OrbitControls.js:429
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_pointers`](OrbitControls.html#_pointers)
+
+***
+
+### \_quat
+
+> **\_quat**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:403
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_quat`](OrbitControls.html#_quat)
+
+***
+
+### \_quatInverse
+
+> **\_quatInverse**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:404
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_quatInverse`](OrbitControls.html#_quatinverse)
+
+***
+
+### \_rotateDelta
+
+> **\_rotateDelta**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:415
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_rotateDelta`](OrbitControls.html#_rotatedelta)
+
+***
+
+### \_rotateEnd
+
+> **\_rotateEnd**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:414
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_rotateEnd`](OrbitControls.html#_rotateend)
+
+***
+
+### \_rotateStart
+
+> **\_rotateStart**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:413
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_rotateStart`](OrbitControls.html#_rotatestart)
+
+***
+
+### \_scale
+
+> **\_scale**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:410
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_scale`](OrbitControls.html#_scale)
+
+***
+
+### \_spherical
+
+> **\_spherical**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:407
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_spherical`](OrbitControls.html#_spherical)
+
+***
+
+### \_sphericalDelta
+
+> **\_sphericalDelta**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:408
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_sphericalDelta`](OrbitControls.html#_sphericaldelta)
+
+***
+
+### autoRotate
+
+> **autoRotate**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:317
+
+Set to true to automatically rotate around the target
+
+Note that if this is enabled, you must call `update()` in your animation loop.
+If you want the auto-rotate speed to be independent of the frame rate (the refresh
+rate of the display), you must pass the time `deltaTime`, in seconds, to `update()`.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`autoRotate`](OrbitControls.html#autorotate)
+
+***
+
+### autoRotateSpeed
+
+> **autoRotateSpeed**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:328
+
+How fast to rotate around the target if `autoRotate` is `true`. The default  equates to 30 seconds
+per orbit at 60fps.
+
+Note that if `autoRotate` is enabled, you must call `update()` in your animation loop.
+
+#### Default
+
+```ts
+2
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`autoRotateSpeed`](OrbitControls.html#autorotatespeed)
+
+***
+
+### cursor
+
+> **cursor**: `Vector3`
+
+Defined in: three/addons/controls/OrbitControls.js:116
+
+The focus point of the `minTargetRadius` and `maxTargetRadius` limits.
+It can be updated manually at any point to change the center of interest
+for the `target`.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`cursor`](OrbitControls.html#cursor)
+
+***
+
+### dampingFactor
+
+> **dampingFactor**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:218
+
+The damping inertia used if `enableDamping` is set to `true`.
+
+Note that for this to work, you must call `update()` in your animation loop.
+
+#### Default
+
+```ts
+0.05
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`dampingFactor`](OrbitControls.html#dampingfactor)
+
+***
+
+### enableDamping
+
+> **enableDamping**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:208
+
+Set to `true` to enable damping (inertia), which can be used to give a sense of weight
+to the controls. Note that if this is enabled, you must call `update()` in your animation
+loop.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`enableDamping`](OrbitControls.html#enabledamping)
+
+***
+
+### enablePan
+
+> **enablePan**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:270
+
+Enable or disable camera panning.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`enablePan`](OrbitControls.html#enablepan)
+
+***
+
+### enableRotate
+
+> **enableRotate**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:246
+
+Enable or disable horizontal and vertical rotation of the camera.
+
+Note that it is possible to disable a single axis by setting the min and max of the
+`minPolarAngle` or `minAzimuthAngle` to the same value, which will cause the vertical
+or horizontal rotation to be fixed at that value.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`enableRotate`](OrbitControls.html#enablerotate)
+
+***
+
+### enableZoom
+
+> **enableZoom**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:226
+
+Enable or disable zooming (dollying) of the camera.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`enableZoom`](OrbitControls.html#enablezoom)
+
+***
+
+### keyPanSpeed
+
+> **keyPanSpeed**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:297
+
+How fast to pan the camera when the keyboard is used in
+pixels per keypress.
+
+#### Default
+
+```ts
+7
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`keyPanSpeed`](OrbitControls.html#keypanspeed)
+
+***
+
+### keyRotateSpeed
+
+> **keyRotateSpeed**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:262
+
+How fast to rotate the camera when the keyboard is used.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`keyRotateSpeed`](OrbitControls.html#keyrotatespeed)
+
+***
+
+### keys
+
+> **keys**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:343
+
+This object contains references to the keycodes for controlling camera panning.
+
+```js
+controls.keys = {
+	LEFT: 'ArrowLeft', //left arrow
+	UP: 'ArrowUp', // up arrow
+	RIGHT: 'ArrowRight', // right arrow
+	BOTTOM: 'ArrowDown' // down arrow
+}
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`keys`](OrbitControls.html#keys)
+
+***
+
+### maxAzimuthAngle
+
+> **maxAzimuthAngle**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:198
+
+How far you can orbit horizontally, upper limit. If set, the interval `[ min, max ]`
+must be a sub-interval of `[ - 2 PI, 2 PI ]`, with `( max - min < 2 PI )`.
+
+#### Default
+
+```ts
+-Infinity
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`maxAzimuthAngle`](OrbitControls.html#maxazimuthangle)
+
+***
+
+### maxDistance
+
+> **maxDistance**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:132
+
+How far you can dolly out (perspective camera only).
+
+#### Default
+
+```ts
+Infinity
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`maxDistance`](OrbitControls.html#maxdistance)
+
+***
+
+### maxPolarAngle
+
+> **maxPolarAngle**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:180
+
+How far you can orbit vertically, upper limit. Range is `[0, Math.PI]` radians.
+
+#### Default
+
+```ts
+Math.PI
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`maxPolarAngle`](OrbitControls.html#maxpolarangle)
+
+***
+
+### maxTargetRadius
+
+> **maxTargetRadius**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:164
+
+How far you can move the target from the 3D `cursor`.
+
+#### Default
+
+```ts
+Infinity
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`maxTargetRadius`](OrbitControls.html#maxtargetradius)
+
+***
+
+### maxZoom
+
+> **maxZoom**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:148
+
+How far you can zoom out (orthographic camera only).
+
+#### Default
+
+```ts
+Infinity
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`maxZoom`](OrbitControls.html#maxzoom)
+
+***
+
+### minAzimuthAngle
+
+> **minAzimuthAngle**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:189
+
+How far you can orbit horizontally, lower limit. If set, the interval `[ min, max ]`
+must be a sub-interval of `[ - 2 PI, 2 PI ]`, with `( max - min < 2 PI )`.
+
+#### Default
+
+```ts
+-Infinity
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`minAzimuthAngle`](OrbitControls.html#minazimuthangle)
+
+***
+
+### minDistance
+
+> **minDistance**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:124
+
+How far you can dolly in (perspective camera only).
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`minDistance`](OrbitControls.html#mindistance)
+
+***
+
+### minPolarAngle
+
+> **minPolarAngle**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:172
+
+How far you can orbit vertically, lower limit. Range is `[0, Math.PI]` radians.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`minPolarAngle`](OrbitControls.html#minpolarangle)
+
+***
+
+### minTargetRadius
+
+> **minTargetRadius**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:156
+
+How close you can get the target to the 3D `cursor`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`minTargetRadius`](OrbitControls.html#mintargetradius)
+
+***
+
+### minZoom
+
+> **minZoom**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:140
+
+How far you can zoom in (orthographic camera only).
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`minZoom`](OrbitControls.html#minzoom)
+
+***
+
+### mouseButtons
+
+> **mouseButtons**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:357
+
+This object contains references to the mouse actions used by the controls.
+
+```js
+controls.mouseButtons = {
+	LEFT: THREE.MOUSE.ROTATE,
+	MIDDLE: THREE.MOUSE.DOLLY,
+	RIGHT: THREE.MOUSE.PAN
+}
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`mouseButtons`](OrbitControls.html#mousebuttons)
+
+***
+
+### panSpeed
+
+> **panSpeed**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:278
+
+Speed of panning.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`panSpeed`](OrbitControls.html#panspeed)
+
+***
+
+### position0
+
+> **position0**: `Vector3`
+
+Defined in: three/addons/controls/OrbitControls.js:384
+
+Used internally by `saveState()` and `reset()`.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`position0`](OrbitControls.html#position0)
+
+***
+
+### rotateSpeed
+
+> **rotateSpeed**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:254
+
+Speed of rotation.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`rotateSpeed`](OrbitControls.html#rotatespeed)
+
+***
+
+### screenSpacePanning
+
+> **screenSpacePanning**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:288
+
+Defines how the camera's position is translated when panning. If `true`, the camera pans
+in screen space. Otherwise, the camera pans in the plane orthogonal to the camera's up
+direction.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`screenSpacePanning`](OrbitControls.html#screenspacepanning)
+
+***
+
+### state
+
+> **state**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:99
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`state`](OrbitControls.html#state)
+
+***
+
+### target
+
+> **target**: `Vector3`
+
+Defined in: three/addons/controls/OrbitControls.js:107
+
+The focus point of the controls, the `object` orbits around this.
+It can be updated manually at any point to change the focus of the controls.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`target`](OrbitControls.html#target)
+
+***
+
+### target0
+
+> **target0**: `Vector3`
+
+Defined in: three/addons/controls/OrbitControls.js:377
+
+Used internally by `saveState()` and `reset()`.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`target0`](OrbitControls.html#target0)
+
+***
+
+### touches
+
+> **touches**: `any`
+
+Defined in: three/addons/controls/OrbitControls.js:370
+
+This object contains references to the touch actions used by the controls.
+
+```js
+controls.mouseButtons = {
+	ONE: THREE.TOUCH.ROTATE,
+	TWO: THREE.TOUCH.DOLLY_PAN
+}
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`touches`](OrbitControls.html#touches)
+
+***
+
+### zoom0
+
+> **zoom0**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:391
+
+Used internally by `saveState()` and `reset()`.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`zoom0`](OrbitControls.html#zoom0)
+
+***
+
+### zoomSpeed
+
+> **zoomSpeed**: `number`
+
+Defined in: three/addons/controls/OrbitControls.js:234
+
+Speed of zooming / dollying.
+
+#### Default
+
+```ts
+1
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`zoomSpeed`](OrbitControls.html#zoomspeed)
+
+***
+
+### zoomToCursor
+
+> **zoomToCursor**: `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:305
+
+Setting this property to `true` allows to zoom to the cursor's position.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`zoomToCursor`](OrbitControls.html#zoomtocursor)
+
+## Methods
+
+### \_addPointer()
+
+> **\_addPointer**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1356
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_addPointer`](OrbitControls.html#_addpointer)
+
+***
+
+### \_clampDistance()
+
+> **\_clampDistance**(`dist`): `number`
+
+Defined in: three/addons/controls/OrbitControls.js:980
+
+#### Parameters
+
+##### dist
+
+`any`
+
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_clampDistance`](OrbitControls.html#_clampdistance)
+
+***
+
+### \_customWheelEvent()
+
+> **\_customWheelEvent**(`event`): `object`
+
+Defined in: three/addons/controls/OrbitControls.js:1416
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`object`
+
+##### clientX
+
+> **clientX**: `any` = `event.clientX`
+
+##### clientY
+
+> **clientY**: `any` = `event.clientY`
+
+##### deltaY
+
+> **deltaY**: `any` = `event.deltaY`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_customWheelEvent`](OrbitControls.html#_customwheelevent)
+
+***
+
+### \_dollyIn()
+
+> **\_dollyIn**(`dollyScale`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:942
+
+#### Parameters
+
+##### dollyScale
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_dollyIn`](OrbitControls.html#_dollyin)
+
+***
+
+### \_dollyOut()
+
+> **\_dollyOut**(`dollyScale`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:927
+
+#### Parameters
+
+##### dollyScale
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_dollyOut`](OrbitControls.html#_dollyout)
+
+***
+
+### \_getAutoRotationAngle()
+
+> **\_getAutoRotationAngle**(`deltaTime`): `number`
+
+Defined in: three/addons/controls/OrbitControls.js:831
+
+#### Parameters
+
+##### deltaTime
+
+`any`
+
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_getAutoRotationAngle`](OrbitControls.html#_getautorotationangle)
+
+***
+
+### \_getSecondPointerPosition()
+
+> **\_getSecondPointerPosition**(`event`): `any`
+
+Defined in: three/addons/controls/OrbitControls.js:1406
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`any`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_getSecondPointerPosition`](OrbitControls.html#_getsecondpointerposition)
+
+***
+
+### \_getZoomScale()
+
+> **\_getZoomScale**(`delta`): `number`
+
+Defined in: three/addons/controls/OrbitControls.js:845
+
+#### Parameters
+
+##### delta
+
+`any`
+
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_getZoomScale`](OrbitControls.html#_getzoomscale)
+
+***
+
+### \_handleKeyDown()
+
+> **\_handleKeyDown**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1081
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleKeyDown`](OrbitControls.html#_handlekeydown)
+
+***
+
+### \_handleMouseDownDolly()
+
+> **\_handleMouseDownDolly**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:996
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseDownDolly`](OrbitControls.html#_handlemousedowndolly)
+
+***
+
+### \_handleMouseDownPan()
+
+> **\_handleMouseDownPan**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1003
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseDownPan`](OrbitControls.html#_handlemousedownpan)
+
+***
+
+### \_handleMouseDownRotate()
+
+> **\_handleMouseDownRotate**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:990
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseDownRotate`](OrbitControls.html#_handlemousedownrotate)
+
+***
+
+### \_handleMouseMoveDolly()
+
+> **\_handleMouseMoveDolly**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1027
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseMoveDolly`](OrbitControls.html#_handlemousemovedolly)
+
+***
+
+### \_handleMouseMovePan()
+
+> **\_handleMouseMovePan**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1049
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseMovePan`](OrbitControls.html#_handlemousemovepan)
+
+***
+
+### \_handleMouseMoveRotate()
+
+> **\_handleMouseMoveRotate**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1009
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseMoveRotate`](OrbitControls.html#_handlemousemoverotate)
+
+***
+
+### \_handleMouseWheel()
+
+> **\_handleMouseWheel**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1063
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleMouseWheel`](OrbitControls.html#_handlemousewheel)
+
+***
+
+### \_handleTouchMoveDolly()
+
+> **\_handleTouchMoveDolly**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1314
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchMoveDolly`](OrbitControls.html#_handletouchmovedolly)
+
+***
+
+### \_handleTouchMoveDollyPan()
+
+> **\_handleTouchMoveDollyPan**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1338
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchMoveDollyPan`](OrbitControls.html#_handletouchmovedollypan)
+
+***
+
+### \_handleTouchMoveDollyRotate()
+
+> **\_handleTouchMoveDollyRotate**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1346
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchMoveDollyRotate`](OrbitControls.html#_handletouchmovedollyrotate)
+
+***
+
+### \_handleTouchMovePan()
+
+> **\_handleTouchMovePan**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1289
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchMovePan`](OrbitControls.html#_handletouchmovepan)
+
+***
+
+### \_handleTouchMoveRotate()
+
+> **\_handleTouchMoveRotate**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1260
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchMoveRotate`](OrbitControls.html#_handletouchmoverotate)
+
+***
+
+### \_handleTouchStartDolly()
+
+> **\_handleTouchStartDolly**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1231
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchStartDolly`](OrbitControls.html#_handletouchstartdolly)
+
+***
+
+### \_handleTouchStartDollyPan()
+
+> **\_handleTouchStartDollyPan**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1244
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchStartDollyPan`](OrbitControls.html#_handletouchstartdollypan)
+
+***
+
+### \_handleTouchStartDollyRotate()
+
+> **\_handleTouchStartDollyRotate**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1252
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchStartDollyRotate`](OrbitControls.html#_handletouchstartdollyrotate)
+
+***
+
+### \_handleTouchStartPan()
+
+> **\_handleTouchStartPan**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1212
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchStartPan`](OrbitControls.html#_handletouchstartpan)
+
+***
+
+### \_handleTouchStartRotate()
+
+> **\_handleTouchStartRotate**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1193
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_handleTouchStartRotate`](OrbitControls.html#_handletouchstartrotate)
+
+***
+
+### \_isTrackingPointer()
+
+> **\_isTrackingPointer**(`event`): `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:1379
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_isTrackingPointer`](OrbitControls.html#_istrackingpointer)
+
+***
+
+### \_pan()
+
+> **\_pan**(`deltaX`, `deltaY`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:893
+
+#### Parameters
+
+##### deltaX
+
+`any`
+
+##### deltaY
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_pan`](OrbitControls.html#_pan)
+
+***
+
+### \_panLeft()
+
+> **\_panLeft**(`distance`, `objectMatrix`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:864
+
+#### Parameters
+
+##### distance
+
+`any`
+
+##### objectMatrix
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_panLeft`](OrbitControls.html#_panleft)
+
+***
+
+### \_panUp()
+
+> **\_panUp**(`distance`, `objectMatrix`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:873
+
+#### Parameters
+
+##### distance
+
+`any`
+
+##### objectMatrix
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_panUp`](OrbitControls.html#_panup)
+
+***
+
+### \_removePointer()
+
+> **\_removePointer**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1362
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_removePointer`](OrbitControls.html#_removepointer)
+
+***
+
+### \_rotateLeft()
+
+> **\_rotateLeft**(`angle`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:852
+
+#### Parameters
+
+##### angle
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_rotateLeft`](OrbitControls.html#_rotateleft)
+
+***
+
+### \_rotateUp()
+
+> **\_rotateUp**(`angle`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:858
+
+#### Parameters
+
+##### angle
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_rotateUp`](OrbitControls.html#_rotateup)
+
+***
+
+### \_trackPointer()
+
+> **\_trackPointer**(`event`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:1391
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_trackPointer`](OrbitControls.html#_trackpointer)
+
+***
+
+### \_updateZoomParameters()
+
+> **\_updateZoomParameters**(`x`, `y`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:957
+
+#### Parameters
+
+##### x
+
+`any`
+
+##### y
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`_updateZoomParameters`](OrbitControls.html#_updatezoomparameters)
+
+***
+
+### connect()
+
+> **connect**(`element`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:464
+
+#### Parameters
+
+##### element
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`connect`](OrbitControls.html#connect)
+
+***
+
+### disconnect()
+
+> **disconnect**(): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:481
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`disconnect`](OrbitControls.html#disconnect)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:500
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`dispose`](OrbitControls.html#dispose)
+
+***
+
+### getAzimuthalAngle()
+
+> **getAzimuthalAngle**(): `number`
+
+Defined in: three/addons/controls/OrbitControls.js:522
+
+Get the current horizontal rotation, in radians.
+
+#### Returns
+
+`number`
+
+The current horizontal rotation, in radians.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`getAzimuthalAngle`](OrbitControls.html#getazimuthalangle)
+
+***
+
+### getDistance()
+
+> **getDistance**(): `number`
+
+Defined in: three/addons/controls/OrbitControls.js:533
+
+Returns the distance from the camera to the target.
+
+#### Returns
+
+`number`
+
+The distance from the camera to the target.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`getDistance`](OrbitControls.html#getdistance)
+
+***
+
+### getPolarAngle()
+
+> **getPolarAngle**(): `number`
+
+Defined in: three/addons/controls/OrbitControls.js:511
+
+Get the current vertical rotation, in radians.
+
+#### Returns
+
+`number`
+
+The current vertical rotation, in radians.
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`getPolarAngle`](OrbitControls.html#getpolarangle)
+
+***
+
+### listenToKeyEvents()
+
+> **listenToKeyEvents**(`domElement`): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:545
+
+Adds key event listeners to the given DOM element.
+`window` is a recommended argument for using this method.
+
+#### Parameters
+
+##### domElement
+
+`HTMLDOMElement`
+
+The DOM element
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`listenToKeyEvents`](OrbitControls.html#listentokeyevents)
+
+***
+
+### reset()
+
+> **reset**(): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:581
+
+Reset the controls to their state from either the last time the `saveState()`
+was called, or the initial state.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`reset`](OrbitControls.html#reset)
+
+***
+
+### saveState()
+
+> **saveState**(): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:569
+
+Save the current state of the controls. This can later be recovered with `reset()`.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`saveState`](OrbitControls.html#savestate)
+
+***
+
+### stopListenToKeyEvents()
+
+> **stopListenToKeyEvents**(): `void`
+
+Defined in: three/addons/controls/OrbitControls.js:555
+
+Removes the key event listener previously defined with `listenToKeyEvents()`.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`stopListenToKeyEvents`](OrbitControls.html#stoplistentokeyevents)
+
+***
+
+### update()
+
+> **update**(`deltaTime`): `boolean`
+
+Defined in: three/addons/controls/OrbitControls.js:596
+
+#### Parameters
+
+##### deltaTime
+
+`any` = `null`
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+[`OrbitControls`](OrbitControls.html).[`update`](OrbitControls.html#update)

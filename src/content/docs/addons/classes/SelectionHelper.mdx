@@ -1,0 +1,203 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "SelectionHelper"
+---
+
+Defined in: three/addons/interactive/SelectionHelper.js:8
+
+A helper for [SelectionBox](SelectionBox.html).
+
+It visualizes the current selection box with a `div` container element.
+
+## Constructors
+
+### Constructor
+
+> **new SelectionHelper**(`renderer`, `cssClassName`): `SelectionHelper`
+
+Defined in: three/addons/interactive/SelectionHelper.js:16
+
+Constructs a new selection helper.
+
+#### Parameters
+
+##### renderer
+
+`any`
+
+The renderer.
+
+##### cssClassName
+
+`string`
+
+The CSS class name of the `div`.
+
+#### Returns
+
+`SelectionHelper`
+
+## Properties
+
+### \_onPointerDown
+
+> **\_onPointerDown**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:56
+
+***
+
+### \_onPointerMove
+
+> **\_onPointerMove**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:65
+
+***
+
+### \_onPointerUp
+
+> **\_onPointerUp**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:77
+
+***
+
+### \_pointBottomRight
+
+> **\_pointBottomRight**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:54
+
+***
+
+### \_pointTopLeft
+
+> **\_pointTopLeft**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:53
+
+***
+
+### \_startPoint
+
+> **\_startPoint**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:52
+
+***
+
+### element
+
+> **element**: `HTMLDivElement`
+
+Defined in: three/addons/interactive/SelectionHelper.js:23
+
+The visualization of the selection box.
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/interactive/SelectionHelper.js:48
+
+Whether helper is enabled or not.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### isDown
+
+> **isDown**: `boolean`
+
+Defined in: three/addons/interactive/SelectionHelper.js:40
+
+Whether the mouse or pointer is pressed down.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### renderer
+
+> **renderer**: `any`
+
+Defined in: three/addons/interactive/SelectionHelper.js:32
+
+A reference to the renderer.
+
+## Methods
+
+### \_onSelectMove()
+
+> **\_onSelectMove**(`event`): `void`
+
+Defined in: three/addons/interactive/SelectionHelper.js:124
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### \_onSelectOver()
+
+> **\_onSelectOver**(): `void`
+
+Defined in: three/addons/interactive/SelectionHelper.js:140
+
+#### Returns
+
+`void`
+
+***
+
+### \_onSelectStart()
+
+> **\_onSelectStart**(`event`): `void`
+
+Defined in: three/addons/interactive/SelectionHelper.js:108
+
+#### Parameters
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/interactive/SelectionHelper.js:96
+
+Call this method if you no longer want use to the controls. It frees all internal
+resources and removes all event listeners.
+
+#### Returns
+
+`void`

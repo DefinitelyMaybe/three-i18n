@@ -1,0 +1,174 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "LensflareElement"
+---
+
+Defined in: three/addons/objects/Lensflare.js:342
+
+Represents a single flare that can be added to a [Lensflare](Lensflare.html) container.
+
+## Constructors
+
+### Constructor
+
+> **new LensflareElement**(`texture`, `size`?, `distance`?, `color`?): `LensflareElement`
+
+Defined in: three/addons/objects/Lensflare.js:353
+
+Constructs a new lensflare element.
+
+#### Parameters
+
+##### texture
+
+`Texture`
+
+The flare's texture.
+
+##### size?
+
+`number` = `1`
+
+The size in pixels.
+
+##### distance?
+
+`number` = `0`
+
+The normalized distance (`[0,1]`) from the light source.
+A value of `0` means the flare is located at light source.
+
+##### color?
+
+`Color` = `...`
+
+The flare's color
+
+#### Returns
+
+`LensflareElement`
+
+## Properties
+
+### color
+
+> **color**: `Color`
+
+Defined in: three/addons/objects/Lensflare.js:385
+
+The flare's color
+
+#### Default
+
+```ts
+(1,1,1)
+```
+
+***
+
+### distance
+
+> **distance**: `number`
+
+Defined in: three/addons/objects/Lensflare.js:377
+
+The normalized distance (`[0,1]`) from the light source.
+A value of `0` means the flare is located at light source.
+
+#### Default
+
+```ts
+0
+```
+
+***
+
+### size
+
+> **size**: `number`
+
+Defined in: three/addons/objects/Lensflare.js:368
+
+The size in pixels.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### texture
+
+> **texture**: `Texture`
+
+Defined in: three/addons/objects/Lensflare.js:360
+
+The flare's texture.
+
+***
+
+### Shader
+
+> `static` **Shader**: `object`
+
+Defined in: three/addons/objects/Lensflare.js:391
+
+#### fragmentShader
+
+> **fragmentShader**: `string`
+
+#### name
+
+> **name**: `string` = `'LensflareElementShader'`
+
+#### uniforms
+
+> **uniforms**: `object`
+
+##### uniforms.color
+
+> **color**: `object`
+
+##### uniforms.color.value
+
+> **value**: `any` = `null`
+
+##### uniforms.map
+
+> **map**: `object`
+
+##### uniforms.map.value
+
+> **value**: `any` = `null`
+
+##### uniforms.occlusionMap
+
+> **occlusionMap**: `object`
+
+##### uniforms.occlusionMap.value
+
+> **value**: `any` = `null`
+
+##### uniforms.scale
+
+> **scale**: `object`
+
+##### uniforms.scale.value
+
+> **value**: `any` = `null`
+
+##### uniforms.screenPosition
+
+> **screenPosition**: `object`
+
+##### uniforms.screenPosition.value
+
+> **value**: `any` = `null`
+
+#### vertexShader
+
+> **vertexShader**: `string`

@@ -1,0 +1,50 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "calcNURBSDerivatives"
+---
+
+> **calcNURBSDerivatives**(`p`, `U`, `P`, `u`, `nd`): `Vector3`[]
+
+Defined in: three/addons/curves/NURBSUtils.js:400
+
+Calculates NURBS curve derivatives. See The NURBS Book, page 127, algorithm A4.2.
+
+## Parameters
+
+### p
+
+`number`
+
+The degree.
+
+### U
+
+`number`[]
+
+The knot vector.
+
+### P
+
+`Vector4`[]
+
+The control points in homogeneous space.
+
+### u
+
+`number`
+
+The parametric point.
+
+### nd
+
+`number`
+
+The number of derivatives.
+
+## Returns
+
+`Vector3`[]
+
+array with derivatives for rational curve.

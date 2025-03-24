@@ -1,0 +1,103 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Water"
+---
+
+Defined in: three/addons/objects/Water.js:30
+
+A basic flat, reflective water effect.
+
+Note that this class can only be used with WebGLRenderer.
+When using WebGPURenderer, use WaterMesh.
+
+References:
+
+- [Flat mirror for three.js][https://github.com/Slayvin](https://github.com/Slayvin)
+- [An implementation of water shader based on the flat mirror][https://home.adelphi.edu/~stemkoski/](https://home.adelphi.edu/~stemkoski/)
+- [Water shader explanations in WebGL][http://29a.ch/slides/2012/webglwater/](http://29a.ch/slides/2012/webglwater/)
+
+## Extends
+
+- `unknown`
+
+## Constructors
+
+### Constructor
+
+> **new Water**(`geometry`, `options`): `Water`
+
+Defined in: three/addons/objects/Water.js:38
+
+Constructs a new water instance.
+
+#### Parameters
+
+##### geometry
+
+`BufferGeometry`
+
+The water's geometry.
+
+##### options
+
+The configuration options.
+
+#### Returns
+
+`Water`
+
+#### Overrides
+
+`Mesh.constructor`
+
+## Properties
+
+### isWater
+
+> `readonly` **isWater**: `boolean`
+
+Defined in: three/addons/objects/Water.js:49
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### material
+
+> **material**: `any`
+
+Defined in: three/addons/objects/Water.js:234
+
+***
+
+### onBeforeRender()
+
+> **onBeforeRender**: (`renderer`, `scene`, `camera`) => `void`
+
+Defined in: three/addons/objects/Water.js:236
+
+#### Parameters
+
+##### renderer
+
+`any`
+
+##### scene
+
+`any`
+
+##### camera
+
+`any`
+
+#### Returns
+
+`void`

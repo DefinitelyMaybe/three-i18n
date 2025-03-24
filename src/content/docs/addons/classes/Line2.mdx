@@ -1,0 +1,188 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "Line2"
+---
+
+Defined in: three/addons/lines/Line2.js:28
+
+A polyline drawn between vertices.
+
+This adds functionality beyond Line, like arbitrary line width and changing width to
+be in world units.It extends [LineSegments2](LineSegments2.html), simplifying constructing segments from a
+chain of points.
+
+This module can only be used with WebGLRenderer. When using WebGPURenderer,
+import the class from `lines/webgpu/Line2.js`.
+
+```js
+const geometry = new LineGeometry();
+geometry.setPositions( positions );
+geometry.setColors( colors );
+
+const material = new LineMaterial( { linewidth: 5, vertexColors: true } };
+
+const line = new Line2( geometry, material );
+scene.add( line );
+```
+
+## Extends
+
+- [`LineSegments2`](LineSegments2.html)
+
+## Constructors
+
+### Constructor
+
+> **new Line2**(`geometry`?, `material`?): `Line2`
+
+Defined in: three/addons/lines/Line2.js:35
+
+Constructs a new wide line.
+
+#### Parameters
+
+##### geometry?
+
+[`LineGeometry`](LineGeometry.html) = `...`
+
+The line geometry.
+
+##### material?
+
+[`LineMaterial`](LineMaterial.html) = `...`
+
+The line material.
+
+#### Returns
+
+`Line2`
+
+#### Overrides
+
+[`LineSegments2`](LineSegments2.html).[`constructor`](LineSegments2.html#constructor)
+
+## Properties
+
+### isLine2
+
+> `readonly` **isLine2**: `boolean`
+
+Defined in: three/addons/lines/Line2.js:48
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### isLineSegments2
+
+> `readonly` **isLineSegments2**: `boolean`
+
+Defined in: three/addons/lines/LineSegments2.js:252
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`LineSegments2`](LineSegments2.html).[`isLineSegments2`](LineSegments2.html#islinesegments2)
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/addons/lines/Line2.js:50
+
+#### Inherited from
+
+[`LineSegments2`](LineSegments2.html).[`type`](LineSegments2.html#type)
+
+## Methods
+
+### computeLineDistances()
+
+> **computeLineDistances**(): [`LineSegments2`](LineSegments2.html)
+
+Defined in: three/addons/lines/LineSegments2.js:264
+
+Computes an array of distance values which are necessary for rendering dashed lines.
+For each vertex in the geometry, the method calculates the cumulative length from the
+current point to the very beginning of the line.
+
+#### Returns
+
+[`LineSegments2`](LineSegments2.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`LineSegments2`](LineSegments2.html).[`computeLineDistances`](LineSegments2.html#computelinedistances)
+
+***
+
+### onBeforeRender()
+
+> **onBeforeRender**(`renderer`): `void`
+
+Defined in: three/addons/lines/LineSegments2.js:393
+
+#### Parameters
+
+##### renderer
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LineSegments2`](LineSegments2.html).[`onBeforeRender`](LineSegments2.html#onbeforerender)
+
+***
+
+### raycast()
+
+> **raycast**(`raycaster`, `intersects`): `void`
+
+Defined in: three/addons/lines/LineSegments2.js:305
+
+Computes intersection points between a casted ray and this instance.
+
+#### Parameters
+
+##### raycaster
+
+`Raycaster`
+
+The raycaster.
+
+##### intersects
+
+`any`[]
+
+The target array that holds the intersection points.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LineSegments2`](LineSegments2.html).[`raycast`](LineSegments2.html#raycast)

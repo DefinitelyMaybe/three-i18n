@@ -1,0 +1,142 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "RGBELoader"
+---
+
+Defined in: three/addons/loaders/RGBELoader.js:23
+
+A loader for the RGBE HDR texture format.
+
+```js
+const loader = new RGBELoader();
+const envMap = await loader.loadAsync( 'textures/equirectangular/blouberg_sunrise_2_1k.hdr' );
+envMap.mapping = THREE.EquirectangularReflectionMapping;
+
+scene.environment = envMap;
+```
+
+## Extends
+
+- `unknown`
+
+## Constructors
+
+### Constructor
+
+> **new RGBELoader**(`manager`?): `RGBELoader`
+
+Defined in: three/addons/loaders/RGBELoader.js:30
+
+Constructs a new RGBE loader.
+
+#### Parameters
+
+##### manager?
+
+`LoadingManager`
+
+The loading manager.
+
+#### Returns
+
+`RGBELoader`
+
+#### Overrides
+
+`DataTextureLoader.constructor`
+
+## Properties
+
+### type
+
+> **type**: `any`
+
+Defined in: three/addons/loaders/RGBELoader.js:40
+
+The texture type.
+
+#### Default
+
+```ts
+HalfFloatType
+```
+
+## Methods
+
+### load()
+
+> **load**(`url`, `onLoad`, `onProgress`, `onError`): `any`
+
+Defined in: three/addons/loaders/RGBELoader.js:454
+
+#### Parameters
+
+##### url
+
+`any`
+
+##### onLoad
+
+`any`
+
+##### onProgress
+
+`any`
+
+##### onError
+
+`any`
+
+#### Returns
+
+`any`
+
+***
+
+### parse()
+
+> **parse**(`buffer`): `DataTextureLoader`
+
+Defined in: three/addons/loaders/RGBELoader.js:50
+
+Parses the given RGBE texture data.
+
+#### Parameters
+
+##### buffer
+
+`ArrayBuffer`
+
+The raw texture data.
+
+#### Returns
+
+`DataTextureLoader`
+
+An object representing the parsed texture data.
+
+***
+
+### setDataType()
+
+> **setDataType**(`value`): `RGBELoader`
+
+Defined in: three/addons/loaders/RGBELoader.js:447
+
+Sets the texture type.
+
+#### Parameters
+
+##### value
+
+`any`
+
+The texture type to set.
+
+#### Returns
+
+`RGBELoader`
+
+A reference to this loader.

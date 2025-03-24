@@ -1,0 +1,273 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "InstancedFlow"
+---
+
+Defined in: three/addons/modifiers/CurveModifier.js:300
+
+An instanced version of [Flow](Flow.html) for making meshes bend around curves, where the instances are placed on the curve.
+
+This module can only be used with WebGLRenderer.
+
+## Extends
+
+- [`Flow`](Flow.html)
+
+## Constructors
+
+### Constructor
+
+> **new InstancedFlow**(`count`, `curveCount`, `geometry`, `material`): `InstancedFlow`
+
+Defined in: three/addons/modifiers/CurveModifier.js:310
+
+Constructs a new InstancedFlow instance.
+
+#### Parameters
+
+##### count
+
+`number`
+
+The number of instanced elements.
+
+##### curveCount
+
+`number`
+
+The number of curves to preallocate for.
+
+##### geometry
+
+`Geometry`
+
+The geometry to use for the instanced mesh.
+
+##### material
+
+`Material`
+
+The material to use for the instanced mesh.
+
+#### Returns
+
+`InstancedFlow`
+
+#### Overrides
+
+[`Flow`](Flow.html).[`constructor`](Flow.html#constructor)
+
+## Properties
+
+### curveArray
+
+> **curveArray**: `any`[]
+
+Defined in: three/addons/modifiers/CurveModifier.js:252
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`curveArray`](Flow.html#curvearray)
+
+***
+
+### curveLengthArray
+
+> **curveLengthArray**: `any`[]
+
+Defined in: three/addons/modifiers/CurveModifier.js:253
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`curveLengthArray`](Flow.html#curvelengtharray)
+
+***
+
+### object3D
+
+> **object3D**: `any`
+
+Defined in: three/addons/modifiers/CurveModifier.js:255
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`object3D`](Flow.html#object3d)
+
+***
+
+### offsets
+
+> **offsets**: `any`[]
+
+Defined in: three/addons/modifiers/CurveModifier.js:321
+
+***
+
+### splineTexture
+
+> **splineTexture**: `DataTexture`
+
+Defined in: three/addons/modifiers/CurveModifier.js:256
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`splineTexture`](Flow.html#splinetexture)
+
+***
+
+### uniforms
+
+> **uniforms**: `any`
+
+Defined in: three/addons/modifiers/CurveModifier.js:257
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`uniforms`](Flow.html#uniforms)
+
+***
+
+### whichCurve
+
+> **whichCurve**: `any`[]
+
+Defined in: three/addons/modifiers/CurveModifier.js:322
+
+## Methods
+
+### moveAlongCurve()
+
+> **moveAlongCurve**(`amount`): `void`
+
+Defined in: three/addons/modifiers/CurveModifier.js:283
+
+Moves the mesh along the curve.
+
+#### Parameters
+
+##### amount
+
+`number`
+
+The offset.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`moveAlongCurve`](Flow.html#movealongcurve)
+
+***
+
+### moveIndividualAlongCurve()
+
+> **moveIndividualAlongCurve**(`index`, `offset`): `void`
+
+Defined in: three/addons/modifiers/CurveModifier.js:350
+
+Move an individual element along the curve by a specific amount.
+
+#### Parameters
+
+##### index
+
+`number`
+
+Which element to update.
+
+##### offset
+
+`number`
+
+The offset.
+
+#### Returns
+
+`void`
+
+***
+
+### setCurve()
+
+> **setCurve**(`index`, `curveNo`): `void`
+
+Defined in: three/addons/modifiers/CurveModifier.js:363
+
+Select which curve to use for an element.
+
+#### Parameters
+
+##### index
+
+`number`
+
+The index of the instanced element to update.
+
+##### curveNo
+
+`number`
+
+The index of the curve it should use.
+
+#### Returns
+
+`void`
+
+***
+
+### updateCurve()
+
+> **updateCurve**(`index`, `curve`): `void`
+
+Defined in: three/addons/modifiers/CurveModifier.js:267
+
+Updates the curve for the given curve index.
+
+#### Parameters
+
+##### index
+
+`number`
+
+The curve index.
+
+##### curve
+
+`Curve`
+
+The curve that should be used to bend the mesh.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Flow`](Flow.html).[`updateCurve`](Flow.html#updatecurve)
+
+***
+
+### writeChanges()
+
+> **writeChanges**(`index`): `void`
+
+Defined in: three/addons/modifiers/CurveModifier.js:332
+
+The extra information about which curve and curve position is stored in the translation components of the matrix for the instanced objects
+This writes that information to the matrix and marks it as needing update.
+
+#### Parameters
+
+##### index
+
+`number`
+
+The index of tge instanced element to update.
+
+#### Returns
+
+`void`

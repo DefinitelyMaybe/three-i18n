@@ -1,0 +1,406 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "SSAARenderPass"
+---
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:25
+
+Supersample Anti-Aliasing Render Pass.
+
+This manual approach to SSAA re-renders the scene ones for each sample with camera jitter and accumulates the results.
+
+```js
+const ssaaRenderPass = new SSAARenderPass( scene, camera );
+ssaaRenderPass.sampleLevel = 3;
+composer.addPass( ssaaRenderPass );
+```
+
+## Extends
+
+- [`Pass`](Pass.html)
+
+## Extended by
+
+- [`TAARenderPass`](TAARenderPass.html)
+
+## Constructors
+
+### Constructor
+
+> **new SSAARenderPass**(`scene`, `camera`, `clearColor`?, `clearAlpha`?): `SSAARenderPass`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:35
+
+Constructs a new SSAA render pass.
+
+#### Parameters
+
+##### scene
+
+`Scene`
+
+The scene to render.
+
+##### camera
+
+`Camera`
+
+The camera.
+
+##### clearColor?
+
+`any` = `0x000000`
+
+The clear color of the render pass.
+
+##### clearAlpha?
+
+`number` = `0`
+
+The clear alpha of the render pass.
+
+#### Returns
+
+`SSAARenderPass`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`constructor`](Pass.html#constructor)
+
+## Properties
+
+### \_copyMaterial
+
+> **\_copyMaterial**: `any`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:105
+
+***
+
+### \_copyUniforms
+
+> **\_copyUniforms**: `any`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:103
+
+***
+
+### \_fsQuad
+
+> **\_fsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:116
+
+***
+
+### \_oldClearColor
+
+> **\_oldClearColor**: `any`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:101
+
+***
+
+### \_sampleRenderTarget
+
+> **\_sampleRenderTarget**: `any`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:99
+
+***
+
+### camera
+
+> **camera**: `Camera`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:51
+
+The camera.
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`clear`](Pass.html#clear)
+
+***
+
+### clearAlpha
+
+> **clearAlpha**: `number`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:95
+
+The clear alpha of the render pass.
+
+#### Default
+
+```ts
+0
+```
+
+***
+
+### clearColor
+
+> **clearColor**: `any`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:87
+
+The clear color of the render pass.
+
+#### Default
+
+```ts
+0x000000
+```
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:37
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`enabled`](Pass.html#enabled)
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`isPass`](Pass.html#ispass)
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:45
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`needsSwap`](Pass.html#needsswap)
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`renderToScreen`](Pass.html#rendertoscreen)
+
+***
+
+### sampleLevel
+
+> **sampleLevel**: `number`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:60
+
+The sample level. Specified as n, where the number of
+samples is 2^n, so sampleLevel = 4, is 2^4 samples, 16.
+
+#### Default
+
+```ts
+4
+```
+
+***
+
+### scene
+
+> **scene**: `Scene`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:44
+
+The scene to render.
+
+***
+
+### stencilBuffer
+
+> **stencilBuffer**: `boolean`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:79
+
+Whether to use a stencil buffer or not. This property can't
+be changed after the first render.
+
+#### Default
+
+```ts
+false
+```
+
+***
+
+### unbiased
+
+> **unbiased**: `boolean`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:70
+
+Whether the pass should be unbiased or not. This property has the most
+visible effect when rendering to a RGBA8 buffer because it mitigates
+rounding errors. By default RGBA16F is used.
+
+#### Default
+
+```ts
+true
+```
+
+## Methods
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:124
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`dispose`](Pass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`): `void`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:162
+
+Performs the SSAA render pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`render`](Pass.html#render)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`): `void`
+
+Defined in: three/addons/postprocessing/SSAARenderPass.js:145
+
+Sets the size of the pass.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width to set.
+
+##### height
+
+`number`
+
+The width to set.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`setSize`](Pass.html#setsize)

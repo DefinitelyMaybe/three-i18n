@@ -1,0 +1,516 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "UnrealBloomPass"
+---
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:35
+
+This pass is inspired by the bloom pass of Unreal Engine. It creates a
+mip map chain of bloom textures and blurs them with different radii. Because
+of the weighted combination of mips, and because larger blurs are done on
+higher mips, this effect provides good quality and performance.
+
+When using this pass, tone mapping must be enabled in the renderer settings.
+
+Reference:
+- [Bloom in Unreal Engine][https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/](https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/)
+
+```js
+const resolution = new THREE.Vector2( window.innerWidth, window.innerHeight );
+const bloomPass = new UnrealBloomPass( resolution, 1.5, 0.4, 0.85 );
+composer.addPass( bloomPass );
+```
+
+## Extends
+
+- [`Pass`](Pass.html)
+
+## Constructors
+
+### Constructor
+
+> **new UnrealBloomPass**(`resolution`?, `strength`?, `radius`?, `threshold`?): `UnrealBloomPass`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:45
+
+Constructs a new Unreal Bloom pass.
+
+#### Parameters
+
+##### resolution?
+
+`Vector2`
+
+The effect's resolution.
+
+##### strength?
+
+`number` = `1`
+
+The Bloom strength.
+
+##### radius?
+
+`number`
+
+The Bloom radius.
+
+##### threshold?
+
+`number`
+
+The luminance threshold limits which bright areas contribute to the Bloom effect.
+
+#### Returns
+
+`UnrealBloomPass`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`constructor`](Pass.html#constructor)
+
+## Properties
+
+### \_basic
+
+> **\_basic**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:196
+
+***
+
+### \_fsQuad
+
+> **\_fsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:198
+
+***
+
+### \_oldClearAlpha
+
+> **\_oldClearAlpha**: `number`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:194
+
+***
+
+### \_oldClearColor
+
+> **\_oldClearColor**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:193
+
+***
+
+### blendMaterial
+
+> **blendMaterial**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:183
+
+***
+
+### bloomTintColors
+
+> **bloomTintColors**: `any`[]
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:176
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`clear`](Pass.html#clear)
+
+***
+
+### clearColor
+
+> **clearColor**: `Color`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:85
+
+The effect's clear color
+
+#### Default
+
+```ts
+(0,0,0)
+```
+
+***
+
+### compositeMaterial
+
+> **compositeMaterial**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:165
+
+***
+
+### copyUniforms
+
+> **copyUniforms**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:181
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:37
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`enabled`](Pass.html#enabled)
+
+***
+
+### highPassUniforms
+
+> **highPassUniforms**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:133
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`isPass`](Pass.html#ispass)
+
+***
+
+### materialHighPassFilter
+
+> **materialHighPassFilter**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:138
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:45
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`needsSwap`](Pass.html#needsswap)
+
+***
+
+### nMips
+
+> **nMips**: `number`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:100
+
+***
+
+### radius
+
+> **radius**: `number`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:62
+
+The Bloom radius.
+
+***
+
+### renderTargetBright
+
+> **renderTargetBright**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:104
+
+***
+
+### renderTargetsHorizontal
+
+> **renderTargetsHorizontal**: `any`[]
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:98
+
+***
+
+### renderTargetsVertical
+
+> **renderTargetsVertical**: `any`[]
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:99
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`renderToScreen`](Pass.html#rendertoscreen)
+
+***
+
+### resolution
+
+> **resolution**: `Vector2`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:77
+
+The effect's resolution.
+
+#### Default
+
+```ts
+(256,256)
+```
+
+***
+
+### separableBlurMaterials
+
+> **separableBlurMaterials**: `any`[]
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:146
+
+***
+
+### strength
+
+> **strength**: `number`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:55
+
+The Bloom strength.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### threshold
+
+> **threshold**: `number`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:69
+
+The luminance threshold limits which bright areas contribute to the Bloom effect.
+
+***
+
+### BlurDirectionX
+
+> `static` **BlurDirectionX**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:488
+
+***
+
+### BlurDirectionY
+
+> `static` **BlurDirectionY**: `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:489
+
+## Methods
+
+### \_getCompositeMaterial()
+
+> **\_getCompositeMaterial**(`nMips`): `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:431
+
+#### Parameters
+
+##### nMips
+
+`any`
+
+#### Returns
+
+`any`
+
+***
+
+### \_getSeparableBlurMaterial()
+
+> **\_getSeparableBlurMaterial**(`kernelRadius`): `any`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:375
+
+#### Parameters
+
+##### kernelRadius
+
+`any`
+
+#### Returns
+
+`any`
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:206
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`dispose`](Pass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`, `deltaTime`, `maskActive`): `void`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:278
+
+Performs the Bloom pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+##### deltaTime
+
+`number`
+
+The delta time in seconds.
+
+##### maskActive
+
+`boolean`
+
+Whether masking is active or not.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`render`](Pass.html#render)
+
+***
+
+### setSize()
+
+> **setSize**(`width`, `height`): `void`
+
+Defined in: three/addons/postprocessing/UnrealBloomPass.js:246
+
+Sets the size of the pass.
+
+#### Parameters
+
+##### width
+
+`number`
+
+The width to set.
+
+##### height
+
+`number`
+
+The width to set.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`setSize`](Pass.html#setsize)

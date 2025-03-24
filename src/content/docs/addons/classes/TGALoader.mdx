@@ -1,0 +1,70 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "TGALoader"
+---
+
+Defined in: three/addons/loaders/TGALoader.js:17
+
+A loader for the TGA texture format.
+
+```js
+const loader = new TGALoader();
+const texture = await loader.loadAsync( 'textures/crate_color8.tga' );
+texture.colorSpace = THREE.SRGBColorSpace; // only for color textures
+```
+
+## Extends
+
+- `unknown`
+
+## Constructors
+
+### Constructor
+
+> **new TGALoader**(`manager`?): `TGALoader`
+
+Defined in: three/addons/loaders/TGALoader.js:24
+
+Constructs a new TGA loader.
+
+#### Parameters
+
+##### manager?
+
+`LoadingManager`
+
+The loading manager.
+
+#### Returns
+
+`TGALoader`
+
+#### Overrides
+
+`DataTextureLoader.constructor`
+
+## Methods
+
+### parse()
+
+> **parse**(`buffer`): `DataTextureLoader`
+
+Defined in: three/addons/loaders/TGALoader.js:36
+
+Parses the given TGA texture data.
+
+#### Parameters
+
+##### buffer
+
+`ArrayBuffer`
+
+The raw texture data.
+
+#### Returns
+
+`DataTextureLoader`
+
+An object representing the parsed texture data.

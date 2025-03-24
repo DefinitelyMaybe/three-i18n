@@ -1,0 +1,25 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "GodRaysGenerateShader"
+---
+
+> `const` **GodRaysGenerateShader**: `any`
+
+Defined in: three/addons/shaders/GodRaysShader.js:82
+
+The god-ray generation shader.
+
+First pass:
+
+The depth map is blurred along radial lines towards the "sun". The
+output is written to a temporary render target (I used a 1/4 sized
+target).
+
+Pass two & three:
+
+The results of the previous pass are re-blurred, each time with a
+decreased distance between samples.
+
+## Constant

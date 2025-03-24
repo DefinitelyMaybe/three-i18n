@@ -1,0 +1,44 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "calcBSplinePoint"
+---
+
+> **calcBSplinePoint**(`p`, `U`, `P`, `u`): `Vector4`
+
+Defined in: three/addons/curves/NURBSUtils.js:106
+
+Calculates B-Spline curve points. See The NURBS Book, page 82, algorithm A3.1.
+
+## Parameters
+
+### p
+
+`number`
+
+The degree of the B-Spline.
+
+### U
+
+`number`[]
+
+The knot vector.
+
+### P
+
+`Vector4`[]
+
+The control points
+
+### u
+
+`number`
+
+The parametric point.
+
+## Returns
+
+`Vector4`
+
+The point for given `u`.

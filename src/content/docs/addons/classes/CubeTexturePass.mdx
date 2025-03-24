@@ -1,0 +1,297 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "CubeTexturePass"
+---
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:25
+
+This pass can be used to render a cube texture over the entire screen.
+
+```js
+const cubeMap = new THREE.CubeTextureLoader().load( urls );
+
+const cubeTexturePass = new CubeTexturePass( camera, cubemap );
+composer.addPass( cubeTexturePass );
+```
+
+## Extends
+
+- [`Pass`](Pass.html)
+
+## Constructors
+
+### Constructor
+
+> **new CubeTexturePass**(`camera`, `tCube`, `opacity`?): `CubeTexturePass`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:34
+
+Constructs a new cube texture pass.
+
+#### Parameters
+
+##### camera
+
+`PerspectiveCamera`
+
+The camera.
+
+##### tCube
+
+`CubeTexture`
+
+The cube texture to render.
+
+##### opacity?
+
+`number` = `1`
+
+The opacity.
+
+#### Returns
+
+`CubeTexturePass`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`constructor`](Pass.html#constructor)
+
+## Properties
+
+### \_cubeCamera
+
+> **\_cubeCamera**: `any`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:95
+
+***
+
+### \_cubeMesh
+
+> **\_cubeMesh**: `any`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:72
+
+***
+
+### \_cubeScene
+
+> **\_cubeScene**: `any`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:94
+
+***
+
+### camera
+
+> **camera**: `PerspectiveCamera`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:43
+
+The camera.
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`clear`](Pass.html#clear)
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:37
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`enabled`](Pass.html#enabled)
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`isPass`](Pass.html#ispass)
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:45
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`needsSwap`](Pass.html#needsswap)
+
+***
+
+### opacity
+
+> **opacity**: `number`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:58
+
+The opacity.
+
+#### Default
+
+```ts
+1
+```
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`renderToScreen`](Pass.html#rendertoscreen)
+
+***
+
+### tCube
+
+> **tCube**: `CubeTexture`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:50
+
+The cube texture to render.
+
+## Methods
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:136
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`dispose`](Pass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`): `void`
+
+Defined in: three/addons/postprocessing/CubeTexturePass.js:111
+
+Performs the cube texture pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Pass`](Pass.html).[`render`](Pass.html#render)
+
+***
+
+### setSize()
+
+> `abstract` **setSize**(): `void`
+
+Defined in: three/addons/postprocessing/Pass.js:73
+
+Sets the size of the pass.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Pass`](Pass.html).[`setSize`](Pass.html#setsize)

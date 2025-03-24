@@ -1,0 +1,349 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "LUTPass"
+---
+
+Defined in: three/addons/postprocessing/LUTPass.js:69
+
+Pass for color grading via lookup tables.
+
+```js
+const lutPass = new LUTPass( { lut: lut.texture3D } );
+composer.addPass( lutPass );
+```
+
+## Extends
+
+- [`ShaderPass`](ShaderPass.html)
+
+## Constructors
+
+### Constructor
+
+> **new LUTPass**(`options`?): `LUTPass`
+
+Defined in: three/addons/postprocessing/LUTPass.js:76
+
+Constructs a LUT pass.
+
+#### Parameters
+
+##### options?
+
+The pass options.
+
+###### intensity
+
+`number`
+
+###### lut
+
+`Data3DTexture`
+
+#### Returns
+
+`LUTPass`
+
+#### Overrides
+
+[`ShaderPass`](ShaderPass.html).[`constructor`](ShaderPass.html#constructor)
+
+## Properties
+
+### \_fsQuad
+
+> **\_fsQuad**: [`FullScreenQuad`](FullScreenQuad.html)
+
+Defined in: three/addons/postprocessing/ShaderPass.js:79
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`_fsQuad`](ShaderPass.html#_fsquad)
+
+***
+
+### clear
+
+> **clear**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:53
+
+If set to `true`, the pass clears its buffer before rendering
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`clear`](ShaderPass.html#clear)
+
+***
+
+### enabled
+
+> **enabled**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:37
+
+If set to `true`, the pass is processed by the composer.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`enabled`](ShaderPass.html#enabled)
+
+***
+
+### isPass
+
+> `readonly` **isPass**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:29
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`isPass`](ShaderPass.html#ispass)
+
+***
+
+### material
+
+> **material**: `ShaderMaterial`
+
+Defined in: three/addons/postprocessing/ShaderPass.js:53
+
+The pass material.
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`material`](ShaderPass.html#material)
+
+***
+
+### needsSwap
+
+> **needsSwap**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:45
+
+If set to `true`, the pass indicates to swap read and write buffer after rendering.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`needsSwap`](ShaderPass.html#needsswap)
+
+***
+
+### renderToScreen
+
+> **renderToScreen**: `boolean`
+
+Defined in: three/addons/postprocessing/Pass.js:62
+
+If set to `true`, the result of the pass is rendered to screen. The last pass in the composers
+pass chain gets automatically rendered to screen, no matter how this property is configured.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`renderToScreen`](ShaderPass.html#rendertoscreen)
+
+***
+
+### textureID
+
+> **textureID**: `string`
+
+Defined in: three/addons/postprocessing/ShaderPass.js:39
+
+The name of the texture uniform that should sample the read buffer.
+
+#### Default
+
+```ts
+'tDiffuse'
+```
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`textureID`](ShaderPass.html#textureid)
+
+***
+
+### uniforms
+
+> **uniforms**: `any`
+
+Defined in: three/addons/postprocessing/ShaderPass.js:46
+
+The pass uniforms.
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`uniforms`](ShaderPass.html#uniforms)
+
+## Accessors
+
+### intensity
+
+#### Get Signature
+
+> **get** **intensity**(): `any`
+
+Defined in: three/addons/postprocessing/LUTPass.js:129
+
+##### Returns
+
+`any`
+
+#### Set Signature
+
+> **set** **intensity**(`v`): `void`
+
+Defined in: three/addons/postprocessing/LUTPass.js:123
+
+##### Parameters
+
+###### v
+
+`any`
+
+##### Returns
+
+`void`
+
+***
+
+### lut
+
+#### Get Signature
+
+> **get** **lut**(): `any`
+
+Defined in: three/addons/postprocessing/LUTPass.js:117
+
+##### Returns
+
+`any`
+
+#### Set Signature
+
+> **set** **lut**(`v`): `void`
+
+Defined in: three/addons/postprocessing/LUTPass.js:98
+
+##### Parameters
+
+###### v
+
+`any`
+
+##### Returns
+
+`void`
+
+## Methods
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: three/addons/postprocessing/ShaderPass.js:124
+
+Frees the GPU-related resources allocated by this instance. Call this
+method whenever the pass is no longer used in your app.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`dispose`](ShaderPass.html#dispose)
+
+***
+
+### render()
+
+> **render**(`renderer`, `writeBuffer`, `readBuffer`): `void`
+
+Defined in: three/addons/postprocessing/ShaderPass.js:94
+
+Performs the shader pass.
+
+#### Parameters
+
+##### renderer
+
+`WebGLRenderer`
+
+The renderer.
+
+##### writeBuffer
+
+`WebGLRenderTarget`
+
+The write buffer. This buffer is intended as the rendering
+destination for the pass.
+
+##### readBuffer
+
+`WebGLRenderTarget`
+
+The read buffer. The pass can access the result from the
+previous pass from this buffer.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`render`](ShaderPass.html#render)
+
+***
+
+### setSize()
+
+> `abstract` **setSize**(): `void`
+
+Defined in: three/addons/postprocessing/Pass.js:73
+
+Sets the size of the pass.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`ShaderPass`](ShaderPass.html).[`setSize`](ShaderPass.html#setsize)

@@ -1,0 +1,422 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "LineGeometry"
+---
+
+Defined in: three/addons/lines/LineGeometry.js:21
+
+A chain of vertices, forming a polyline.
+
+This is used in [Line2](Line2.html) to describe the shape.
+
+```js
+const points = [
+	new THREE.Vector3( - 10, 0, 0 ),
+	new THREE.Vector3( 0, 5, 0 ),
+	new THREE.Vector3( 10, 0, 0 ),
+];
+
+const geometry = new LineGeometry();
+geometry.setFromPoints( points );
+```
+
+## Extends
+
+- [`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+## Constructors
+
+### Constructor
+
+> **new LineGeometry**(): `LineGeometry`
+
+Defined in: three/addons/lines/LineGeometry.js:25
+
+Constructs a new line geometry.
+
+#### Returns
+
+`LineGeometry`
+
+#### Overrides
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`constructor`](LineSegmentsGeometry.html#constructor)
+
+## Properties
+
+### boundingBox
+
+> **boundingBox**: `any`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:223
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`boundingBox`](LineSegmentsGeometry.html#boundingbox)
+
+***
+
+### boundingSphere
+
+> **boundingSphere**: `any`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:246
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`boundingSphere`](LineSegmentsGeometry.html#boundingsphere)
+
+***
+
+### instanceCount
+
+> **instanceCount**: `any`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:115
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`instanceCount`](LineSegmentsGeometry.html#instancecount)
+
+***
+
+### isLineGeometry
+
+> `readonly` **isLineGeometry**: `boolean`
+
+Defined in: three/addons/lines/LineGeometry.js:35
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### isLineSegmentsGeometry
+
+> `readonly` **isLineSegmentsGeometry**: `boolean`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:38
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`isLineSegmentsGeometry`](LineSegmentsGeometry.html#islinesegmentsgeometry)
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: three/addons/lines/LineGeometry.js:37
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`type`](LineSegmentsGeometry.html#type)
+
+## Methods
+
+### applyMatrix4()
+
+> **applyMatrix4**(`matrix`): [`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:58
+
+Applies the given 4x4 transformation matrix to the geometry.
+
+#### Parameters
+
+##### matrix
+
+`Matrix4`
+
+The matrix to apply.
+
+#### Returns
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+A reference to this instance.
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`applyMatrix4`](LineSegmentsGeometry.html#applymatrix4)
+
+***
+
+### computeBoundingBox()
+
+> **computeBoundingBox**(): `void`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:219
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`computeBoundingBox`](LineSegmentsGeometry.html#computeboundingbox)
+
+***
+
+### computeBoundingSphere()
+
+> **computeBoundingSphere**(): `void`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:242
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`computeBoundingSphere`](LineSegmentsGeometry.html#computeboundingsphere)
+
+***
+
+### fromEdgesGeometry()
+
+> **fromEdgesGeometry**(`geometry`): [`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:176
+
+Setups this line segments geometry from the given edges geometry.
+
+#### Parameters
+
+##### geometry
+
+`EdgesGeometry`
+
+The geometry that should be used as a data source for this geometry.
+
+#### Returns
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+A reference to this geometry.
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`fromEdgesGeometry`](LineSegmentsGeometry.html#fromedgesgeometry)
+
+***
+
+### fromLine()
+
+> **fromLine**(`line`): `LineGeometry`
+
+Defined in: three/addons/lines/LineGeometry.js:127
+
+Setups this line segments geometry from the given line.
+
+#### Parameters
+
+##### line
+
+`Line`
+
+The line that should be used as a data source for this geometry.
+
+#### Returns
+
+`LineGeometry`
+
+A reference to this geometry.
+
+***
+
+### fromLineSegments()
+
+> **fromLineSegments**(`lineSegments`): [`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:207
+
+Setups this line segments geometry from the given line segments.
+
+#### Parameters
+
+##### lineSegments
+
+`LineSegments`
+
+The line segments that should be used as a data source for this geometry.
+Assumes the source geometry is not using indices.
+
+#### Returns
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+A reference to this geometry.
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`fromLineSegments`](LineSegmentsGeometry.html#fromlinesegments)
+
+***
+
+### fromMesh()
+
+> **fromMesh**(`mesh`): [`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:190
+
+Setups this line segments geometry from the given mesh.
+
+#### Parameters
+
+##### mesh
+
+`Mesh`
+
+The mesh geometry that should be used as a data source for this geometry.
+
+#### Returns
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+A reference to this geometry.
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`fromMesh`](LineSegmentsGeometry.html#frommesh)
+
+***
+
+### fromWireframeGeometry()
+
+> **fromWireframeGeometry**(`geometry`): [`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:162
+
+Setups this line segments geometry from the given wireframe geometry.
+
+#### Parameters
+
+##### geometry
+
+`WireframeGeometry`
+
+The geometry that should be used as a data source for this geometry.
+
+#### Returns
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html)
+
+A reference to this geometry.
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`fromWireframeGeometry`](LineSegmentsGeometry.html#fromwireframegeometry)
+
+***
+
+### setColors()
+
+> **setColors**(`array`): `LineGeometry`
+
+Defined in: three/addons/lines/LineGeometry.js:73
+
+Sets the given line colors for this geometry.
+
+#### Parameters
+
+##### array
+
+`any`
+
+The position data to set.
+
+#### Returns
+
+`LineGeometry`
+
+A reference to this geometry.
+
+#### Overrides
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`setColors`](LineSegmentsGeometry.html#setcolors)
+
+***
+
+### setFromPoints()
+
+> **setFromPoints**(`points`): `LineGeometry`
+
+Defined in: three/addons/lines/LineGeometry.js:100
+
+Setups this line segments geometry from the given sequence of points.
+
+#### Parameters
+
+##### points
+
+`any`[]
+
+An array of points in 2D or 3D space.
+
+#### Returns
+
+`LineGeometry`
+
+A reference to this geometry.
+
+***
+
+### setPositions()
+
+> **setPositions**(`array`): `LineGeometry`
+
+Defined in: three/addons/lines/LineGeometry.js:46
+
+Sets the given line positions for this geometry.
+
+#### Parameters
+
+##### array
+
+`any`
+
+The position data to set.
+
+#### Returns
+
+`LineGeometry`
+
+A reference to this geometry.
+
+#### Overrides
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`setPositions`](LineSegmentsGeometry.html#setpositions)
+
+***
+
+### toJSON()
+
+> **toJSON**(): `void`
+
+Defined in: three/addons/lines/LineSegmentsGeometry.js:289
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LineSegmentsGeometry`](LineSegmentsGeometry.html).[`toJSON`](LineSegmentsGeometry.html#tojson)
