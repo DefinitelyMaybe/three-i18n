@@ -4,11 +4,9 @@ description: Docs to help with all three.js projects.
 template: splash
 hero:
   tagline: Guides, resources and API references to help with your three.js projects.
-  image:
-    file: /favicon_white.ico
   actions:
     - text: Get Started
-      link: manual/basics/fundamentals/
+      link: manual/introduction/getting-started/installation/
       icon: right-arrow
     - text: Featuring
       link: /#current-content
@@ -23,13 +21,18 @@ import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
 <CardGrid>
   <LinkCard
     title="Fundamentals"
-    href="manual/basics/fundamentals/"
-    description="A remake of three.js's fundamentals docs"
+    href="manual/introduction/getting-started/installation/"
+    description="A remake of three.js's docs"
   ></LinkCard>
   <LinkCard
     title="API reference"
     href="manual/basics/fundamentals/"
     description="A JSDoc for all Three.js"
+  ></LinkCard>
+  <LinkCard
+    title="Addons reference"
+    href="manual/basics/fundamentals/"
+    description="A JSDoc for all Three.js Addons"
   ></LinkCard>
 </CardGrid>
 
@@ -57,7 +60,6 @@ import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
     authoring content.
   </Card>
   <Card title="W.I.P" icon="warning">
-    Work in progress. Need to figure out a good setup for adding examples to
-    content.
+    Work in progress. Get in touch on github.
   </Card>
 </CardGrid>

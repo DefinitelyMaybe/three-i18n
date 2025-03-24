@@ -8,10 +8,10 @@
     "skipLibCheck": true, // Skip type checking of declaration files
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./addons",
     "sourceMap": false,
     "allowJs": true
   },
-  "include": ["src"],
+  "include": ["addons"],
   "exclude": ["node_modules"] // Exclude the node_modules directory
 }

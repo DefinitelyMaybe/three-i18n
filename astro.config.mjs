@@ -4,6 +4,12 @@ import starlight from "@astrojs/starlight";
 import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { createStarlightTypeDocPlugin } from "starlight-typedoc";
+
+const [threeStarlightTypeDoc, _threeTypeDocSidebarGroup] =
+  createStarlightTypeDocPlugin();
+const [addonsStarlightTypeDoc, _addonsTypeDocSidebarGroup] =
+  createStarlightTypeDocPlugin();
 
 // https://astro.build/config
 export default defineConfig({
@@ -71,8 +77,40 @@ export default defineConfig({
         starlightSidebarTopicsDropdown([
           {
             label: "Fundamentals",
-            link: "manual/basics/fundamentals/",
+            link: "manual/introduction/getting-started/installation/",
             items: [
+              {
+                label: "Getting Started",
+                translations: {
+                  ar: "البدء",
+                  "zh-CN": "起步",
+                  ko: "시작하기",
+                  ja: "はじめてみましょう",
+                  it: "Per iniziare",
+                  "pt-BR": "Comece a usar",
+                  fr: "Débuter",
+                  ru: "Приступая к работе",
+                },
+                autogenerate: {
+                  directory: "manual/introduction/getting-started/",
+                },
+              },
+              {
+                label: "Next Steps",
+                translations: {
+                  ar: "الخطوات التالية",
+                  ja: "次の段階",
+                  "zh-CN": "进阶",
+                  ko: "심화 과정",
+                  it: "Prossimi passi",
+                  "pt-BR": "Próximos Passos",
+                  fr: "Étapes Suivantes",
+                  ru: "Next Steps",
+                },
+                autogenerate: {
+                  directory: "manual/introduction/next-steps/",
+                },
+              },
               {
                 label: "Basics",
                 translations: {
@@ -153,44 +191,37 @@ export default defineConfig({
             ],
           },
           {
-            label: "Manual",
-            link: "manual/introduction/getting-started/creating-a-scene/",
+            label: "Reference",
+            link: "reference/",
             items: [
               {
-                label: "Getting Started",
-                translations: {
-                  ar: "البدء",
-                  "zh-CN": "起步",
-                  ko: "시작하기",
-                  ja: "はじめてみましょう",
-                  it: "Per iniziare",
-                  "pt-BR": "Comece a usar",
-                  fr: "Débuter",
-                  ru: "Приступая к работе",
-                },
-                autogenerate: {
-                  directory: "manual/introduction/getting-started/",
-                },
+                label: "Reference",
+                autogenerate: { directory: "reference/" },
               },
+            ],
+          },
+          {
+            label: "Addons",
+            link: "addons/",
+            items: [
               {
-                label: "Next Steps",
-                translations: {
-                  ar: "الخطوات التالية",
-                  ja: "次の段階",
-                  "zh-CN": "进阶",
-                  ko: "심화 과정",
-                  it: "Prossimi passi",
-                  "pt-BR": "Próximos Passos",
-                  fr: "Étapes Suivantes",
-                  ru: "Next Steps",
-                },
-                autogenerate: {
-                  directory: "manual/introduction/next-steps/",
-                },
+                label: "Addons",
+                autogenerate: { directory: "addons/" },
               },
             ],
           },
         ]),
+        // Uncomment to generate JSDocs
+        // threeStarlightTypeDoc({
+        //   entryPoints: ["./three/src/Three.js", "./three/src/Three.WebGPU.js"],
+        //   tsconfig: "./three/tsconfig.json",
+        //   output: "reference",
+        // }),
+        // threeStarlightTypeDoc({
+        //   entryPoints: ["./three/addons/Addons.js"],
+        //   tsconfig: "./three/tsconfig-addons.json",
+        //   output: "addons",
+        // }),
       ],
     }),
   ],
