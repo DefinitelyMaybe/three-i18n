@@ -1,5 +1,5 @@
 # JSDoc folder
-three/**/*.js
+# three/**/*.js
 
 # build output
 dist/
