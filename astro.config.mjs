@@ -21,7 +21,7 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: "threejs",
+      title: "three i18n",
       favicon: "/favicon_white.ico",
       social: {
         github: "https://github.com/DefinitelyMaybe/three-i18n",

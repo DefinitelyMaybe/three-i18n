@@ -1,36 +1,63 @@
 ---
-title: Three.js
+title: Docs
 description: Docs to help with all three.js projects.
 template: splash
 hero:
-  tagline: Three.js i18n docs.
+  tagline: Guides, resources and API references to help with your three.js projects.
   image:
     file: /favicon_white.ico
   actions:
     - text: Get Started
       link: manual/basics/fundamentals/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: Featuring
+      link: /#current-content
+      icon: down-caret
       variant: minimal
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
 
-## Remixed how?
+## Current Content
+
+<CardGrid>
+  <LinkCard
+    title="Fundamentals"
+    href="manual/basics/fundamentals/"
+    description="A remake of three.js's fundamentals docs"
+  ></LinkCard>
+  <LinkCard
+    title="API reference"
+    href="manual/basics/fundamentals/"
+    description="A JSDoc for all Three.js"
+  ></LinkCard>
+</CardGrid>
+
+## Goals
 
 <CardGrid stagger>
-  <Card title="Starlight" icon="pencil">
-    Built with Astro Starlight ⭐ All pages are markdown files; bit nicer than
-    working with html directly 😉
+  <Card title="Website showcases" icon="star">
+    Guides for creating the wow factor for your visitors
+  </Card>
+  <Card title="Shaders" icon="bars">
+    Help getting started with shaders
+  </Card>
+  <Card title="Game dev" icon="add-document">
+    Guides for getting started with building games with three.js
+  </Card>
+</CardGrid>
+
+## Let's build this together
+
+<CardGrid>
+  <Card title="Simple authoring" icon="pencil">
+    This site is built using Astro Starlight ⭐ Each page is markdown and there
+    are a ton of
+    [tools](https://starlight.astro.build/guides/authoring-content/) for
+    authoring content.
   </Card>
   <Card title="W.I.P" icon="warning">
-    Work in progress. Things are not complete and will change without notice. None of the examples work.
+    Work in progress. Need to figure out a good setup for adding examples to
+    content.
   </Card>
-  <Card title="But why?" icon="comment">
-    This is what the three.js maintainers [wanted](https://github.com/mrdoob/three.js/issues/24984).
-  </Card>
-</CardGrid
-
->
+</CardGrid>
