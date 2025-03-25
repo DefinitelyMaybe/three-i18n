@@ -171,19 +171,15 @@ Defined in: three/src/math/ColorManagement.js:178
 
 Implementations of supported color spaces.
 
-Required:
-	- primaries: chromaticity coordinates [ rx ry gx gy bx by ]
-	- whitePoint: reference white [ x y ]
-	- transfer: transfer function (pre-defined)
-	- toXYZ: Matrix3 RGB to XYZ transform
-	- fromXYZ: Matrix3 XYZ to RGB transform
-	- luminanceCoefficients: RGB luminance coefficients
+Required: - primaries: chromaticity coordinates [ rx ry gx gy bx by ] - whitePoint: reference white [ x y ] - transfer: transfer function (pre-defined) - toXYZ: Matrix3 RGB to XYZ transform - fromXYZ: Matrix3 XYZ to RGB transform - luminanceCoefficients: RGB luminance coefficients
 
 Optional:
- - outputColorSpaceConfig: { drawingBufferColorSpace: ColorSpace }
- - workingColorSpaceConfig: { unpackColorSpace: ColorSpace }
+
+- outputColorSpaceConfig: \{ drawingBufferColorSpace: ColorSpace \}
+- workingColorSpaceConfig: \{ unpackColorSpace: ColorSpace \}
 
 Reference:
+
 - https://www.russellcottrell.com/photo/matrixCalculator.htm
 
 ### toWorkingColorSpace()
