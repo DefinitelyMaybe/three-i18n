@@ -1,15 +1,15 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-// import starlightLinksValidator from "starlight-links-validator";
 import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { createStarlightTypeDocPlugin } from "starlight-typedoc";
+// import starlightLinksValidator from "starlight-links-validator";
+// import { createStarlightTypeDocPlugin } from "starlight-typedoc";
 
-const [threeStarlightTypeDoc, _threeTypeDocSidebarGroup] =
-  createStarlightTypeDocPlugin();
-const [addonsStarlightTypeDoc, _addonsTypeDocSidebarGroup] =
-  createStarlightTypeDocPlugin();
+// const [threeStarlightTypeDoc, _threeTypeDocSidebarGroup] =
+//   createStarlightTypeDocPlugin();
+// const [addonsStarlightTypeDoc, _addonsTypeDocSidebarGroup] =
+//   createStarlightTypeDocPlugin();
 
 // https://astro.build/config
 export default defineConfig({
