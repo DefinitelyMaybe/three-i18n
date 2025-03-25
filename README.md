@@ -1,11 +1,11 @@
-# Three.js i18n docs
+# Three i18n
 
 A place for i18n supported three.js docs.
 
 ## 👀 Want to learn more about the tools used?
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read
-[the Astro documentation](https://docs.astro.build), or jump into the
-[Astro Discord server](https://astro.build/chat).
+Check out [Starlight’s docs](https://starlight.astro.build/).
+
+Aiming for [helpful docs](https://www.youtube.com/watch?v=jcpkVJr-rUw) one edit at a time.
 
 note: https://diataxis.fr/
