@@ -77,7 +77,7 @@ export default defineConfig({
         starlightSidebarTopicsDropdown([
           {
             label: "Fundamentals",
-            link: "manual/introduction/getting-started/installation/",
+            link: "manual/getting-started/installation/",
             items: [
               {
                 label: "Getting Started",
@@ -92,23 +92,7 @@ export default defineConfig({
                   ru: "Приступая к работе",
                 },
                 autogenerate: {
-                  directory: "manual/introduction/getting-started/",
-                },
-              },
-              {
-                label: "Next Steps",
-                translations: {
-                  ar: "الخطوات التالية",
-                  ja: "次の段階",
-                  "zh-CN": "进阶",
-                  ko: "심화 과정",
-                  it: "Prossimi passi",
-                  "pt-BR": "Próximos Passos",
-                  fr: "Étapes Suivantes",
-                  ru: "Next Steps",
-                },
-                autogenerate: {
-                  directory: "manual/introduction/next-steps/",
+                  directory: "manual/getting-started/",
                 },
               },
               {
