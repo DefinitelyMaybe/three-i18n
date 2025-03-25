@@ -33,45 +33,45 @@ export default defineConfig({
         github: "https://github.com/DefinitelyMaybe/three-i18n",
       },
       customCss: ["./src/styles/main.css"],
-      locales: {
-        root: {
-          label: "English",
-          lang: "en",
-        },
-        ar: {
-          label: "العربية",
-          lang: "ar",
-          dir: "rtl",
-        },
-        fr: {
-          label: "français",
-          lang: "fr",
-        },
-        it: {
-          label: "italiano",
-          lang: "it",
-        },
-        ja: {
-          label: "日本語",
-          lang: "ja",
-        },
-        ko: {
-          label: "韓国人",
-          lang: "ko",
-        },
-        "pt-br": {
-          label: "Português",
-          lang: "pt-BR",
-        },
-        ru: {
-          label: "русский",
-          lang: "ru",
-        },
-        zh: {
-          label: "简体中文",
-          lang: "zh-CN",
-        },
-      },
+      // locales: {
+      //   root: {
+      //     label: "English",
+      //     lang: "en",
+      //   },
+      // ar: {
+      //   label: "العربية",
+      //   lang: "ar",
+      //   dir: "rtl",
+      // },
+      // fr: {
+      //   label: "français",
+      //   lang: "fr",
+      // },
+      // it: {
+      //   label: "italiano",
+      //   lang: "it",
+      // },
+      // ja: {
+      //   label: "日本語",
+      //   lang: "ja",
+      // },
+      // ko: {
+      //   label: "韓国人",
+      //   lang: "ko",
+      // },
+      // "pt-br": {
+      //   label: "Português",
+      //   lang: "pt-BR",
+      // },
+      // ru: {
+      //   label: "русский",
+      //   lang: "ru",
+      // },
+      // zh: {
+      //   label: "简体中文",
+      //   lang: "zh-CN",
+      // },
+      // },
       plugins: [
         // starlightLinksValidator(),
         starlightSidebarTopicsDropdown([
