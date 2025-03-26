@@ -4,12 +4,12 @@ import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 // import starlightLinksValidator from "starlight-links-validator";
-// import { createStarlightTypeDocPlugin } from "starlight-typedoc";
+import { createStarlightTypeDocPlugin } from "starlight-typedoc";
 
-// const [threeStarlightTypeDoc, _threeTypeDocSidebarGroup] =
-//   createStarlightTypeDocPlugin();
-// const [addonsStarlightTypeDoc, _addonsTypeDocSidebarGroup] =
-//   createStarlightTypeDocPlugin();
+const [threeStarlightTypeDoc, _threeTypeDocSidebarGroup] =
+  createStarlightTypeDocPlugin();
+const [addonsStarlightTypeDoc, _addonsTypeDocSidebarGroup] =
+  createStarlightTypeDocPlugin();
 
 // https://astro.build/config
 export default defineConfig({
@@ -77,7 +77,7 @@ export default defineConfig({
         starlightSidebarTopicsDropdown([
           {
             label: "Fundamentals",
-            link: "manual/getting-started/installation/",
+            link: "manual/getting-started/introduction/",
             items: [
               {
                 label: "Getting Started",
@@ -176,7 +176,7 @@ export default defineConfig({
           },
           {
             label: "Reference",
-            link: "reference/",
+            link: "reference/readme",
             items: [
               {
                 label: "Reference",
@@ -186,7 +186,7 @@ export default defineConfig({
           },
           {
             label: "Addons",
-            link: "addons/",
+            link: "addons/readme",
             items: [
               {
                 label: "Addons",
@@ -201,7 +201,7 @@ export default defineConfig({
         //   tsconfig: "./three/tsconfig.json",
         //   output: "reference",
         // }),
-        // threeStarlightTypeDoc({
+        // addonsStarlightTypeDoc({
         //   entryPoints: ["./three/addons/Addons.js"],
         //   tsconfig: "./three/tsconfig-addons.json",
         //   output: "addons",

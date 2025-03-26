@@ -1,0 +1,1313 @@
+---
+editUrl: false
+next: false
+prev: false
+title: "IrradianceNode"
+---
+
+Defined in: [three/src/nodes/lighting/IrradianceNode.js:10](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/lighting/IrradianceNode.js#L10)
+
+A generic class that can be used by nodes which contribute
+irradiance to the scene. E.g. a light map node can be used
+as input for this module. Used in [NodeMaterial](/reference/threewebgpu/classes/nodematerial/).
+
+## Extends
+
+- [`LightingNode`](/reference/threewebgpu/classes/lightingnode/)
+
+## Constructors
+
+### Constructor
+
+> **new IrradianceNode**(`node`): `IrradianceNode`
+
+Defined in: [three/src/nodes/lighting/IrradianceNode.js:23](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/lighting/IrradianceNode.js#L23)
+
+Constructs a new irradiance node.
+
+#### Parameters
+
+##### node
+
+`any`
+
+A node contributing irradiance.
+
+#### Returns
+
+`IrradianceNode`
+
+#### Overrides
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`constructor`](/reference/threewebgpu/classes/lightingnode/#constructor)
+
+## Properties
+
+### \_listeners
+
+> **\_listeners**: `object`
+
+Defined in: [three/src/core/EventDispatcher.js:33](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/core/EventDispatcher.js#L33)
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`_listeners`](/reference/threewebgpu/classes/lightingnode/#_listeners)
+
+***
+
+### global
+
+> **global**: `boolean`
+
+Defined in: [three/src/nodes/core/Node.js:88](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L88)
+
+Whether this node is global or not. This property is relevant for the internal
+node caching system. All nodes which should be declared just once should
+set this flag to `true` (a typical example is [AttributeNode](/reference/threewebgpu/classes/attributenode/)).
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`global`](/reference/threewebgpu/classes/lightingnode/#global)
+
+***
+
+### isLightingNode
+
+> `readonly` **isLightingNode**: `boolean`
+
+Defined in: [three/src/nodes/lighting/LightingNode.js:30](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/lighting/LightingNode.js#L30)
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`isLightingNode`](/reference/threewebgpu/classes/lightingnode/#islightingnode)
+
+***
+
+### isNode
+
+> `readonly` **isNode**: `boolean`
+
+Defined in: [three/src/nodes/core/Node.js:97](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L97)
+
+This flag can be used for type testing.
+
+#### Default
+
+```ts
+true
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`isNode`](/reference/threewebgpu/classes/lightingnode/#isnode)
+
+***
+
+### node
+
+> **node**: `any`
+
+Defined in: [three/src/nodes/lighting/IrradianceNode.js:32](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/lighting/IrradianceNode.js#L32)
+
+A node contributing irradiance.
+
+***
+
+### nodeType
+
+> **nodeType**: `string`
+
+Defined in: [three/src/nodes/core/Node.js:37](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L37)
+
+The node type. This represents the result type of the node (e.g. `float` or `vec3`).
+
+#### Default
+
+```ts
+null
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`nodeType`](/reference/threewebgpu/classes/lightingnode/#nodetype)
+
+***
+
+### updateAfterType
+
+> **updateAfterType**: `string`
+
+Defined in: [three/src/nodes/core/Node.js:61](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L61)
+
+The update type of the node's [Node#updateAfter](/reference/threewebgpu/classes/node/#updateafter) method. Possible values are listed in [NodeUpdateType](/reference/threewebgpu/variables/nodeupdatetype/).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`updateAfterType`](/reference/threewebgpu/classes/lightingnode/#updateaftertype)
+
+***
+
+### updateBeforeType
+
+> **updateBeforeType**: `string`
+
+Defined in: [three/src/nodes/core/Node.js:53](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L53)
+
+The update type of the node's [Node#updateBefore](/reference/threewebgpu/classes/node/#updatebefore) method. Possible values are listed in [NodeUpdateType](/reference/threewebgpu/variables/nodeupdatetype/).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`updateBeforeType`](/reference/threewebgpu/classes/lightingnode/#updatebeforetype)
+
+***
+
+### updateType
+
+> **updateType**: `string`
+
+Defined in: [three/src/nodes/core/Node.js:45](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L45)
+
+The update type of the node's [Node#update](/reference/threewebgpu/classes/node/#update) method. Possible values are listed in [NodeUpdateType](/reference/threewebgpu/variables/nodeupdatetype/).
+
+#### Default
+
+```ts
+'none'
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`updateType`](/reference/threewebgpu/classes/lightingnode/#updatetype)
+
+***
+
+### uuid
+
+> `readonly` **uuid**: `string`
+
+Defined in: [three/src/nodes/core/Node.js:69](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L69)
+
+The UUID of the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`uuid`](/reference/threewebgpu/classes/lightingnode/#uuid)
+
+***
+
+### version
+
+> `readonly` **version**: `number`
+
+Defined in: [three/src/nodes/core/Node.js:78](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L78)
+
+The version of the node. The version automatically is increased when [Node#needsUpdate](/reference/threewebgpu/classes/node/#needsupdate) is set to `true`.
+
+#### Default
+
+```ts
+0
+```
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`version`](/reference/threewebgpu/classes/lightingnode/#version)
+
+## Accessors
+
+### needsUpdate
+
+#### Set Signature
+
+> **set** **needsUpdate**(`value`): `void`
+
+Defined in: [three/src/nodes/core/Node.js:130](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L130)
+
+Set this property to `true` when the node should be regenerated.
+
+##### Default
+
+```ts
+false
+```
+
+##### Parameters
+
+###### value
+
+`boolean`
+
+##### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`needsUpdate`](/reference/threewebgpu/classes/lightingnode/#needsupdate)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** **type**(): `string`
+
+Defined in: [three/src/nodes/core/Node.js:146](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L146)
+
+The type of the class. The value is usually the constructor name.
+
+##### Returns
+
+`string`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`type`](/reference/threewebgpu/classes/lightingnode/#type)
+
+***
+
+### type
+
+#### Get Signature
+
+> **get** `static` **type**(): `string`
+
+Defined in: [three/src/nodes/lighting/IrradianceNode.js:12](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/lighting/IrradianceNode.js#L12)
+
+##### Returns
+
+`string`
+
+#### Overrides
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`type`](/reference/threewebgpu/classes/lightingnode/#type-1)
+
+## Methods
+
+### addEventListener()
+
+> **addEventListener**(`type`, `listener`): `void`
+
+Defined in: [three/src/core/EventDispatcher.js:31](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/core/EventDispatcher.js#L31)
+
+Adds the given event listener to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event to listen to.
+
+##### listener
+
+`Function`
+
+The function that gets called when the event is fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`addEventListener`](/reference/threewebgpu/classes/lightingnode/#addeventlistener)
+
+***
+
+### analyze()
+
+> **analyze**(`builder`): `void`
+
+Defined in: [three/src/nodes/core/Node.js:502](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L502)
+
+Represents the analyze stage which is the second step of the build process, see [Node#build](/reference/threewebgpu/classes/node/#build) method.
+This stage analyzes the node hierarchy and ensures descendent nodes are built.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`analyze`](/reference/threewebgpu/classes/lightingnode/#analyze)
+
+***
+
+### build()
+
+> **build**(`builder`, `output`): `string`
+
+Defined in: [three/src/nodes/core/Node.js:596](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L596)
+
+This method performs the build of a node. The behavior of this method as well as its return value depend
+on the current build stage (setup, analyze or generate).
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string` = `null`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+When this method is executed in the setup or analyze stage, `null` is returned. In the generate stage, the generated shader string.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`build`](/reference/threewebgpu/classes/lightingnode/#build)
+
+***
+
+### customCacheKey()
+
+> **customCacheKey**(): `number`
+
+Defined in: [three/src/nodes/core/Node.js:338](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L338)
+
+Generate a custom cache key for this node.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`customCacheKey`](/reference/threewebgpu/classes/lightingnode/#customcachekey)
+
+***
+
+### deserialize()
+
+> **deserialize**(`json`): `void`
+
+Defined in: [three/src/nodes/core/Node.js:771](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L771)
+
+Deserializes the node from the given JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The JSON object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`deserialize`](/reference/threewebgpu/classes/lightingnode/#deserialize)
+
+***
+
+### dispatchEvent()
+
+> **dispatchEvent**(`event`): `void`
+
+Defined in: [three/src/core/EventDispatcher.js:101](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/core/EventDispatcher.js#L101)
+
+Dispatches an event object.
+
+#### Parameters
+
+##### event
+
+`any`
+
+The event that gets fired.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`dispatchEvent`](/reference/threewebgpu/classes/lightingnode/#dispatchevent)
+
+***
+
+### dispose()
+
+> **dispose**(): `void`
+
+Defined in: [three/src/nodes/core/Node.js:282](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L282)
+
+Calling this method dispatches the `dispose` event. This event can be used
+to register event listeners for clean up tasks.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`dispose`](/reference/threewebgpu/classes/lightingnode/#dispose)
+
+***
+
+### generate()
+
+> **generate**(`builder`, `output`): `string`
+
+Defined in: [three/src/nodes/core/Node.js:534](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L534)
+
+Represents the generate stage which is the third step of the build process, see [Node#build](/reference/threewebgpu/classes/node/#build) method.
+This state builds the output node and returns the resulting shader string.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+##### output
+
+`string`
+
+Can be used to define the output type.
+
+#### Returns
+
+`string`
+
+The generated shader string.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`generate`](/reference/threewebgpu/classes/lightingnode/#generate)
+
+***
+
+### getCacheKey()
+
+> **getCacheKey**(`force`?): `number`
+
+Defined in: [three/src/nodes/core/Node.js:318](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L318)
+
+Returns the cache key for this node.
+
+#### Parameters
+
+##### force?
+
+`boolean` = `false`
+
+When set to `true`, a recomputation of the cache key is forced.
+
+#### Returns
+
+`number`
+
+The cache key of the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getCacheKey`](/reference/threewebgpu/classes/lightingnode/#getcachekey)
+
+***
+
+### getChildren()
+
+> **getChildren**(): `Generator`\<`any`, `void`, `unknown`\>
+
+Defined in: [three/src/nodes/core/Node.js:268](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L268)
+
+Generator function that can be used to iterate over the child nodes.
+
+#### Returns
+
+`Generator`\<`any`, `void`, `unknown`\>
+
+#### Generator
+
+#### Yields
+
+A child node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getChildren`](/reference/threewebgpu/classes/lightingnode/#getchildren)
+
+***
+
+### getElementType()
+
+> **getElementType**(`builder`): `string`
+
+Defined in: [three/src/nodes/core/Node.js:410](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L410)
+
+Certain types are composed of multiple elements. For example a `vec3`
+is composed of three `float` values. This method returns the type of
+these elements.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getElementType`](/reference/threewebgpu/classes/lightingnode/#getelementtype)
+
+***
+
+### getHash()
+
+> **getHash**(): `string`
+
+Defined in: [three/src/nodes/core/Node.js:363](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L363)
+
+Returns the hash of the node which is used to identify the node. By default it's
+the [Node#uuid](/reference/threewebgpu/classes/node/#uuid) however derived node classes might have to overwrite this method
+depending on their implementation.
+
+#### Returns
+
+`string`
+
+The hash.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getHash`](/reference/threewebgpu/classes/lightingnode/#gethash)
+
+***
+
+### getMemberType()
+
+> **getMemberType**(): `string`
+
+Defined in: [three/src/nodes/core/Node.js:426](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L426)
+
+Returns the node member type for the given name.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getMemberType`](/reference/threewebgpu/classes/lightingnode/#getmembertype)
+
+***
+
+### getNodeType()
+
+> **getNodeType**(`builder`): `string`
+
+Defined in: [three/src/nodes/core/Node.js:438](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L438)
+
+Returns the node's type.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+`string`
+
+The type of the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getNodeType`](/reference/threewebgpu/classes/lightingnode/#getnodetype)
+
+***
+
+### getScope()
+
+> **getScope**(): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:349](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L349)
+
+Returns the references to this node which is by default `this`.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to this node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getScope`](/reference/threewebgpu/classes/lightingnode/#getscope)
+
+***
+
+### getSelf()
+
+> **getSelf**(): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:227](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L227)
+
+The `this` reference might point to a Proxy so this method can be used
+to get the reference to the actual node instance.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to the node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getSelf`](/reference/threewebgpu/classes/lightingnode/#getself)
+
+***
+
+### getSerializeChildren()
+
+> **getSerializeChildren**(): `any`[]
+
+Defined in: [three/src/nodes/core/Node.js:721](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L721)
+
+Returns the child nodes as a JSON object.
+
+#### Returns
+
+`any`[]
+
+An iterable list of serialized child objects as JSON.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getSerializeChildren`](/reference/threewebgpu/classes/lightingnode/#getserializechildren)
+
+***
+
+### getShared()
+
+> **getShared**(`builder`): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:461](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L461)
+
+This method is used during the build process of a node and ensures
+equal nodes are not built multiple times but just once. For example if
+`attribute( 'uv' )` is used multiple times by the user, the build
+process makes sure to process just the first node.
+
+#### Parameters
+
+##### builder
+
+`NodeBuilder`
+
+The current node builder.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+The shared node if possible. Otherwise `this` is returned.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getShared`](/reference/threewebgpu/classes/lightingnode/#getshared)
+
+***
+
+### getUpdateAfterType()
+
+> **getUpdateAfterType**(): `object`
+
+Defined in: [three/src/nodes/core/Node.js:396](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L396)
+
+Returns the update type of [Node#updateAfter](/reference/threewebgpu/classes/node/#updateafter).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getUpdateAfterType`](/reference/threewebgpu/classes/lightingnode/#getupdateaftertype)
+
+***
+
+### getUpdateBeforeType()
+
+> **getUpdateBeforeType**(): `object`
+
+Defined in: [three/src/nodes/core/Node.js:385](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L385)
+
+Returns the update type of [Node#updateBefore](/reference/threewebgpu/classes/node/#updatebefore).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getUpdateBeforeType`](/reference/threewebgpu/classes/lightingnode/#getupdatebeforetype)
+
+***
+
+### getUpdateType()
+
+> **getUpdateType**(): `object`
+
+Defined in: [three/src/nodes/core/Node.js:374](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L374)
+
+Returns the update type of [Node#update](/reference/threewebgpu/classes/node/#update).
+
+#### Returns
+
+`object`
+
+The update type.
+
+##### FRAME
+
+> **FRAME**: `string` = `'frame'`
+
+##### NONE
+
+> **NONE**: `string` = `'none'`
+
+##### OBJECT
+
+> **OBJECT**: `string` = `'object'`
+
+##### RENDER
+
+> **RENDER**: `string` = `'render'`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`getUpdateType`](/reference/threewebgpu/classes/lightingnode/#getupdatetype)
+
+***
+
+### hasEventListener()
+
+> **hasEventListener**(`type`, `listener`): `boolean`
+
+Defined in: [three/src/core/EventDispatcher.js:58](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/core/EventDispatcher.js#L58)
+
+Returns `true` if the given event listener has been added to the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to check.
+
+#### Returns
+
+`boolean`
+
+Whether the given event listener has been added to the given event type.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`hasEventListener`](/reference/threewebgpu/classes/lightingnode/#haseventlistener)
+
+***
+
+### isGlobal()
+
+> **isGlobal**(): `boolean`
+
+Defined in: [three/src/nodes/core/Node.js:256](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L256)
+
+By default this method returns the value of the [Node#global](/reference/threewebgpu/classes/node/#global) flag. This method
+can be overwritten in derived classes if an analytical way is required to determine the
+global status.
+
+#### Returns
+
+`boolean`
+
+Whether this node is global or not.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`isGlobal`](/reference/threewebgpu/classes/lightingnode/#isglobal)
+
+***
+
+### onFrameUpdate()
+
+> **onFrameUpdate**(`callback`): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:175](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L175)
+
+Convenient method for defining [Node#update](/reference/threewebgpu/classes/node/#update). Similar to [Node#onUpdate](/reference/threewebgpu/classes/node/#onupdate), but
+this method automatically sets the update type to `FRAME`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to this node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`onFrameUpdate`](/reference/threewebgpu/classes/lightingnode/#onframeupdate)
+
+***
+
+### onObjectUpdate()
+
+> **onObjectUpdate**(`callback`): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:201](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L201)
+
+Convenient method for defining [Node#update](/reference/threewebgpu/classes/node/#update). Similar to [Node#onUpdate](/reference/threewebgpu/classes/node/#onupdate), but
+this method automatically sets the update type to `OBJECT`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to this node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`onObjectUpdate`](/reference/threewebgpu/classes/lightingnode/#onobjectupdate)
+
+***
+
+### onReference()
+
+> **onReference**(`callback`): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:213](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L213)
+
+Convenient method for defining [Node#updateReference](/reference/threewebgpu/classes/node/#updatereference).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to this node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`onReference`](/reference/threewebgpu/classes/lightingnode/#onreference)
+
+***
+
+### onRenderUpdate()
+
+> **onRenderUpdate**(`callback`): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:188](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L188)
+
+Convenient method for defining [Node#update](/reference/threewebgpu/classes/node/#update). Similar to [Node#onUpdate](/reference/threewebgpu/classes/node/#onupdate), but
+this method automatically sets the update type to `RENDER`.
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to this node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`onRenderUpdate`](/reference/threewebgpu/classes/lightingnode/#onrenderupdate)
+
+***
+
+### onUpdate()
+
+> **onUpdate**(`callback`, `updateType`): [`Node`](/reference/threewebgpu/classes/node/)
+
+Defined in: [three/src/nodes/core/Node.js:159](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L159)
+
+Convenient method for defining [Node#update](/reference/threewebgpu/classes/node/#update).
+
+#### Parameters
+
+##### callback
+
+`Function`
+
+The update method.
+
+##### updateType
+
+`string`
+
+The update type.
+
+#### Returns
+
+[`Node`](/reference/threewebgpu/classes/node/)
+
+A reference to this node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`onUpdate`](/reference/threewebgpu/classes/lightingnode/#onupdate)
+
+***
+
+### removeEventListener()
+
+> **removeEventListener**(`type`, `listener`): `void`
+
+Defined in: [three/src/core/EventDispatcher.js:74](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/core/EventDispatcher.js#L74)
+
+Removes the given event listener from the given event type.
+
+#### Parameters
+
+##### type
+
+`string`
+
+The type of event.
+
+##### listener
+
+`Function`
+
+The listener to remove.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`removeEventListener`](/reference/threewebgpu/classes/lightingnode/#removeeventlistener)
+
+***
+
+### serialize()
+
+> **serialize**(`json`): `void`
+
+Defined in: [three/src/nodes/core/Node.js:732](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L732)
+
+Serializes the node to JSON.
+
+#### Parameters
+
+##### json
+
+`any`
+
+The output JSON object.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`serialize`](/reference/threewebgpu/classes/lightingnode/#serialize)
+
+***
+
+### setup()
+
+> **setup**(`builder`): `void`
+
+Defined in: [three/src/nodes/lighting/IrradianceNode.js:36](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/lighting/IrradianceNode.js#L36)
+
+Represents the setup stage which is the first step of the build process, see [Node#build](/reference/threewebgpu/classes/node/#build) method.
+This method is often overwritten in derived modules to prepare the node which is used as the output/result.
+The output node must be returned in the `return` statement.
+
+#### Parameters
+
+##### builder
+
+`any`
+
+The current node builder.
+
+#### Returns
+
+`void`
+
+The output node.
+
+#### Overrides
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`setup`](/reference/threewebgpu/classes/lightingnode/#setup)
+
+***
+
+### toJSON()
+
+> **toJSON**(`meta`): `any`
+
+Defined in: [three/src/nodes/core/Node.js:825](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L825)
+
+Serializes the node into the three.js JSON Object/Scene format.
+
+#### Parameters
+
+##### meta
+
+`any`
+
+An optional JSON object that already holds serialized data from other scene objects.
+
+#### Returns
+
+`any`
+
+The serialized node.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`toJSON`](/reference/threewebgpu/classes/lightingnode/#tojson)
+
+***
+
+### traverse()
+
+> **traverse**(`callback`): `void`
+
+Defined in: [three/src/nodes/core/Node.js:300](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L300)
+
+Can be used to traverse through the node's hierarchy.
+
+#### Parameters
+
+##### callback
+
+`traverseCallback`
+
+A callback that is executed per node.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`traverse`](/reference/threewebgpu/classes/lightingnode/#traverse)
+
+***
+
+### update()
+
+> `abstract` **update**(): `boolean`
+
+Defined in: [three/src/nodes/core/Node.js:582](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L582)
+
+The method can be implemented to update the node's internal state when it is used to render an object.
+The [Node#updateType](/reference/threewebgpu/classes/node/#updatetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`update`](/reference/threewebgpu/classes/lightingnode/#update)
+
+***
+
+### updateAfter()
+
+> `abstract` **updateAfter**(): `boolean`
+
+Defined in: [three/src/nodes/core/Node.js:568](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L568)
+
+The method can be implemented to update the node's internal state after it was used to render an object.
+The [Node#updateAfterType](/reference/threewebgpu/classes/node/#updateaftertype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`updateAfter`](/reference/threewebgpu/classes/lightingnode/#updateafter)
+
+***
+
+### updateBefore()
+
+> `abstract` **updateBefore**(): `boolean`
+
+Defined in: [three/src/nodes/core/Node.js:554](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L554)
+
+The method can be implemented to update the node's internal state before it is used to render an object.
+The [Node#updateBeforeType](/reference/threewebgpu/classes/node/#updatebeforetype) property defines how often the update is executed.
+
+#### Returns
+
+`boolean`
+
+An optional bool that indicates whether the implementation actually performed an update or not (e.g. due to caching).
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`updateBefore`](/reference/threewebgpu/classes/lightingnode/#updatebefore)
+
+***
+
+### updateReference()
+
+> **updateReference**(): `any`
+
+Defined in: [three/src/nodes/core/Node.js:242](https://github.com/DefinitelyMaybe/three-i18n/blob/fa57b79433d1c349ffb23a78727299c8d4190136/three/src/nodes/core/Node.js#L242)
+
+Nodes might refer to other objects like materials. This method allows to dynamically update the reference
+to such objects based on a given state (e.g. the current node frame or builder).
+
+#### Returns
+
+`any`
+
+The updated reference.
+
+#### Inherited from
+
+[`LightingNode`](/reference/threewebgpu/classes/lightingnode/).[`updateReference`](/reference/threewebgpu/classes/lightingnode/#updatereference)
