@@ -118,15 +118,15 @@ export default defineConfig({
                 autogenerate: { directory: "manual/fundamentals/" },
               },
               {
-                label: "Tips",
+                label: "Solutions",
                 translations: {
-                  fr: "Conseils",
-                  ja: "Tips",
-                  ko: "팁",
-                  ru: "Советы",
-                  "zh-CN": "技巧",
+                  fr: "Solutions",
+                  ja: "解決策",
+                  ko: "활용하기",
+                  ru: "Решения",
+                  "zh-CN": "解决方案",
                 },
-                autogenerate: { directory: "manual/tips/" },
+                autogenerate: { directory: "manual/solutions/" },
               },
               {
                 label: "Optimization",
@@ -138,17 +138,6 @@ export default defineConfig({
                   "zh-CN": "优化",
                 },
                 autogenerate: { directory: "manual/optimization/" },
-              },
-              {
-                label: "Solutions",
-                translations: {
-                  fr: "Solutions",
-                  ja: "解決策",
-                  ko: "활용하기",
-                  ru: "Решения",
-                  "zh-CN": "解决方案",
-                },
-                autogenerate: { directory: "manual/solutions/" },
               },
               {
                 label: "WebXR",
@@ -180,6 +169,13 @@ export default defineConfig({
             items: [
               {
                 label: "Reference",
+                translations: {
+                  fr: "Référence",
+                  ja: "参照",
+                  ko: "레퍼런스",
+                  ru: "Ссылки",
+                  "zh-CN": "参考",
+                },
                 autogenerate: { directory: "reference/" },
               },
             ],

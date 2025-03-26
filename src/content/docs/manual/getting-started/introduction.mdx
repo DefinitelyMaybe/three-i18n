@@ -4,521 +4,305 @@ sidebar:
   order: 0
 ---
 
-This is the first article in a series of articles about three.js.
-[Three.js](https://threejs.org) is a 3D library that tries to make
-it as easy as possible to get 3D content on a webpage.
+[Three.js](https://threejs.org) is a 3D library that tries to make it as easy
+as possible to get 3D content on a webpage.
 
-Three.js is often confused with WebGL since more often than
-not, but not always, three.js uses WebGL to draw 3D.
-[WebGL is a very low-level system that only draws points, lines, and triangles](https://webglfundamentals.org).
-To do anything useful with WebGL generally requires quite a bit of
-code and that is where three.js comes in. It handles stuff
-like scenes, lights, shadows, materials, textures, 3d math, all things that you'd
-have to write yourself if you were to use WebGL directly.
+Three.js uses either WebGL or WebGPU to draw 3D. [WebGL is a very low-level
+system that only draws points, lines, and
+triangles](https://webglfundamentals.org). To do anything useful with WebGL
+generally requires quite a bit of code and that is where three.js comes in. It
+handles stuff like scenes, lights, shadows, materials, textures, 3d math, all
+things that you'd have to write yourself if you were to use WebGL directly.
 
-These tutorials assume you already know JavaScript and, for the
-most part they will use ES6 style. [See here for a
-terse list of things you're expected to already know](prerequisites.html).
-Most browsers that support three.js are auto-updated so most users should
-be able to run this code. If you'd like to make this code run
-on really old browsers look into a transpiler like [Babel](https://babeljs.io).
-Of course users running really old browsers probably have machines
-that can't run three.js.
+## Prerequisites
 
-When learning most programming languages the first thing people
-do is make the computer print `"Hello World!"`. For 3D one
-of the most common first things to do is to make a 3D cube.
-So let's start with "Hello Cube!"
+Three.js is a javascript library so you'll need to know how to program
+JavaScript. Some options for learning javascript include:
+[mozilla](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting),
+[codecademy](https://www.codecademy.com/learn/introduction-to-javascript),
+[w3schools](https://www.w3schools.com/js/),
+[web.dev](https://web.dev/learn/javascript) and many more. You don't need to be
+an expert to get started. Learning a little html and css will help too.
 
-Before we get started let's try to give you an idea of the structure
-of a three.js app. A three.js app requires you to create a bunch of
-objects and connect them together. Here's a diagram that represents
-a small three.js app
+## Setup
 
-<div class="threejs_center">
-  ![image](/resources/images/threejs-structure.svg)
-</div>
+In order to do three.js development you'll need to use a web server.
+[Vite](https://vite.dev/) is the recommended tool for web development but
+you're welcome to use your tools of choice.
 
-Things to notice about the diagram above.
+### node
 
-<ul>
-<li>
-There is a [`Renderer`](/api/en/constants/Renderer). This is arguably the main object of three.js. You pass a
-[`Scene`](/api/en/scenes/Scene) and a [`Camera`](/api/en/cameras/Camera) to a [`Renderer`](/api/en/constants/Renderer) and it renders (draws) the portion of
-the 3D scene that is inside the _frustum_ of the camera as a 2D image to a
-canvas.
+## Option 1: Install with NPM and a build tool
 
-</li>
-<li>
-There is a [scenegraph](scenegraph.html) which is a tree like
-structure, consisting of various objects like a [`Scene`](/api/en/scenes/Scene) object, multiple
-[`Mesh`](/api/en/objects/Mesh) objects, [`Light`](/api/en/lights/Light) objects, [`Group`](/api/en/objects/Group), [`Object3D`](/api/en/core/Object3D), and [`Camera`](/api/en/cameras/Camera) objects. A
-[`Scene`](/api/en/scenes/Scene) object defines the root of the scenegraph and contains properties like
-the background color and fog. These objects define a hierarchical parent/child
-tree like structure and represent where objects appear and how they are
-oriented. Children are positioned and oriented relative to their parent. For
-example the wheels on a car might be children of the car so that moving and
-orienting the car's object automatically moves the wheels. You can read more
-about this in [the article on scenegraphs](scenegraph.html).
+### Development
 
-Note in the diagram [`Camera`](/api/en/cameras/Camera) is half in half out of the scenegraph. This is to
-represent that in three.js, unlike the other objects, a [`Camera`](/api/en/cameras/Camera) does not have
-to be in the scenegraph to function. Just like other objects, a [`Camera`](/api/en/cameras/Camera), as a
-child of some other object, will move and orient relative to its parent object.
-There is an example of putting multiple [`Camera`](/api/en/cameras/Camera) objects in a scenegraph at
-the end of [the article on scenegraphs](scenegraph.html).
-
-</li>
-<li>
-[`Mesh`](/api/en/objects/Mesh) objects represent drawing a specific `Geometry` with a specific
-[`Material`](/api/en/materials/Material). Both [`Material`](/api/en/materials/Material) objects and `Geometry` objects can be used by
-multiple [`Mesh`](/api/en/objects/Mesh) objects. For example to draw two blue cubes in different
-locations we could need two [`Mesh`](/api/en/objects/Mesh) objects to represent the position and
-orientation of each cube. We would only need one `Geometry` to hold the vertex
-data for a cube and we would only need one [`Material`](/api/en/materials/Material) to specify the color
-blue. Both [`Mesh`](/api/en/objects/Mesh) objects could reference the same `Geometry` object and the
-same [`Material`](/api/en/materials/Material) object.
-
-</li>
-<li>
-`Geometry` objects represent the vertex data of some piece of geometry like
-a sphere, cube, plane, dog, cat, human, tree, building, etc...
-Three.js provides many kinds of built in
-[geometry primitives](primitives.html). You can also
-[create custom geometry](custom-buffergeometry.html) as well as
-[load geometry from files](load-obj.html).
-
-</li>
-<li>
-[`Material`](/api/en/materials/Material) objects represent
-[the surface properties used to draw geometry](materials.html)
-including things like the color to use and how shiny it is. A [`Material`](/api/en/materials/Material) can also
-reference one or more [`Texture`](/api/en/textures/Texture) objects which can be used, for example,
-to wrap an image onto the surface of a geometry.
-
-</li>
-<li>
-[`Texture`](/api/en/textures/Texture) objects generally represent images either [loaded from image files](textures.html),
-[generated from a canvas](canvas-textures.html) or [rendered from another scene](rendertargets.html).
-
-</li>
-<li>
-[`Light`](/api/en/lights/Light) objects represent [different kinds of lights](lights.html).
-
-</li>
-</ul>
-
-Given all of that we're going to make the smallest _"Hello Cube"_ setup
-that looks like this
-
-<div class="threejs_center">
-  ![image](/resources/images/threejs-1cube-no-light-scene.svg)
-</div>
-
-First let's load three.js
-
-```html
-<script type="module">
-  import * as THREE from "three";
-</script>
-```
-
-It's important you put `type="module"` in the script tag. This enables
-us to use the `import` keyword to load three.js. As of r147, this is the
-only way to load three.js properly. Modules have the advantage that they can easily import other modules
-they need. That saves us from having to manually load extra scripts
-they are dependent on.
-
-Next we need is a `<canvas>` tag so...
-
-```html
-<body>
-  <canvas id="c"></canvas>
-</body>
-```
-
-We will ask three.js to draw into that canvas so we need to look it up.
-
-```html
-<script type="module">
-  import * as THREE from 'three';
-
-  +function main() {
-  +  const canvas = document.querySelector('#c');
-  +  const renderer = new THREE.WebGLRenderer({antialias: true, canvas});
-  +  ...
-</script>
-```
-
-After we look up the canvas we create a [`WebGLRenderer`](/api/en/renderers/WebGLRenderer). The renderer
-is the thing responsible for actually taking all the data you provide
-and rendering it to the canvas.
-
-Note there are some esoteric details here. If you don't pass a canvas
-into three.js it will create one for you but then you have to add it
-to your document. Where to add it may change depending on your use case
-and you'll have to change your code so I find that passing a canvas
-to three.js feels a little more flexible. I can put the canvas anywhere
-and the code will find it whereas if I had code to insert the canvas
-into to the document I'd likely have to change that code if my use case
-changed.
-
-Next up we need a camera. We'll create a [`PerspectiveCamera`](/api/en/cameras/PerspectiveCamera).
-
-```js
-const fov = 75;
-const aspect = 2; // the canvas default
-const near = 0.1;
-const far = 5;
-const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-```
-
-`fov` is short for `field of view`. In this case 75 degrees in the vertical
-dimension. Note that most angles in three.js are in radians but for some
-reason the perspective camera takes degrees.
-
-`aspect` is the display aspect of the canvas. We'll go over the details
-[in another article](responsive.html) but by default a canvas is
-300x150 pixels which makes the aspect 300/150 or 2.
-
-`near` and `far` represent the space in front of the camera
-that will be rendered. Anything before that range or after that range
-will be clipped (not drawn).
-
-Those four settings define a _"frustum"_. A _frustum_ is the name of
-a 3d shape that is like a pyramid with the tip sliced off. In other
-words think of the word "frustum" as another 3D shape like sphere,
-cube, prism, frustum.
-
-![image](/resources/frustum-3d.svg)
-
-The height of the near and far planes are determined by the field of view.
-The width of both planes is determined by the field of view and the aspect.
-
-Anything inside the defined frustum will be drawn. Anything outside
-will not.
-
-The camera defaults to looking down the -Z axis with +Y up. We'll put our cube
-at the origin so we need to move the camera back a little from the origin
-in order to see anything.
-
-```js
-camera.position.z = 2;
-```
-
-Here's what we're aiming for.
-
-![image](/resources/scene-down.svg)
-
-In the diagram above we can see our camera is at `z = 2`. It's looking
-down the -Z axis. Our frustum starts 0.1 units from the front of the camera
-and goes to 5 units in front of the camera. Because in this diagram we are looking down,
-the field of view is affected by the aspect. Our canvas is twice as wide
-as it is tall so across the canvas the field of view will be much wider than
-our specified 75 degrees which is the vertical field of view.
-
-Next we make a [`Scene`](/api/en/scenes/Scene). A [`Scene`](/api/en/scenes/Scene) in three.js is the root of a form of scene graph.
-Anything you want three.js to draw needs to be added to the scene. We'll
-cover more details of [how scenes work in a future article](scenegraph.html).
-
-```js
-const scene = new THREE.Scene();
-```
-
-Next up we create a [`BoxGeometry`](/api/en/geometries/BoxGeometry) which contains the data for a box.
-Almost anything we want to display in Three.js needs geometry which defines
-the vertices that make up our 3D object.
-
-```js
-const boxWidth = 1;
-const boxHeight = 1;
-const boxDepth = 1;
-const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
-```
-
-We then create a basic material and set its color. Colors can
-be specified using standard CSS style 6 digit hex color values.
-
-```js
-const material = new THREE.MeshBasicMaterial({ color: 0x44aa88 });
-```
-
-We then create a [`Mesh`](/api/en/objects/Mesh). A [`Mesh`](/api/en/objects/Mesh) in three.js represents the combination
-of three things
+Installing from the [ npm package registry](https://www.npmjs.com/) and using a
+[ build tool](https://eloquentjavascript.net/10_modules.html#h_zWTXAU93DC) is
+the recommended approach for most users — the more dependencies your project
+needs, the more likely you are to run into problems that the static hosting
+cannot easily resolve. With a build tool, importing local JavaScript files and
+npm packages should work out of the box, without import maps.
 
 <ol>
-  <li>A `Geometry` (the shape of the object)</li>
-  <li>
-    A [`Material`](/api/en/materials/Material) (how to draw the object, shiny or
-    flat, what color, what texture(s) to apply. Etc.)
-  </li>
-  <li>
-    The position, orientation, and scale of that object in the scene relative to
-    its parent. In the code below that parent is the scene.
-  </li>
+<li>
+Install [ Node.js](https://nodejs.org/). We'll need it to load manage dependencies and to run our build tool.
+</li>
+<li>
+
+Install three.js and a build tool, [ Vite](https://vitejs.dev/), using a [
+terminal](https://www.joshwcomeau.com/javascript/terminal-for-js-devs/) in your
+project folder. Vite will be used during development, but it isn't part of the
+final webpage. If you prefer to use another build tool, that's fine — we
+support modern build tools that can import [ ES
+Modules](https://eloquentjavascript.net/10_modules.html#h_zWTXAU93DC).
+
+```javascript
+
+# three.js
+npm install --save three
+
+# vite
+npm install --save-dev vite
+
+```
+
+<aside>
+<details>
+<summary>Installation added _node_modules/_ and _package.json_ to my project. What are they?</summary>
+
+npm uses _package.json_ to describe which versions of each dependency you've
+installed. If you have other people working on the project with you, they can
+install the original versions of each dependency simply by running _npm
+install_. If you're using version history, commit _package.json_.
+
+npm installs the code for each dependency in a new _node_modules/_ folder. When
+Vite builds your application, it sees imports for 'three' and pulls three.js
+files automatically from this folder. The _node_modules/_ folder is used only
+during development, and shouldn't be uploaded to your web hosting provider or
+committed to version history.
+
+</details>
+<details>
+<summary>Improve your editor auto-completion with _jsconfig_ or _tsconfig_</summary>
+
+Place a _jsconfig.json_ (or _tsconfig.json_ for TypeScript projects) in your
+project's root. Adding the configuration below helps your editor locate
+three.js files for enhanced auto-completion.
+
+```javascript
+
+{
+"compilerOptions": {
+// other options...
+"paths": {
+"three/webgpu": ["node_modules/three/build/three.webgpu.js"],
+"three/tsl": ["node_modules/three/build/three.tsl.js"],
+},
+}
+}
+
+```
+
+</details>
+</aside>
+</li>
+<li>
+From your terminal, run:
+
+```javascript
+
+npx vite
+
+```
+
+<aside>
+<details>
+<summary>What is _npx_?</summary>
+
+npx is installed with Node.js, and runs command line programs like Vite so that
+you don't have to search for the right file in _node_modules/_ yourself. If you
+prefer, you can put [ Vite's common
+commands](https://vitejs.dev/guide/#command-line-interface) into the [
+package.json:scripts](https://docs.npmjs.com/cli/v9/using-npm/scripts) list,
+and use _npm run dev_ instead.
+
+</details>
+</aside>
+</li>
+<li>
+If everything went well, you'll see a URL like _http://localhost:5173_ appear in your terminal, and can open that URL to see your web application.
+</li>
 </ol>
 
-```js
-const cube = new THREE.Mesh(geometry, material);
-```
+The page will be blank — you're ready to [ create a
+scene](/manual/introduction/Creating-a-scene).
 
-And finally we add that mesh to the scene
+If you want to learn more about these tools before you continue, see:
 
-```js
-scene.add(cube);
-```
+<ul>
+  <li>
+    [ three.js journey: Local
+    Server](https://threejs-journey.com/lessons/local-server)
+  </li>
+  <li>[ Vite: Command Line Interface](https://vitejs.dev/guide/cli.html)</li>
+  <li>
+    [ MDN: Package management
+    basics](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Package_management)
+  </li>
+</ul>
 
-We can then render the scene by calling the renderer's render function
-and passing it the scene and the camera
+### Production
 
-```js
-renderer.render(scene, camera);
-```
+Later, when you're ready to deploy your web application, you'll just need to
+tell Vite to run a production build — _npx vite build_. Everything used by the
+application will be compiled, optimized, and copied into the _dist/_ folder.
+The contents of that folder are ready to be hosted on your website.
 
-Here's a working example
+## Option 2: Import from a CDN
 
-<iframe src="/editor?url=/manual/examples/fundamentals.html"></iframe>
+### Development
 
-It's kind of hard to tell that is a 3D cube since we're viewing
-it directly down the -Z axis and the cube itself is axis aligned
-so we're only seeing a single face.
+Installing without build tools will require some changes to the project
+structure given above.
 
-Let's animate it spinning and hopefully that will make
-it clear it's being drawn in 3D. To animate it we'll render inside a render loop using
-[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame).
+<ol>
+<li>
 
-Here's our loop
+We imported code from 'three' (an npm package) in _main.js_, and web browsers
+don't know what that means. In _index.html_ we'll need to add an [ import
+map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)
+defining where to get the package. Put the code below inside the
+_<head></head>_ tag, after the styles.
 
-```js
-function render(time) {
-  time *= 0.001; // convert time to seconds
+```javascript
 
-  cube.rotation.x = time;
-  cube.rotation.y = time;
-
-  renderer.render(scene, camera);
-
-  requestAnimationFrame(render);
-}
-requestAnimationFrame(render);
-```
-
-`requestAnimationFrame` is a request to the browser that you want to animate something.
-You pass it a function to be called. In our case that function is `render`. The browser
-will call your function and if you update anything related to the display of the
-page the browser will re-render the page. In our case we are calling three's
-`renderer.render` function which will draw our scene.
-
-`requestAnimationFrame` passes the time since the page loaded to
-our function. That time is passed in milliseconds. I find it's much
-easier to work with seconds so here we're converting that to seconds.
-
-We then set the cube's X and Y rotation to the current time. These rotations
-are in [radians](https://en.wikipedia.org/wiki/Radian). There are 2 pi radians
-in a circle so our cube should turn around once on each axis in about 6.28
-seconds.
-
-We then render the scene and request another animation frame to continue
-our loop.
-
-Outside the loop we call `requestAnimationFrame` one time to start the loop.
-
-<iframe src="/editor?url=/manual/examples/fundamentals-with-animation.html"></iframe>
-
-It's a little better but it's still hard to see the 3d. What would help is to
-add some lighting so let's add a light. There are many kinds of lights in
-three.js which we'll go over in [a future article](lights.html). For now let's create a directional light.
-
-```js
-const color = 0xffffff;
-const intensity = 3;
-const light = new THREE.DirectionalLight(color, intensity);
-light.position.set(-1, 2, 4);
-scene.add(light);
-```
-
-Directional lights have a position and a target. Both default to 0, 0, 0. In our
-case we're setting the light's position to -1, 2, 4 so it's slightly on the left,
-above, and behind our camera. The target is still 0, 0, 0 so it will shine
-toward the origin.
-
-We also need to change the material. The [`MeshBasicMaterial`](/api/en/materials/MeshBasicMaterial) is not affected by
-lights. Let's change it to a [`MeshPhongMaterial`](/api/en/materials/MeshPhongMaterial) which is affected by lights.
-
-```js
--const material = new THREE.MeshBasicMaterial({color: 0x44aa88});  // greenish blue
-+const material = new THREE.MeshPhongMaterial({color: 0x44aa88});  // greenish blue
-```
-
-Here is our new program structure
-
-<div class="threejs_center">
-  ![image](/resources/images/threejs-1cube-with-directionallight.svg)
-</div>
-
-And here it is working.
-
-<iframe src="/editor?url=/manual/examples/fundamentals-with-light.html"></iframe>
-
-It should now be pretty clearly 3D.
-
-Just for the fun of it let's add 2 more cubes.
-
-We'll use the same geometry for each cube but make a different
-material so each cube can be a different color.
-
-First we'll make a function that creates a new material
-with the specified color. Then it creates a mesh using
-the specified geometry and adds it to the scene and
-sets its X position.
-
-```js
-function makeInstance(geometry, color, x) {
-  const material = new THREE.MeshPhongMaterial({ color });
-
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-
-  cube.position.x = x;
-
-  return cube;
-}
-```
-
-Then we'll call it 3 times with 3 different colors and X positions
-saving the [`Mesh`](/api/en/objects/Mesh) instances in an array.
-
-```js
-const cubes = [
-  makeInstance(geometry, 0x44aa88, 0),
-  makeInstance(geometry, 0x8844aa, -2),
-  makeInstance(geometry, 0xaa8844, 2),
-];
-```
-
-Finally we'll spin all 3 cubes in our render function. We
-compute a slightly different rotation for each one.
-
-```js
-function render(time) {
-time *= 0.001;  // convert time to seconds
-
-cubes.forEach((cube, ndx) => {
-const speed = 1 + ndx * .1;
-const rot = time * speed;
-cube.rotation.x = rot;
-cube.rotation.y = rot;
-});
-
-...
-```
-
-and here's that.
-
-<iframe src="/editor?url=/manual/examples/fundamentals-3-cubes.html"></iframe>
-
-If you compare it to the top down diagram above you can see
-it matches our expectations. With cubes at X = -2 and X = +2
-they are partially outside our frustum. They are also
-somewhat exaggeratedly warped since the field of view
-across the canvas is so extreme.
-
-Our program now has this structure
-
-<div class="threejs_center">
-  ![image](/resources/images/threejs-3cubes-scene.svg)
-</div>
-
-As you can see we have 3 [`Mesh`](/api/en/objects/Mesh) objects each referencing the same [`BoxGeometry`](/api/en/geometries/BoxGeometry).
-Each [`Mesh`](/api/en/objects/Mesh) references a unique [`MeshPhongMaterial`](/api/en/materials/MeshPhongMaterial) so that each cube can have
-a different color.
-
-I hope this short intro helps to get things started. [Next up we'll cover
-making our code responsive so it is adaptable to multiple situations](responsive.html).
-
-<div id="es6" class="threejs_bottombar">
-### es6 modules, three.js, and folder structure
-
-As of version r147 the preferred way to use three.js is via [es6 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) and import maps.
-
-es6 modules can be loaded via the `import` keyword in a script
-or inline via a `<script type="module">` tag. Here's an example
-
-```html
-<script type="module">
-  import * as THREE from 'three';
-
-  ...
-</script>
-```
-
-Notice `'three'` specifier there. If you leave it as it is, it will likely produce an error. An _import map_ should be used to tell the browser where to find three.js
-
-```html
 <script type="importmap">
-  {
-    "imports": {
-      "three": "./path/to/three.module.js"
-    }
-  }
+{
+"imports": {
+"three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+"three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+}
+}
 </script>
+
 ```
 
-Note that path specifier can start only with `./` or `../`.
+Don't forget to replace _`<version>`_ with an actual version of three.js, like
+_"v0.149.0"_. The most recent version can be found on the [ npm version
+list](https://www.npmjs.com/package/three?activeTab=versions).
 
-To import addons like [`OrbitControls.js`](https://github.com/mrdoob/three.js/blob/master/examples/jsm/controls/OrbitControls.js) use the following
+</li>
+<li>
 
-```js
+We'll also need to run a _local server_ to host these files at URL where the
+web browser can access them. While it's technically possible to double-click an
+HTML file and open it in your browser, important features that we'll later
+implement, do not work when the page is opened this way, for security reasons.
+
+Install [ Node.js](https://nodejs.org/), then run [
+serve](https://www.npmjs.com/package/serve) to start a local server in the
+project's directory:
+
+```javascript
+
+npx serve .
+
+```
+
+</li>
+<li>
+If everything went well, you'll see a URL like http://localhost:3000 appear in your terminal, and can open that URL to see your web application.
+</li>
+</ol>
+
+The page will be blank — you're ready to [ create a
+scene](/manual/introduction/Creating-a-scene).
+
+Many other local static servers are available — some use different languages
+instead of Node.js, and others are desktop applications. They all work
+basically the same way, and we've provided a few alternatives below.
+
+<details>
+<summary>More local servers</summary>
+
+### Command Line
+
+Command line local servers run from a terminal window. The associated
+programming language may need to be installed first.
+
+<ul>
+  <li>_npx http-server_ (Node.js)</li>
+  <li>_npx five-server_ (Node.js)</li>
+  <li>_python -m SimpleHTTPServer_ (Python 2.x)</li>
+  <li>_python -m http.server_ (Python 3.x)</li>
+  <li>_php -S localhost:8000_ (PHP 5.4+)</li>
+</ul>
+
+### GUI
+
+GUI local servers run as an application window on your computer, and may have a
+user interface.
+
+<ul>
+  <li>[ Servez](https://greggman.github.io/servez)</li>
+</ul>
+
+### Code Editor Plugins
+
+Some code editors have plugins that spawn a simple server on demand.
+
+<ul>
+  <li>
+    [ Five
+    Server](https://marketplace.visualstudio.com/items?itemName=yandeu.five-server)
+    for Visual Studio Code
+  </li>
+  <li>
+    [ Live
+    Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+    for Visual Studio Code
+  </li>
+  <li>[ Live Server](https://atom.io/packages/atom-live-server) for Atom</li>
+</ul>
+
+</details>
+
+### Production
+
+When you're ready to deploy your web application, push the source files to your
+web hosting provider — no need to build or compile anything. The downside of
+that tradeoff is that you'll need to be careful to keep the import map updated
+with any dependencies (and dependencies of dependencies!) that your application
+requires. If the CDN hosting your dependencies goes down temporarily, your
+website will stop working too.
+
+_**IMPORTANT:** Import all dependencies from the same version of three.js, and
+from the same CDN. Mixing files from different sources may cause duplicate code
+to be included, or even break the application in unexpected ways._
+
+## Addons
+
+Out of the box, three.js includes the fundamentals of a 3D engine. Other
+three.js components — such as controls, loaders, and post-processing effects —
+are part of the [
+addons/](https://github.com/mrdoob/three.js/tree/dev/examples/jsm) directory.
+Addons do not need to be _installed_ separately, but do need to be _imported_
+separately.
+
+The example below shows how to import three.js with the
+[OrbitControls](examples/controls/OrbitControls) and
+[GLTFLoader](examples/loaders/GLTFLoader) addons. Where necessary, this will
+also be mentioned in each addon's documentation or examples.
+
+```javascript
+import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+const controls = new OrbitControls(camera, renderer.domElement);
+const loader = new GLTFLoader();
 ```
 
-Don't forget to add addons to the import map like so
-
-```html
-<script type="importmap">
-  {
-    "imports": {
-      "three": "./path/to/three.module.js",
-      "three/addons/": "./different/path/to/examples/jsm/"
-    }
-  }
-</script>
-```
-
-You can also use a CDN
-
-```html
-<script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
-    }
-  }
-</script>
-```
-
-To conclude, the recommended way of using three.js is
-
-```html
-<script type="importmap">
-  {
-    "imports": {
-      "three": "./path/to/three.module.js",
-      "three/addons/": "./different/path/to/examples/jsm/"
-    }
-  }
-</script>
-
-<script type="module">
-  import * as THREE from 'three';
-  import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-
-  ...
-</script>
-```
-
-</div>
-
-[](geometry.html)
-[](Geometry)
+Some excellent third-party projects are available for three.js, too. These need
+to be installed separately — see [ Libraries and
+Plugins](/manual/introduction/Libraries-and-Plugins).
